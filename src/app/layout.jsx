@@ -15,9 +15,9 @@ export const metadata = {
     keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],
     authors: [{ name: "Shreyash" }],
     icons: {
-        icon: '/app-logo.png?v=2',
-        shortcut: '/app-logo.png?v=2',
-        apple: '/app-logo.png?v=2',
+        icon: '/app-logo.png?v=3',
+        shortcut: '/app-logo.png?v=3',
+        apple: '/app-logo.png?v=3',
     },
     openGraph: {
         type: "website",
