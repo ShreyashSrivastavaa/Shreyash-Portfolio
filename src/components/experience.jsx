@@ -45,7 +45,7 @@ const achievements = [
         url: 'https://drive.google.com/file/d/1fQGQoUoXCSiZ_BMO8JoOt7dbHlEPKOme/view?usp=drive_link',
     },
     {
-        title: 'Finalist - Innocodethon (Hackathon)',
+        title: 'Finalist - Innocodeathon (Hackathon)',
         issuer: 'ITS Engineering College',
         icon: <Users className="text-primary" />,
     },
