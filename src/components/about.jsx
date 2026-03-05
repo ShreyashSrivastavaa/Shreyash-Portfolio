@@ -48,7 +48,7 @@ export default function About() {
                 >
                     <div className="aspect-4/5 max-w-[450px] mx-auto rounded-[3rem] border border-white/10 glass dark:glass-dark overflow-hidden relative group shadow-2xl">
                         <Image
-                            src="/profile-scrolled.png"
+                            src="/profile-2.jpg"
                             alt="Shreyash Srivastava - Casual"
                             width={450}
                             height={562}
