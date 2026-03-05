@@ -42,6 +42,8 @@ export const metadata = {
     },
 };
 
+import { Analytics } from "@vercel/analytics/react";
+
 export default function RootLayout({
     children,
 }) {
@@ -62,7 +64,9 @@ export default function RootLayout({
                         <Footer />
                     </UIProvider>
                 </ThemeProvider>
+                <Analytics />
             </body>
         </html>
     );
 }
+
