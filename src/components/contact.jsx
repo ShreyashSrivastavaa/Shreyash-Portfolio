@@ -5,7 +5,7 @@ import { Mail, Linkedin, Github, MessageSquare, ArrowUpRight } from 'lucide-reac
 
 const socials = [
     { name: 'LinkedIn', icon: <Linkedin size={24} />, href: 'https://www.linkedin.com/in/shreyashsrivastavaa', color: 'hover:text-[#0077b5]' },
-    { name: 'GitHub', icon: <Github size={24} />, href: 'https://github.com/Not-Rambo', color: 'hover:text-primary' },
+    { name: 'GitHub', icon: <Github size={24} />, href: 'https://github.com/ShreyashSrivastavaa', color: 'hover:text-primary' },
     { name: 'Email', icon: <Mail size={24} />, href: 'mailto:shreyash@example.com', color: 'hover:text-red-500' },
 ];
 

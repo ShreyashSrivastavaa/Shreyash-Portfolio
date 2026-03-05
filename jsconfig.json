@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "jsx": "preserve",
+        "checkJs": true,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "target": "esnext",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

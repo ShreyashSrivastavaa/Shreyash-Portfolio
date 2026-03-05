@@ -27,7 +27,7 @@ export async function getBlogPosts() {
     return posts;
 }
 
-export async function getBlogPost(slug: string) {
+export async function getBlogPost(slug) {
     const filePath = path.join(BLOG_DIRECTORY, `${slug}.mdx`);
     if (!fs.existsSync(filePath)) {
         return null;

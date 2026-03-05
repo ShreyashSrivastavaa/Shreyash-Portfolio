@@ -1,13 +1,9 @@
-import { getBlogPost } from '@/lib/blog';
+import { getBlogPost } from '../../../lib/blog.js';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
-
-interface PostPageProps {
-    params: Promise<{ slug: string }>;
-}
 
 const mdxOptions = {
     mdxOptions: {
@@ -19,11 +15,11 @@ const mdxOptions = {
                     keepBackground: true,
                 },
             ],
-        ] as any,
+        ],
     },
 };
 
-export default async function BlogPostPage({ params }: PostPageProps) {
+export default async function BlogPostPage({ params }) {
     const { slug } = await params;
     const post = await getBlogPost(slug);
 
@@ -49,7 +45,7 @@ export default async function BlogPostPage({ params }: PostPageProps) {
                     <div className="flex items-center gap-2">
                         <Tag size={14} />
                         <div className="flex gap-2">
-                            {post.meta.tags.map((tag: string) => (
+                            {post.meta.tags.map((tag) => (
                                 <span key={tag}>#{tag}</span>
                             ))}
                         </div>
@@ -72,7 +68,7 @@ export default async function BlogPostPage({ params }: PostPageProps) {
                         I write about building secure, scalable systems. Follow my journey on GitHub for more interactive case studies.
                     </p>
                     <Link
-                        href="https://github.com/Not-Rambo"
+                        href="https://github.com/ShreyashSrivastavaa"
                         className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary text-white font-semibold hover:scale-105 transition-transform"
                     >
                         Visit GitHub Profile

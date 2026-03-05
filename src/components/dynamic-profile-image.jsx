@@ -1,12 +1,15 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
 
 export default function DynamicProfileImage() {
     // 1. Setup Scroll Tracking
     // We'll track the scroll progress of the entire window
     const { scrollY } = useScroll();
+
+    // Global Visibility: Floating DP is hidden at top and fades in as user scrolls away from Hero
+    const globalOpacity = useTransform(scrollY, [0, 150, 300], [0, 0, 1]);
+    const pointerEvents = useTransform(scrollY, [0, 250], ["none", "auto"]);
 
     // 2. Define Transformations
     // These values map scroll position (0 to 400px) to visual properties
@@ -26,6 +29,11 @@ export default function DynamicProfileImage() {
     const y = useTransform(scrollY, [0, 400], [0, 12]);
     const x = useTransform(scrollY, [0, 400], [0, 12]);
 
+    // Image Cross-fade
+    // Transition from original to scrolled profile image
+    const opacityOriginal = useTransform(scrollY, [0, 200], [1, 0]);
+    const opacityScrolled = useTransform(scrollY, [0, 200], [0, 1]);
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -44,13 +52,22 @@ export default function DynamicProfileImage() {
                         top: y,
                         right: x,
                         position: 'absolute',
+                        opacity: globalOpacity,
+                        pointerEvents: pointerEvents,
                     }}
-                    className="overflow-hidden border border-white/10 glass dark:glass-dark shadow-2xl pointer-events-auto mt-24 mr-4 lg:mr-24 lg:mt-32 cursor-pointer group"
+                    className="overflow-hidden border border-white/10 glass dark:glass-dark shadow-2xl mt-24 mr-4 lg:mr-24 lg:mt-32 cursor-pointer group"
                 >
-                    <img
+                    <motion.img
                         src="/profile.png"
                         alt="Shreyash Srivastava"
-                        className="w-full h-full object-cover"
+                        style={{ opacity: opacityOriginal }}
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <motion.img
+                        src="/profile-scrolled.png"
+                        alt="Shreyash Srivastava - Scrolled"
+                        style={{ opacity: opacityScrolled }}
+                        className="absolute inset-0 w-full h-full object-cover"
                     />
                     <motion.div
                         style={{ opacity: useTransform(scrollY, [0, 200], [0.8, 0]) }}

@@ -1,6 +1,6 @@
 import { GitCommit, Github } from 'lucide-react';
 
-async function getGithubActivity(username: string) {
+async function getGithubActivity(username) {
     try {
         const res = await fetch(`https://api.github.com/users/${username}/events`, {
             headers: {
@@ -13,7 +13,7 @@ async function getGithubActivity(username: string) {
         const events = await res.json();
 
         // Filter for push events
-        const pushEvents = events.filter((e: any) => e.type === 'PushEvent').slice(0, 3);
+        const pushEvents = events.filter((e) => e.type === 'PushEvent').slice(0, 3);
         return pushEvents;
     } catch (e) {
         return null;
@@ -21,7 +21,7 @@ async function getGithubActivity(username: string) {
 }
 
 export default async function GithubActivity() {
-    const activities = await getGithubActivity('Not-Rambo');
+    const activities = await getGithubActivity('ShreyashSrivastavaa');
 
     if (!activities || activities.length === 0) {
         return (
@@ -34,7 +34,7 @@ export default async function GithubActivity() {
 
     const latest = activities[0];
     const repoName = latest.repo.name.split('/')[1];
-    const commitMsg = latest.payload.commits[0]?.message || 'Worked on repo';
+    const commitMsg = latest.payload?.commits?.[0]?.message || 'Worked on repo';
 
     return (
         <div className="flex items-center gap-6 text-xs font-mono">

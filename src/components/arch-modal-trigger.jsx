@@ -1,7 +1,7 @@
 'use client';
 
 import { Cpu } from 'lucide-react';
-import { useUI } from '@/context/ui-context';
+import { useUI } from '../context/ui-context.jsx';
 
 export default function ArchModalTrigger() {
     const { openArchModal } = useUI();

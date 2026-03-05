@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X, Github, Linkedin, Mail, Cpu } from 'lucide-react';
+import { Moon, Sun, Menu, X, Github, Linkedin, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import ArchitectureModal from './architecture-modal';
+import { useUI } from '../context/ui-context.jsx';
 
 const NavLinks = [
     { name: 'About', href: '#about' },
@@ -16,15 +17,16 @@ const NavLinks = [
     { name: 'Contact', href: '#contact' },
 ];
 
-import { useUI } from '@/context/ui-context';
-
 export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const { isArchModalOpen, openArchModal, closeArchModal } = useUI();
 
-    useEffect(() => setMounted(true), []);
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true);
+    }, []);
 
     if (!mounted) return null;
 

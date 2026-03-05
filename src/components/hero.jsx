@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ChevronRight, Download } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
     return (
@@ -29,11 +30,11 @@ export default function Hero() {
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
                         Hi, I&apos;m <span className="gradient-text">Shreyash.</span>
                         <br />
-                        Engineering a <span className="italic">Safer</span>, Scalable Web.
+                        Backend Developer specializing in <span className="italic">Node.js, Express.js, and PostgreSQL.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-foreground/70 mb-10 leading-relaxed max-w-xl">
-                        Final-year CSE student & Full-Stack Developer focused on building high-impact platforms like <span className="text-primary font-medium">S.A.F.E.</span> — using AI to eliminate fraud and secure the digital experience.
+                        Final-year Computer Science student and Software Development Engineer Intern building scalable backend systems, REST APIs, and data-driven applications.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -56,14 +57,24 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Right Column: Image Placeholder */}
+                {/* Right Column: Hero Image */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, x: 30 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
                     className="relative block"
                 >
-                    <div className="aspect-4/5 max-w-[450px] mx-auto rounded-4xl border border-white/5 bg-foreground/5 relative" />
+                    <div className="aspect-4/5 max-w-[450px] mx-auto rounded-[3rem] border border-white/10 glass dark:glass-dark overflow-hidden relative group shadow-2xl">
+                        <Image
+                            src="/profile.png"
+                            alt="Shreyash Srivastava - Formal"
+                            width={450}
+                            height={562}
+                            priority
+                            className="w-full h-full object-cover grayscale brightness-110 contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    </div>
                 </motion.div>
             </div>
 

@@ -2,15 +2,9 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
-interface UIContextType {
-    isArchModalOpen: boolean;
-    openArchModal: () => void;
-    closeArchModal: () => void;
-}
+const UIContext = createContext(undefined);
 
-const UIContext = createContext<UIContextType | undefined>(undefined);
-
-export function UIProvider({ children }: { children: React.ReactNode }) {
+export function UIProvider({ children }) {
     const [isArchModalOpen, setIsArchModalOpen] = useState(false);
 
     const openArchModal = () => setIsArchModalOpen(true);

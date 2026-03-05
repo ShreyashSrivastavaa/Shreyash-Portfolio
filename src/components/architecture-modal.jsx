@@ -2,13 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Server, Database, Shield, Globe, Cpu } from 'lucide-react';
+import { X, Server, Database, Shield, Cpu } from 'lucide-react';
 import mermaid from 'mermaid';
-
-interface ArchitectureModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
 
 const diagram = `
 graph TD
@@ -42,8 +37,8 @@ const TechStack = [
     { name: 'Infrastructure', items: ['Docker', 'Redis', 'Vercel', 'Postman'] },
 ];
 
-export default function ArchitectureModal({ isOpen, onClose }: ArchitectureModalProps) {
-    const mermaidRef = useRef<HTMLDivElement>(null);
+export default function ArchitectureModal({ isOpen, onClose }) {
+    const mermaidRef = useRef(null);
 
     useEffect(() => {
         if (isOpen && mermaidRef.current) {
@@ -58,7 +53,7 @@ export default function ArchitectureModal({ isOpen, onClose }: ArchitectureModal
     }, [isOpen]);
 
     useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
+        const handleEsc = (e) => {
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleEsc);

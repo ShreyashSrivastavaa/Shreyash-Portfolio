@@ -9,14 +9,14 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
                     <div className="flex flex-col gap-4">
-                        <div className="font-bold text-2xl gradient-text">Not-Rambo</div>
+                        <div className="font-bold text-2xl gradient-text">Shreyash Srivastava</div>
                         <p className="text-foreground/40 max-w-xs text-sm">
                             Engineering high-impact systems for a safer, scalable digital future.
                         </p>
                     </div>
 
                     <div className="flex gap-6 items-center">
-                        <Link href="https://github.com/Not-Rambo" target="_blank" className="text-foreground/40 hover:text-primary transition-colors">
+                        <Link href="https://github.com/ShreyashSrivastavaa" target="_blank" className="text-foreground/40 hover:text-primary transition-colors">
                             <Github size={20} />
                         </Link>
                         <Link href="https://www.linkedin.com/in/shreyashsrivastavaa" target="_blank" className="text-foreground/40 hover:text-primary transition-colors">

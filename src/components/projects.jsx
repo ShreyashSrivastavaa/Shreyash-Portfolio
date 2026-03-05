@@ -19,26 +19,27 @@ const projects = [
             { label: 'Analysis Vectors', value: '5-Engine' },
         ],
         tech: ['Next.js', 'FastAPI', 'Python', 'Supabase', 'Render'],
-        github: 'https://github.com/ShreyashSrivastava15/safe',
+        github: 'https://github.com/ShreyashSrivastavaa/safe',
         live: 'https://safe-phi.vercel.app',
         image: '/projects/safe.webp', // Placeholder
     },
     {
-        id: 'dsa',
-        title: 'DSA Tracker Web App',
-        tagline: 'Visualizing logic and consistency in problem solving.',
-        icon: <BarChart3 className="text-primary" />,
-        description: 'A comprehensive progress tracking tool for competitive programming and data structures, focusing on metrics and growth visualization.',
-        problem: 'Maintaining consistency in DSA practice is difficult without clear visibility into progress and weak areas.',
-        solution: 'Built a feature-rich dashboard with dynamic charts, categorization, and progress heatmaps to gamify the learning experience.',
+        id: 'password-gen',
+        title: 'Random Password Generator',
+        tagline: 'Secure, customizable password generation utility.',
+        icon: <ShieldAlert className="text-accent" />,
+        description: 'A cybersecurity-focused utility that generates cryptographically strong passwords based on user-defined parameters like length and character variety.',
+        problem: 'Weak, reused passwords are the primary cause of account breaches, yet creating complex unique passwords manually is tedious.',
+        solution: 'Built an interactive tool using pure JavaScript that allows users to generate and copy complex passwords instantly with customizable security levels.',
         metrics: [
-            { label: 'Problems Tracked', value: '500+' },
-            { label: 'Visual Reports', value: 'Interactive' },
+            { label: 'Security Level', value: 'High' },
+            { label: 'Generation Time', value: '<10ms' },
+            { label: 'Entropy', value: 'Dynamic' },
         ],
-        tech: ['React', 'Node.js', 'MongoDB', 'Chart.js'],
-        github: 'https://github.com/ShreyashSrivastava15/dsa-tracker',
-        live: '#',
-        image: '/projects/dsa.webp', // Placeholder
+        tech: ['JavaScript', 'HTML5', 'CSS3'],
+        github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git',
+        live: 'https://shreyashsrivastavaa.github.io/Random-Password-Generator/',
+        image: '/projects/password.webp', // Placeholder
     },
 ];
 

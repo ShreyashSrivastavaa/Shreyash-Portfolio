@@ -1,7 +1,6 @@
-import { getBlogPosts } from '@/lib/blog';
+import { getBlogPosts } from '../../lib/blog.js';
 import Link from 'next/link';
 import { ArrowLeft, Calendar } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default async function BlogPage() {
     const posts = await getBlogPosts();
@@ -39,7 +38,7 @@ export default async function BlogPage() {
                                 {post.description}
                             </p>
                             <div className="flex flex-wrap gap-2">
-                                {post.tags.map((tag: string) => (
+                                {post.tags.map((tag) => (
                                     <span key={tag} className="px-3 py-1 rounded-md text-xs font-mono bg-foreground/5 border border-foreground/10">
                                         #{tag}
                                     </span>
