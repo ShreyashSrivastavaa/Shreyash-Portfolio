@@ -9,15 +9,20 @@ import { UIProvider } from "../context/ui-context.jsx";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    metadataBase: 'https://shreyash-portfolio.vercel.app',
+    metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
     title: "Shreyash | Software Engineer & Full-Stack Architect",
     description: "Engineering high-impact systems like S.A.F.E. – AI-powered scam detection. Final-year CSE student focused on security, scalability, and performance.",
     keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],
     authors: [{ name: "Shreyash" }],
+    icons: {
+        icon: '/icon.png',
+        shortcut: '/favicon.ico',
+        apple: '/icon.png',
+    },
     openGraph: {
         type: "website",
         locale: "en_US",
-        url: "https://shreyash-portfolio.vercel.app", // Replace with actual URL if known
+        url: "https://shreyashsrivastava.vercel.app",
         title: "Shreyash | Software Engineer",
         description: "Engineering a Safer, Scalable Web. Creator of S.A.F.E. AI.",
         siteName: "Shreyash Portfolio",
@@ -41,6 +46,7 @@ export const metadata = {
         follow: true,
     },
 };
+
 
 import { Analytics } from "@vercel/analytics/react";
 
