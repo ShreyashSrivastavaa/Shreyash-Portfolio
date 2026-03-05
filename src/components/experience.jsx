@@ -33,9 +33,10 @@ const experience = [
 
 const achievements = [
     {
-        title: 'C++ Programming Certification',
+        title: 'Problem Solving (Intermediate)',
         issuer: 'Hackerrank',
         icon: <Award className="text-primary" />,
+        url: 'https://drive.google.com/file/d/1LrYR4sF6PJiIafcoeskMY79ftZOK5YX7/view?usp=drive_link',
     },
     {
         title: 'Winner - Code-O-Fiesta 2.0',
