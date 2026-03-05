@@ -41,6 +41,7 @@ const achievements = [
         title: 'Winner - Code-O-Fiesta 2.0',
         issuer: 'ITS Engineering College',
         icon: <Award className="text-accent" />,
+        url: 'https://drive.google.com/file/d/1fQGQoUoXCSiZ_BMO8JoOt7dbHlEPKOme/view?usp=drive_link',
     },
     {
         title: 'Finalist - Innocodethon (Hackathon)',
@@ -101,13 +102,16 @@ export default function Experience() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="p-4 rounded-xl glass dark:glass-dark border border-white/5 flex items-center gap-4 group hover:border-accent/40 transition-colors"
+                                    onClick={() => item.url && window.open(item.url, '_blank')}
+                                    className={`p-4 rounded-xl glass dark:glass-dark border border-white/5 flex items-center gap-4 group transition-colors ${item.url ? 'cursor-pointer hover:border-accent/40' : ''}`}
                                 >
                                     <div className="p-2 rounded-lg bg-foreground/5 group-hover:scale-110 transition-transform">
                                         {item.icon}
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-sm">{item.title}</h4>
+                                        <h4 className="font-bold text-sm flex items-center gap-2">
+                                            {item.title}
+                                        </h4>
                                         <p className="text-[10px] uppercase font-bold text-foreground/40">{item.issuer}</p>
                                     </div>
                                 </motion.div>
@@ -119,3 +123,4 @@ export default function Experience() {
         </section>
     );
 }
+
