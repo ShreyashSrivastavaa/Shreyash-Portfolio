@@ -22,7 +22,7 @@ export default function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 inline-block border border-primary/20"
+                        className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 mt-6 inline-block border border-primary/20"
                     >
                         Available for Internships & Full-Time Roles
                     </motion.span>
