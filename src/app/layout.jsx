@@ -24,7 +24,7 @@ export const metadata = {
         locale: "en_US",
         url: "https://shreyashsrivastava.vercel.app",
         title: "Shreyash | Software Engineer",
-        description: "Engineering a Safer, Scalable Web. Creator of S.A.F.E. AI.",
+        description: "Engineering a Safer, Scalable Web. Part of the Team that created S.A.F.E.- AI-powered scam detection.",
         siteName: "Shreyash Portfolio",
         images: [
             {
