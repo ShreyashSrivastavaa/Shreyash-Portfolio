@@ -33,8 +33,8 @@ export default async function GithubActivity() {
     }
 
     const latest = activities[0];
-    const repoName = latest.repo.name.split('/')[1];
-    const commitMsg = latest.payload?.commits?.[0]?.message || 'Worked on repo';
+    const repoName = latest?.repo?.name?.split('/')?.[1] || 'shreyash-portfolio';
+    const commitMsg = latest?.payload?.commits?.[0]?.message || 'Worked on repository';
 
     return (
         <div className="flex items-center gap-6 text-xs font-mono">

@@ -30,7 +30,8 @@ export default function Contact() {
                     </h2>
 
                     <p className="text-lg md:text-xl text-foreground/60 mb-12 max-w-xl mx-auto leading-relaxed">
-                        I&apos;m currently looking for new opportunities as a <span className="text-foreground font-semibold">Software Engineer</span> or <span className="text-foreground font-semibold">Full-Stack Developer</span>. Let&apos;s discuss how I can contribute to your team.
+                        I am currently open to Backend Developer and Software Engineer opportunities.
+                        Feel free to reach out if you are looking for someone who enjoys building scalable backend systems.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

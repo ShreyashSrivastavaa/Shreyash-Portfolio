@@ -10,29 +10,29 @@ const skillCategories = [
         skills: ['C++', 'JavaScript', 'Python', 'SQL'],
     },
     {
-        title: 'Frontend',
-        icon: <Layout className="text-accent" />,
-        skills: ['React', 'Next.js', 'Tailwind', 'HTML/CSS'],
-    },
-    {
         title: 'Backend',
         icon: <Terminal className="text-primary" />,
-        skills: ['Node.js', 'Express', 'JWT', 'REST APIs'],
+        skills: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication'],
     },
     {
         title: 'Databases',
         icon: <Database className="text-accent" />,
-        skills: ['MongoDB', 'MySQL', 'Prisma', 'Supabase'],
+        skills: ['PostgreSQL', 'MongoDB'],
+    },
+    {
+        title: 'Frontend',
+        icon: <Layout className="text-primary" />,
+        skills: ['React', 'Next.js', 'TailwindCSS', 'HTML/CSS'],
     },
     {
         title: 'Core CS',
-        icon: <Cpu className="text-primary" />,
-        skills: ['DSA', 'OOP', 'DBMS', 'OS', 'CN'],
+        icon: <Cpu className="text-accent" />,
+        skills: ['Data Structures & Algorithms', 'Operating Systems', 'DBMS', 'Computer Networks'],
     },
     {
-        title: 'AI/ML & Tools',
-        icon: <Brain className="text-accent" />,
-        skills: ['NLP Concepts', 'Scam Detection', 'Git/GitHub', 'Postman'],
+        title: 'Tools',
+        icon: <Brain className="text-primary" />,
+        skills: ['Git', 'GitHub', 'Postman'],
     },
 ];
 

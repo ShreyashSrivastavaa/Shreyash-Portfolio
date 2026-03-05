@@ -28,6 +28,23 @@ export default function Navbar() {
         setMounted(true);
     }, []);
 
+    const handleScroll = (e, href) => {
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const id = href.substring(1);
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+                // Update URL without jump
+                window.history.pushState(null, '', href);
+            }
+            setIsOpen(false);
+        }
+    };
+
     if (!mounted) return null;
 
     return (
@@ -48,6 +65,7 @@ export default function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
+                                    onClick={(e) => handleScroll(e, link.href)}
                                     className="hover:text-primary transition-colors font-medium px-3 py-2 rounded-md"
                                 >
                                     {link.name}
@@ -117,7 +135,7 @@ export default function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={(e) => handleScroll(e, link.href)}
                                     className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors"
                                 >
                                     {link.name}

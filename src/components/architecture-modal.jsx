@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Server, Database, Shield, Cpu } from 'lucide-react';
+import { X, Server, Database, Shield, Cpu, Activity } from 'lucide-react';
 import mermaid from 'mermaid';
 
 const diagram = `
@@ -12,12 +12,16 @@ graph TD
     subgraph "Infrastructure"
         Frontend --> |Public API| Backend[Node.js / Express]
         
-        subgraph "Engines (S.A.F.E)"
-            Backend --> RoBERTa[AI Model - RoBERTa]
-            Backend --> Scoring[Heuristic Engine]
+        subgraph "Application Logic"
+            Backend --> RoBERTa[S.A.F.E. - AI Engine]
+            Backend --> Booking[Hotel API - Concurrency Engine]
         end
         
-        Backend --> DB[(PostgreSQL / Prisma)]
+        subgraph "Storage & Resilience"
+            Backend --> DB[(PostgreSQL / Prisma)]
+            Backend --> Redis[(Redis Cache)]
+        end
+        
         Admin([Admin Dashboard]) -.-> |Auth| Backend
     end
 
@@ -26,8 +30,8 @@ graph TD
     classDef dark fill:#1e293b,stroke:#3b82f6,stroke-width:1px,color:#fff;
     
     class Frontend,Backend primary;
-    class DB,RoBERTa secondary;
-    class Admin dark;
+    class DB,RoBERTa,Booking secondary;
+    class Admin,Redis dark;
 `;
 
 const TechStack = [
@@ -120,24 +124,53 @@ export default function ArchitectureModal({ isOpen, onClose }) {
                                     </div>
                                 </div>
 
-                                <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                                     <div className="p-8 rounded-4xl bg-linear-to-br from-primary/10 to-transparent border border-primary/20">
                                         <div className="flex items-center gap-3 mb-4 text-primary">
                                             <Shield size={20} />
                                             <h3 className="font-bold">Security & Reliability</h3>
                                         </div>
-                                        <p className="text-sm text-foreground/60 leading-relaxed">
-                                            Focusing on Read-Only public endpoints for data integrity, Rate-Limiting for system resilience, and Admin-only write access via secure tokens.
-                                        </p>
+                                        <ul className="text-sm text-foreground/60 space-y-3 leading-relaxed list-disc list-inside">
+                                            <li><span className="text-foreground">KMS Integration</span>: AWS KMS/Azure Key Vault for tenant-specific encryption.</li>
+                                            <li><span className="text-foreground">Tenant-Level Rate Limiting</span>: Redis counters to prevent resource hogging.</li>
+                                            <li><span className="text-foreground">Micro-service Resilience</span>: Circuit breakers and error fallback engines.</li>
+                                        </ul>
                                     </div>
                                     <div className="p-8 rounded-4xl bg-linear-to-br from-accent/10 to-transparent border border-accent/20">
                                         <div className="flex items-center gap-3 mb-4 text-accent">
                                             <Database size={20} />
-                                            <h3 className="font-bold">System Integrity</h3>
+                                            <h3 className="font-bold">Infrastructure & Data</h3>
                                         </div>
-                                        <p className="text-sm text-foreground/60 leading-relaxed">
-                                            Leveraging Type-Safe queries (Prisma/TS) and structured schema validation to ensure data consistency across all engineering modules.
-                                        </p>
+                                        <ul className="text-sm text-foreground/60 space-y-3 leading-relaxed list-disc list-inside">
+                                            <li><span className="text-foreground">Isolation via Middleware</span>: Automatic Prisma filtering by tenant context.</li>
+                                            <li><span className="text-foreground">Atomic Consistent Transactions</span>: Validating cross-entity tenant integrity.</li>
+                                            <li><span className="text-foreground">Auditing (AuditLog)</span>: High-precision tenant-scoped logs for compliance.</li>
+                                        </ul>
+                                    </div>
+                                </section>
+
+                                <section className="p-10 rounded-[3rem] glass dark:glass-dark border border-white/10 relative overflow-hidden group">
+                                    <div className="flex items-center gap-3 mb-8 text-primary font-bold uppercase tracking-[0.2em] text-sm">
+                                        <Activity size={20} />
+                                        <span>Production Readiness Checklist</span>
+                                    </div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
+                                        {[
+                                            'Composite Indexes (Tenant + ID)',
+                                            '90-Day KMS Key Rotation',
+                                            'Logical Per-Tenant Backups',
+                                            'Automated Tenant Onboarding',
+                                            'Sensitive Data Encryption (PII)',
+                                            'High-Latency Alerting (SLAs)'
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex items-start gap-3 group/item">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover/item:scale-150 transition-transform" />
+                                                <span className="text-sm text-foreground/70 font-medium">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                                        <Server size={80} />
                                     </div>
                                 </section>
                             </div>

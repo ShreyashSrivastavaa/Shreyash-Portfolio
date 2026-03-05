@@ -10,7 +10,7 @@ const projects = [
         title: 'S.A.F.E. – Scam Analysis & Fraud Elimination',
         tagline: 'ML-powered scam detection platform for real-time threat analysis.',
         icon: <ShieldCheck className="text-red-500" />,
-        description: 'A multi-modal system that analyzes URLs and message patterns using specialized models to identify potential digital fraud.',
+        description: 'Built a fraud detection platform that analyzes suspicious URLs and messages using machine learning models. Designed backend APIs for threat analysis, data processing, and real-time reporting while integrating ML inference pipelines for fraud classification.',
         problem: 'Rising digital fraud and phishing attacks target millions daily, often through subtle psychological triggers.',
         solution: 'Engineered a specialized analysis pipeline (RoBERTa, intelligence-based scoring) to detect fraud across multiple vectors.',
         metrics: [
@@ -18,17 +18,17 @@ const projects = [
             { label: 'Latency', value: '<250ms' },
             { label: 'Analysis Vectors', value: '5-Engine' },
         ],
-        tech: ['Next.js', 'FastAPI', 'Python', 'Supabase', 'Render'],
+        tech: ['Python', 'FastAPI', 'Next.js', 'Supabase'],
         github: 'https://github.com/ShreyashSrivastavaa/safe',
         live: 'https://safe-phi.vercel.app',
-        image: '/projects/safe.webp', // Placeholder
+        image: '/projects/safe.webp',
     },
     {
         id: 'password-gen',
         title: 'Random Password Generator',
         tagline: 'Secure, customizable password generation utility.',
         icon: <ShieldAlert className="text-accent" />,
-        description: 'A cybersecurity-focused utility that generates cryptographically strong passwords based on user-defined parameters like length and character variety.',
+        description: 'Interactive password generator built using JavaScript that allows users to generate secure passwords based on customizable policies including length, symbols, numbers, and uppercase characters. Implements dynamic entropy generation and instant password creation with secure randomness logic.',
         problem: 'Weak, reused passwords are the primary cause of account breaches, yet creating complex unique passwords manually is tedious.',
         solution: 'Built an interactive tool using pure JavaScript that allows users to generate and copy complex passwords instantly with customizable security levels.',
         metrics: [
@@ -36,10 +36,28 @@ const projects = [
             { label: 'Generation Time', value: '<10ms' },
             { label: 'Entropy', value: 'Dynamic' },
         ],
-        tech: ['JavaScript', 'HTML5', 'CSS3'],
+        tech: ['JavaScript', 'HTML', 'CSS'],
         github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git',
         live: 'https://shreyashsrivastavaa.github.io/Random-Password-Generator/',
-        image: '/projects/password.webp', // Placeholder
+        image: '/projects/password.webp',
+    },
+    {
+        id: 'hotel-api',
+        title: 'Hotel Booking Backend API',
+        tagline: 'Scalable REST API for hotel management and reservations.',
+        icon: <ShieldCheck className="text-primary" />,
+        description: 'Designed and implemented a scalable REST API for a hotel booking platform using Node.js, Express.js, and PostgreSQL. The system manages room availability, booking workflows, and concurrency-safe reservation logic while ensuring data integrity.',
+        problem: 'Handling high-concurrency room bookings while preventing double-booking and maintaining database consistency.',
+        solution: 'Implemented row-level locking and transaction isolation in PostgreSQL to ensure atomic booking operations.',
+        metrics: [
+            { label: 'Booking Latency', value: '180ms' },
+            { label: 'DB Consistency', value: '100%' },
+            { label: 'Concurrency', value: 'High' },
+        ],
+        tech: ['Node.js', 'Express.js', 'PostgreSQL'],
+        github: 'https://github.com/ShreyashSrivastavaa',
+        live: 'https://github.com/ShreyashSrivastavaa',
+        image: '/projects/hotel-booking.png',
     },
 ];
 

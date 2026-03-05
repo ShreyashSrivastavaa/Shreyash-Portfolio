@@ -9,7 +9,7 @@ import { UIProvider } from "../context/ui-context.jsx";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    metadataBase: new URL('https://shreyash-portfolio.vercel.app'),
+    metadataBase: 'https://shreyash-portfolio.vercel.app',
     title: "Shreyash | Software Engineer & Full-Stack Architect",
     description: "Engineering high-impact systems like S.A.F.E. – AI-powered scam detection. Final-year CSE student focused on security, scalability, and performance.",
     keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],

@@ -22,6 +22,14 @@
   --foreground: hsl(210 40% 98%);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);

@@ -1,80 +1,65 @@
-# Portfolio: Shreyash Srivastava
+# Professional Portfolio | Shreyash Srivastava
 
-I designed and developed a modern, high-impact personal portfolio with a clear goal: to present myself as an engineer who thinks in systems, impact, and execution — not just UI.
+[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://shreyash-portfolio.vercel.app)
+[![Tech Stack](https://img.shields.io/badge/Stack-Next.js%2015%20|%20Tailwind%204-blue?style=for-the-badge)](https://nextjs.org)
 
-The portfolio is built using **Next.js**, **Tailwind CSS**, and **Framer Motion**, delivering a premium, performant experience optimized for both recruiters and real-world deployment.
+Engineering high-impact systems for a safer, scalable digital future. This portfolio showcases my journey as a Software Development Engineer, focusing on backend engineering, security, and architectural depth.
 
-## ✨ Key Highlights
-
-### 🎯 Recruiter-Centric Case Studies
-Each major project is presented as a case study, not a demo. For **S.A.F.E.** and **DSA Tracker**, I structured content around:
-- **Problem definition**
-- **Engineering solution**
-- **Technical decisions**
-- **Measurable impact**
-
-This mirrors how engineers communicate in real product teams.
-
-### 🎨 Modern, Professional Aesthetic
-- **Dark / Light mode** with seamless theme switching
-- **Glassmorphism-inspired UI** with a clean, professional color palette
-- **Clear visual hierarchy** and spacing to guide attention naturally
-
-The design prioritizes clarity, credibility, and focus over visual noise.
-
-### 🌀 Thoughtful Animations
-Using Framer Motion, I added:
-- **Subtle entrance animations**
-- **Smooth hover interactions**
-
-These enhance perceived quality without distracting from content, keeping the experience recruiter-friendly.
-
-### 📱 Fully Responsive by Design
-Built with a mobile-first approach, the layout scales flawlessly across:
-- **Smartphones**
-- **Tablets**
-- **Large desktop** and high-resolution displays
-
-### 🧹 Clean Project Reorganization
-To maintain architectural clarity:
-- The existing Express backend was moved into a dedicated `backend/` directory
-- The root remains clean and optimized for the Next.js App Router
+## 🚀 Live Demo
+[shreyash-portfolio.vercel.app](https://shreyash-portfolio.vercel.app)
 
 ## 🏗️ Technical Architecture
 
-### 🔧 Tech Stack
-- **Framework**: Next.js 15 (App Router, TypeScript)
-- **Styling**: Tailwind CSS 4 (custom tokens, glassmorphism utilities)
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Theming**: Next Themes
+### 🛡️ Production-Ready Backend Patterns
+Built with a focus on senior-level engineering standards:
+- **Multi-tenant Isolation**: Implementing Prisma middleware for automatic tenant-scoped queries.
+- **Security Protocols**: Integration with AWS KMS/Azure Key Vault for tenant encryption and 90-day key rotation.
+- **Concurrency & Reliability**: Row-level locking in PostgreSQL for booking systems and Redis-based rate limiting.
+- **AI Integration**: Real-time scam detection using RoBERTa models within specialized inference pipelines.
 
-### 📂 Folder Structure
-```text
-/
-├── src/
-│   ├── app/            # Application pages & layouts
-│   ├── components/     # Reusable UI components
-│   ├── lib/            # Design system & utility functions
-│   └── ...
-├── backend/            # Express.js backend (original project)
-└── ...
-```
+### 🧪 System "Under the Hood"
+The portfolio includes an interactive **Architecture Blueprint** (built with Mermaid.js) that details the full system flow from the Next.js frontend to the Node.js/Express backend and persistence layers.
 
-## 🚀 Getting Started
+## 🛠️ Tech Stack
+- **Frontend**: Next.js 15 (App Router), React 19, Framer Motion
+- **Styling**: Tailwind CSS 4 (Glassmorphism & Custom Tokens)
+- **Backend Architecture**: Node.js, Express.js, PostgreSQL (Prisma)
+- **Security**: JWT, JWT-Rotation, KMS Strategy, Rate Limiting
+- **DevOps**: GitHub Actions, Vercel, Docker Ready
 
-1. **Install Dependencies**:
+## 📂 Features
+- **Dynamic GitHub Stats**: Real-time integration with GitHub API for live commit and repo tracking.
+- **Software Principles Section**: Showcasing adherence to REST API Design, MVC, and Clean Architecture.
+- **Blog (Engineering Thoughts)**: Deep-dives into technical challenges (e.g., Scaling AI Scanners).
+- **Responsive Design**: Fluid experience across mobile, tablet, and ultra-wide desktops.
+- **Dark/Light Mode**: Seamless theme switching with persistent preferences.
+
+## 📥 Setup Instructions
+
+### Prerequisites
+- Node.js 18+ 
+- npm or pnpm
+
+### Local Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ShreyashSrivastavaa/portfolio.git
+   ```
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. **Run Development Server**:
+3. Run the development server:
    ```bash
    npm run dev
    ```
-
-3. **Build for Production**:
+4. Build for production:
    ```bash
    npm run build
    ```
 
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+Built with 💙 by [Shreyash Srivastava](https://github.com/ShreyashSrivastavaa)

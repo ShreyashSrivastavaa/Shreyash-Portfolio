@@ -5,9 +5,23 @@ import { Calendar, Award, MapPin, Users } from 'lucide-react';
 
 const experience = [
     {
+        role: 'Software Development Engineer Intern',
+        company: 'JBH Tech Innovation',
+        period: '2026 January - Present',
+        location: 'Remote/Office',
+        description: 'Developing scalable backend systems and RESTful APIs to support high-traffic applications.',
+        achievements: [
+            'Developed backend APIs using Node.js and Express.js',
+            'Designed relational database schemas in PostgreSQL',
+            'Implemented authentication and authorization mechanisms',
+            'Collaborated in an agile team environment with Git-based workflows',
+            'Followed backend architecture best practices and REST API design',
+        ],
+    },
+    {
         role: 'Student Representative / Chair',
         company: 'IEEE Student Branch',
-        period: '2023 - Present',
+        period: '2023 - 2024',
         location: 'Campus',
         description: 'Leading a community of 100+ students, organizing technical workshops, and fostering a culture of innovation and peer-to-peer learning.',
         achievements: [
@@ -20,17 +34,17 @@ const experience = [
 const achievements = [
     {
         title: 'C++ Programming Certification',
-        issuer: 'Industry Recognized',
+        issuer: 'Hackerrank',
         icon: <Award className="text-primary" />,
     },
     {
         title: 'DBMS Specialist (Part 1 & 2)',
-        issuer: 'Academic Excellence',
+        issuer: 'Hackerrank',
         icon: <Award className="text-accent" />,
     },
     {
-        title: 'Finalist - Smart India Hackathon (SIH)',
-        issuer: 'Government of India',
+        title: 'Finalist - Innocodethon (Hackathon)',
+        issuer: 'ITS Engineering College',
         icon: <Users className="text-primary" />,
     },
 ];
