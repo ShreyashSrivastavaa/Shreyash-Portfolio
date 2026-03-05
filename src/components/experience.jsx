@@ -38,8 +38,8 @@ const achievements = [
         icon: <Award className="text-primary" />,
     },
     {
-        title: 'DBMS Specialist (Part 1 & 2)',
-        issuer: 'Hackerrank',
+        title: 'Winner - Code-O-Fiesta 2.0',
+        issuer: 'ITS Engineering College',
         icon: <Award className="text-accent" />,
     },
     {
