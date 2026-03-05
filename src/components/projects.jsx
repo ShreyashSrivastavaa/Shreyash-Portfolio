@@ -19,8 +19,7 @@ const projects = [
             { label: 'Analysis Vectors', value: '5-Engine' },
         ],
         tech: ['Python', 'FastAPI', 'Next.js', 'Supabase'],
-        github: 'https://github.com/ShreyashSrivastavaa/safe',
-        live: 'https://safe-phi.vercel.app',
+        github: 'https://github.com/ShreyashSrivastavaa/S.A.F.E.git',
         image: '/projects/safe.webp',
     },
     {
@@ -38,7 +37,6 @@ const projects = [
         ],
         tech: ['JavaScript', 'HTML', 'CSS'],
         github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git',
-        live: 'https://shreyashsrivastavaa.github.io/Random-Password-Generator/',
         image: '/projects/password.webp',
     },
     {
@@ -55,8 +53,7 @@ const projects = [
             { label: 'Concurrency', value: 'High' },
         ],
         tech: ['Node.js', 'Express.js', 'PostgreSQL'],
-        github: 'https://github.com/ShreyashSrivastavaa',
-        live: 'https://github.com/ShreyashSrivastavaa',
+        github: 'https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend',
         image: '/projects/hotel-booking.png',
     },
 ];
@@ -160,19 +157,9 @@ export default function Projects() {
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 font-bold transition-colors"
+                                    className="flex items-center gap-4 px-6 py-3 rounded-xl bg-foreground/5 border border-white/10 font-bold transition-all hover:bg-foreground/10"
                                 >
-                                    <Github size={20} /> Repository
-                                </motion.a>
-                                <motion.a
-                                    whileHover={{ scale: 1.05, color: 'var(--primary)' }}
-                                    whileTap={{ scale: 0.95 }}
-                                    href={project.live}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 font-bold transition-colors"
-                                >
-                                    <ExternalLink size={20} /> Live Demo
+                                    <Github size={20} /> View Source Code
                                 </motion.a>
                             </div>
                         </div>
