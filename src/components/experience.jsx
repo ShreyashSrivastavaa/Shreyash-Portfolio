@@ -25,8 +25,8 @@ const experience = [
         location: 'Campus',
         description: 'Leading a community of 100+ students, organizing technical workshops, and fostering a culture of innovation and peer-to-peer learning.',
         achievements: [
-            'Orchestrated 3+ large-scale hackathons and technical symposiums.',
-            'Bridged the gap between academia and industry by inviting guest speakers from top tech firms.',
+            'Passionate about organizing technical events, including hackathons and symposiums.',
+            'Interested in fostering connections between academia and industry through guest lectures and partnerships.'
         ],
     },
 ];
