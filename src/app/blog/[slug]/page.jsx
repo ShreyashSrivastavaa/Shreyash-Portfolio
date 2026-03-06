@@ -7,21 +7,24 @@ import rehypePrettyCode from 'rehype-pretty-code';
 
 const mdxOptions = {
     mdxOptions: {
-        rehypePlugins: [
-            [
-                rehypePrettyCode,
-                {
-                    theme: 'github-dark',
-                    keepBackground: true,
-                },
-            ],
-        ],
+        rehypePlugins: [],
     },
 };
 
 export default async function BlogPostPage({ params }) {
     const { slug } = await params;
-    const post = await getBlogPost(slug);
+    let post;
+    try {
+        post = await getBlogPost(slug);
+    } catch (error) {
+        console.error('Error fetching blog post:', error);
+        return (
+            <div className="max-w-3xl mx-auto py-24 px-4">
+                <h1 className="text-2xl font-bold text-red-500">Error loading post details.</h1>
+                <p className="mt-4 text-foreground/60">Please try again later.</p>
+            </div>
+        );
+    }
 
     if (!post) {
         notFound();
