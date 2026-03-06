@@ -45,14 +45,16 @@ export default async function BlogPostPage({ params }) {
                         <Calendar size={14} />
                         {post.meta.date}
                     </div>
-                    <div className="flex items-center gap-2">
-                        <Tag size={14} />
-                        <div className="flex gap-2">
-                            {post.meta.tags.map((tag) => (
-                                <span key={tag}>#{tag}</span>
-                            ))}
+                    {post.meta.tags && (
+                        <div className="flex items-center gap-2">
+                            <Tag size={14} />
+                            <div className="flex gap-2">
+                                {post.meta.tags.map((tag) => (
+                                    <span key={tag}>#{tag}</span>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6">{post.meta.title}</h1>
                 <p className="text-xl text-foreground/60 leading-relaxed italic">
@@ -60,8 +62,8 @@ export default async function BlogPostPage({ params }) {
                 </p>
             </header>
 
-            <div className="prose prose-invert prose-primary max-w-none prose-pre:bg-foreground/5 prose-pre:border prose-pre:border-white/10">
-                <MDXRemote source={post.content} options={mdxOptions} />
+            <div className="prose prose-invert prose-primary max-w-none">
+                <MDXRemote source={post.content} />
             </div>
 
             <footer className="mt-24 pt-12 border-t border-white/10">
