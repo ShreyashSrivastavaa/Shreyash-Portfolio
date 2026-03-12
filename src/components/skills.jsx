@@ -7,40 +7,41 @@ const skillCategories = [
     {
         title: 'Languages',
         icon: <Code2 className="text-primary" />,
-        skills: ['C++', 'JavaScript', 'Python', 'SQL'],
+        skills: ['C++', 'JavaScript', 'TypeScript', 'Python', 'SQL'],
     },
     {
-        title: 'Backend',
+        title: 'Backend Engineering',
         icon: <Terminal className="text-primary" />,
-        skills: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication'],
+        skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets', 'JWT/Auth'],
     },
     {
-        title: 'Databases',
+        title: 'Databases & Caching',
         icon: <Database className="text-accent" />,
-        skills: ['PostgreSQL', 'MongoDB'],
+        skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma ORM'],
     },
     {
-        title: 'Frontend',
-        icon: <Layout className="text-primary" />,
-        skills: ['React', 'Next.js', 'TailwindCSS', 'HTML/CSS'],
-    },
-    {
-        title: 'Core CS',
-        icon: <Cpu className="text-accent" />,
-        skills: ['Data Structures & Algorithms', 'Operating Systems', 'DBMS', 'Computer Networks'],
-    },
-    {
-        title: 'Tools',
+        title: 'DevOps & Cloud',
         icon: <Brain className="text-primary" />,
-        skills: ['Git', 'GitHub', 'Postman'],
+        skills: ['Docker', 'AWS Basics', 'Vercel', 'CI/CD Pipelines'],
+    },
+    {
+        title: 'Architecture & Quality',
+        icon: <Cpu className="text-accent" />,
+        skills: ['Microservices', 'System Design', 'Unit Testing', 'Scalability'],
+    },
+    {
+        title: 'Tools & Ecosystem',
+        icon: <Layout className="text-primary" />,
+        skills: ['Git/GitHub', 'Postman', 'Linux/Bash', 'Agile/Scrum'],
     },
 ];
 
 const coreSkills = [
-    { name: 'JAVASCRIPT', level: 'EXPERT', percentage: 95 },
-    { name: 'NODE.JS', level: 'EXPERT', percentage: 90 },
+    { name: 'JAVASCRIPT', level: 'EXPERT', percentage: 80 },
+    { name: 'NODE.JS', level: 'EXPERT', percentage: 85 },
     { name: 'EXPRESS.JS', level: 'PROFICIENT', percentage: 85 },
     { name: 'MONGODB', level: 'PROFICIENT', percentage: 80 },
+    { name: 'POSTGRESQL', level: 'PROFICIENT', percentage: 80 },
     { name: 'REST API DESIGN', level: 'PROFICIENT', percentage: 85 },
 ];
 
