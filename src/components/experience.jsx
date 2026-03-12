@@ -1,20 +1,21 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Award, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar, Award, MapPin, Users } from 'lucide-react';
 
 const experience = [
     {
         role: 'Software Development Engineer Intern',
         company: 'JBH Tech Innovation',
-        period: 'Jan 2026 - Present',
+        period: '2026 January - Present',
         location: 'Remote/Office',
-        description: 'Architecting scalable backend ecosystems and RESTful APIs, with a heavy focus on performance tuning and security hardening.',
+        description: 'Developing scalable backend systems and RESTful APIs to support high-traffic applications.',
         achievements: [
-            'Developing high-performance backend APIs using Node.js and Express.js.',
-            'Designing and optimizing relational database schemas for complex data relationships.',
-            'Implementing robust authentication and authorization layers (JWT, Argon2).',
-            'Applying backend architecture best practices including MVC and Clean Architecture.',
+            'Developed backend APIs using Node.js and Express.js',
+            'Designed relational database schemas in PostgreSQL',
+            'Implemented authentication and authorization mechanisms',
+            'Collaborated in an agile team environment with Git-based workflows',
+            'Followed backend architecture best practices and REST API design',
         ],
     },
     {
@@ -22,116 +23,99 @@ const experience = [
         company: 'IEEE Student Branch',
         period: '2023 - 2024',
         location: 'Campus',
-        description: 'Led a technical community of 100+ students, focusing on engineering excellence and hands-on project building.',
+        description: 'Leading a community of 100+ students, organizing technical workshops, and fostering a culture of innovation and peer-to-peer learning.',
         achievements: [
-            'Organized 5+ technical workshops and hackathons, bridging the gap between theory and implementation for 200+ students.',
-            'Fostered industry-academia partnerships, securing technical speakers for guest lectures.',
-            'Managed a cross-functional team of 10 student leads to execute monthly symposiums.',
+            'Passionate about organizing technical events, including hackathons and symposiums.',
+            'Interested in fostering connections between academia and industry through guest lectures and partnerships.'
         ],
     },
 ];
 
 const achievements = [
     {
-        title: 'Certified Problem Solver',
-        issuer: 'HackerRank',
-        description: 'Verified proficiency in data structures, algorithms, and logic through rigorous competitive assessments.',
+        title: 'Problem Solving (Intermediate)',
+        issuer: 'Hackerrank',
+        icon: <Award className="text-primary" />,
         url: 'https://drive.google.com/file/d/1LrYR4sF6PJiIafcoeskMY79ftZOK5YX7/view?usp=drive_link',
     },
     {
-        title: 'Winner — Code-O-Fiesta 2.0',
+        title: 'Winner - Code-O-Fiesta 2.0',
         issuer: 'ITS Engineering College',
-        description: 'Built "SentinelAuth" (an MFA library) in 24 hours, placing 1st among 40+ teams. Focus: Security & Cryptography.',
+        icon: <Award className="text-accent" />,
         url: 'https://drive.google.com/file/d/1fQGQoUoXCSiZ_BMO8JoOt7dbHlEPKOme/view?usp=drive_link',
     },
     {
-        title: 'Finalist — Innocodeathon',
+        title: 'Finalist - Innocodeathon (Hackathon)',
         issuer: 'ITS Engineering College',
-        description: 'Selected as a finalist for "Optimizing Distributed Log Processing for High-Traffic Healthcare Systems".',
+        icon: <Users className="text-primary" />,
         url: 'https://drive.google.com/file/d/1bnhiKb07VsA2wUGlWbNpGoyHbqYtzkGA/view?usp=sharing',
     },
 ];
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-32 px-4 bg-bg-surface border-y border-border">
+        <section id="experience" className="py-24 px-4 bg-foreground/5">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
-                    <div>
-                        <div className="flex items-center gap-4 mb-4">
-                            <span className="font-mono text-accent text-lg font-bold">05 /</span>
-                            <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-text-muted">Experience</h2>
+                <div className="grid lg:grid-cols-3 gap-16">
+                    <div className="lg:col-span-2">
+                        <h2 className="text-3xl font-bold mb-12">Experience & <span className="gradient-text">Leadership.</span></h2>
+
+                        <div className="space-y-12">
+                            {experience.map((item, index) => (
+                                <motion.div
+                                    key={item.role}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    className="relative pl-8 border-l-2 border-primary/20"
+                                >
+                                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background" />
+
+                                    <div className="mb-4">
+                                        <h3 className="text-2xl font-bold">{item.role}</h3>
+                                        <div className="flex flex-wrap gap-4 mt-2 text-foreground/60 font-medium">
+                                            <span className="flex items-center gap-1"><MapPin size={16} /> {item.company}</span>
+                                            <span className="flex items-center gap-1"><Calendar size={16} /> {item.period}</span>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-foreground/70 mb-6 max-w-2xl">{item.description}</p>
+
+                                    <ul className="space-y-3">
+                                        {item.achievements.map((ach) => (
+                                            <li key={ach} className="flex items-start gap-2 text-sm text-foreground/80">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                                {ach}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </motion.div>
+                            ))}
                         </div>
-                        <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black leading-tight text-text-primary">
-                            Engineering <br />
-                            <span className="text-accent underline decoration-2 underline-offset-4">Career Path.</span>
-                        </h3>
-                    </div>
-                </div>
-
-                <div className="grid lg:grid-cols-12 gap-16">
-                    {/* Work Experience */}
-                    <div className="lg:col-span-7 space-y-12">
-                        {experience.map((item, index) => (
-                            <motion.div
-                                key={item.role}
-                                initial={{ opacity: 0, x: -24 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                className="relative pl-12 border-l border-border"
-                            >
-                                <div className="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-accent rounded-[1px]" />
-
-                                <div className="mb-6">
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <h4 className="text-xl font-bold text-text-primary uppercase tracking-tight">{item.role}</h4>
-                                    </div>
-                                    <div className="flex flex-wrap gap-4 text-xs font-mono text-text-muted">
-                                        <span className="flex items-center gap-1.5"><MapPin size={12} className="text-accent" /> {item.company}</span>
-                                        <span className="flex items-center gap-1.5"><Calendar size={12} className="text-accent" /> {item.period}</span>
-                                    </div>
-                                </div>
-
-                                <p className="text-text-muted font-medium mb-6 leading-relaxed">{item.description}</p>
-
-                                <ul className="space-y-3">
-                                    {item.achievements.map((ach) => (
-                                        <li key={ach} className="flex items-start gap-3 text-sm text-text-muted">
-                                            <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-[1px] shrink-0" />
-                                            <span className="font-medium">{ach}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        ))}
                     </div>
 
-                    {/* Achievements */}
-                    <div className="lg:col-span-5">
-                        <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-8">Major Achievements</h4>
+                    <div>
+                        <h2 className="text-3xl font-bold mb-12">Achievements.</h2>
                         <div className="space-y-4">
                             {achievements.map((item, index) => (
                                 <motion.div
                                     key={item.title}
-                                    initial={{ opacity: 0, y: 16 }}
+                                    initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
                                     onClick={() => item.url && window.open(item.url, '_blank')}
-                                    className="p-6 bg-bg-primary border border-border rounded-[2px] group cursor-pointer hover:border-accent transition-all relative overflow-hidden"
+                                    className={`p-4 rounded-xl glass dark:glass-dark border border-white/5 flex items-center gap-4 group transition-colors ${item.url ? 'cursor-pointer hover:border-accent/40' : ''}`}
                                 >
-                                    <div className="relative z-10 flex justify-between items-start mb-4">
-                                        <div>
-                                            <h5 className="font-bold text-text-primary leading-tight mb-1">{item.title}</h5>
-                                            <p className="font-mono text-[9px] uppercase tracking-widest text-accent">{item.issuer}</p>
-                                        </div>
-                                        <ExternalLink size={14} className="text-text-muted group-hover:text-accent transition-colors" />
+                                    <div className="p-2 rounded-lg bg-foreground/5 group-hover:scale-110 transition-transform">
+                                        {item.icon}
                                     </div>
-                                    <p className="relative z-10 text-xs text-text-muted leading-relaxed font-medium">
-                                        {item.description}
-                                    </p>
-                                    <div className="absolute bottom-0 right-0 w-16 h-16 bg-accent opacity-[0.02] transform rotate-45 translate-x-8 translate-y-8" />
+                                    <div>
+                                        <h4 className="font-bold text-sm flex items-center gap-2">
+                                            {item.title}
+                                        </h4>
+                                        <p className="text-[10px] uppercase font-bold text-foreground/40">{item.issuer}</p>
+                                    </div>
                                 </motion.div>
                             ))}
                         </div>

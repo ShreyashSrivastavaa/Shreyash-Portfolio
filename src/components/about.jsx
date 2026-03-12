@@ -5,62 +5,56 @@ import Image from 'next/image';
 
 export default function About() {
     return (
-        <section id="about" className="py-32 px-4 max-w-7xl mx-auto bg-bg-primary overflow-hidden">
+        <section id="about" className="py-24 px-4 max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Left Column: Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -24 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
                 >
-                    <div className="flex items-center gap-4 mb-8">
-                        <span className="font-mono text-accent text-lg font-bold">01 /</span>
-                        <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-text-muted">About</h2>
-                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                        Connecting Code to <span className="gradient-text">Real-World Impact.</span>
+                    </h2>
 
-                    <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black leading-tight mb-8 text-text-primary">
-                        Engineering for the <br />
-                        <span className="text-accent underline decoration-2 underline-offset-4">Real World.</span>
-                    </h3>
-
-                    <div className="space-y-6 text-text-muted leading-relaxed font-medium">
-                        <p className="text-lg">
-                            I don’t just write code; <span className="text-text-primary">I engineer solutions.</span> As a final-year CS student and a Backend Engineer at JBH Tech Innovation, I spend my days (and nights) optimizing database queries, hardening API security, and ensuring systems don&apos;t just work—they scale.
+                    <div className="space-y-4 text-foreground/80 leading-relaxed">
+                        <p>
+                            I am a backend-focused software developer currently working as a Software Development Engineer Intern at JBH Tech Innovation.
                         </p>
                         <p>
-                            My approach is simple: <span className="font-mono text-accent text-sm">Schema as a contract</span>, <span className="font-mono text-accent text-sm">Design for failure</span>, and <span className="font-mono text-accent text-sm">Security is never an afterthought</span>. Whether it&apos;s architecting a reservation system for high-concurrency or building cryptographic utilities, I focus on the engineering rigor that modern platforms demand.
+                            My primary stack includes Node.js, Express.js, and PostgreSQL where I design REST APIs, implement authentication systems, and build scalable backend architectures.
+                        </p>
+                        <p>
+                            I enjoy solving real-world engineering problems, optimizing backend performance, and writing clean, maintainable code.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-8 mt-12 border-l-2 border-border pl-8">
-                        <div className="flex flex-col">
-                            <span className="text-xs font-mono uppercase tracking-widest text-text-muted mb-2">Focus</span>
-                            <span className="text-text-primary font-bold">Backend Architecture</span>
+                    <div className="grid grid-cols-2 gap-6 mt-10">
+                        <div>
+                            <h4 className="text-2xl font-bold text-primary">4+</h4>
+                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Languages</p>
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-xs font-mono uppercase tracking-widest text-text-muted mb-2">Status</span>
-                            <span className="text-accent font-bold">Active SDE Intern</span>
+                        <div>
+                            <h4 className="text-2xl font-bold text-accent">5+</h4>
+                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Core CSE Domains</p>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Right Column: Image */}
                 <motion.div
-                    initial={{ opacity: 0, x: 24 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="relative"
+                    className="relative block"
                 >
-                    <div className="relative group overflow-hidden">
+                    <div className="aspect-4/5 max-w-[450px] mx-auto rounded-[3rem] border border-white/10 glass dark:glass-dark overflow-hidden relative group shadow-2xl">
                         <Image
                             src="/profile-2.jpg"
-                            alt="Shreyash Srivastava"
-                            width={480}
-                            height={600}
-                            className="object-cover border border-border rounded-[2px] hover:border-accent transition-all duration-300 w-full h-auto"
+                            alt="Shreyash Srivastava - Casual"
+                            width={450}
+                            height={562}
+                            className="w-full h-full object-cover grayscale brightness-110 contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                         />
+                        <div className="absolute inset-0 bg-linear-to-t from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     </div>
                 </motion.div>
             </div>

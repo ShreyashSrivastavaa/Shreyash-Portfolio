@@ -1,60 +1,61 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import { ThemeProvider } from "../components/theme-provider";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
-import { UIProvider } from "../context/ui-context";
-import { ScrollProvider } from "../context/scroll-context";
-import ScrollProgressBar from "../components/scroll-progress-bar";
-import CommandPalette from "../components/command-palette";
-import ScrollAvatar from "../components/scroll-avatar";
-import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "../components/theme-provider.jsx";
+import Footer from "../components/footer.jsx";
+import Navbar from "../components/navbar.jsx";
+import { UIProvider } from "../context/ui-context.jsx";
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-mono' });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
     metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
-    title: "Shreyash Srivastava — Backend Engineer",
-    description: "Final-year CS student and SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
-    keywords: ["Software Engineer", "Backend Developer", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "REST API", "System Architecture", "Security Engineer"],
-    authors: [{ name: "Shreyash Srivastava" }],
+    title: "Shreyash | Software Engineer & Full-Stack Architect",
+    description: "Engineering high-impact systems like S.A.F.E. – AI-powered scam detection. Final-year CSE student focused on security, scalability, and performance.",
+    keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],
+    authors: [{ name: "Shreyash" }],
     icons: {
-        icon: '/profile.png',
-        shortcut: '/profile.png',
-        apple: '/profile.png',
+        icon: '/app-logo.png?v=3',
+        shortcut: '/app-logo.png?v=3',
+        apple: '/app-logo.png?v=3',
     },
     openGraph: {
         type: "website",
         locale: "en_US",
         url: "https://shreyashsrivastava.vercel.app",
-        title: "Shreyash Srivastava — Backend Engineer",
-        description: "Final-year CS student and SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
+        title: "Shreyash | Software Engineer",
+        description: "Engineering a Safer, Scalable Web. Part of the Team that created S.A.F.E.- AI-powered scam detection.",
         siteName: "Shreyash Portfolio",
         images: [
             {
-                url: "/profile.png",
-                width: 1080,
-                height: 1080,
-                alt: "Shreyash Srivastava — Backend Engineer",
+                url: "/og-image.webp",
+                width: 1200,
+                height: 630,
+                alt: "Shreyash Portfolio - Software Engineer",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Shreyash Srivastava — Backend Engineer",
-        description: "Final-year CS student and SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
-        images: ["/profile.png"],
+        title: "Shreyash | Software Engineer",
+        description: "Engineering high-impact platforms for a safer web.",
+        images: ["/og-image.webp"],
+    },
+    robots: {
+        index: true,
+        follow: true,
     },
 };
+
+
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({
     children,
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-bg-primary text-text-primary selection:bg-accent selection:text-bg-primary`}>
+            <body className={`${inter.className} antialiased`}>
                 <ThemeProvider
                     attribute="data-theme"
                     defaultTheme="dark"
@@ -62,17 +63,11 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <UIProvider>
-                        <ScrollProvider>
-                            <CommandPalette>
-                                <ScrollProgressBar />
-                                <ScrollAvatar />
-                                <Navbar />
-                                <main className="pt-16 min-h-screen">
-                                    {children}
-                                </main>
-                                <Footer />
-                            </CommandPalette>
-                        </ScrollProvider>
+                        <Navbar />
+                        <main className="pt-16">
+                            {children}
+                        </main>
+                        <Footer />
                     </UIProvider>
                 </ThemeProvider>
                 <Analytics />

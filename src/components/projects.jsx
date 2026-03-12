@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, ShieldCheck, ShieldAlert, Cpu, Lock } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, ShieldCheck, BarChart3, ShieldAlert, Cpu } from 'lucide-react';
 import Image from 'next/image';
 
 const projects = [
@@ -9,10 +9,10 @@ const projects = [
         id: 'safe',
         title: 'S.A.F.E. – Scam Analysis & Fraud Elimination',
         tagline: 'ML-powered scam detection platform for real-time threat analysis.',
-        icon: <ShieldCheck className="text-accent" />,
-        description: 'A specialized analysis pipeline for real-time fraud detection. Engineered to bridge the gap between complex ML inference and rapid API responses.',
-        problem: 'Rising digital fraud requires analysis across multiple vectors (URL, Metadata, Heuristics) with sub-second latency.',
-        solution: 'Built a specialized analysis engine using RoBERTa and intelligence-based scoring to classify threats across 5 distinct engines.',
+        icon: <ShieldCheck className="text-red-500" />,
+        description: 'Built a fraud detection platform that analyzes suspicious URLs and messages using machine learning models. Designed backend APIs for threat analysis, data processing, and real-time reporting while integrating ML inference pipelines for fraud classification.',
+        problem: 'Rising digital fraud and phishing attacks target millions daily, often through subtle psychological triggers.',
+        solution: 'Engineered a specialized analysis pipeline (RoBERTa, intelligence-based scoring) to detect fraud across multiple vectors.',
         metrics: [
             { label: 'Detection Accuracy', value: '94%+' },
             { label: 'Latency', value: '<250ms' },
@@ -20,106 +20,99 @@ const projects = [
         ],
         tech: ['Python', 'FastAPI', 'Next.js', 'Supabase'],
         github: 'https://github.com/ShreyashSrivastavaa/S.A.F.E.git',
-        demo: null,
         image: '/projects/safe.webp',
+    },
+    {
+        id: 'password-gen',
+        title: 'Random Password Generator',
+        tagline: 'Secure, customizable password generation utility.',
+        icon: <ShieldAlert className="text-accent" />,
+        description: 'Interactive password generator built using JavaScript that allows users to generate secure passwords based on customizable policies including length, symbols, numbers, and uppercase characters. Implements dynamic entropy generation and instant password creation with secure randomness logic.',
+        problem: 'Weak, reused passwords are the primary cause of account breaches, yet creating complex unique passwords manually is tedious.',
+        solution: 'Built an interactive tool using pure JavaScript that allows users to generate and copy complex passwords instantly with customizable security levels.',
+        metrics: [
+            { label: 'Security Level', value: 'High' },
+            { label: 'Generation Time', value: '<10ms' },
+            { label: 'Entropy', value: 'Dynamic' },
+        ],
+        tech: ['JavaScript', 'HTML', 'CSS'],
+        github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git',
+        image: '/projects/password.webp',
     },
     {
         id: 'hotel-api',
         title: 'Hotel Booking Backend API',
-        tagline: 'High-concurrency reservation engine built for scale.',
-        icon: <Lock className="text-accent" />,
-        description: 'A production-grade REST API designed to handle complex room availability and reservation workflows without collisions.',
-        problem: 'Handling simultaneous booking requests for the same room without causing double-bookings or database deadlocks.',
-        solution: 'Implemented optimistic concurrency control and atomic MongoDB operations to ensure zero-collision booking logic.',
+        tagline: 'Scalable REST API for hotel management and reservations.',
+        icon: <ShieldCheck className="text-primary" />,
+        description: 'Designed and implemented a scalable REST API for a hotel booking platform using Node.js, Express.js, and PostgreSQL. The system manages room availability, booking workflows, and concurrency-safe reservation logic while ensuring data integrity.',
+        problem: 'Handling high-concurrency room bookings while preventing double-booking and maintaining database consistency.',
+        solution: 'Implemented row-level locking and transaction isolation in PostgreSQL to ensure atomic booking operations.',
         metrics: [
-            { label: 'Booking Latency', value: '800ms' },
-            { label: 'Test Coverage', value: '99.9%' },
-            { label: 'Logic Safety', value: 'Atomic' },
+            { label: 'Booking Latency', value: '180ms' },
+            { label: 'DB Consistency', value: '100%' },
+            { label: 'Concurrency', value: 'High' },
         ],
-        tech: ['Node.js', 'Express.js', 'MongoDB', 'JWT'],
+        tech: ['Node.js', 'Express.js', 'PostgreSQL'],
         github: 'https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend',
-        demo: null,
         image: '/projects/hotel-booking.png',
-    },
-    {
-        id: 'cryptgen',
-        title: 'CryptGen — Cryptographic Password Utility',
-        tagline: 'Secure, client-side entropy generation.',
-        icon: <ShieldAlert className="text-accent" />,
-        description: 'A purely client-side cryptographic utility prioritizing user privacy and maximum entropy generation.',
-        badge: 'Zero Server Calls',
-        problem: 'Server-side password generation exposes sensitive data to network logs and potentially compromised servers.',
-        solution: 'Purely client-side generation using Web Crypto API to ensure passwords never leave the user\'s local environment.',
-        metrics: [
-            { label: 'Generation Time', value: '<10ms' },
-            { label: 'Network Calls', value: '0' },
-            { label: 'Policy Check', value: 'Real-time' },
-        ],
-        tech: ['JavaScript (ES6+)', 'Web Crypto API', 'TailwindCSS'],
-        github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git',
-        demo: 'https://shreyashsrivastavaa.github.io/Random-Password-Generator/',
-        image: '/projects/password.webp',
     },
 ];
 
 export default function Projects() {
     return (
-        <section id="projects" className="py-32 px-4 max-w-7xl mx-auto bg-bg-primary">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+        <section id="projects" className="py-24 px-4 max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <div className="flex items-center gap-4 mb-4">
-                        <span className="font-mono text-accent text-lg font-bold">04 /</span>
-                        <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-text-muted">Projects</h2>
-                    </div>
-                    <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black leading-tight text-text-primary">
-                        Selected <br />
-                        <span className="text-accent underline decoration-2 underline-offset-4">Engineering Works.</span>
-                    </h3>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Engineering <span className="gradient-text">Case Studies.</span></h2>
+                    <p className="text-foreground/60 max-w-xl text-lg">Detailed breakdowns of projects built for impact, scalability, and security.</p>
                 </div>
                 <motion.a
-                    whileHover={{ x: 8 }}
+                    whileHover={{ x: 10, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href="https://github.com/ShreyashSrivastavaa"
-                    target="_blank"
-                    className="font-mono text-xs uppercase tracking-widest text-accent flex items-center gap-2 hover:glow-accent transition-all"
+                    className="flex items-center gap-2 text-primary font-semibold group"
                 >
-                    View Stack on GitHub <ArrowRight size={14} />
+                    View More on GitHub <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </motion.a>
             </div>
 
-            <div className="space-y-40">
+            <div className="flex flex-col gap-32">
                 {projects.map((project, index) => (
                     <motion.div
                         key={project.id}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className={`grid lg:grid-cols-12 gap-12 items-start`}
+                        className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
                     >
-                        {/* Visuals - Left or Right based on index */}
-                        <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-last' : ''}`}>
-                            <div className="relative group grayscale hover:grayscale-0 transition-all duration-700">
-                                <div className="aspect-video bg-bg-surface border border-border rounded-[2px] overflow-hidden relative shadow-2xl">
-                                    {project.badge && (
-                                        <div className="absolute top-4 right-4 z-20 font-mono text-[10px] uppercase tracking-widest bg-accent text-bg-primary px-3 py-1 font-bold rounded-[2px]">
-                                            {project.badge}
-                                        </div>
-                                    )}
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover opacity-40 group-hover:opacity-100 transition-all duration-700 scale-[1.02] group-hover:scale-100"
-                                    />
-                                    <div className="absolute inset-0 bg-linear-to-t from-bg-primary via-transparent to-transparent opacity-60" />
+                        {/* Visuals / Media */}
+                        <div className="flex-1 w-full relative">
+                            <div className="aspect-video rounded-2xl bg-foreground/5 border border-white/10 overflow-hidden relative group">
+                                {/* Image Renderer */}
+                                {project.image && (
+                                    <div className="absolute inset-0 z-0">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                        />
+                                    </div>
+                                )}
+
+                                {/* Fallback Icon (Z-indexed above image but lower opacity) */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-10 transition-opacity duration-700 z-10 pointer-events-none">
+                                    {project.id === 'safe' ? <ShieldAlert size={120} /> : <Cpu size={120} />}
                                 </div>
 
-                                {/* Metrics Row */}
-                                <div className="grid grid-cols-3 gap-px bg-border border border-border mt-4">
+                                <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent z-20" />
+
+                                {/* Metrics Overlay */}
+                                <div className="absolute bottom-6 left-6 right-6 flex justify-between gap-4 z-30">
                                     {project.metrics.map((m) => (
-                                        <div key={m.label} className="bg-bg-surface p-4 text-center">
-                                            <div className="text-xl font-bold text-accent font-mono">{m.value}</div>
-                                            <div className="text-[8px] uppercase tracking-[0.2em] text-text-muted mt-1 font-mono font-bold">{m.label}</div>
+                                        <div key={m.label} className="p-3 rounded-xl glass dark:glass-dark backdrop-blur-xl flex-1 text-center border border-white/10">
+                                            <div className="text-xl font-bold text-primary">{m.value}</div>
+                                            <div className="text-[10px] uppercase font-bold text-foreground/40">{m.label}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -127,68 +120,46 @@ export default function Projects() {
                         </div>
 
                         {/* Content */}
-                        <div className="lg:col-span-5 flex flex-col justify-center">
+                        <div className="flex-1">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="p-2 border border-border bg-bg-surface rounded-[2px] text-accent">
+                                <div className="p-2 rounded-lg bg-foreground/5 border border-white/10">
                                     {project.icon}
                                 </div>
-                                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-muted">0{index + 1} / Project Details</span>
+                                <span className="text-sm font-bold uppercase tracking-[0.2em] text-foreground/40">Case Study</span>
                             </div>
 
-                            <h4 className="text-2xl font-black text-text-primary mb-2 uppercase tracking-tight">
-                                {project.title}
-                            </h4>
-                            <p className="font-mono text-xs text-text-muted mb-8 tracking-wide">
-                                {project.tagline}
-                            </p>
+                            <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+                            <p className="text-xl text-foreground/70 mb-8 italic">&quot;{project.tagline}&quot;</p>
 
-                            <div className="space-y-6 mb-10 border-l border-border pl-6">
+                            <div className="space-y-6 mb-10">
                                 <div>
-                                    <span className="font-mono text-[9px] uppercase tracking-widest text-accent block mb-2">Problem</span>
-                                    <p className="text-sm text-text-muted leading-relaxed font-medium">{project.problem}</p>
+                                    <h4 className="text-sm font-bold text-primary uppercase mb-2">The Problem</h4>
+                                    <p className="text-foreground/80 leading-relaxed">{project.problem}</p>
                                 </div>
                                 <div>
-                                    <span className="font-mono text-[9px] uppercase tracking-widest text-accent block mb-2">Solution</span>
-                                    <p className="text-sm text-text-muted leading-relaxed font-medium">{project.solution}</p>
+                                    <h4 className="text-sm font-bold text-accent uppercase mb-2">Our Solution</h4>
+                                    <p className="text-foreground/80 leading-relaxed">{project.solution}</p>
                                 </div>
                             </div>
 
                             <div className="flex flex-wrap gap-2 mb-10">
                                 {project.tech.map((t) => (
-                                    <span key={t} className="px-3 py-1 bg-bg-surface border border-border font-mono text-[10px] text-text-primary rounded-[2px]">
+                                    <span key={t} className="px-3 py-1 rounded-md text-xs font-mono bg-foreground/5 border border-foreground/10">
                                         {t}
                                     </span>
                                 ))}
                             </div>
 
-                            <div className="flex flex-col sm:flex-row items-center gap-4">
-                                {project.demo ? (
-                                    <motion.a
-                                        whileHover={{ y: -2 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        href={project.demo}
-                                        target="_blank"
-                                        className="w-full sm:flex-1 py-3 border border-accent text-accent font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-center hover:bg-accent/5 transition-all flex items-center justify-center gap-2 rounded-[2px]"
-                                    >
-                                        Live Demo <ExternalLink size={12} />
-                                    </motion.a>
-                                ) : (
-                                    <div
-                                        className="w-full sm:flex-1 py-3 border border-border text-text-muted font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-center opacity-50 cursor-not-allowed group relative rounded-[2px]"
-                                        title="Private Deployment"
-                                    >
-                                        Private Demo
-                                    </div>
-                                )}
-
+                            <div className="flex items-center gap-6">
                                 <motion.a
-                                    whileHover={{ y: -2 }}
-                                    whileTap={{ scale: 0.98 }}
+                                    whileHover={{ scale: 1.05, color: 'var(--primary)' }}
+                                    whileTap={{ scale: 0.95 }}
                                     href={project.github}
                                     target="_blank"
-                                    className="w-full sm:flex-1 py-3 bg-bg-surface border border-border text-text-primary font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-center hover:border-text-muted transition-all flex items-center justify-center gap-2 rounded-[2px]"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 px-6 py-3 rounded-xl bg-foreground/5 border border-white/10 font-bold transition-all hover:bg-foreground/10"
                                 >
-                                    Source Code <Github size={12} />
+                                    <Github size={20} /> View Source Code
                                 </motion.a>
                             </div>
                         </div>

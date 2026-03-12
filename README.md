@@ -1,12 +1,12 @@
 # Professional Portfolio | Shreyash Srivastava
 
-[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://shreyashsrivastava.vercel.app)
+[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://shreyash-portfolio.vercel.app)
 [![Tech Stack](https://img.shields.io/badge/Stack-Next.js%2015%20|%20Tailwind%204-blue?style=for-the-badge)](https://nextjs.org)
 
 Engineering high-impact systems for a safer, scalable digital future. This portfolio showcases my journey as a Software Development Engineer, focusing on backend engineering, security, and architectural depth.
 
 ## 🚀 Live Demo
-[shreyashsrivastava.vercel.app](https://shreyashsrivastava.vercel.app)
+[shreyash-portfolio.vercel.app](https://shreyash-portfolio.vercel.app)
 
 ## 🏗️ Technical Architecture
 
