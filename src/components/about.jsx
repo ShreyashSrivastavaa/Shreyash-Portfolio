@@ -53,14 +53,14 @@ export default function About() {
                     transition={{ duration: 0.6 }}
                     className="relative"
                 >
-                    <div className="aspect-[4/5] max-w-[420px] mx-auto rounded-[2px] border border-border relative group shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                    <div className="relative group overflow-hidden">
                         <Image
-                            src="/profile.png"
+                            src="/profile-2.jpg"
                             alt="Shreyash Srivastava"
-                            fill
-                            className="object-cover"
+                            width={480}
+                            height={600}
+                            className="object-cover border border-border rounded-[2px] hover:border-accent transition-all duration-300 w-full h-auto"
                         />
-                        <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     </div>
                 </motion.div>
             </div>

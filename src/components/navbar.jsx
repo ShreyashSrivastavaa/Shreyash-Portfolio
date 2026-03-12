@@ -48,8 +48,8 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${isSticky
-                    ? 'bg-bg-primary/85 backdrop-blur-md border-b border-border'
-                    : 'bg-transparent border-b border-transparent'
+                ? 'bg-bg-primary/85 backdrop-blur-md border-b border-border'
+                : 'bg-transparent border-b border-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +57,7 @@ export default function Navbar() {
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="shrink-0 font-mono font-bold text-xl text-accent hover:glow-green transition-all cursor-pointer"
+                        className="shrink-0 font-mono font-bold text-xl text-accent hover:glow-accent transition-all cursor-pointer"
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
                         SS
@@ -74,8 +74,8 @@ export default function Navbar() {
                                         href={link.href}
                                         onClick={(e) => handleScroll(e, link.href)}
                                         className={`font-mono text-xs uppercase tracking-widest transition-colors ${isActive
-                                                ? 'text-accent underline underline-offset-8 decoration-2'
-                                                : 'text-text-muted hover:text-text-primary'
+                                            ? 'text-accent underline underline-offset-8 decoration-2'
+                                            : 'text-text-muted hover:text-text-primary'
                                             }`}
                                     >
                                         {link.name}

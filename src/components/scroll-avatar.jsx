@@ -36,7 +36,7 @@ export default function ScrollAvatar() {
                         border border-border
                         overflow-hidden
                         hover:border-accent
-                        hover:shadow-[0_0_12px_rgba(0,255,136,0.35)]
+                        hover:shadow-[0_0_12px_rgba(168,85,247,0.35)]
                         transition-all duration-200
                         group
                         cursor-pointer

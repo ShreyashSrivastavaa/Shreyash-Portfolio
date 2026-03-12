@@ -26,7 +26,7 @@ export default function Contact() {
                             href="mailto:shreyashsr2004@gmail.com"
                             className="flex items-center gap-4 text-text-primary hover:text-accent transition-colors group"
                         >
-                            <div className="p-3 border border-border bg-bg-surface group-hover:border-accent group-hover:glow-green transition-all rounded-[1px]">
+                            <div className="p-3 border border-border bg-bg-surface group-hover:border-accent group-hover:glow-accent transition-all rounded-[1px]">
                                 <Mail size={20} />
                             </div>
                             <span className="font-mono text-sm tracking-tight">shreyashsr2004@gmail.com</span>
@@ -36,7 +36,7 @@ export default function Contact() {
                             target="_blank"
                             className="flex items-center gap-4 text-text-primary hover:text-accent transition-colors group"
                         >
-                            <div className="p-3 border border-border bg-bg-surface group-hover:border-accent group-hover:glow-green transition-all rounded-[1px]">
+                            <div className="p-3 border border-border bg-bg-surface group-hover:border-accent group-hover:glow-accent transition-all rounded-[1px]">
                                 <Linkedin size={20} />
                             </div>
                             <span className="font-mono text-sm tracking-tight">linkedin.com/in/shreyashsrivastavaa</span>

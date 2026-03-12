@@ -80,7 +80,7 @@ export default function Projects() {
                     whileHover={{ x: 8 }}
                     href="https://github.com/ShreyashSrivastavaa"
                     target="_blank"
-                    className="font-mono text-xs uppercase tracking-widest text-accent flex items-center gap-2 hover:glow-green transition-all"
+                    className="font-mono text-xs uppercase tracking-widest text-accent flex items-center gap-2 hover:glow-accent transition-all"
                 >
                     View Stack on GitHub <ArrowRight size={14} />
                 </motion.a>

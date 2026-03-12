@@ -75,7 +75,7 @@ export default function Hero() {
                         </motion.button>
 
                         <motion.button
-                            whileHover={{ borderColor: '#00FF88', color: '#00FF88' }}
+                            whileHover={{ borderColor: '#A855F7', color: '#A855F7' }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => window.open('https://drive.google.com/file/d/1EFa-DY0b2K02OV_pubGzgiYAMHN7Ijts/view?usp=drive_link', '_blank')}
                             className="px-8 py-3 rounded-[2px] border border-border text-text-primary font-mono font-bold flex items-center gap-2 transition-all w-full sm:w-auto justify-center"
@@ -131,7 +131,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative hidden md:block"
                 >
-                    <div className="aspect-[4/5] max-w-[420px] mx-auto rounded-[2px] border border-border relative group shadow-2xl overflow-hidden hover:border-accent hover:glow-green transition-all duration-500">
+                    <div className="aspect-[4/5] max-w-[420px] mx-auto rounded-[2px] border border-border relative group shadow-2xl overflow-hidden hover:border-accent hover:glow-accent transition-all duration-500">
                         <Image
                             src="/profile.png"
                             alt="Shreyash Srivastava"
