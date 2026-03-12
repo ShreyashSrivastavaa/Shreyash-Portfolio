@@ -36,10 +36,55 @@ const skillCategories = [
     },
 ];
 
+const coreSkills = [
+    { name: 'JAVASCRIPT', level: 'EXPERT', percentage: 95 },
+    { name: 'NODE.JS', level: 'EXPERT', percentage: 90 },
+    { name: 'EXPRESS.JS', level: 'PROFICIENT', percentage: 85 },
+    { name: 'MONGODB', level: 'PROFICIENT', percentage: 80 },
+    { name: 'REST API DESIGN', level: 'PROFICIENT', percentage: 85 },
+];
+
 export default function Skills() {
     return (
-        <section id="skills" className="py-24 px-4 bg-foreground/5 overflow-hidden">
+        <section id="skills" className="py-24 px-4 bg-background overflow-hidden">
             <div className="max-w-7xl mx-auto">
+                {/* Core Stack Section (Visual Impact) */}
+                <div className="mb-32">
+                    <div className="text-primary font-bold text-xs tracking-widest uppercase mb-12">CORE STACK.</div>
+
+                    <div className="space-y-16">
+                        {coreSkills.map((skill, index) => (
+                            <motion.div
+                                key={skill.name}
+                                initial={{ opacity: 0, x: -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.6 }}
+                                className="group"
+                            >
+                                <div className="flex items-baseline gap-4 mb-4">
+                                    <h3 className="text-4xl md:text-6xl font-black italic tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
+                                        {skill.name}
+                                    </h3>
+                                    <span className="text-[10px] md:text-xs font-bold text-foreground/40 uppercase tracking-widest">
+                                        {skill.level}
+                                    </span>
+                                </div>
+
+                                <div className="h-[6px] w-full bg-foreground/5 relative overflow-hidden rounded-full">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: `${skill.percentage}%` }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 + 0.3, duration: 1, ease: "easeOut" }}
+                                        className="absolute inset-y-0 left-0 bg-primary shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                                    />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical <span className="gradient-text">Excellence.</span></h2>
                     <p className="text-foreground/60 max-w-xl mx-auto">A modern stack designed for performance, security, and scalability.</p>
