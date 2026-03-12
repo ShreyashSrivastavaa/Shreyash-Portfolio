@@ -25,10 +25,10 @@ export default function Navbar() {
     const { isArchModalOpen, openArchModal, closeArchModal } = useUI();
     const { scrollY } = useScroll();
 
-    // Transform scroll position into opacity and scale for the DP
-    const opacity = useTransform(scrollY, [0, 300], [0, 1]);
-    const scale = useTransform(scrollY, [0, 300], [0.5, 1]);
-    const x = useTransform(scrollY, [0, 300], [20, 0]);
+    // Perfectly synced cross-fade with the Hero image
+    const opacity = useTransform(scrollY, [150, 350], [0, 1]);
+    const scale = useTransform(scrollY, [150, 350], [0.4, 1]);
+    const xDp = useTransform(scrollY, [150, 350], [30, 0]);
 
     useEffect(() => {
         const handleScrollState = () => {
@@ -126,7 +126,7 @@ export default function Navbar() {
 
                             {/* Floating DP on the right */}
                             <motion.div
-                                style={{ opacity, scale, x }}
+                                style={{ opacity, scale, x: xDp }}
                                 onClick={scrollToTop}
                                 className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg cursor-pointer group shrink-0 ml-2"
                             >
