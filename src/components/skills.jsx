@@ -66,9 +66,12 @@ export default function Skills() {
                                     className="group"
                                 >
                                     <div className="flex items-baseline justify-between mb-4">
-                                        <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
-                                            {skill.name}
-                                        </h3>
+                                        <div className="flex items-baseline gap-3">
+                                            <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
+                                                {skill.name}
+                                            </h3>
+                                            <span className="text-[10px] font-bold text-primary/60">{skill.percentage}%</span>
+                                        </div>
                                         <span className="text-[10px] md:text-xs font-bold text-foreground/40 uppercase tracking-widest">
                                             {skill.level}
                                         </span>
