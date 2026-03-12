@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
     metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
-    title: "Shreyash | Software Engineer & Full-Stack Architect",
-    description: "Engineering high-impact systems like S.A.F.E. – AI-powered scam detection. Final-year CSE student focused on security, scalability, and performance.",
+    title: "Shreyash Srivastava — Backend Engineer",
+    description: "Final-year CS student and SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
     keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],
     authors: [{ name: "Shreyash" }],
     icons: {

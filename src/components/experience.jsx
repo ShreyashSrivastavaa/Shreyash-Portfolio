@@ -23,10 +23,12 @@ const experience = [
         company: 'IEEE Student Branch',
         period: '2023 - 2024',
         location: 'Campus',
-        description: 'Leading a community of 100+ students, organizing technical workshops, and fostering a culture of innovation and peer-to-peer learning.',
+        description: 'Led a community of 100+ students, organized technical workshops, and fostered a culture of innovation and peer-to-peer learning.',
         achievements: [
-            'Passionate about organizing technical events, including hackathons and symposiums.',
-            'Interested in fostering connections between academia and industry through guest lectures and partnerships.'
+            'Organized technical events including hackathons and symposiums for a community of 100+ students',
+            'Facilitated connections between academia and industry through guest lectures and strategic partnerships',
+            'Led the IEEE Student Branch as elected Chair, fostering a culture of peer-to-peer learning and innovation',
+            'Cultivated an environment of collaborative technical growth across the student body',
         ],
     },
 ];
@@ -34,18 +36,21 @@ const experience = [
 const achievements = [
     {
         title: 'Problem Solving (Intermediate)',
+        detail: 'Verified proficiency in data structures, algorithms, and logic through standardized assessments.',
         issuer: 'Hackerrank',
         icon: <Award className="text-primary" />,
         url: 'https://drive.google.com/file/d/1LrYR4sF6PJiIafcoeskMY79ftZOK5YX7/view?usp=drive_link',
     },
     {
         title: 'Winner - Code-O-Fiesta 2.0',
+        detail: 'Built SentinelAuth (a multi-factor authentication library) in 24 hours, placing 1st among 40+ competing teams.',
         issuer: 'ITS Engineering College',
         icon: <Award className="text-accent" />,
         url: 'https://drive.google.com/file/d/1fQGQoUoXCSiZ_BMO8JoOt7dbHlEPKOme/view?usp=drive_link',
     },
     {
         title: 'Finalist - Innocodeathon (Hackathon)',
+        detail: 'Selected as a finalist for a backend-focused solution to optimizing distributed log processing for high-traffic systems.',
         issuer: 'ITS Engineering College',
         icon: <Users className="text-primary" />,
         url: 'https://drive.google.com/file/d/1bnhiKb07VsA2wUGlWbNpGoyHbqYtzkGA/view?usp=sharing',
@@ -115,6 +120,7 @@ export default function Experience() {
                                             {item.title}
                                         </h4>
                                         <p className="text-[10px] uppercase font-bold text-foreground/40">{item.issuer}</p>
+                                        <p className="text-[10px] text-foreground/60 mt-1 leading-tight">{item.detail}</p>
                                     </div>
                                 </motion.div>
                             ))}

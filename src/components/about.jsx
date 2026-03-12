@@ -18,24 +18,22 @@ export default function About() {
 
                     <div className="space-y-4 text-foreground/80 leading-relaxed">
                         <p>
-                            I am a backend-focused software developer currently working as a Software Development Engineer Intern at JBH Tech Innovation.
-                        </p>
-                        <p>
-                            My primary stack includes Node.js, Express.js, and PostgreSQL where I design REST APIs, implement authentication systems, and build scalable backend architectures.
-                        </p>
-                        <p>
-                            I enjoy solving real-world engineering problems, optimizing backend performance, and writing clean, maintainable code.
+                            I&apos;m a final-year Computer Science student and active SDE Intern at JBH Tech Innovation, where I design and ship production-grade backend systems daily. I specialize in RESTful API architecture, database design, and building systems that stay fast under pressure. I don&apos;t just write code that works — I write code that holds up at scale.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-6 mt-10">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                         <div>
-                            <h4 className="text-2xl font-bold text-primary">4+</h4>
-                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Languages</p>
+                            <h4 className="text-2xl font-bold text-primary">3</h4>
+                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Production-Ready Projects</p>
                         </div>
                         <div>
-                            <h4 className="text-2xl font-bold text-accent">5+</h4>
-                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Core CSE Domains</p>
+                            <h4 className="text-2xl font-bold text-accent">1</h4>
+                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Active Internship</p>
+                        </div>
+                        <div>
+                            <h4 className="text-2xl font-bold text-primary">2+</h4>
+                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Years of Backend Engineering</p>
                         </div>
                     </div>
                 </motion.div>

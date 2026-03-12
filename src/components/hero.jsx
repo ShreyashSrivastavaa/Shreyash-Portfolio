@@ -30,7 +30,7 @@ export default function Hero() {
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
                         Hi, I&apos;m <span className="gradient-text">Shreyash.</span>
                         <br />
-                        Backend Developer specializing in <span className="italic">Node.js, Express.js, and PostgreSQL.</span>
+                        I build backend systems <span className="italic">that scale.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-foreground/70 mb-10 leading-relaxed max-w-xl">
