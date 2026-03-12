@@ -1,93 +1,147 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ChevronRight, Download } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { ChevronRight, Download, Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
+import { useRef, useState, useEffect } from 'react';
+
+const CountUp = ({ end, duration = 1200, suffix = "" }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
+    useEffect(() => {
+        if (isInView) {
+            let start = 0;
+            const endNum = parseInt(end);
+            const increment = endNum / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= endNum) {
+                    setCount(endNum);
+                    clearInterval(timer);
+                } else {
+                    setCount(Math.floor(start));
+                }
+            }, 16);
+            return () => clearInterval(timer);
+        }
+    }, [isInView, end, duration]);
+
+    return <span ref={ref}>{count}{suffix}</span>;
+};
 
 export default function Hero() {
     return (
-        <section className="min-h-[90vh] flex flex-col items-center justify-center px-4 pt-32 lg:pt-0 relative overflow-hidden">
-            {/* Background Gradients */}
-            <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-            <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
-
+        <section id="hero" className="min-h-[90vh] flex flex-col items-center justify-center px-4 pt-32 lg:pt-0 relative overflow-hidden bg-bg-primary">
             <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center text-left relative z-10">
                 {/* Left Column: Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <motion.span
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 mt-6 inline-block border border-primary/20"
-                    >
-                        Available for Internships & Full-Time Roles
-                    </motion.span>
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-[2px] bg-bg-surface border border-accent mb-8 inline-block shadow-[0_0_10px_rgba(0,255,136,0.1)]">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-accent">
+                            Available for Internships & Full-Time Roles
+                        </span>
+                    </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-                        Hi, I&apos;m <span className="gradient-text">Shreyash.</span>
-                        <br />
-                        Backend Developer specializing in <span className="italic">Node.js, Express.js, and PostgreSQL.</span>
+                    <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[1.05] tracking-tight mb-6 text-text-primary">
+                        I build backend systems <br />
+                        <span className="text-accent underline decoration-4 underline-offset-8">that scale.</span>
                     </h1>
 
-                    <p className="text-lg md:text-xl text-foreground/70 mb-10 leading-relaxed max-w-xl">
-                        Final-year Computer Science student and Software Development Engineer Intern building scalable backend systems, REST APIs, and data-driven applications.
+                    <h2 className="text-[clamp(1rem,2.5vw,1.4rem)] font-medium text-text-muted mt-4 mb-2">
+                        APIs. Databases. Architecture. Built for the real world.
+                    </h2>
+
+                    <p className="text-base text-text-muted mb-10 leading-relaxed max-w-xl">
+                        Final-year Computer Science student and active SDE Intern at JBH Tech Innovation — shipping production-grade backend systems daily.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
                         <motion.button
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-3 rounded-full bg-primary text-white font-semibold flex items-center gap-2 shadow-lg shadow-primary/25 w-full sm:w-auto justify-center"
+                            className="px-8 py-3 rounded-[2px] bg-accent text-bg-primary font-mono font-bold flex items-center gap-2 hover:bg-accent-dim transition-all w-full sm:w-auto justify-center"
                         >
-                            View Projects <ChevronRight size={20} />
+                            VIEW PROJECTS <ChevronRight size={18} />
                         </motion.button>
 
                         <motion.button
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ borderColor: '#00FF88', color: '#00FF88' }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => window.open('https://drive.google.com/file/d/1EFa-DY0b2K02OV_pubGzgiYAMHN7Ijts/view?usp=drive_link', '_blank')}
-                            className="px-8 py-3 rounded-full border border-foreground/10 hover:bg-foreground/5 font-semibold flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
+                            className="px-8 py-3 rounded-[2px] border border-border text-text-primary font-mono font-bold flex items-center gap-2 transition-all w-full sm:w-auto justify-center"
                         >
-                            Download Resume <Download size={20} />
+                            RESUME <Download size={18} />
                         </motion.button>
+                    </div>
+
+                    {/* Social Links Row */}
+                    <div className="flex items-center gap-4 mb-12 font-mono text-sm">
+                        <a href="https://github.com/ShreyashSrivastavaa" target="_blank" className="flex items-center gap-2 text-text-muted hover:text-accent transition-colors group">
+                            <Github size={16} /> <span>GITHUB</span>
+                        </a>
+                        <span className="text-border">/</span>
+                        <a href="https://linkedin.com/in/shreyashsrivastavaa" target="_blank" className="flex items-center gap-2 text-text-muted hover:text-accent transition-colors group">
+                            <Linkedin size={16} /> <span>LINKEDIN</span>
+                        </a>
+                    </div>
+
+                    {/* Stats Row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 border-t border-border pt-10 mt-10">
+                        <div className="flex flex-col">
+                            <span className="text-4xl font-black text-accent font-mono">
+                                <CountUp end="3" />
+                            </span>
+                            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-text-muted mt-1">
+                                Production-Ready <br /> Projects
+                            </span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-4xl font-black text-accent font-mono">
+                                <CountUp end="1" />
+                            </span>
+                            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-text-muted mt-1">
+                                Active <br /> Internship
+                            </span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-4xl font-black text-accent font-mono">
+                                <CountUp end="2" suffix="+" />
+                            </span>
+                            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-text-muted mt-1">
+                                Years of <br /> Backend Engineering
+                            </span>
+                        </div>
                     </div>
                 </motion.div>
 
                 {/* Right Column: Hero Image */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9, x: 30 }}
-                    animate={{ opacity: 1, scale: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                    className="relative block"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="relative hidden md:block"
                 >
-                    <div className="aspect-4/5 max-w-[450px] mx-auto rounded-[3rem] border border-white/10 glass dark:glass-dark overflow-hidden relative group shadow-2xl">
+                    <div className="aspect-[4/5] max-w-[420px] mx-auto rounded-[2px] border border-border relative group shadow-2xl overflow-hidden hover:border-accent hover:glow-green transition-all duration-500">
                         <Image
                             src="/profile.png"
-                            alt="Shreyash Srivastava - Formal"
-                            width={450}
-                            height={562}
+                            alt="Shreyash Srivastava"
+                            fill
                             priority
-                            className="w-full h-full object-cover grayscale brightness-110 contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                            className="object-cover contrast-[1.05] filter brightness-90 group-hover:brightness-100 transition-all duration-700"
                         />
-                        <div className="absolute inset-0 bg-linear-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     </div>
                 </motion.div>
             </div>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-                <div className="w-1 h-12 bg-linear-to-b from-primary to-transparent rounded-full" />
-            </motion.div>
         </section>
     );
 }

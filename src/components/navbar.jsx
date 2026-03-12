@@ -2,29 +2,26 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X, Github, Linkedin, Cpu } from 'lucide-react';
+import { Moon, Sun, Menu, X, Github, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import ArchitectureModal from './architecture-modal';
-import { useUI } from '../context/ui-context.jsx';
+import { useScrollPosition } from '../context/scroll-context';
 
 const NavLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Experience', href: '#experience', id: 'experience' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
-    const { isArchModalOpen, openArchModal, closeArchModal } = useUI();
+    const { scrollY, activeSection } = useScrollPosition();
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
@@ -38,7 +35,6 @@ export default function Navbar() {
                     behavior: 'smooth',
                     block: 'start',
                 });
-                // Update URL without jump
                 window.history.pushState(null, '', href);
             }
             setIsOpen(false);
@@ -47,106 +43,127 @@ export default function Navbar() {
 
     if (!mounted) return null;
 
+    const isSticky = scrollY > 10;
+
     return (
-        <nav className="fixed top-0 w-full z-50 glass dark:glass-dark">
+        <nav
+            className={`fixed top-0 w-full z-50 transition-all duration-300 ${isSticky
+                    ? 'bg-bg-primary/85 backdrop-blur-md border-b border-border'
+                    : 'bg-transparent border-b border-transparent'
+                }`}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="shrink-0 font-bold text-2xl gradient-text cursor-pointer"
+                        className="shrink-0 font-mono font-bold text-xl text-accent hover:glow-green transition-all cursor-pointer"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
-                        Shreyash Srivastava
+                        SS
                     </motion.div>
 
+                    {/* Center: Nav Links */}
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-8">
-                            {NavLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={(e) => handleScroll(e, link.href)}
-                                    className="hover:text-primary transition-colors font-medium px-3 py-2 rounded-md"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                            <div className="flex items-center gap-4 border-l border-white/10 pl-8 ml-2">
-                                <Link href="https://github.com/ShreyashSrivastavaa" target="_blank" className="text-foreground/40 hover:text-primary transition-colors">
-                                    <Github size={20} />
-                                </Link>
-                                <Link href="https://www.linkedin.com/in/shreyashsrivastavaa" target="_blank" className="text-foreground/40 hover:text-primary transition-colors">
-                                    <Linkedin size={20} />
-                                </Link>
-                            </div>
-                            <motion.button
-                                whileHover={{ scale: 1.1, rotate: 10 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={openArchModal}
-                                className="p-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-all ml-2"
-                                title="Under the Hood"
-                            >
-                                <Cpu size={20} />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.1, rotate: 15 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
-                            >
-                                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                            </motion.button>
+                        <div className="flex items-center space-x-8">
+                            {NavLinks.map((link) => {
+                                const isActive = activeSection === link.id;
+                                return (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={(e) => handleScroll(e, link.href)}
+                                        className={`font-mono text-xs uppercase tracking-widest transition-colors ${isActive
+                                                ? 'text-accent underline underline-offset-8 decoration-2'
+                                                : 'text-text-muted hover:text-text-primary'
+                                            }`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
 
-                    <div className="md:hidden flex items-center gap-4">
-                        <button
-                            onClick={openArchModal}
-                            className="p-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-all"
-                        >
-                            <Cpu size={20} />
-                        </button>
+                    {/* Right: Icons & Toggle */}
+                    <div className="flex items-center gap-2">
+                        <div className="hidden md:flex items-center gap-2 mr-2">
+                            <Link
+                                href="https://github.com/ShreyashSrivastavaa"
+                                target="_blank"
+                                className="p-2 border border-border hover:border-accent hover:text-accent transition-all text-text-muted h-9 w-9 flex items-center justify-center rounded-sm"
+                            >
+                                <Github size={18} />
+                            </Link>
+                            <Link
+                                href="https://linkedin.com/in/shreyashsrivastavaa"
+                                target="_blank"
+                                className="p-2 border border-border hover:border-accent hover:text-accent transition-all text-text-muted h-9 w-9 flex items-center justify-center rounded-sm"
+                            >
+                                <Linkedin size={18} />
+                            </Link>
+                        </div>
+
                         <button
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+                            className="p-2 border border-border hover:border-accent hover:text-accent transition-all text-text-muted h-9 w-9 flex items-center justify-center rounded-sm"
                         >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={theme}
+                                    initial={{ opacity: 0, rotate: -20 }}
+                                    animate={{ opacity: 1, rotate: 0 }}
+                                    exit={{ opacity: 0, rotate: 20 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                                </motion.div>
+                            </AnimatePresence>
                         </button>
+
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="p-2 rounded-md text-primary"
+                            className="md:hidden p-2 text-accent border border-border rounded-sm h-9 w-9 flex items-center justify-center"
                         >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
+                            {isOpen ? <X size={20} /> : <Menu size={20} />}
                         </button>
                     </div>
                 </div>
             </div>
 
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden glass dark:glass-dark border-t border-white/10"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="md:hidden bg-bg-surface border-b border-border shadow-2xl"
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <div className="px-4 pt-4 pb-6 space-y-4">
                             {NavLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleScroll(e, link.href)}
-                                    className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors"
+                                    className={`block font-mono text-sm uppercase tracking-widest ${activeSection === link.id ? 'text-accent' : 'text-text-muted'
+                                        }`}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
+                            <div className="flex gap-4 pt-4 border-t border-border">
+                                <Link href="https://github.com/ShreyashSrivastavaa" target="_blank" className="text-text-muted hover:text-accent">
+                                    <Github size={20} />
+                                </Link>
+                                <Link href="https://linkedin.com/in/shreyashsrivastavaa" target="_blank" className="text-text-muted hover:text-accent">
+                                    <Linkedin size={20} />
+                                </Link>
+                            </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            <ArchitectureModal isOpen={isArchModalOpen} onClose={closeArchModal} />
         </nav>
     );
 }
