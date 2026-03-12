@@ -49,40 +49,90 @@ export default function Skills() {
     return (
         <section id="skills" className="py-24 px-4 bg-background overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                {/* Core Stack Section (Visual Impact) */}
+                {/* Core Stack Section (Visually Impactful & Professional) */}
                 <div className="mb-32">
                     <div className="text-primary font-bold text-xs tracking-widest uppercase mb-12">CORE STACK.</div>
 
-                    <div className="space-y-16">
-                        {coreSkills.map((skill, index) => (
-                            <motion.div
-                                key={skill.name}
-                                initial={{ opacity: 0, x: -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1, duration: 0.6 }}
-                                className="group"
-                            >
-                                <div className="flex items-baseline gap-4 mb-4">
-                                    <h3 className="text-4xl md:text-6xl font-black italic tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
-                                        {skill.name}
-                                    </h3>
-                                    <span className="text-[10px] md:text-xs font-bold text-foreground/40 uppercase tracking-widest">
-                                        {skill.level}
-                                    </span>
-                                </div>
+                    <div className="grid lg:grid-cols-2 gap-16 items-start">
+                        {/* Left Column: Skill Bars */}
+                        <div className="space-y-12">
+                            {coreSkills.map((skill, index) => (
+                                <motion.div
+                                    key={skill.name}
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                                    className="group"
+                                >
+                                    <div className="flex items-baseline justify-between mb-4">
+                                        <h3 className="text-2xl md:text-3xl font-black italic tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
+                                            {skill.name}
+                                        </h3>
+                                        <span className="text-[10px] md:text-xs font-bold text-foreground/40 uppercase tracking-widest">
+                                            {skill.level}
+                                        </span>
+                                    </div>
 
-                                <div className="h-[6px] w-full bg-foreground/5 relative overflow-hidden rounded-full">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: `${skill.percentage}%` }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 + 0.3, duration: 1, ease: "easeOut" }}
-                                        className="absolute inset-y-0 left-0 bg-primary shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-                                    />
+                                    <div className="h-[4px] w-full bg-foreground/5 relative overflow-hidden rounded-full">
+                                        <motion.div
+                                            initial={{ width: 0 }}
+                                            whileInView={{ width: `${skill.percentage}%` }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.1 + 0.3, duration: 1, ease: "easeOut" }}
+                                            className="absolute inset-y-0 left-0 bg-primary shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+                                        />
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Right Column: Professional Details (Recruiter focused) */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="p-8 md:p-12 rounded-[2rem] glass dark:glass-dark border border-white/10 relative overflow-hidden group shadow-2xl"
+                        >
+                            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <Cpu size={120} />
+                            </div>
+
+                            <div className="space-y-8 relative z-10">
+                                <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Profile:</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">Backend Engineer & SDE Intern</span>
                                 </div>
-                            </motion.div>
-                        ))}
+                                <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Domain:</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">Scalable Systems, REST APIs, Distributed Logic</span>
+                                </div>
+                                <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Education:</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">Final Year — Bachelor of Computer Science</span>
+                                </div>
+                                <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Location:</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">Active SDE Intern @ JBH Tech Innovation</span>
+                                </div>
+                                <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline border-t border-white/5 pt-8">
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-accent">Tech Focus:</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80 italic">&quot;Building systems that hold up under pressure and stay fast at scale.&quot;</span>
+                                </div>
+                            </div>
+
+                            <div className="mt-12 flex items-center gap-4">
+                                <div className="flex -space-x-2">
+                                    {[1, 2, 3, 4].map((i) => (
+                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-foreground/10 flex items-center justify-center">
+                                            <div className="w-full h-full rounded-full bg-primary/20" />
+                                        </div>
+                                    ))}
+                                </div>
+                                <span className="text-xs font-bold text-foreground/40 uppercase tracking-widest">3+ Live Production Projects</span>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
 
