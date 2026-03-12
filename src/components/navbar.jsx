@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X, Github, Linkedin, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import ArchitectureModal from './architecture-modal';
 import { useUI } from '../context/ui-context.jsx';
 
@@ -20,7 +21,16 @@ export default function Navbar() {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const { isArchModalOpen, openArchModal, closeArchModal } = useUI();
+
+    useEffect(() => {
+        const handleScrollState = () => {
+            setScrolled(window.scrollY > 100);
+        };
+        window.addEventListener('scroll', handleScrollState);
+        return () => window.removeEventListener('scroll', handleScrollState);
+    }, []);
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -44,6 +54,15 @@ export default function Navbar() {
         }
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+        window.history.pushState(null, '', '/');
+        setIsOpen(false);
+    };
+
     if (!mounted) return null;
 
     return (
@@ -51,11 +70,32 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <motion.div
+                        onClick={scrollToTop}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="shrink-0 font-bold text-2xl gradient-text cursor-pointer"
+                        className="flex items-center gap-3 shrink-0 cursor-pointer group"
                     >
-                        Shreyash Srivastava
+                        <AnimatePresence>
+                            {scrolled && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0, x: -20 }}
+                                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                                    exit={{ opacity: 0, scale: 0, x: -20 }}
+                                    className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg"
+                                >
+                                    <Image
+                                        src="/profile-2.jpg"
+                                        alt="Shreyash Srivastava"
+                                        width={40}
+                                        height={40}
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                        <span className="font-bold text-2xl gradient-text">
+                            Shreyash Srivastava
+                        </span>
                     </motion.div>
 
                     <div className="hidden md:block">
