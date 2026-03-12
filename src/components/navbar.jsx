@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X, Github, Linkedin, Cpu } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import ArchitectureModal from './architecture-modal';
@@ -23,10 +23,16 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const { isArchModalOpen, openArchModal, closeArchModal } = useUI();
+    const { scrollY } = useScroll();
+
+    // Transform scroll position into opacity and scale for the DP
+    const opacity = useTransform(scrollY, [0, 300], [0, 1]);
+    const scale = useTransform(scrollY, [0, 300], [0.5, 1]);
+    const x = useTransform(scrollY, [0, 300], [20, 0]);
 
     useEffect(() => {
         const handleScrollState = () => {
-            setScrolled(window.scrollY > 100);
+            setScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScrollState);
         return () => window.removeEventListener('scroll', handleScrollState);
@@ -73,26 +79,8 @@ export default function Navbar() {
                         onClick={scrollToTop}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-3 shrink-0 cursor-pointer group"
+                        className="shrink-0 cursor-pointer"
                     >
-                        <AnimatePresence>
-                            {scrolled && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0, x: -20 }}
-                                    animate={{ opacity: 1, scale: 1, x: 0 }}
-                                    exit={{ opacity: 0, scale: 0, x: -20 }}
-                                    className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg"
-                                >
-                                    <Image
-                                        src="/profile-2.jpg"
-                                        alt="Shreyash Srivastava"
-                                        width={40}
-                                        height={40}
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                                    />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
                         <span className="font-bold text-2xl gradient-text">
                             Shreyash Srivastava
                         </span>
@@ -135,6 +123,21 @@ export default function Navbar() {
                             >
                                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                             </motion.button>
+
+                            {/* Floating DP on the right */}
+                            <motion.div
+                                style={{ opacity, scale, x }}
+                                onClick={scrollToTop}
+                                className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg cursor-pointer group shrink-0 ml-2"
+                            >
+                                <Image
+                                    src="/profile.png"
+                                    alt="Shreyash Srivastava"
+                                    width={40}
+                                    height={40}
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                                />
+                            </motion.div>
                         </div>
                     </div>
 
@@ -151,6 +154,22 @@ export default function Navbar() {
                         >
                             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                         </button>
+
+                        {/* Mobile Floating DP */}
+                        <motion.div
+                            style={{ opacity, scale }}
+                            onClick={scrollToTop}
+                            className="w-8 h-8 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg cursor-pointer shrink-0"
+                        >
+                            <Image
+                                src="/profile.png"
+                                alt="Shreyash Srivastava"
+                                width={32}
+                                height={32}
+                                className="w-full h-full object-cover grayscale"
+                            />
+                        </motion.div>
+
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="p-2 rounded-md text-primary"

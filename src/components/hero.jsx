@@ -1,10 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, Download } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Hero() {
+    const { scrollY } = useScroll();
+
+    // Transform hero image as we scroll
+    const opacity = useTransform(scrollY, [0, 200], [1, 0]);
+    const scale = useTransform(scrollY, [0, 300], [1, 0.2]);
+    const xPos = useTransform(scrollY, [0, 300], [0, 200]);
+    const yPos = useTransform(scrollY, [0, 300], [0, -200]);
+
     return (
         <section className="min-h-[90vh] flex flex-col items-center justify-center px-4 pt-32 lg:pt-0 relative overflow-hidden">
             {/* Background Gradients */}
@@ -62,6 +70,7 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, x: 30 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
+                    style={{ opacity, scale, x: xPos, y: yPos }}
                     transition={{ duration: 0.8, delay: 0.1 }}
                     className="relative block"
                 >
