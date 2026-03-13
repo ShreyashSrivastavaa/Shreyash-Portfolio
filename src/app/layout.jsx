@@ -48,6 +48,7 @@ export const metadata = {
 };
 
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({
@@ -71,6 +72,7 @@ export default function RootLayout({
                     </UIProvider>
                 </ThemeProvider>
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
