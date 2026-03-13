@@ -29,8 +29,9 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-6">
-                    <div className="flex items-center gap-4 text-xs text-foreground/40">
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-foreground/40">
                         <span>&copy; {new Date().getFullYear()} Shreyash. All rights reserved.</span>
+                        <span className="px-2 py-0.5 rounded-full bg-foreground/5 border border-white/5 font-mono">v1.0.0</span>
                         <ArchModalTrigger />
                     </div>
 
