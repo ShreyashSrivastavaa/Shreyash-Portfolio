@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import GithubActivity from './github-activity';
-import ArchModalTrigger from './arch-modal-trigger';
+
 
 export default function Footer() {
     return (
@@ -32,7 +32,7 @@ export default function Footer() {
                     <div className="flex flex-wrap items-center gap-4 text-xs text-foreground/40">
                         <span>&copy; {new Date().getFullYear()} Shreyash. All rights reserved.</span>
                         <span className="px-2 py-0.5 rounded-full bg-foreground/5 border border-white/5 font-mono">v1.0.0</span>
-                        <ArchModalTrigger />
+
                     </div>
 
                     <GithubActivity />

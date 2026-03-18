@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X, Github, Linkedin, Cpu } from 'lucide-react';
+import { Moon, Sun, Menu, X, Github, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import ArchitectureModal from './architecture-modal';
-import { useUI } from '../context/ui-context.jsx';
+
 
 const NavLinks = [
     { name: 'About', href: '#about' },
@@ -22,7 +21,6 @@ export default function Navbar() {
     const { theme, setTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { isArchModalOpen, openArchModal, closeArchModal } = useUI();
     const { scrollY } = useScroll();
 
     // Perfectly synced cross-fade with the Hero image
@@ -106,15 +104,7 @@ export default function Navbar() {
                                     <Linkedin size={20} />
                                 </Link>
                             </div>
-                            <motion.button
-                                whileHover={{ scale: 1.1, rotate: 10 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={openArchModal}
-                                className="p-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-all ml-2"
-                                title="Under the Hood"
-                            >
-                                <Cpu size={20} />
-                            </motion.button>
+
                             <motion.button
                                 whileHover={{ scale: 1.1, rotate: 15 }}
                                 whileTap={{ scale: 0.9 }}
@@ -142,12 +132,7 @@ export default function Navbar() {
                     </div>
 
                     <div className="md:hidden flex items-center gap-4">
-                        <button
-                            onClick={openArchModal}
-                            className="p-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-all"
-                        >
-                            <Cpu size={20} />
-                        </button>
+
                         <button
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                             className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
@@ -204,7 +189,7 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            <ArchitectureModal isOpen={isArchModalOpen} onClose={closeArchModal} />
+
         </nav>
     );
 }

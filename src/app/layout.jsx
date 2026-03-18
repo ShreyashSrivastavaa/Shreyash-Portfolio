@@ -4,7 +4,7 @@ import React from "react";
 import { ThemeProvider } from "../components/theme-provider.jsx";
 import Footer from "../components/footer.jsx";
 import Navbar from "../components/navbar.jsx";
-import { UIProvider } from "../context/ui-context.jsx";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -63,13 +63,13 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <UIProvider>
+
                         <Navbar />
                         <main className="pt-16">
                             {children}
                         </main>
                         <Footer />
-                    </UIProvider>
+
                 </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />
