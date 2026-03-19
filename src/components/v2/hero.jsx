@@ -1,126 +1,99 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Terminal, ArrowRight, Github, Linkedin, Mail, MousePointer2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
-const STACK = [
-  'Backend Engineer', 'NestJS', 'PostgreSQL', 'RabbitMQ', 'Docker'
-];
+import { ArrowRight } from 'lucide-react';
 
 export default function HeroV2() {
-  const [cursorVisible, setCursorVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCursorVisible((prev) => !prev);
-    }, 530);
-    return () => clearInterval(interval);
-  }, []);
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0.4,
-        stiffness: 100,
-        damping: 20
-      }
-    }
-  };
-
-  const scrollToProjects = (e) => {
-    e.preventDefault();
-    const element = document.getElementById('projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const fadeUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
   };
 
   return (
-    <section className="relative min-h-[100vh] flex flex-col justify-center px-6 lg:px-24 overflow-hidden bg-[#0d0d0d] font-sans">
-      {/* Blueprint Grid Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none blueprint-grid opacity-[0.4]" />
-      <div className="absolute inset-0 z-0 pointer-events-none blueprint-grid-sub opacity-[0.2]" />
-      
-      {/* Radial fade to focus center */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-radial-[circle_at_50%_50%] from-transparent via-[#0d0d0d]/40 to-[#0d0d0d]" />
-
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 max-w-5xl"
-      >
-        <motion.div variants={item} className="flex items-center gap-2 mb-8 text-primary font-mono text-xs tracking-[0.3em] uppercase">
-          <Terminal size={14} className="text-primary" />
-          <span>Protocol: ARCHITECT_V2_INIT</span>
-        </motion.div>
-
-        <motion.h1 
-          variants={item}
-          className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter text-white mb-10 leading-[0.95] font-mono"
+    <section className="min-h-screen pt-32 pb-20 px-6 lg:px-24 bg-[#0f0f0f] flex items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-10 gap-16 items-center">
+        
+        {/* Left Column (40%) - Profile */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="lg:col-span-4 flex justify-center lg:justify-start"
         >
-          I engineer the <br />
-          <span className="text-primary italic">infrastructure</span> <br />
-          that products run on<span className={`inline-block w-[0.5ch] h-[0.8em] bg-primary ml-2 translate-y-1 ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}></span>
-        </motion.h1>
-
-        <motion.div variants={item} className="flex flex-wrap gap-4 mb-16">
-          {STACK.map((tech, idx) => (
-            <div key={tech} className="flex items-center gap-3">
-              <span className="text-white/80 font-mono text-sm tracking-tight">
-                {tech}
-              </span>
-              {idx < STACK.length - 1 && <span className="text-white/10 font-mono text-sm leading-none">•</span>}
-            </div>
-          ))}
-        </motion.div>
-
-        <motion.div variants={item} className="flex flex-col sm:flex-row gap-8 items-start sm:items-center">
-          <a 
-            href="#projects" 
-            onClick={scrollToProjects}
-            className="group flex items-center gap-4 px-10 py-5 bg-primary text-[#0d0d0d] font-bold border-sharp hover:translate-x-1 hover:-translate-y-1 transition-all shadow-[4px_4px_0px_#0088cc] hover:shadow-[8px_8px_0px_#0088cc]"
-          >
-            VIEW WORK
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </a>
-          
-          <div className="flex flex-col gap-2">
-            <a href="mailto:shreyashsr2004@gmail.com" className="group flex items-center gap-2 text-white/40 hover:text-primary transition-all font-mono text-sm tracking-widest uppercase">
-              <Mail size={16} />
-              Open to roles
-              <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-            </a>
-            <div className="w-full h-[1px] bg-white/5 group-hover:bg-primary/30 transition-colors" />
+          <div className="w-[280px] h-[280px] bg-[#1a1a1a] rounded-[6px] flex items-center justify-center border border-[#222222]">
+            <span className="text-[64px] font-bold text-[#f5f5f5] tracking-tighter opacity-20">SS</span>
           </div>
         </motion.div>
-      </motion.div>
 
-      {/* Hero Accent: Coordinates */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-12 right-12 hidden lg:block font-mono text-[10px] text-white tracking-[0.5em] uppercase [writing-mode:vertical-rl]"
-      >
-        28.4744° N, 77.5040° E // GREATER NOIDA
-      </motion.div>
+        {/* Right Column (60%) - Content */}
+        <div className="lg:col-span-6 space-y-12">
+          <div className="space-y-4">
+            <motion.span 
+              {...fadeUp}
+              className="block text-[#888888] uppercase tracking-[0.15em] text-[12px] font-medium"
+            >
+              Backend Engineer
+            </motion.span>
+            
+            <motion.h1 
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-bold text-[#f5f5f5] tracking-tight"
+            >
+              Shreyash <br /> Srivastava
+            </motion.h1>
+            
+            <motion.p 
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.2 }}
+              className="text-lg md:text-xl text-[#888888] max-w-lg leading-relaxed"
+            >
+              I build the backend systems that products run on.
+            </motion.p>
+          </div>
+
+          {/* Stats Row */}
+          <motion.div 
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.3 }}
+            className="flex flex-wrap border-y border-[#222222] py-8"
+          >
+            <div className="pr-12 border-r border-[#222222]">
+               <p className="text-2xl font-bold text-white mb-1">2+</p>
+               <p className="text-[#888888] text-xs uppercase tracking-widest">Years Building</p>
+            </div>
+            <div className="px-12 border-r border-[#222222]">
+               <p className="text-2xl font-bold text-white mb-1">3+</p>
+               <p className="text-[#888888] text-xs uppercase tracking-widest">Projects Shipped</p>
+            </div>
+            <div className="pl-12">
+               <p className="text-2xl font-bold text-white mb-1">Open</p>
+               <p className="text-[#888888] text-xs uppercase tracking-widest">To Roles</p>
+            </div>
+          </motion.div>
+
+          {/* Buttons */}
+          <motion.div 
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-6 pt-4"
+          >
+            <a 
+              href="#projects" 
+              className="px-8 py-4 bg-white text-[#0f0f0f] font-bold rounded-[6px] hover:bg-opacity-90 transition-all text-center"
+            >
+              View Work
+            </a>
+            <a 
+              href="mailto:shreyashsr2004@gmail.com" 
+              className="px-8 py-4 bg-transparent text-white font-bold rounded-[6px] border border-[#f5f5f5] hover:bg-white/5 transition-all text-center"
+            >
+              Get in Touch
+            </a>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

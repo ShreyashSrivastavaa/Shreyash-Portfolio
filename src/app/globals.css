@@ -2,55 +2,27 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
 
-  --color-primary: #00f5ff;
-  --color-accent: #00f5ff;
-  --color-cyan-electric: #00f5ff;
-
-  --background-v2: #0d0d0d;
-  --foreground-v2: #f8fafc;
+  --color-primary: #ffffff;
+  --color-accent: #ffffff;
+  --color-muted: #888888;
+  
+  --background-v2: #0f0f0f;
+  --foreground-v2: #f5f5f5;
   
   --spacing-wide: 80px;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #0d0d0d;
+  --foreground: #0f0f0f;
 }
 
 [data-theme='dark'] {
-  --background: #0d0d0d;
-  --foreground: #f8fafc;
-}
-
-@layer utilities {
-  .blueprint-grid {
-    background-image: 
-      linear-gradient(to right, rgba(0, 245, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  
-  .blueprint-grid-sub {
-    background-image: 
-      linear-gradient(to right, rgba(0, 245, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 245, 255, 0.02) 1px, transparent 1px);
-    background-size: 8px 8px;
-  }
-
-  .text-shadow-glow {
-    text-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
-  }
-  
-  .border-sharp {
-    border-radius: 0px !important;
-  }
-  
-  .content-wide {
-    max-width: 1200px;
-  }
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
 }
 
 html {
@@ -65,18 +37,28 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-sans);
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  .border-premium {
+    border: 1px solid #222222;
+  }
+  
+  .border-subtle {
+    border: 1px solid #1a1a1a;
+  }
+  
+  .radius-premium {
+    border-radius: 6px;
   }
 
-  .glass-dark {
-    @apply bg-black/20 backdrop-blur-md border border-white/10;
+  .content-wide {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-accent;
+  .text-secondary {
+    color: #888888;
   }
 }

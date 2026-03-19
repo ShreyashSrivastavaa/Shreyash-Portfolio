@@ -1,92 +1,60 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Database, Server, Settings, Zap, Code2 } from 'lucide-react';
 
-const STACK = [
-  {
-    category: 'Runtime',
-    icon: <Cpu size={20} className="text-primary" />,
-    items: ['Node.js', 'NestJS']
-  },
-  {
-    category: 'Database',
-    icon: <Database size={20} className="text-primary" />,
-    items: ['PostgreSQL', 'Prisma', 'Supabase', 'Redis']
-  },
-  {
-    category: 'Infra',
-    icon: <Server size={20} className="text-primary" />,
-    items: ['Docker', 'RabbitMQ', 'Git']
-  },
-  {
-    category: 'Frontend',
-    icon: <Code2 size={20} className="text-primary" />,
-    items: ['Next.js', 'Tailwind CSS']
-  },
-  {
-    category: 'Languages',
-    icon: <Settings size={20} className="text-primary" />,
-    items: ['JavaScript', 'TypeScript', 'C++', 'Go (learning)']
-  }
+const TECH_GROUPS = [
+  { label: 'Runtime', tags: ['Node.js', 'NestJS'] },
+  { label: 'Database', tags: ['PostgreSQL', 'Prisma', 'Supabase', 'Redis'] },
+  { label: 'Infra', tags: ['Docker', 'RabbitMQ', 'Git'] },
+  { label: 'Frontend', tags: ['Next.js', 'Tailwind CSS'] },
+  { label: 'Languages', tags: ['JavaScript', 'TypeScript', 'C++', 'Go (learning)'] }
 ];
 
 export default function TechStackV2() {
+  const fadeUp = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: true }
+  };
+
   return (
-    <section id="stack" className="py-32 px-6 lg:px-24 bg-[#0d0d0d] relative overflow-hidden">
+    <section id="stack" className="py-32 px-6 lg:px-24 bg-[#0f0f0f]">
       <div className="max-w-7xl mx-auto space-y-24">
-        <div className="flex flex-col md:flex-row justify-between items-baseline gap-4">
-          <motion.h2 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-primary font-mono text-[10px] tracking-[0.5em] uppercase"
-          >
-            /tech_matrix
-          </motion.h2>
-          <p className="text-white/20 font-mono text-[10px] uppercase tracking-widest italic">
-            systems_capability_set
-          </p>
-        </div>
+        <motion.h2 
+          {...fadeUp}
+          className="text-2xl font-bold text-[#888888] tracking-[0.15em] uppercase"
+        >
+          / Tech Matrix
+        </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {STACK.map((group, idx) => (
+        <div className="space-y-12">
+          {TECH_GROUPS.map((group, idx) => (
             <motion.div 
-              key={group.category}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="p-8 border border-white/5 bg-white/[0.02] border-sharp group hover:bg-white/[0.04] transition-all flex flex-col justify-between"
+              key={group.label}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: idx * 0.1 }}
+              className="flex flex-col md:flex-row md:items-center gap-6 md:gap-24 group py-8 border-b border-[#1a1a1a] last:border-0"
             >
-              <div>
-                <div className="flex items-center gap-4 mb-12">
-                   <div className="p-3 bg-white/5 border-sharp group-hover:border-primary transition-all border border-transparent">
-                     {group.icon}
-                   </div>
-                </div>
-                <h3 className="text-white font-mono text-xs uppercase tracking-widest mb-8 border-b border-white/10 pb-4 group-hover:border-primary transition-all">
-                  {group.category}
-                </h3>
-                <div className="flex flex-col gap-3">
-                   {group.items.map(skill => (
-                     <div key={skill} className="flex items-center gap-4 text-white/40 group-hover:text-white transition-all">
-                        <div className="w-1.5 h-1.5 bg-primary/20 group-hover:bg-primary transition-all" />
-                        <span className="font-mono text-xs tracking-tight">{skill}</span>
-                     </div>
-                   ))}
-                </div>
+              <div className="md:w-48">
+                 <span className="text-white text-lg font-semibold tracking-tight group-hover:text-white/70 transition-colors">
+                   {group.label}
+                 </span>
               </div>
-
-              <div className="mt-12 h-[1px] w-full bg-white/5 group-hover:bg-primary/20 transition-all" />
+              <div className="flex flex-wrap gap-3">
+                 {group.tags.map(tag => (
+                   <span 
+                    key={tag}
+                    className="px-4 py-2 bg-[#1a1a1a] border border-[#333333] rounded-[6px] text-white text-[13px] font-medium tracking-tight hover:border-[#444444] transition-all"
+                   >
+                     {tag}
+                   </span>
+                 ))}
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {/* Background Grid Lines (Horizontal) */}
-      <div className="absolute left-0 right-0 top-[30%] h-[1px] bg-white/5 pointer-events-none" />
-      <div className="absolute left-0 right-0 top-[60%] h-[1px] bg-white/5 pointer-events-none" />
     </section>
   );
 }

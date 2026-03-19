@@ -3,63 +3,53 @@
 import { motion } from 'framer-motion';
 
 export default function AboutV2() {
-  const text = "I'm a final-year CS student working professionally on production backend systems. I think in systems — async queues, schemas that don't break, APIs that don't surprise you. Currently building with NestJS, PostgreSQL, and RabbitMQ. Open to backend engineering roles where architecture matters.";
+  const bio = "I'm a final-year CS student working professionally on production backend systems. I think in systems — async queues, schemas that don't break, APIs that don't surprise you. Currently building with NestJS, PostgreSQL, and RabbitMQ. Open to backend engineering roles where architecture matters.";
+  
+  const tech = ['NestJS', 'Node.js', 'PostgreSQL', 'Prisma', 'RabbitMQ', 'Docker', 'Redis', 'TypeScript'];
+
+  const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: true }
+  };
 
   return (
-    <section id="about" className="relative py-32 px-6 lg:px-24 bg-[#0d0d0d] overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:items-start">
-        {/* Editorial Label */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="lg:w-1/4 pt-2"
-        >
-          <div className="flex items-center gap-4 text-primary font-mono text-[10px] tracking-[0.5em] uppercase">
-            <span className="w-8 h-[1px] bg-primary"></span>
-            <span>IDENT_PROFILE</span>
-          </div>
-        </motion.div>
+    <section id="about" className="py-32 px-6 lg:px-24 bg-[#0f0f0f]">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 sm:gap-24 relative">
         
-        {/* Content Area */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', bounce: 0.4, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="lg:w-3/4"
-        >
-          <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.3] text-white tracking-tight">
-            {text.split(' ').map((word, i) => (
-              <span key={i} className="inline-block mr-[0.3em]">
-                {word}
+        {/* Left Column - Rotated Label */}
+        <div className="lg:w-24 flex items-start justify-center pt-8">
+           <span className="lg:-rotate-90 lg:whitespace-nowrap font-mono text-sm uppercase tracking-[0.3em] text-[#888888] origin-center">
+             / About
+           </span>
+        </div>
+
+        {/* Right Column - Content */}
+        <div className="flex-1 space-y-16">
+          <motion.p 
+            {...fadeUp}
+            className="text-2xl md:text-4xl text-[#f5f5f5] leading-[1.4] font-medium tracking-tight max-w-4xl"
+          >
+            {bio}
+          </motion.p>
+
+          <motion.div 
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.2 }}
+            className="flex flex-wrap gap-3"
+          >
+            {tech.map((tag) => (
+              <span 
+                key={tag}
+                className="px-5 py-2 bg-[#1a1a1a] border border-[#444444] rounded-[6px] text-white text-sm font-medium hover:bg-[#222222] transition-colors"
+              >
+                {tag}
               </span>
             ))}
-          </p>
-
-          <div className="mt-16 flex flex-wrap gap-8">
-            <div className="flex flex-col gap-2">
-              <span className="text-white/20 font-mono text-[10px] uppercase tracking-widest">Focus Areas</span>
-              <div className="flex gap-4 text-primary/60 font-medium font-mono text-sm">
-                <span>// SCALABLE_SYSTEMS</span>
-                <span>// ASYNC_ORCHESTRATION</span>
-              </div>
-            </div>
-            
-            <div className="flex flex-col gap-2">
-              <span className="text-white/20 font-mono text-[10px] uppercase tracking-widest">Principles</span>
-              <div className="flex gap-4 text-primary/60 font-medium font-mono text-sm">
-                <span>// DATA_INTEGRITY</span>
-                <span>// CLEAN_APIS</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Decorative Blueprint Line */}
-      <div className="absolute top-0 right-0 w-[1px] h-full bg-linear-to-b from-primary/20 via-primary/5 to-transparent mr-24 hidden lg:block" />
     </section>
   );
 }

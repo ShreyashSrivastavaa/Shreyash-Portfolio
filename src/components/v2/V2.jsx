@@ -1,5 +1,6 @@
 'use client';
 
+import NavV2 from './nav';
 import HeroV2 from './hero';
 import AboutV2 from './about';
 import ProjectsV2 from './projects';
@@ -8,12 +9,15 @@ import FooterV2 from './footer';
 
 export default function V2Portfolio() {
   return (
-    <div className="bg-[#0d0d0d] text-white selection:bg-primary selection:text-[#0d0d0d]">
-      <HeroV2 />
-      <AboutV2 />
-      <ProjectsV2 />
-      <TechStackV2 />
-      <FooterV2 />
+    <div className="bg-[#0f0f0f] text-[#f5f5f5] selection:bg-white selection:text-black font-sans">
+      <NavV2 />
+      <main>
+        <HeroV2 />
+        <AboutV2 />
+        <ProjectsV2 />
+        <TechStackV2 />
+        <FooterV2 />
+      </main>
     </div>
   );
 }
