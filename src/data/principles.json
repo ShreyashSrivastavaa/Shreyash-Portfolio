@@ -1,0 +1,10 @@
+[
+    { "title": "REST API Design", "icon": "Code2", "color": "text-primary" },
+    { "title": "MVC Architecture", "icon": "Layout", "color": "text-accent" },
+    { "title": "JWT Authentication", "icon": "Key", "color": "text-primary" },
+    { "title": "Secure API Design", "icon": "ShieldCheck", "color": "text-accent" },
+    { "title": "Database Schema Design", "icon": "Database", "color": "text-primary" },
+    { "title": "Error Handling & Logging", "icon": "Terminal", "color": "text-accent" },
+    { "title": "API Rate Limiting", "icon": "Activity", "color": "text-primary" },
+    { "title": "Clean Backend Architecture", "icon": "Server", "color": "text-accent" }
+]

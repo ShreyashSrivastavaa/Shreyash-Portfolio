@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "../components/theme-provider.jsx";
-import Footer from "../components/footer.jsx";
 import Navbar from "../components/navbar.jsx";
 
 
@@ -51,30 +50,34 @@ export const metadata = {
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
+import { VersionProvider } from "../context/version-context.jsx";
+import Footer from "../components/v1/footer.jsx";
+
 export default function RootLayout({
     children,
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${inter.className} antialiased`}>
-                <ThemeProvider
-                    attribute="data-theme"
-                    defaultTheme="dark"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-
+                <VersionProvider>
+                    <ThemeProvider
+                        attribute="data-theme"
+                        defaultTheme="dark"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
                         <Navbar />
                         <main className="pt-16">
                             {children}
                         </main>
                         <Footer />
-
-                </ThemeProvider>
+                    </ThemeProvider>
+                </VersionProvider>
                 <Analytics />
                 <SpeedInsights />
             </body>
         </html>
     );
 }
+
 

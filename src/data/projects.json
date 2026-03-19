@@ -1,0 +1,56 @@
+[
+    {
+        "id": "safe",
+        "title": "S.A.F.E. – Scam Analysis & Fraud Elimination",
+        "tagline": "ML-powered scam detection platform for real-time threat analysis.",
+        "icon": "ShieldCheck",
+        "iconColor": "text-red-500",
+        "description": "Built a fraud detection platform that analyzes suspicious URLs and messages using machine learning models. Designed backend APIs for threat analysis, data processing, and real-time reporting while integrating ML inference pipelines for fraud classification.",
+        "problem": "Rising digital fraud and phishing attacks target millions daily, often through subtle psychological triggers.",
+        "solution": "Engineered a specialized analysis pipeline (RoBERTa, intelligence-based scoring) to detect fraud across multiple vectors.",
+        "metrics": [
+            { "label": "Detection Accuracy", "value": "94%+" },
+            { "label": "Latency", "value": "<250ms" },
+            { "label": "Analysis Vectors", "value": "5-Engine" }
+        ],
+        "tech": ["Python", "FastAPI", "Next.js", "Supabase"],
+        "github": "https://github.com/ShreyashSrivastavaa/S.A.F.E.git",
+        "image": "/projects/safe.webp"
+    },
+    {
+        "id": "password-gen",
+        "title": "CryptGen — Cryptographic Password Utility",
+        "tagline": "Secure, client-side entropy generation with zero server dependency.",
+        "icon": "ShieldAlert",
+        "iconColor": "text-accent",
+        "description": "A zero-dependency, browser-native password generation tool built on the Web Crypto API with configurable entropy, character set control, and instant clipboard copy — fast, private, and fully auditable.",
+        "problem": "Server-side password generation exposes sensitive data to network logs and potentially compromised infrastructure.",
+        "solution": "Built a purely client-side tool using the Web Crypto API ensuring passwords are generated and never leave the user's local environment.",
+        "metrics": [
+            { "label": "Server Calls", "value": "0" },
+            { "label": "Generation Time", "value": "<10ms" },
+            { "label": "Entropy", "value": "Dynamic" }
+        ],
+        "tech": ["JavaScript", "Web Crypto API", "HTML", "CSS"],
+        "github": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git",
+        "image": "/projects/password.webp"
+    },
+    {
+        "id": "hotel-api",
+        "title": "Hotel Booking Backend API",
+        "tagline": "Scalable REST API for hotel management and reservations.",
+        "icon": "ShieldCheck",
+        "iconColor": "text-primary",
+        "description": "Designed and implemented a scalable REST API for a hotel booking platform using Node.js, Express.js, and MongoDB. The system manages room availability, booking workflows, and concurrency-safe reservation logic while ensuring data integrity.",
+        "problem": "Managing simultaneous booking requests for the same room without causing double-bookings or data inconsistencies in a document store.",
+        "solution": "Implemented optimistic concurrency control and atomic MongoDB operations to ensure zero-collision booking logic and consistent reservation state management.",
+        "metrics": [
+            { "label": "Booking Latency", "value": "180ms" },
+            { "label": "Logic Safety", "value": "Atomic" },
+            { "label": "Concurrency", "value": "High" }
+        ],
+        "tech": ["Node.js", "Express.js", "MongoDB", "JWT"],
+        "github": "https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend",
+        "image": "/projects/hotel-booking.png"
+    }
+]

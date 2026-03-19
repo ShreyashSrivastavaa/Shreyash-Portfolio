@@ -1,25 +1,44 @@
-import Hero from "../components/hero.jsx";
-import About from "../components/about.jsx";
-import Skills from "../components/skills.jsx";
-import Projects from "../components/projects.jsx";
-import BackendArchitecture from "../components/backend-architecture.jsx";
-import GithubStats from "../components/github-stats.jsx";
-import Experience from "../components/experience.jsx";
-import Contact from "../components/contact.jsx";
+'use client';
+
+import { useVersion } from "../context/version-context.jsx";
+
+// V1 Components
+import HeroV1 from "../components/v1/hero.jsx";
+import AboutV1 from "../components/v1/about.jsx";
+import SkillsV1 from "../components/v1/skills.jsx";
+import ProjectsV1 from "../components/v1/projects.jsx";
+import BackendArchitectureV1 from "../components/v1/backend-architecture.jsx";
+import GithubStatsV1 from "../components/v1/github-stats.jsx";
+import ExperienceV1 from "../components/v1/experience.jsx";
+import ContactV1 from "../components/v1/contact.jsx";
+
+// V2 Components (Placeholders)
+const HeroV2 = () => <div className="min-h-screen flex items-center justify-center">V2 Hero (Coming Soon)</div>;
 
 export default function Home() {
+    const { version } = useVersion();
+
+    if (version === 'v2') {
+        return (
+            <main className="relative">
+                <HeroV2 />
+            </main>
+        );
+    }
+
     return (
         <main className="relative">
             <div className="flex flex-col gap-0">
-                <Hero />
-                <About />
-                <Skills />
-                <BackendArchitecture />
-                <Projects />
-                <GithubStats />
-                <Experience />
-                <Contact />
+                <HeroV1 />
+                <AboutV1 />
+                <SkillsV1 />
+                <BackendArchitectureV1 />
+                <ProjectsV1 />
+                <GithubStatsV1 />
+                <ExperienceV1 />
+                <ContactV1 />
             </div>
         </main>
     );
 }
+

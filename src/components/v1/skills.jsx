@@ -1,49 +1,29 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Database, Layout, Terminal, Brain, Cpu } from 'lucide-react';
+import skillsData from '../../data/skills.json';
 
-const skillCategories = [
-    {
-        title: 'Languages',
-        icon: <Code2 className="text-primary" />,
-        skills: ['C++', 'JavaScript', 'TypeScript', 'Python', 'SQL'],
-    },
-    {
-        title: 'Backend Engineering',
-        icon: <Terminal className="text-primary" />,
-        skills: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets', 'JWT/Auth'],
-    },
-    {
-        title: 'Databases & Caching',
-        icon: <Database className="text-accent" />,
-        skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma ORM'],
-    },
-    {
-        title: 'DevOps & Cloud',
-        icon: <Brain className="text-primary" />,
-        skills: ['Docker', 'AWS Basics', 'Vercel', 'CI/CD Pipelines'],
-    },
-    {
-        title: 'Architecture & Quality',
-        icon: <Cpu className="text-accent" />,
-        skills: ['Microservices', 'System Design', 'Unit Testing', 'Scalability'],
-    },
-    {
-        title: 'Tools & Ecosystem',
-        icon: <Layout className="text-primary" />,
-        skills: ['Git/GitHub', 'Postman', 'Linux/Bash', 'Agile/Scrum'],
-    },
-];
+const IconMap = {
+    Code2,
+    Database,
+    Layout,
+    Terminal,
+    Brain,
+    Cpu
+};
 
-const coreSkills = [
-    { name: 'JAVASCRIPT', level: 'EXPERT', percentage: 80 },
-    { name: 'NODE.JS', level: 'EXPERT', percentage: 85 },
-    { name: 'EXPRESS.JS', level: 'PROFICIENT', percentage: 85 },
-    { name: 'MONGODB', level: 'PROFICIENT', percentage: 80 },
-    { name: 'POSTGRESQL', level: 'PROFICIENT', percentage: 80 },
-    { name: 'REST API DESIGN', level: 'PROFICIENT', percentage: 85 },
-];
+
+const skillCategories = skillsData.skillCategories.map(category => ({
+    ...category,
+    icon: IconMap[category.icon] ? 
+        React.createElement(IconMap[category.icon], { className: "text-primary" }) : 
+        React.createElement(Code2, { className: "text-primary" })
+}));
+
+const coreSkills = skillsData.coreSkills;
+
 
 export default function Skills() {
     return (
