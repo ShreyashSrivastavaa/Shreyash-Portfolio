@@ -48,7 +48,7 @@ export default function NavV2() {
             </button>
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-white font-semibold text-lg hover:text-[#ffb300] transition-colors cursor-pointer"
+              className="text-[#ffb300] font-semibold text-lg hover:text-white transition-colors cursor-pointer"
             >
               Shreyash
             </button>

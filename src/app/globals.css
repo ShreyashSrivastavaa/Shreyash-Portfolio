@@ -5,8 +5,8 @@
   --font-sans: var(--font-sans), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
 
-  --color-primary: #ffffff;
-  --color-accent: #ffffff;
+  --color-primary: #a855f7;
+  --color-accent: #22d3ee;
   --color-muted: #888888;
   --color-gold: #ffb300;
   --color-gold-muted: rgba(255, 179, 0, 0.1);

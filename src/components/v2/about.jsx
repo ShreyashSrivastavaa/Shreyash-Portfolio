@@ -6,13 +6,13 @@ import Image from 'next/image';
 export default function AboutV2() {
   const bio = (
     <>
-      I am Shreyash, a Computer Science student and SDE Intern focused on scalable systems.
+      I am a backend-focused Software Engineer specializing in scalable systems, API design, and database architectures. Currently an SDE Intern at JBH Tech Innovation, I architect robust, high-traffic applications using Node.js, TypeScript, and PostgreSQL.
       <br /><br />
-      I like solving complex problems and building efficient solutions that have real impact.
+      My background includes building complex solutions like SentinelAuth, an award-winning MFA library, and driving technical excellence across developer communities. I thrive in environments that demand microservices architecture, rigorous system design, and performance optimization.
     </>
   );
   
-  const tech = ['NestJS', 'Node.js', 'PostgreSQL', 'Prisma', 'RabbitMQ', 'Docker', 'Redis', 'TypeScript'];
+  const tech = ['Node.js', 'TypeScript', 'PostgreSQL', 'Microservices', 'System Design', 'Docker', 'Redis', 'AWS'];
 
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
