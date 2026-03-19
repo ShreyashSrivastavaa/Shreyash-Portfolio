@@ -6,9 +6,9 @@ import Image from 'next/image';
 export default function AboutV2() {
   const bio = (
     <>
-      I am a backend-focused Software Engineer specializing in scalable systems, API design, and database architectures. Currently an SDE Intern at JBH Tech Innovation, I architect robust, high-traffic applications using Node.js, TypeScript, and PostgreSQL.
+      I am a final-year Computer Science student and an active SDE Intern at JBH Tech Innovation. I specialize in designing and shipping production-grade backend systems using Node.js, TypeScript, and PostgreSQL.
       <br /><br />
-      My background includes building complex solutions like SentinelAuth, an award-winning MFA library, and driving technical excellence across developer communities. I thrive in environments that demand microservices architecture, rigorous system design, and performance optimization.
+      My experience includes building robust architectures—from real-time applications to asynchronous task queues. I thrive in environments that demand clean API design, database optimization, and scalable system architecture.
     </>
   );
   
