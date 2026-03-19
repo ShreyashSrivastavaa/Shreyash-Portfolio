@@ -66,17 +66,21 @@ export default function HeroV2() {
             transition={{ ...fadeUp.transition, delay: 0.3 }}
             className="flex flex-wrap border-y border-[#222222] py-8"
           >
-            <div className="pr-12 border-r border-[#222222]">
-               <p className="text-2xl font-bold text-white mb-1">2+</p>
-               <p className="text-[#888888] text-xs uppercase tracking-widest">Years Building</p>
-            </div>
-            <div className="px-12 border-r border-[#222222]">
+            <div className="pr-12 md:pr-16 border-r border-[#222222] mb-4 md:mb-0">
                <p className="text-2xl font-bold text-white mb-1">3+</p>
-               <p className="text-[#888888] text-xs uppercase tracking-widest">Projects Shipped</p>
+               <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">Production<br/>Projects</p>
             </div>
-            <div className="pl-12">
+            <div className="px-12 md:px-16 border-r border-[#222222] mb-4 md:mb-0">
+               <p className="text-2xl font-bold text-white mb-1">1</p>
+               <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">Active<br/>Internship</p>
+            </div>
+            <div className="px-12 md:px-16 border-r border-[#222222] mb-4 md:mb-0">
+               <p className="text-2xl font-bold text-white mb-1">2+</p>
+               <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">Years<br/>Backend</p>
+            </div>
+            <div className="pl-12 md:pl-16">
                <p className="text-2xl font-bold text-white mb-1">Open</p>
-               <p className="text-[#888888] text-xs uppercase tracking-widest">To Roles</p>
+               <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">To<br/>Roles</p>
             </div>
           </motion.div>
 
@@ -93,10 +97,12 @@ export default function HeroV2() {
               View Work
             </a>
             <a 
-              href="mailto:shreyashsr2004@gmail.com" 
-              className="px-8 py-4 bg-transparent text-white font-bold rounded-[6px] border border-[#f5f5f5] hover:bg-white/5 transition-all text-center"
+              href="/resume.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-transparent text-white font-bold rounded-[6px] border border-[#f5f5f5] hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2"
             >
-              Get in Touch
+              Download Resume
             </a>
           </motion.div>
         </div>

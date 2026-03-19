@@ -1,92 +1,94 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, Radio, Zap } from 'lucide-react';
 
-const EXPERIENCE = [
+const EXPERIENCES = [
   {
+    company: 'JBH Tech Innovation',
     role: 'SDE Intern',
-    company: 'S.A.F.E (Scam Avoidance & Fast Enforcement)',
-    period: 'Nov 2024 — Present',
-    location: 'Remote',
-    impact: [
-       'Built backend infrastructure for the phishing detection engine.',
-       'Reduced false-positives by [TODO]% through [TODO] optimization.',
-       'Architected a high-throughput API handling [TODO] requests/sec.'
-    ]
+    period: 'January 2026 – Present',
+    description: [
+      'Developing scalable backend systems and RESTful APIs using Node.js and NestJS.',
+      'Designed and optimized relational database schemas in PostgreSQL for multi-tenant applications.',
+      'Implemented JWT-based authentication and granular authorization (RBAC) across microservices.',
+      'Collaborated in an agile team using Git-based workflows and participated in code reviews.',
+      'Leveraged RabbitMQ for asynchronous processing of intensive background tasks.'
+    ],
+    stack: ['Node.js', 'NestJS', 'PostgreSQL', 'RabbitMQ', 'Docker']
   },
   {
-    role: 'Backend Developer Intern',
-    company: '[TODO: Company Name]',
-    period: 'Jun 2024 — Aug 2024',
-    location: 'Hybrid',
-    impact: [
-       'Designed and maintained RESTful APIs for [TODO: product name].',
-       'Migrated legacy [TODO] data to PostgreSQL with custom sync scripts.',
-       'Improved database query efficiency by [TODO]%.'
-    ]
+    company: 'IEEE Student Branch',
+    role: 'Student Representative / Chair',
+    period: '2023 – 2024',
+    description: [
+      'Led a community of 100+ technical students, overseeing branch operations and strategy.',
+      'Organized large-scale hackathons, technical symposiums, and hands-on workshops for peer learning.',
+      'Facilitated industry-academia connections via guest lectures and corporate site visits.'
+    ],
+    stack: ['Leadership', 'Community Build', 'Event Strategy']
   }
 ];
 
 export default function ExperienceV2() {
-  return (
-    <section id="experience" className="py-24 px-6 lg:px-24 bg-[#0d0d0d]">
-      <div className="max-w-6xl mx-auto space-y-16">
-        <div className="flex flex-col md:flex-row justify-between items-baseline gap-4">
-          <motion.h2 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-primary font-mono text-sm tracking-widest uppercase"
-          >
-            /experience
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.4 }}
-            className="text-white text-xs font-mono uppercase tracking-widest italic"
-          >
-            High impact history
-          </motion.p>
-        </div>
+  const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: true }
+  };
 
-        <div className="space-y-12">
-          {EXPERIENCE.map((exp, idx) => (
+  return (
+    <section id="experience" className="py-32 px-6 lg:px-24 bg-[#0f0f0f]">
+      <div className="max-w-7xl mx-auto space-y-24">
+        <motion.h2 
+          {...fadeUp}
+          className="text-2xl font-bold text-[#888888] tracking-[0.15em] uppercase"
+        >
+          / Experience
+        </motion.h2>
+
+        <div className="space-y-20">
+          {EXPERIENCES.map((exp, idx) => (
             <motion.div 
-              key={exp.role + exp.company}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-4 gap-8 group"
+              key={exp.company}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: idx * 0.1 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group"
             >
-              <div className="md:col-span-1 space-y-2">
-                 <p className="text-white/40 font-mono text-xs uppercase tracking-widest">{exp.period}</p>
-                 <p className="text-white font-mono text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors">
-                    <MapPin size={12} /> {exp.location}
-                 </p>
+              {/* Period Column */}
+              <div className="lg:col-span-3">
+                <p className="text-[#888888] text-sm font-mono tracking-widest pt-2">
+                  {exp.period}
+                </p>
               </div>
 
-              <div className="md:col-span-3 space-y-6">
-                 <div>
-                   <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors mb-1">{exp.role}</h3>
-                   <div className="flex items-center gap-3">
-                     <p className="text-white/60 font-mono text-sm uppercase tracking-widest">{exp.company}</p>
-                     <div className="p-1 px-2 border border-white/10 bg-white/5 border-sharp text-[10px] text-white/30 uppercase tracking-[0.2em] font-mono">
-                        Impact-driven
-                     </div>
-                   </div>
-                 </div>
+              {/* Content Column */}
+              <div className="lg:col-span-9 space-y-8">
+                <div className="space-y-2">
+                  <h3 className="text-3xl font-bold text-white group-hover:text-[#ffffff]/80 transition-colors">
+                    {exp.company}
+                  </h3>
+                  <p className="text-xl text-[#888888] font-medium tracking-tight uppercase text-xs">
+                    {exp.role}
+                  </p>
+                </div>
 
-                 <ul className="space-y-4">
-                    {exp.impact.map((bullet, i) => (
-                      <li key={i} className="flex items-start gap-4 text-white/50 text-base leading-relaxed group-hover:text-white/80 transition-colors">
-                        <span className="text-primary mt-2 shrink-0"><Radio size={12} /></span>
-                        {bullet}
-                      </li>
-                    ))}
-                 </ul>
+                <div className="space-y-4 max-w-3xl">
+                  {exp.description.map((bullet, i) => (
+                    <div key={i} className="flex gap-4 text-[#f5f5f5]/70 text-base leading-relaxed">
+                      <span className="text-white mt-2.5 w-1 h-1 rounded-full bg-white shrink-0" />
+                      <p>{bullet}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 pt-4">
+                  {exp.stack.map(tech => (
+                    <span key={tech} className="px-3 py-1 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-[#888888] text-[10px] uppercase font-bold tracking-widest group-hover:border-[#444444] transition-all">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

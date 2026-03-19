@@ -25,6 +25,7 @@ export default function NavV2() {
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Credentials', href: '#credentials' },
     { name: 'Contact', href: '#contact' }
   ];
 

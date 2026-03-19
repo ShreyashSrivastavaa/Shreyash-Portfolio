@@ -5,6 +5,8 @@ import HeroV2 from './hero';
 import AboutV2 from './about';
 import ProjectsV2 from './projects';
 import TechStackV2 from './tech-stack';
+import ExperienceV2 from './experience';
+import CredentialsV2 from './credentials';
 import FooterV2 from './footer';
 
 export default function V2Portfolio() {
@@ -16,6 +18,8 @@ export default function V2Portfolio() {
         <AboutV2 />
         <ProjectsV2 />
         <TechStackV2 />
+        <ExperienceV2 />
+        <CredentialsV2 />
         <FooterV2 />
       </main>
     </div>

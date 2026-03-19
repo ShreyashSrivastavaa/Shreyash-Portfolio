@@ -1,43 +1,68 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Github, ArrowUpRight, Zap, Target, Shield, Server } from 'lucide-react';
 
 const PROJECTS = [
   {
     title: '22 Yards',
     tagline: 'Cricket statistics and performance tracking — IPL 2022–2025',
     featured: true,
+    problem: 'Cricket data APIs are unreliable — rate limits and key expirations break apps overnight.',
+    solution: 'Designed an adapter-based architecture and migrated from RapidAPI to a local ball-by-ball CSV dataset for zero-latency, high-reliability analytics.',
     decisions: [
-      'Adapter pattern for provider decoupling.',
-      'Migrated to local ball-by-ball CSV dataset for zero rate-limit risk.',
-      'Prisma + Supabase for schema-as-code and versioned migrations.',
-      'Next.js server components for data-heavy analytics.'
+      'Adapter pattern — data source is an implementation detail.',
+      'Local ball-by-ball CSV dataset migration.',
+      'Prisma + Supabase for schema-as-code migrations.',
+      'Next.js server components for data-heavy pages.'
     ],
-    stack: ['Next.js', 'Prisma', 'Supabase', 'Tailwind'],
+    stack: ['Next.js', 'Prisma', 'Supabase', 'Tailwind CSS'],
     github: 'https://github.com/ShreyashSrivastavaa/22-yards-Cricket'
   },
   {
-    title: 'DSA Tracker',
-    tagline: 'Personal DSA progress tracker',
+    title: 'S.A.F.E. (Scam Analysis & Fraud Elimination)',
+    tagline: 'ML-powered scam detection for real-time threat analysis',
     featured: false,
+    stats: '94%+ Accuracy · <250ms Latency',
+    problem: 'Rising digital fraud targets millions through subtle psychological triggers.',
+    solution: 'Specialized analysis pipeline using RoBERTa and intelligence-based scoring across 5 analysis vectors.',
     decisions: [
-      'Topic-wise categorization for quick navigation.',
-      'Progress visualization to maintain consistency.'
+      'RoBERTa for deep text analysis.',
+      'FastAPI for high-performance ML inference.',
+      'Supabase for intelligence-based scoring storage.'
     ],
-    stack: ['React', 'Tailwind'],
-    github: 'https://github.com/ShreyashSrivastavaa/DSA-Tracker'
+    stack: ['Python', 'FastAPI', 'Next.js', 'Supabase'],
+    github: 'https://github.com/ShreyashSrivastavaa/S.A.F.E.git'
   },
   {
-    title: 'Portfolio V2',
-    tagline: 'Premium editorial backend showcase',
+    title: 'Hotel Booking Backend API',
+    tagline: 'Scalable REST API for hotel management and reservations',
     featured: false,
+    stats: '180ms Latency · Atomic Safety',
+    problem: 'Simultaneous booking requests cause double-bookings in document stores.',
+    solution: 'Optimistic concurrency control and atomic MongoDB operations for zero-collision booking logic.',
     decisions: [
-      'Version-switched architecture via Context API.',
-      'Performance-first rendering with Framer Motion.'
+      'Optimistic concurrency control.',
+      'Atomic MongoDB operations for booking logic.',
+      'JWT for secure session management.'
     ],
-    stack: ['Next.js', 'Framer Motion', 'Tailwind'],
-    live: 'https://shreyashsrivastava.vercel.app'
+    stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    github: 'https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend'
+  },
+  {
+    title: 'CryptGen (Password Utility)',
+    tagline: 'Secure client-side entropy generation, zero server dependency',
+    featured: false,
+    stats: '0 Server Calls · <10ms Gen',
+    problem: 'Server-side password generation exposes data to network logs.',
+    solution: 'Purely client-side Web Crypto API, passwords never leave the user\'s environment.',
+    decisions: [
+      'Web Crypto API for secure entropy.',
+      'Zero server dependency architecture.',
+      'Dynamic entropy scoring.'
+    ],
+    stack: ['JavaScript', 'Web Crypto API', 'HTML', 'CSS'],
+    github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git'
   }
 ];
 
@@ -70,12 +95,18 @@ export default function ProjectsV2() {
               <div>
                 <div className="flex justify-between items-start mb-12">
                   <div className="space-y-4">
-                    <h3 className="text-3xl lg:text-5xl font-bold text-white leading-tight group-hover:text-white/80 transition-opacity">
+                    <h3 className="text-3xl lg:text-5xl font-bold text-white leading-tight">
                       {project.title}
                     </h3>
                     <p className="text-[#888888] text-sm lg:text-base font-medium tracking-wide italic">
                       {project.tagline}
                     </p>
+                    {project.stats && (
+                       <div className="flex items-center gap-2 text-primary text-xs font-mono uppercase tracking-widest mt-2">
+                        <Zap size={14} className="fill-white" />
+                        {project.stats}
+                       </div>
+                    )}
                   </div>
                   <div className="flex gap-4">
                     {project.github && (
@@ -83,17 +114,25 @@ export default function ProjectsV2() {
                         <Github size={24} />
                       </a>
                     )}
-                    {project.live && (
-                      <a href={project.live} className="text-[#888888] hover:text-white transition-colors">
-                        <ArrowUpRight size={28} />
-                      </a>
-                    )}
                   </div>
+                </div>
+
+                <div className="space-y-8 mb-12">
+                    <div className="space-y-2">
+                        <span className="text-[#444444] text-[10px] uppercase font-bold tracking-[0.2em]">Problem</span>
+                        <p className="text-[#f5f5f5]/80 text-sm leading-relaxed max-w-2xl">{project.problem}</p>
+                    </div>
+                    {project.solution && (
+                        <div className="space-y-2">
+                            <span className="text-[#444444] text-[10px] uppercase font-bold tracking-[0.2em]">Solution</span>
+                            <p className="text-[#f5f5f5]/80 text-sm leading-relaxed max-w-2xl">{project.solution}</p>
+                        </div>
+                    )}
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 py-12 border-t border-[#1a1a1a]">
                    <div className="space-y-4">
-                      <span className="text-[#444444] text-[10px] uppercase font-bold tracking-[0.2em]">Architectural Signals</span>
+                      <span className="text-[#444444] text-[10px] uppercase font-bold tracking-[0.2em]">Architecture Signals</span>
                       <ul className="space-y-3">
                         {project.decisions.map((decision, i) => (
                           <li key={i} className="flex items-start gap-3 text-[#f5f5f5]/60 text-sm leading-relaxed">
