@@ -14,7 +14,7 @@ export default function TechStackV2() {
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8 },
     viewport: { once: true }
   };
 
@@ -37,7 +37,7 @@ export default function TechStackV2() {
               className="flex flex-col md:flex-row md:items-center gap-6 md:gap-24 group py-2 border-b border-[#1a1a1a] last:border-0"
             >
               <div className="md:w-48">
-                 <span className="text-white text-lg font-semibold tracking-tight group-hover:text-white/70 transition-colors">
+                 <span className="text-white text-lg font-semibold tracking-tight group-hover:text-[#ffb300] transition-colors">
                    {group.label}
                  </span>
               </div>
@@ -45,7 +45,7 @@ export default function TechStackV2() {
                  {group.tags.map(tag => (
                    <span 
                     key={tag}
-                    className="px-4 py-2 bg-[#1a1a1a] border border-[#333333] rounded-[6px] text-white text-[13px] font-medium tracking-tight hover:border-[#444444] transition-all"
+                    className="px-4 py-2 bg-[#1a1a1a] border border-[#333333] rounded-[6px] text-white text-[13px] font-medium tracking-tight hover:border-[#ffb300]/40 transition-all cursor-default"
                    >
                      {tag}
                    </span>

@@ -8,7 +8,7 @@ export default function HeroV2() {
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6 }
   };
 
   return (
@@ -36,19 +36,23 @@ export default function HeroV2() {
         {/* Right Column (60%) - Content */}
         <div className="lg:col-span-6 space-y-12">
           <div className="space-y-4">
-            <motion.span 
+            <motion.div 
               {...fadeUp}
-              className="block text-[#888888] uppercase tracking-[0.15em] text-[12px] font-medium"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#ffb300]/30 bg-[#ffb300]/5 mb-6"
             >
-              Backend Engineer
-            </motion.span>
-            
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffb300] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ffb300]"></span>
+              </span>
+              <span className="text-[#ffb300] text-[10px] font-bold uppercase tracking-wider">Available for Internships & Full-Time Roles</span>
+            </motion.div>
+
             <motion.h1 
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.1 }}
               className="text-5xl md:text-7xl font-bold text-[#f5f5f5] tracking-tight"
             >
-              Shreyash <br /> Srivastava
+              <span className="text-[#ffb300]">Shreyash</span> <br /> Srivastava
             </motion.h1>
             
             <motion.p 
@@ -79,7 +83,7 @@ export default function HeroV2() {
                <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">Years<br/>Backend</p>
             </div>
             <div className="pl-12 md:pl-16">
-               <p className="text-2xl font-bold text-white mb-1">Open</p>
+               <p className="text-2xl font-bold text-[#ffb300] mb-1">Open</p>
                <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">To<br/>Roles</p>
             </div>
           </motion.div>
@@ -92,15 +96,16 @@ export default function HeroV2() {
           >
             <a 
               href="#projects" 
-              className="px-8 py-4 bg-white text-[#0f0f0f] font-bold rounded-[6px] hover:bg-opacity-90 transition-all text-center"
+              className="px-8 py-4 bg-[#ffb300] text-black font-bold rounded-[6px] hover:bg-[#ffc107] transition-all text-center flex items-center justify-center gap-2 group"
             >
               View Work
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href="/resume.pdf" 
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-transparent text-white font-bold rounded-[6px] border border-[#f5f5f5] hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2"
+              className="px-8 py-4 bg-transparent text-white font-bold rounded-[6px] border border-[#222222] hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2"
             >
               Download Resume
             </a>

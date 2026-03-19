@@ -35,7 +35,7 @@ export default function NavV2() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-white font-semibold text-lg hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-white font-semibold text-lg hover:text-[#ffb300] transition-colors cursor-pointer"
           >
             Shreyash
           </button>
@@ -64,7 +64,7 @@ export default function NavV2() {
             whileHover={{ scale: 1.1, boxShadow: '0 0 20px rgba(255,255,255,0.1)' }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-10 right-10 z-50 w-16 h-16 rounded-full border-2 border-[#222222] bg-[#1a1a1a] overflow-hidden group shadow-2xl"
+            className="fixed bottom-10 right-10 z-50 w-16 h-16 rounded-full border-2 border-[#222222] bg-[#1a1a1a] overflow-hidden group shadow-2xl hover:border-[#ffb300]/50 transition-colors"
           >
             <Image 
               src="/profile.png" 

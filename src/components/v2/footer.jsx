@@ -1,21 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, ArrowUpRight, Trophy } from 'lucide-react';
+import { Github, Linkedin, ArrowUpRight, Trophy, Terminal } from 'lucide-react';
 
 export default function FooterV2() {
-  const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/ShreyashSrivastavaa' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/in/shreyash-srivastava-310652273' },
-    { name: 'LeetCode', href: 'https://leetcode.com/u/NotRambo' }
-  ];
-
   const fadeUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-    viewport: { once: true }
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
   };
+
+  const socialLinks = [
+    { name: 'GitHub', href: 'https://github.com/ShreyashSrivastavaa', icon: <Github size={20} /> },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/shreyash-srivastava-310652273', icon: <Linkedin size={20} /> },
+    { name: 'LeetCode', href: 'https://leetcode.com/u/NotRambo', icon: <Terminal size={20} /> }
+  ];
 
   return (
     <footer id="contact" className="py-32 px-6 lg:px-24 bg-[#0f0f0f] border-t border-[#1a1a1a]">
@@ -26,7 +25,7 @@ export default function FooterV2() {
             {...fadeUp}
             className="text-4xl md:text-7xl font-bold text-white tracking-tight"
           >
-            Let's build together.
+            Let's <span className="text-[#ffb300]">build</span> together.
           </motion.h2>
           <motion.p
             {...fadeUp}
@@ -44,7 +43,7 @@ export default function FooterV2() {
         >
           <a
             href="mailto:shreyashsr2004@gmail.com"
-            className="px-12 py-5 bg-white text-[#0f0f0f] font-bold rounded-[6px] hover:bg-[#f5f5f5] transition-all flex items-center justify-center gap-2 group"
+            className="px-12 py-5 bg-[#ffb300] text-black font-bold rounded-[6px] hover:bg-[#ffc107] transition-all flex items-center justify-center gap-2 group"
           >
             Get in Touch
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -67,14 +66,10 @@ export default function FooterV2() {
             <a
               key={link.name}
               href={link.href}
-              className="group flex items-center gap-3 text-[#f5f5f5]"
+              className="group flex items-center gap-3 text-[#f5f5f5] hover:text-[#ffb300] transition-colors"
             >
-              <div className="p-2 rounded-full border border-[#1a1a1a] group-hover:border-[#333333] transition-colors">
-                {link.name === 'GitHub' && <Github size={20} />}
-                {link.name === 'LinkedIn' && <Linkedin size={20} />}
-                {link.name === 'LeetCode' && <Trophy size={18} />}
-              </div>
-              <span className="text-sm font-semibold tracking-wide uppercase text-[10px] text-[#888888] group-hover:text-white transition-colors">{link.name}</span>
+              <span className="text-[#888888] group-hover:text-[#ffb300] transition-colors">{link.icon}</span>
+              <span className="text-sm font-bold uppercase tracking-widest">{link.name}</span>
             </a>
           ))}
         </motion.div>

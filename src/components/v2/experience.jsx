@@ -33,7 +33,7 @@ export default function ExperienceV2() {
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8 },
     viewport: { once: true }
   };
 
@@ -65,10 +65,10 @@ export default function ExperienceV2() {
               {/* Content Column */}
               <div className="lg:col-span-9 space-y-8">
                 <div className="space-y-2">
-                  <h3 className="text-3xl font-bold text-white group-hover:text-[#ffffff]/80 transition-colors">
+                  <h3 className="text-3xl font-bold text-white group-hover:text-[#ffb300] transition-colors">
                     {exp.company}
                   </h3>
-                  <p className="text-xl text-[#888888] font-medium tracking-tight uppercase text-xs">
+                  <p className="text-xl text-[#ffb300] font-medium tracking-tight uppercase text-xs">
                     {exp.role}
                   </p>
                 </div>
@@ -76,7 +76,7 @@ export default function ExperienceV2() {
                 <div className="space-y-4 max-w-3xl">
                   {exp.description.map((bullet, i) => (
                     <div key={i} className="flex gap-4 text-[#f5f5f5]/70 text-base leading-relaxed">
-                      <span className="text-white mt-2.5 w-1 h-1 rounded-full bg-white shrink-0" />
+                      <span className="text-[#ffb300] mt-2.5 w-1 h-1 rounded-full bg-[#ffb300] shrink-0" />
                       <p>{bullet}</p>
                     </div>
                   ))}
@@ -84,7 +84,7 @@ export default function ExperienceV2() {
 
                 <div className="flex flex-wrap gap-2 pt-4">
                   {exp.stack.map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-[#888888] text-[10px] uppercase font-bold tracking-widest group-hover:border-[#444444] transition-all">
+                    <span key={tech} className="px-3 py-1 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-[#888888] text-[10px] uppercase font-bold tracking-widest group-hover:border-[#ffb300]/40 transition-all text-[#f5f5f5]/80">
                       {tech}
                     </span>
                   ))}

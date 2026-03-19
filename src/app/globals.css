@@ -8,6 +8,8 @@
   --color-primary: #ffffff;
   --color-accent: #ffffff;
   --color-muted: #888888;
+  --color-gold: #ffb300;
+  --color-gold-muted: rgba(255, 179, 0, 0.1);
   
   --background-v2: #0f0f0f;
   --foreground-v2: #f5f5f5;

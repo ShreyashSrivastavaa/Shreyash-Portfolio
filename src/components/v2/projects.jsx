@@ -70,7 +70,7 @@ export default function ProjectsV2() {
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8 },
     viewport: { once: true }
   };
 
@@ -90,7 +90,7 @@ export default function ProjectsV2() {
               key={project.title}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: idx * 0.1 }}
-              className={`${project.featured ? 'md:col-span-2' : ''} bg-[#111111] border border-[#222222] rounded-[6px] p-8 lg:p-16 hover:border-[#333333] transition-all group relative flex flex-col justify-between`}
+              className={`${project.featured ? 'md:col-span-2 border-t-2 border-t-[#ffb300]' : ''} bg-[#111111] border border-[#222222] rounded-[6px] p-8 lg:p-16 hover:border-[#333333] transition-all group relative flex flex-col justify-between`}
             >
               <div>
                 <div className="flex justify-between items-start mb-12">
@@ -102,15 +102,15 @@ export default function ProjectsV2() {
                       {project.tagline}
                     </p>
                     {project.stats && (
-                       <div className="flex items-center gap-2 text-primary text-xs font-mono uppercase tracking-widest mt-2">
-                        <Zap size={14} className="fill-white" />
+                       <div className="flex items-center gap-2 text-[#ffb300] text-xs font-mono uppercase tracking-widest mt-2">
+                        <Zap size={14} className="fill-[#ffb300]" />
                         {project.stats}
                        </div>
                     )}
                   </div>
                   <div className="flex gap-4">
                     {project.github && (
-                      <a href={project.github} className="text-[#888888] hover:text-white transition-colors">
+                      <a href={project.github} className="text-[#888888] hover:text-[#ffb300] transition-colors">
                         <Github size={24} />
                       </a>
                     )}
@@ -124,7 +124,7 @@ export default function ProjectsV2() {
                     </div>
                     {project.solution && (
                         <div className="space-y-2">
-                            <span className="text-[#444444] text-[10px] uppercase font-bold tracking-[0.2em]">Solution</span>
+                            <span className="text-[#ffb300]/80 text-[10px] uppercase font-bold tracking-[0.2em]">Solution</span>
                             <p className="text-[#f5f5f5]/80 text-sm leading-relaxed max-w-2xl">{project.solution}</p>
                         </div>
                     )}
@@ -136,7 +136,7 @@ export default function ProjectsV2() {
                       <ul className="space-y-3">
                         {project.decisions.map((decision, i) => (
                           <li key={i} className="flex items-start gap-3 text-[#f5f5f5]/60 text-sm leading-relaxed">
-                            <span className="text-white mt-1.5 w-1 h-1 rounded-full bg-white shrink-0" />
+                            <span className="text-[#ffb300] mt-1.5 w-1 h-1 rounded-full bg-[#ffb300] shrink-0" />
                             {decision}
                           </li>
                         ))}
@@ -146,7 +146,7 @@ export default function ProjectsV2() {
                    <div className="flex flex-col justify-end items-start md:items-end">
                       <div className="flex flex-wrap gap-2 justify-start md:justify-end">
                         {project.stack.map(tech => (
-                          <span key={tech} className="px-3 py-1 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-[#888888] text-[11px] font-medium uppercase tracking-wider group-hover:border-[#444444] transition-all">
+                          <span key={tech} className="px-3 py-1 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-[#888888] text-[11px] font-medium uppercase tracking-wider group-hover:border-[#ffb300]/40 transition-all">
                             {tech}
                           </span>
                         ))}

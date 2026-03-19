@@ -11,7 +11,7 @@ export default function AboutV2() {
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8 },
     viewport: { once: true }
   };
 
@@ -41,7 +41,7 @@ export default function AboutV2() {
               transition={{ ...fadeUp.transition, delay: 0.2 }}
               className="xl:col-span-3 order-first xl:order-last"
             >
-              <div className="w-full xl:aspect-square aspect-[4/3] bg-[#1a1a1a] rounded-[6px] overflow-hidden border border-[#222222]">
+              <div className="w-full xl:aspect-square aspect-[4/3] bg-[#1a1a1a] rounded-[6px] overflow-hidden border border-[#222222] group">
                 <Image 
                   src="/profile-2.jpg" 
                   alt="Professional Portrait"
@@ -61,7 +61,7 @@ export default function AboutV2() {
             {tech.map((tag) => (
               <span 
                 key={tag}
-                className="px-5 py-2 bg-[#1a1a1a] border border-[#444444] rounded-[6px] text-white text-sm font-medium hover:bg-[#222222] transition-colors"
+                className="px-5 py-2 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-white text-sm font-medium hover:border-[#ffb300]/40 hover:bg-[#ffb300]/5 transition-all cursor-default"
               >
                 {tag}
               </span>

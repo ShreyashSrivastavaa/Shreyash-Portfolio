@@ -11,7 +11,7 @@ import FooterV2 from './footer';
 
 export default function V2Portfolio() {
   return (
-    <div className="bg-[#0f0f0f] text-[#f5f5f5] selection:bg-white selection:text-black font-sans">
+    <div className="bg-[#0f0f0f] text-[#f5f5f5] selection:bg-[#ffb300] selection:text-black font-sans">
       <NavV2 />
       <main>
         <HeroV2 />
