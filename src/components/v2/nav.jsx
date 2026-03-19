@@ -34,7 +34,7 @@ export default function NavV2() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-md border-b border-[#1a1a1a]">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button 
-            onClick={scrollToTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-white font-semibold text-lg hover:opacity-70 transition-opacity cursor-pointer"
           >
             Shreyash
