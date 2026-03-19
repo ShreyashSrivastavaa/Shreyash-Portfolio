@@ -3,11 +3,11 @@
 import { motion } from 'framer-motion';
 
 const TECH_GROUPS = [
-  { label: 'Runtime', tags: ['Node.js', 'NestJS'] },
+  { label: 'Runtime', tags: ['Node.js', 'NestJS', 'Express.js'] },
   { label: 'Database', tags: ['PostgreSQL', 'Prisma', 'Supabase', 'Redis'] },
-  { label: 'Infra', tags: ['Docker', 'RabbitMQ', 'Git'] },
-  { label: 'Frontend', tags: ['Next.js', 'Tailwind CSS'] },
-  { label: 'Languages', tags: ['JavaScript', 'TypeScript', 'C++', 'Go (learning)'] }
+  { label: 'Infra', tags: ['Docker', 'RabbitMQ', 'Git', 'Nginx', 'JWT / Auth', 'REST APIs'] },
+  { label: 'Languages', tags: ['JavaScript', 'TypeScript', 'C++', 'Go (learning)'] },
+  { label: 'Concepts', tags: ['System Design', 'Async Architecture', 'Clean API Design'] }
 ];
 
 export default function TechStackV2() {
@@ -28,13 +28,13 @@ export default function TechStackV2() {
           / Tech Matrix
         </motion.h2>
 
-        <div className="space-y-12">
+        <div className="space-y-0">
           {TECH_GROUPS.map((group, idx) => (
             <motion.div 
               key={group.label}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: idx * 0.1 }}
-              className="flex flex-col md:flex-row md:items-center gap-6 md:gap-24 group py-8 border-b border-[#1a1a1a] last:border-0"
+              className="flex flex-col md:flex-row md:items-center gap-6 md:gap-24 group py-2 border-b border-[#1a1a1a] last:border-0"
             >
               <div className="md:w-48">
                  <span className="text-white text-lg font-semibold tracking-tight group-hover:text-white/70 transition-colors">

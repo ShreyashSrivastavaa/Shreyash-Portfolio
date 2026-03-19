@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export default function HeroV2() {
@@ -11,7 +12,7 @@ export default function HeroV2() {
   };
 
   return (
-    <section className="min-h-screen pt-32 pb-20 px-6 lg:px-24 bg-[#0f0f0f] flex items-center">
+    <section className="min-h-screen pt-32 pb-20 px-6 lg:px-24 bg-[#0f0f0f] flex items-center shrink-0">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-10 gap-16 items-center">
         
         {/* Left Column (40%) - Profile */}
@@ -21,8 +22,14 @@ export default function HeroV2() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="lg:col-span-4 flex justify-center lg:justify-start"
         >
-          <div className="w-[280px] h-[280px] bg-[#1a1a1a] rounded-[6px] flex items-center justify-center border border-[#222222]">
-            <span className="text-[64px] font-bold text-[#f5f5f5] tracking-tighter opacity-20">SS</span>
+          <div className="w-[280px] h-[280px] bg-[#1a1a1a] rounded-[6px] overflow-hidden flex items-center justify-center border border-[#222222] group">
+            <Image 
+              src="/profile.png" 
+              alt="Shreyash Srivastava"
+              width={280}
+              height={280}
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-700 aspect-square group-hover:scale-105"
+            />
           </div>
         </motion.div>
 
