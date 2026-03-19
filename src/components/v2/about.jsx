@@ -6,9 +6,9 @@ import Image from 'next/image';
 export default function AboutV2() {
   const bio = (
     <>
-      Final-year CS student shipping production backend systems professionally. I think in systems — async queues, schemas that don't break, APIs that don't surprise you.
+      I am Shreyash, a Computer Science student and SDE Intern focused on scalable systems.
       <br /><br />
-      Open to backend engineering roles where architecture matters.
+      I like solving complex problems and building efficient solutions that have real impact.
     </>
   );
   
@@ -22,22 +22,24 @@ export default function AboutV2() {
   };
 
   return (
-    <section id="about" className="py-32 px-6 lg:px-24 bg-[#0f0f0f]">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 sm:gap-24 relative">
+    <section id="about" className="py-32 px-6 lg:px-24 bg-[#0f0f0f] border-y border-[#1a1a1a]">
+      <div className="max-w-7xl mx-auto space-y-16">
         
-        {/* Left Column - Rotated Label */}
-        <div className="lg:w-24 flex items-start justify-center pt-8 shrink-0">
-           <span className="lg:-rotate-90 lg:whitespace-nowrap font-mono text-sm uppercase tracking-[0.3em] text-[#888888] origin-center">
-             / About
-           </span>
-        </div>
+        {/* Proper Section Header */}
+        <motion.h2 
+          {...fadeUp}
+          className="text-sm font-mono text-[#888888] uppercase tracking-[0.3em]"
+        >
+          / About
+        </motion.h2>
 
-        {/* Right Column - Content */}
-        <div className="flex-1 space-y-16">
-          <div className="grid grid-cols-1 xl:grid-cols-10 gap-12 items-start">
+        {/* Content */}
+        <div className="flex flex-col xl:flex-row gap-16 items-start">
+          
+          <div className="flex-1 space-y-12">
             <motion.p 
               {...fadeUp}
-              className="xl:col-span-7 text-2xl md:text-4xl text-[#f5f5f5] leading-[1.4] font-medium tracking-tight"
+              className="text-lg md:text-xl text-[#f5f5f5] leading-[1.6] font-medium tracking-tight max-w-3xl"
             >
               {bio}
             </motion.p>
@@ -45,9 +47,25 @@ export default function AboutV2() {
             <motion.div 
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.2 }}
-              className="xl:col-span-3 order-first xl:order-last"
+              className="flex flex-wrap gap-3"
             >
-              <div className="w-full xl:aspect-square aspect-[4/3] bg-[#1a1a1a] rounded-[6px] overflow-hidden border border-[#222222] group">
+              {tech.map((tag) => (
+                <span 
+                  key={tag}
+                  className="px-5 py-2 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-white text-sm font-medium hover:border-[#ffb300]/40 hover:bg-[#ffb300]/5 transition-all cursor-default"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+          
+          <motion.div 
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.3 }}
+            className="w-full xl:w-auto flex-shrink-0"
+          >
+            <div className="w-full max-w-[300px] aspect-square bg-[#1a1a1a] rounded-[6px] overflow-hidden border border-[#222222] group mx-auto xl:mx-0">
                 <Image 
                   src="/profile-2.jpg" 
                   alt="Professional Portrait"
@@ -57,22 +75,6 @@ export default function AboutV2() {
                 />
               </div>
             </motion.div>
-          </div>
-
-          <motion.div 
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.3 }}
-            className="flex flex-wrap gap-3"
-          >
-            {tech.map((tag) => (
-              <span 
-                key={tag}
-                className="px-5 py-2 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-white text-sm font-medium hover:border-[#ffb300]/40 hover:bg-[#ffb300]/5 transition-all cursor-default"
-              >
-                {tag}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </div>
     </section>
