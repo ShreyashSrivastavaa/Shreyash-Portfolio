@@ -12,8 +12,8 @@ import GithubStatsV1 from "../components/v1/github-stats.jsx";
 import ExperienceV1 from "../components/v1/experience.jsx";
 import ContactV1 from "../components/v1/contact.jsx";
 
-// V2 Components (Placeholders)
-const HeroV2 = () => <div className="min-h-screen flex items-center justify-center">V2 Hero (Coming Soon)</div>;
+// V2 Components
+import V2Portfolio from "../components/v2/V2.jsx";
 
 export default function Home() {
     const { version } = useVersion();
@@ -21,7 +21,7 @@ export default function Home() {
     if (version === 'v2') {
         return (
             <main className="relative">
-                <HeroV2 />
+                <V2Portfolio />
             </main>
         );
     }

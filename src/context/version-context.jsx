@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const VersionContext = createContext(null);
 
 export function VersionProvider({ children }) {
-    const [version, setVersion] = useState('v1');
+    const [version, setVersion] = useState('v2');
     const [highReadability, setHighReadability] = useState(false);
 
     useEffect(() => {

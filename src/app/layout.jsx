@@ -1,11 +1,12 @@
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "../components/theme-provider.jsx";
 import Navbar from "../components/navbar.jsx";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata = {
     metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
@@ -58,7 +59,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.className} antialiased`}>
+            <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-foreground bg-background`}>
                 <VersionProvider>
                     <ThemeProvider
                         attribute="data-theme"
