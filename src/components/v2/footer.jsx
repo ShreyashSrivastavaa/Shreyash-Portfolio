@@ -32,7 +32,7 @@ export default function FooterV2() {
             transition={{ ...fadeUp.transition, delay: 0.1 }}
             className="text-[#888888] text-lg font-medium"
           >
-            Open to backend engineering roles and internships.
+            Open to backend engineering roles.
           </motion.p>
         </div>
 
@@ -73,10 +73,6 @@ export default function FooterV2() {
             </a>
           ))}
         </motion.div>
-        <div className="flex gap-6 h-[1px] bg-[#222222] flex-1 mx-12 hidden md:block" />
-        <p className="font-mono text-[9px] uppercase tracking-[0.4em]">
-          BUILT_WITH_NEXTJS_14
-        </p>
       </div>
     </footer>
   );

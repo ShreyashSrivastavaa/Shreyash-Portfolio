@@ -4,7 +4,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function AboutV2() {
-  const bio = "I'm a final-year CS student and active SDE Intern at JBH Tech Innovation, where I design and ship production-grade backend systems daily. I specialize in RESTful API architecture, database design, and async system design. I don't just write code that works — I write code that holds up at scale.";
+  const bio = (
+    <>
+      Final-year CS student shipping production backend systems professionally. I think in systems — async queues, schemas that don't break, APIs that don't surprise you.
+      <br /><br />
+      Open to backend engineering roles where architecture matters.
+    </>
+  );
   
   const tech = ['NestJS', 'Node.js', 'PostgreSQL', 'Prisma', 'RabbitMQ', 'Docker', 'Redis', 'TypeScript'];
 
