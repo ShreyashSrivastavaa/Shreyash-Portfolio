@@ -34,7 +34,7 @@ export default function TechStackV2() {
               key={group.label}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: idx * 0.1 }}
-              className="flex flex-col md:flex-row md:items-center gap-6 md:gap-24 group py-2 border-b border-[#1a1a1a] last:border-0"
+              className="flex flex-col md:flex-row md:items-center gap-6 md:gap-24 group py-2 border-b border-[#222222] last:border-0"
             >
               <div className="md:w-48">
                  <span className="text-white text-lg font-semibold tracking-tight group-hover:text-[#ffb300] transition-colors">

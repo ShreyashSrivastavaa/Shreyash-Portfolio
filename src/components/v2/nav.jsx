@@ -27,6 +27,7 @@ export default function NavV2() {
 
   const navLinks = [
     { name: 'About', href: '#about' },
+    { name: 'Stack', href: '#stack' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
     { name: 'Credentials', href: '#credentials' },
@@ -35,7 +36,7 @@ export default function NavV2() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-md border-b border-[#1a1a1a]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-md border-b border-[#222222]">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           
           {/* Left side - Brand and Hamburger */}

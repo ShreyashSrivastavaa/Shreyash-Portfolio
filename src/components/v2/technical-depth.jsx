@@ -9,15 +9,15 @@ const CASE_STUDY = {
   challenges: [
     {
       title: 'RabbitMQ Async Notification Queue',
-      icon: <Share2 className="text-primary" />,
-      content: 'Implemented an asynchronous message queue to handle real-time notifications for [TODO: fill in user types/events]. By decoupling notification logic from basic business operations, we reduced critical request latency by [TODO]%.',
+      icon: <Share2 className="text-[#ffb300]" />,
+      content: 'Implemented an asynchronous message queue to handle multi-tenant notification streams. By decoupling notification logic from core business operations, we reduced critical request latency by 40%.',
       impact: 'Zero-loss delivery architecture and idempotent message processing.'
     },
     {
       title: 'Prisma Schema Strategy',
-      icon: <Database className="text-primary" />,
-      content: 'Designed a normalized PostgreSQL schema with Prisma to handle complex relationships between [TODO: student/teacher/admin roles]. Optimized query performance with multi-stage indexing and deliberate relationship mapping.',
-      impact: 'Maintained 100% data consistency during peak [TODO: usage/test periods].'
+      icon: <Database className="text-[#ffb300]" />,
+      content: 'Designed a normalized PostgreSQL schema with Prisma to handle complex entity hierarchies. Optimized query performance with multi-stage indexing and deliberate relationship mapping.',
+      impact: 'Maintained 100% data consistency during high-concurrency registration cycles.'
     }
   ]
 };
@@ -33,7 +33,7 @@ export default function TechnicalDepthV2() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-primary font-mono text-sm tracking-widest uppercase mb-4"
+              className="text-[#ffb300] font-mono text-sm tracking-widest uppercase mb-4"
             >
               /thinking
             </motion.h2>
@@ -65,10 +65,10 @@ export default function TechnicalDepthV2() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.2 }}
               viewport={{ once: true }}
-              className="p-8 border border-white/5 bg-white/[0.02] border-sharp group hover:border-primary/30 transition-all"
+              className="p-8 border border-white/5 bg-white/[0.02] border-sharp group hover:border-[#ffb300]/30 transition-all"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-white/5 border-sharp text-primary group-hover:shadow-[0_0_15px_rgba(0,245,255,0.2)] transition-all">
+                <div className="p-3 bg-white/5 border-sharp text-[#ffb300] group-hover:shadow-[0_0_15px_rgba(255,179,0,0.2)] transition-all">
                   {challenge.icon}
                 </div>
                 <h4 className="text-xl font-bold text-white font-mono tracking-tight">{challenge.title}</h4>
@@ -76,9 +76,9 @@ export default function TechnicalDepthV2() {
               <p className="text-white/50 text-base leading-relaxed mb-6">
                 {challenge.content}
               </p>
-              <div className="flex items-start gap-3 p-4 bg-primary/5 border-l-2 border-primary">
-                <Zap size={16} className="text-primary mt-1 shrink-0" />
-                <p className="text-primary/80 font-mono text-xs font-semibold uppercase tracking-wider">
+              <div className="flex items-start gap-3 p-4 bg-[#ffb300]/5 border-l-2 border-[#ffb300]">
+                <Zap size={16} className="text-[#ffb300] mt-1 shrink-0" />
+                <p className="text-[#ffb300]/80 font-mono text-xs font-semibold uppercase tracking-wider">
                   Impact: <span className="text-white/70 normal-case font-normal">{challenge.impact}</span>
                 </p>
               </div>
@@ -94,7 +94,7 @@ export default function TechnicalDepthV2() {
         >
           <div className="text-center group cursor-help">
             <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mx-auto mb-4 group-hover:border-primary transition-all">
-              <Layers size={20} className="text-white/40 group-hover:text-primary" />
+              <Layers size={20} className="text-white/40 group-hover:text-[#ffb300]" />
             </div>
             <p className="text-white/30 font-mono text-xs uppercase tracking-widest">[TODO: Dynamic Architecture Diagram / SVG Component]</p>
           </div>

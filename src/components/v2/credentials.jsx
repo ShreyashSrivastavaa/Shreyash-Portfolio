@@ -25,9 +25,21 @@ const ACHIEVEMENTS = [
 ];
 
 const CERTIFICATES = [
-  { name: 'HackerRank Problem Solving (Intermediate)', issuer: 'HackerRank' },
-  { name: 'Code-O-Fiesta 2.0 Winner', issuer: 'ITS Engineering' },
-  { name: 'Innocodeathon Finalist', issuer: 'ITS Engineering' }
+  { 
+    name: 'HackerRank Problem Solving (Intermediate)', 
+    issuer: 'HackerRank',
+    link: 'https://drive.google.com/file/d/1LrYR4sF6PJiIafcoeskMY79ftZOK5YX7/view?usp=drive_link'
+  },
+  { 
+    name: 'Code-O-Fiesta 2.0 Winner', 
+    issuer: 'ITS Engineering',
+    link: 'https://drive.google.com/file/d/1fQGQoUoXCSiZ_BMO8JoOt7dbHlEPKOme/view?usp=drive_link'
+  },
+  { 
+    name: 'Innocodeathon Finalist', 
+    issuer: 'ITS Engineering',
+    link: 'https://drive.google.com/file/d/1bnhiKb07VsA2wUGlWbNpGoyHbqYtzkGA/view?usp=sharing'
+  }
 ];
 
 export default function CredentialsV2() {
@@ -119,7 +131,7 @@ export default function CredentialsV2() {
             <p className="text-[#888888] text-lg">My resume details my technical journey, full project list, and academic background.</p>
           </div>
           <a 
-            href="/resume.pdf" 
+            href="https://drive.google.com/file/d/1o0GvcX8L-p8jhxLpJHPeKVsqFXkUp5g5/view?usp=drive_link" 
             target="_blank"
             className="inline-flex items-center gap-3 px-12 py-5 bg-[#ffb300] text-black font-bold rounded-[6px] hover:bg-[#ffc107] transition-all"
           >

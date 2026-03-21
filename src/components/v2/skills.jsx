@@ -36,7 +36,7 @@ export default function SkillsV2() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-primary font-mono text-sm tracking-widest uppercase"
+            className="text-[#ffb300] font-mono text-sm tracking-widest uppercase"
           >
             /skills
           </motion.h2>
@@ -45,7 +45,7 @@ export default function SkillsV2() {
             whileInView={{ opacity: 0.4 }}
             className="text-white text-xs font-mono uppercase tracking-widest italic"
           >
-            Senior engineering stack — [TODO] mention proficiency
+            Expertise in designing resilient distributed architectures.
           </motion.p>
         </div>
 
@@ -60,8 +60,8 @@ export default function SkillsV2() {
                className="p-8 border border-white/5 bg-white/[0.02] border-sharp group hover:bg-white/[0.04] transition-all flex flex-col justify-between"
              >
                <div>
-                 <div className="flex items-center gap-3 mb-8 text-primary group-hover:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition-all">
-                   <div className="p-3 bg-white/5 border-sharp group-hover:border-primary transition-all border border-transparent">
+                 <div className="flex items-center gap-3 mb-8 text-[#ffb300] group-hover:shadow-[0_0_10px_rgba(255,179,0,0.2)] transition-all">
+                   <div className="p-3 bg-white/5 border-sharp group-hover:border-[#ffb300] transition-all border border-transparent">
                      {skillGroup.icon}
                    </div>
                  </div>
@@ -70,7 +70,7 @@ export default function SkillsV2() {
                     {skillGroup.items.map(skill => (
                       <span 
                         key={skill} 
-                        className="px-3 py-1 bg-white/5 border border-white/10 text-white/50 font-mono text-xs border-sharp group-hover:text-primary transition-colors"
+                        className="px-3 py-1 bg-white/5 border border-white/10 text-white/50 font-mono text-xs border-sharp group-hover:text-[#ffb300] transition-colors"
                       >
                         {skill}
                       </span>
@@ -80,11 +80,11 @@ export default function SkillsV2() {
                
                <div className="mt-12 flex items-center justify-between pointer-events-none opacity-20 group-hover:opacity-100 transition-opacity">
                  <div className="flex gap-1 h-3 items-end">
-                   <div className="w-[1px] h-full bg-primary" />
-                   <div className="w-[1px] h-[60%] bg-primary" />
-                   <div className="w-[1px] h-[80%] bg-primary" />
+                    <div className="w-[1px] h-full bg-[#ffb300]" />
+                    <div className="w-[1px] h-[60%] bg-[#ffb300]" />
+                    <div className="w-[1px] h-[80%] bg-[#ffb300]" />
                  </div>
-                 <Zap size={14} className="text-primary" />
+                 <Zap size={14} className="text-[#ffb300]" />
                </div>
              </motion.div>
           ))}

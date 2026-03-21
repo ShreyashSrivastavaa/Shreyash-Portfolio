@@ -17,7 +17,7 @@ export default function FooterV2() {
   ];
 
   return (
-    <footer id="contact" className="py-32 px-6 lg:px-24 bg-[#0f0f0f] border-t border-[#1a1a1a]">
+    <footer id="contact" className="py-32 px-6 lg:px-24 bg-[#0f0f0f] border-t border-[#222222]">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-12">
 
         <div className="space-y-4">
@@ -49,7 +49,7 @@ export default function FooterV2() {
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </a>
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1o0GvcX8L-p8jhxLpJHPeKVsqFXkUp5g5/view?usp=drive_link"
             target="_blank"
             className="px-12 py-5 bg-transparent text-white font-bold rounded-[6px] border border-[#222222] hover:bg-white/5 transition-all flex items-center justify-center gap-2"
           >
@@ -60,7 +60,7 @@ export default function FooterV2() {
         <motion.div
           {...fadeUp}
           transition={{ ...fadeUp.transition, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-8 md:gap-16 pt-16 border-t border-[#1a1a1a] w-full"
+          className="flex flex-wrap justify-center gap-8 md:gap-16 pt-16 border-t border-[#222222] w-full"
         >
           {socialLinks.map((link) => (
             <a

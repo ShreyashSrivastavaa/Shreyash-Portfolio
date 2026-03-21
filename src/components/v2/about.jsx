@@ -6,9 +6,11 @@ import Image from 'next/image';
 export default function AboutV2() {
   const bio = (
     <>
-      I am a final-year Computer Science student and an active SDE Intern at JBH Tech Innovation. I specialize in designing and shipping production-grade backend systems using Node.js, TypeScript, and PostgreSQL.
+      Backend Engineer focused on architecting resilient, high-throughput systems. 
+      Currently driving core platform initiatives at JBH Tech Innovation, where I specialize in Node.js, TypeScript, and PostgreSQL ecosystems. 
       <br /><br />
-      My experience includes building robust architectures—from real-time applications to asynchronous task queues. I thrive in environments that demand clean API design, database optimization, and scalable system architecture.
+      I bridge the gap between complex business requirements and scalable technical reality—designing distributed systems that handle real-time data and asynchronous workloads with precision. 
+      My approach centers on clean API design, strategic database optimization, and long-term system maintainability.
     </>
   );
   
@@ -22,7 +24,7 @@ export default function AboutV2() {
   };
 
   return (
-    <section id="about" className="py-32 px-6 lg:px-24 bg-[#0f0f0f] border-y border-[#1a1a1a]">
+    <section id="about" className="py-32 px-6 lg:px-24 bg-[#0f0f0f] border-y border-[#222222]">
       <div className="max-w-7xl mx-auto space-y-16">
         
         {/* Proper Section Header */}
