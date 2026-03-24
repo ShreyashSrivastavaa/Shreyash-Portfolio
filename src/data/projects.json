@@ -34,23 +34,5 @@
         "tech": ["JavaScript", "Web Crypto API", "HTML", "CSS"],
         "github": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git",
         "image": "/projects/password.webp"
-    },
-    {
-        "id": "hotel-api",
-        "title": "Hotel Booking Backend API",
-        "tagline": "Scalable REST API for hotel management and reservations.",
-        "icon": "ShieldCheck",
-        "iconColor": "text-primary",
-        "description": "Designed and implemented a scalable REST API for a hotel booking platform using Node.js, Express.js, and MongoDB. The system manages room availability, booking workflows, and concurrency-safe reservation logic while ensuring data integrity.",
-        "problem": "Managing simultaneous booking requests for the same room without causing double-bookings or data inconsistencies in a document store.",
-        "solution": "Implemented optimistic concurrency control and atomic MongoDB operations to ensure zero-collision booking logic and consistent reservation state management.",
-        "metrics": [
-            { "label": "Booking Latency", "value": "180ms" },
-            { "label": "Logic Safety", "value": "Atomic" },
-            { "label": "Concurrency", "value": "High" }
-        ],
-        "tech": ["Node.js", "Express.js", "MongoDB", "JWT"],
-        "github": "https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend",
-        "image": "/projects/hotel-booking.png"
     }
 ]

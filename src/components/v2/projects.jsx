@@ -1,23 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, ArrowUpRight, Zap, Target, Shield, Server } from 'lucide-react';
+import { Github, Zap } from 'lucide-react';
 
 const PROJECTS = [
   {
-    title: '22 Yards',
-    tagline: 'Cricket statistics and performance tracking — IPL 2022–2025',
+    title: 'Hotel Booking Backend API',
+    tagline: 'Scalable REST API for hotel management and reservations',
     featured: true,
-    problem: 'Cricket data APIs are unreliable — rate limits and key expirations break apps overnight.',
-    solution: 'Designed an adapter-based architecture and migrated from RapidAPI to a local ball-by-ball CSV dataset for zero-latency, high-reliability analytics.',
+    stats: '180ms Latency · Atomic Safety',
+    problem: 'Simultaneous booking requests cause double-bookings in document stores.',
+    solution: 'Optimistic concurrency control and atomic MongoDB operations for zero-collision booking logic.',
     decisions: [
-      'Adapter pattern — data source is an implementation detail.',
-      'Local ball-by-ball CSV dataset migration.',
-      'Prisma + Supabase for schema-as-code migrations.',
-      'Next.js server components for data-heavy pages.'
+      'Optimistic concurrency control.',
+      'Atomic MongoDB operations for booking logic.',
+      'JWT for secure session management.'
     ],
-    stack: ['Next.js', 'Prisma', 'Supabase', 'Tailwind CSS'],
-    github: 'https://github.com/ShreyashSrivastavaa/22-yards-Cricket'
+    stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    github: 'https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend'
   },
   {
     title: 'S.A.F.E. (Scam Analysis & Fraud Elimination)',
@@ -33,21 +33,6 @@ const PROJECTS = [
     ],
     stack: ['Python', 'FastAPI', 'Next.js', 'Supabase'],
     github: 'https://github.com/ShreyashSrivastavaa/S.A.F.E.git'
-  },
-  {
-    title: 'Hotel Booking Backend API',
-    tagline: 'Scalable REST API for hotel management and reservations',
-    featured: false,
-    stats: '180ms Latency · Atomic Safety',
-    problem: 'Simultaneous booking requests cause double-bookings in document stores.',
-    solution: 'Optimistic concurrency control and atomic MongoDB operations for zero-collision booking logic.',
-    decisions: [
-      'Optimistic concurrency control.',
-      'Atomic MongoDB operations for booking logic.',
-      'JWT for secure session management.'
-    ],
-    stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT'],
-    github: 'https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend'
   },
   {
     title: 'CryptGen (Password Utility)',
