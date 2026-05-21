@@ -69,7 +69,7 @@ export default function AboutV2() {
           >
             <div className="w-full max-w-[300px] aspect-square bg-[#1a1a1a] rounded-[2px] overflow-hidden border border-[#222222] group mx-auto xl:mx-0">
               <Image 
-                src="/profile-2.jpg" 
+                src="/profile-2.png" 
                 alt="Professional Portrait"
                 width={400}
                 height={400}
