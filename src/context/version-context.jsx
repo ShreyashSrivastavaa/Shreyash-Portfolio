@@ -12,8 +12,10 @@ export function VersionProvider({ children }) {
         const savedVersion = localStorage.getItem('portfolio-version');
         const savedReadability = localStorage.getItem('portfolio-readability');
         
-        if (savedVersion) setVersion(savedVersion);
-        if (savedReadability) setHighReadability(savedReadability === 'true');
+        setTimeout(() => {
+            if (savedVersion) setVersion(savedVersion);
+            if (savedReadability) setHighReadability(savedReadability === 'true');
+        }, 0);
     }, []);
 
     const toggleVersion = () => {

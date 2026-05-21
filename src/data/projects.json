@@ -1,38 +1,56 @@
 [
     {
-        "id": "safe",
-        "title": "S.A.F.E. – Scam Analysis & Fraud Elimination",
-        "tagline": "ML-powered scam detection platform for real-time threat analysis.",
-        "icon": "ShieldCheck",
-        "iconColor": "text-red-500",
-        "description": "Built a fraud detection platform that analyzes suspicious URLs and messages using machine learning models. Designed backend APIs for threat analysis, data processing, and real-time reporting while integrating ML inference pipelines for fraud classification.",
-        "problem": "Rising digital fraud and phishing attacks target millions daily, often through subtle psychological triggers.",
-        "solution": "Engineered a specialized analysis pipeline (RoBERTa, intelligence-based scoring) to detect fraud across multiple vectors.",
+        "id": "quickbite",
+        "title": "QuickBite – Food Ordering API",
+        "tagline": "Scalable food ordering and real-time order tracking backend API.",
+        "icon": "Cpu",
+        "iconColor": "text-primary",
+        "description": "Built a complete food ordering backend using Node.js, Express.js, and MongoDB with separate logins for users, admin, products, and orders using JWT and bcrypt for password security. Added real-time order status updates using Socket.io and secured the API with Helmet.js, rate limiting, and Zod-based input validation.",
+        "problem": "Traditional food delivery APIs experience latency spikes during high-traffic checkout windows and lack robust role-based access control.",
+        "solution": "Engineered a scalable Node.js/Express.js backend utilizing Socket.io for live order status updates, MVC patterns for codebase modularity, and Zod/Helmet.js for API reinforcement.",
         "metrics": [
-            { "label": "Detection Accuracy", "value": "94%+" },
-            { "label": "Latency", "value": "<250ms" },
-            { "label": "Analysis Vectors", "value": "5-Engine" }
+            { "label": "Latency", "value": "<120ms" },
+            { "label": "Security", "value": "Helmet/Zod" },
+            { "label": "Real-Time", "value": "Socket.io" }
         ],
-        "tech": ["Python", "FastAPI", "Next.js", "Supabase"],
-        "github": "https://github.com/ShreyashSrivastavaa/S.A.F.E.git",
+        "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Bcrypt"],
+        "github": "https://github.com/ShreyashSrivastavaa/QuickBite",
+        "image": "/projects/hotel-booking.png"
+    },
+    {
+        "id": "swiperide",
+        "title": "SwipeRide – Ride Sharing API",
+        "tagline": "Real-time geospatial ride-sharing and matching engine.",
+        "icon": "Cpu",
+        "iconColor": "text-accent",
+        "description": "Building a real-time ride-sharing backend using Node.js, Express.js, MongoDB, JWT (for rider/driver/admin roles), Socket.io (live tracking), and Redis (fast driver location tracking). Used Google Maps API for fare calculation, Paystack for payments, and MongoDB's geospatial queries to find nearby drivers with dynamic radius expansion.",
+        "problem": "Matching riders with nearby drivers in real-time requires high-frequency database reads and calculations that degrade standard SQL performance.",
+        "solution": "Built a high-performance matching engine using MongoDB's geospatial queries with dynamic radius expansion, cached active driver locations in Redis for ultra-low latency updates, and synced status over Socket.io.",
+        "metrics": [
+            { "label": "Radius Match", "value": "Dynamic" },
+            { "label": "Driver Sync", "value": "Redis" },
+            { "label": "Latency", "value": "<5ms" }
+        ],
+        "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API", "Paystack"],
+        "github": "https://github.com/ShreyashSrivastavaa/SwipeRide",
         "image": "/projects/safe.webp"
     },
     {
         "id": "password-gen",
-        "title": "CryptGen — Cryptographic Password Utility",
-        "tagline": "Secure, client-side entropy generation with zero server dependency.",
-        "icon": "ShieldAlert",
-        "iconColor": "text-accent",
-        "description": "A zero-dependency, browser-native password generation tool built on the Web Crypto API with configurable entropy, character set control, and instant clipboard copy — fast, private, and fully auditable.",
-        "problem": "Server-side password generation exposes sensitive data to network logs and potentially compromised infrastructure.",
-        "solution": "Built a purely client-side tool using the Web Crypto API ensuring passwords are generated and never leave the user's local environment.",
+        "title": "Random Password Generator",
+        "tagline": "Secure client-side password builder with real-time strength validation.",
+        "icon": "ShieldCheck",
+        "iconColor": "text-primary",
+        "description": "Made a client-side password generator using HTML, CSS, and JavaScript that checks password strength, lets you choose from 4 character types, and works without any external libraries. Added one-click copy to clipboard functionality and adjustable password length slider.",
+        "problem": "Server-side password generation exposes sensitive credentials to potential logging vulnerability and MITM attacks.",
+        "solution": "Created a purely browser-native utility using vanilla JavaScript to generate high-entropy passwords with adjustable length, character set selectors, and a dynamic strength meter.",
         "metrics": [
             { "label": "Server Calls", "value": "0" },
-            { "label": "Generation Time", "value": "<10ms" },
-            { "label": "Entropy", "value": "Dynamic" }
+            { "label": "Generation Time", "value": "<5ms" },
+            { "label": "Libraries", "value": "None" }
         ],
-        "tech": ["JavaScript", "Web Crypto API", "HTML", "CSS"],
-        "github": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git",
+        "tech": ["HTML", "CSS", "JavaScript"],
+        "github": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator",
         "image": "/projects/password.webp"
     }
 ]

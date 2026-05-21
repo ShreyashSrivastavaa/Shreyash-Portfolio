@@ -25,7 +25,7 @@ export default function FooterV2() {
             {...fadeUp}
             className="text-4xl md:text-7xl font-bold text-white tracking-tight"
           >
-            Let's <span className="text-[#ffb300]">build</span> together.
+            Let&apos;s <span className="text-[#ffb300]">build</span> together.
           </motion.h2>
           <motion.p
             {...fadeUp}

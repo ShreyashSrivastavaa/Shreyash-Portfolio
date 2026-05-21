@@ -1,10 +1,19 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export default function HeroV2() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -22,14 +31,25 @@ export default function HeroV2() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="lg:col-span-4 flex justify-center lg:justify-start"
         >
-          <div className="w-[280px] h-[280px] bg-[#1a1a1a] rounded-[6px] overflow-hidden flex items-center justify-center border border-[#222222] group">
-            <Image 
-              src="/profile.png" 
-              alt="Shreyash Srivastava"
-              width={280}
-              height={280}
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700 aspect-square group-hover:scale-105"
-            />
+          <div 
+            ref={containerRef}
+            className="w-[300px] h-[400px] md:w-[350px] md:h-[480px] bg-[#1a1a1a] rounded-[2px] overflow-hidden border border-[#222222] group relative"
+          >
+            <motion.div 
+              style={{ y }}
+              className="absolute -inset-y-20 inset-x-0"
+            >
+              <Image 
+                src="/profile.png" 
+                alt="Shreyash Srivastava"
+                fill
+                priority
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+              />
+            </motion.div>
+            
+            {/* Subtle Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           </div>
         </motion.div>
 

@@ -5,49 +5,51 @@ import { Github, Zap } from 'lucide-react';
 
 const PROJECTS = [
   {
-    title: 'Hotel Booking Backend API',
-    tagline: 'Scalable REST API for hotel management and reservations',
+    title: 'QuickBite (Food Ordering Backend API)',
+    tagline: 'Scalable food ordering and real-time order tracking API',
     featured: true,
-    stats: '180ms Latency · Atomic Safety',
-    problem: 'Simultaneous booking requests cause double-bookings in document stores.',
-    solution: 'Optimistic concurrency control and atomic MongoDB operations for zero-collision booking logic.',
+    stats: 'Socket.io · Zod · Helmet',
+    problem: 'Traditional food delivery APIs experience latency spikes during high-traffic checkout windows and lack robust role-based access control.',
+    solution: 'Engineered a scalable Node.js/Express.js backend utilizing Socket.io for live order status updates, MVC patterns for codebase modularity, and Zod/Helmet.js for API reinforcement.',
     decisions: [
-      'Optimistic concurrency control.',
-      'Atomic MongoDB operations for booking logic.',
-      'JWT for secure session management.'
+      'MVC pattern for clean codebase separation.',
+      'Socket.io integration for real-time order tracking.',
+      'Helmet.js & rate limiting to secure API routes.',
+      'Separate JWT roles (User, Admin, Product, Order).'
     ],
-    stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT'],
-    github: 'https://github.com/ShreyashSrivastavaa/Hotel-Booking-System_Backend'
+    stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT', 'Socket.io', 'Bcrypt'],
+    github: 'https://github.com/ShreyashSrivastavaa/QuickBite'
   },
   {
-    title: 'S.A.F.E. (Scam Analysis & Fraud Elimination)',
-    tagline: 'ML-powered scam detection for real-time threat analysis',
+    title: 'SwipeRide (Ride-Sharing Backend)',
+    tagline: 'Real-time geospatial ride-sharing and matching engine',
     featured: false,
-    stats: '94%+ Accuracy · <250ms Latency',
-    problem: 'Rising digital fraud targets millions through subtle psychological triggers.',
-    solution: 'Specialized analysis pipeline using RoBERTa and intelligence-based scoring across 5 analysis vectors.',
+    stats: 'Redis Cache · Geospatial Query',
+    problem: 'Matching riders with nearby drivers in real-time requires high-frequency database reads and calculations that degrade standard SQL performance.',
+    solution: 'Built a high-performance matching engine using MongoDB\'s geospatial queries with dynamic radius expansion, cached active driver locations in Redis for ultra-low latency updates, and synced status over Socket.io.',
     decisions: [
-      'RoBERTa for deep text analysis.',
-      'FastAPI for high-performance ML inference.',
-      'Supabase for intelligence-based scoring storage.'
+      'Geospatial queries for dynamic radius driver matching.',
+      'Redis cache for active driver status & location tracking.',
+      'Paystack gateway integration for secure transaction flows.',
+      'Complete ride lifecycle synchronization via Socket.io.'
     ],
-    stack: ['Python', 'FastAPI', 'Next.js', 'Supabase'],
-    github: 'https://github.com/ShreyashSrivastavaa/S.A.F.E.git'
+    stack: ['Node.js', 'Express.js', 'MongoDB', 'JWT', 'Socket.io', 'Redis', 'Google Maps API', 'Paystack'],
+    github: 'https://github.com/ShreyashSrivastavaa/SwipeRide'
   },
   {
-    title: 'CryptGen (Password Utility)',
-    tagline: 'Secure client-side entropy generation, zero server dependency',
+    title: 'Random Password Generator',
+    tagline: 'Secure client-side password builder with real-time strength validation',
     featured: false,
-    stats: '0 Server Calls · <10ms Gen',
-    problem: 'Server-side password generation exposes data to network logs.',
-    solution: 'Purely client-side Web Crypto API, passwords never leave the user\'s environment.',
+    stats: '0 Server Calls · Web Crypto API',
+    problem: 'Server-side password generation exposes sensitive credentials to potential logging vulnerability and MITM attacks.',
+    solution: 'Created a purely browser-native utility using vanilla JavaScript to generate high-entropy passwords with adjustable length, character set selectors, and a dynamic strength meter.',
     decisions: [
-      'Web Crypto API for secure entropy.',
-      'Zero server dependency architecture.',
-      'Dynamic entropy scoring.'
+      'Browser-native execution with zero server dependencies.',
+      'Real-time entropy calculations for strength indication.',
+      'Clipboard API for secure one-click credentials copying.'
     ],
-    stack: ['JavaScript', 'Web Crypto API', 'HTML', 'CSS'],
-    github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator.git'
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/ShreyashSrivastavaa/Random-Password-Generator'
   }
 ];
 

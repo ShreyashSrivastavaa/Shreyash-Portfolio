@@ -49,7 +49,7 @@ export default function TechnicalDepthV2() {
           </div>
           <div className="md:w-1/3">
              <p className="text-white/40 text-sm leading-relaxed font-mono">
-               Backend engineering isn't just about code—it's about building resilient structures that fail gracefully and scale predictably.
+               {"Backend engineering isn't just about code—it's about building resilient structures that fail gracefully and scale predictably."}
              </p>
           </div>
         </div>

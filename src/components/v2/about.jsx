@@ -41,7 +41,7 @@ export default function AboutV2() {
           <div className="flex-1 space-y-12">
             <motion.p 
               {...fadeUp}
-              className="text-lg md:text-xl text-[#f5f5f5] leading-[1.6] font-medium tracking-tight max-w-3xl"
+              className="text-xl md:text-2xl text-[#f5f5f5] leading-[1.6] font-medium tracking-tight"
             >
               {bio}
             </motion.p>
@@ -54,29 +54,29 @@ export default function AboutV2() {
               {tech.map((tag) => (
                 <span 
                   key={tag}
-                  className="px-5 py-2 bg-[#1a1a1a] border border-[#222222] rounded-[6px] text-white text-sm font-medium hover:border-[#ffb300]/40 hover:bg-[#ffb300]/5 transition-all cursor-default"
+                  className="px-5 py-2 bg-[#1a1a1a] border border-[#222222] rounded-[2px] text-white text-sm font-medium hover:border-[#ffb300]/40 hover:bg-[#ffb300]/5 transition-all cursor-default"
                 >
                   {tag}
                 </span>
               ))}
             </motion.div>
           </div>
-          
+
           <motion.div 
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.3 }}
             className="w-full xl:w-auto flex-shrink-0"
           >
-            <div className="w-full max-w-[300px] aspect-square bg-[#1a1a1a] rounded-[6px] overflow-hidden border border-[#222222] group mx-auto xl:mx-0">
-                <Image 
-                  src="/profile-2.jpg" 
-                  alt="Professional Portrait"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-            </motion.div>
+            <div className="w-full max-w-[300px] aspect-square bg-[#1a1a1a] rounded-[2px] overflow-hidden border border-[#222222] group mx-auto xl:mx-0">
+              <Image 
+                src="/profile-2.jpg" 
+                alt="Professional Portrait"
+                width={400}
+                height={400}
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
