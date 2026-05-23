@@ -67,14 +67,16 @@ export default function AboutV2() {
             transition={{ ...fadeUp.transition, delay: 0.3 }}
             className="w-full xl:w-auto flex-shrink-0"
           >
-            <div className="w-full max-w-[300px] aspect-square bg-[#1a1a1a] rounded-[2px] overflow-hidden border border-[#222222] group mx-auto xl:mx-0">
+            <div className="w-full max-w-[300px] aspect-square bg-[#1a1a1a] rounded-[2px] overflow-hidden border border-[#222222] group relative mx-auto xl:mx-0">
               <Image 
-                src="/profile-2.png" 
+                src="/profile-2.jpg" 
                 alt="Professional Portrait"
                 width={400}
                 height={400}
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               />
+              {/* Subtle Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
           </motion.div>
         </div>
