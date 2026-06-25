@@ -131,7 +131,7 @@ export default function CredentialsV2() {
             <p className="text-[#888888] text-lg">My resume details my technical journey, full project list, and academic background.</p>
           </div>
           <a 
-            href="https://drive.google.com/file/d/1ZGcrKcseihHjTDNP4_bQo5VXPYTg2oEO/view?usp=drive_link" 
+            href="https://drive.google.com/file/d/1ha5RPXGGp1SDw-8gI4YtqnNVgxUqrkso/view?usp=sharing" 
             target="_blank"
             className="inline-flex items-center gap-3 px-12 py-5 bg-[#ffb300] text-black font-bold rounded-[6px] hover:bg-[#ffc107] transition-all"
           >

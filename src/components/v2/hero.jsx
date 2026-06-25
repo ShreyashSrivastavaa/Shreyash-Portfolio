@@ -122,7 +122,7 @@ export default function HeroV2() {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
-              href="https://drive.google.com/file/d/1ZGcrKcseihHjTDNP4_bQo5VXPYTg2oEO/view?usp=drive_link" 
+              href="https://drive.google.com/file/d/1ha5RPXGGp1SDw-8gI4YtqnNVgxUqrkso/view?usp=sharing" 
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-transparent text-white font-bold rounded-[6px] border border-[#222222] hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2"
