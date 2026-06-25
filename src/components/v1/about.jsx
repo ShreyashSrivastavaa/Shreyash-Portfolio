@@ -18,7 +18,7 @@ export default function About() {
 
                     <div className="space-y-4 text-foreground/80 leading-relaxed">
                         <p>
-                            I&apos;m a final-year Computer Science student and active SDE Intern at JBH Tech Innovation, where I design and ship production-grade backend systems daily. I specialize in RESTful API architecture, database design, and building systems that stay fast under pressure. I don&apos;t just write code that works — I write code that holds up at scale.
+                            I&apos;m a final-year Computer Science student and former SDE Intern at JBH Tech Innovation. Having successfully designed and optimized core backend services during my internship, I am now seeking full-time SDE/Backend opportunities. I specialize in RESTful API architecture, database design, and building systems that stay fast under pressure. I don&apos;t just write code that works — I write code that holds up at scale.
                         </p>
                     </div>
 
@@ -29,7 +29,7 @@ export default function About() {
                         </div>
                         <div>
                             <h4 className="text-2xl font-bold text-accent">1</h4>
-                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Active Internship</p>
+                            <p className="text-sm text-foreground/60 font-medium uppercase tracking-wider">Completed Internship</p>
                         </div>
                         <div>
                             <h4 className="text-2xl font-bold text-primary">2+</h4>

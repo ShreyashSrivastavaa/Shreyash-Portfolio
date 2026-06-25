@@ -64,7 +64,7 @@ export default function HeroV2() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffb300] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ffb300]"></span>
               </span>
-              <span className="text-[#ffb300] text-[10px] font-bold uppercase tracking-wider">Available for Internships & Full-Time Roles</span>
+              <span className="text-[#ffb300] text-[10px] font-bold uppercase tracking-wider">Actively Seeking Full-Time SDE & Backend Roles</span>
             </motion.div>
 
             <motion.h1 
@@ -96,7 +96,7 @@ export default function HeroV2() {
             </div>
             <div className="px-12 md:px-16 border-r border-[#222222] mb-4 md:mb-0">
                <p className="text-2xl font-bold text-white mb-1">1</p>
-               <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">Active<br/>Internship</p>
+               <p className="text-[#888888] text-[10px] uppercase tracking-widest leading-tight">Completed<br/>Internship</p>
             </div>
             <div className="px-12 md:px-16 border-r border-[#222222] mb-4 md:mb-0">
                <p className="text-2xl font-bold text-white mb-1">2+</p>

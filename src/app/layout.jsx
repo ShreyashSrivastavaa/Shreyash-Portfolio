@@ -11,7 +11,7 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export const metadata = {
     metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
     title: "Shreyash Srivastava — Backend Engineer",
-    description: "Final-year CS student and SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
+    description: "Final-year CS student and former SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
     keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],
     authors: [{ name: "Shreyash" }],
     icons: {

@@ -7,7 +7,7 @@ export default function AboutV2() {
   const bio = (
     <>
       Backend Engineer focused on architecting resilient, high-throughput systems. 
-      Currently driving core platform initiatives at JBH Tech Innovation, where I specialize in Node.js, TypeScript, and PostgreSQL ecosystems. 
+      Having successfully designed and optimized core backend services at JBH Tech Innovation, I am now seeking full-time SDE/Backend opportunities. 
       <br /><br />
       I bridge the gap between complex business requirements and scalable technical reality—designing distributed systems that handle real-time data and asynchronous workloads with precision. 
       My approach centers on clean API design, strategic database optimization, and long-term system maintainability.

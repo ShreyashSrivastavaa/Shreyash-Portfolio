@@ -85,7 +85,7 @@ export default function Skills() {
                             <div className="space-y-8 relative z-10">
                                 <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Profile:</span>
-                                    <span className="text-sm md:text-base font-medium text-foreground/80">Backend Engineer & SDE Intern</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">Backend Engineer</span>
                                 </div>
                                 <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Domain:</span>
@@ -96,8 +96,8 @@ export default function Skills() {
                                     <span className="text-sm md:text-base font-medium text-foreground/80">Final Year — Bachelor of Computer Science</span>
                                 </div>
                                 <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
-                                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Location:</span>
-                                    <span className="text-sm md:text-base font-medium text-foreground/80">Active SDE Intern @ JBH Tech Innovation</span>
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Experience:</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">SDE Intern @ JBH Tech Innovation (Completed)</span>
                                 </div>
                                 <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline border-t border-white/5 pt-8">
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-accent">Tech Focus:</span>

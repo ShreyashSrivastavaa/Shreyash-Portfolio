@@ -32,7 +32,7 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                         className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 mt-6 inline-block border border-primary/20"
                     >
-                        Available for Internships & Full-Time Roles
+                        Actively Seeking Full-Time SDE & Backend Roles
                     </motion.span>
 
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
@@ -42,7 +42,7 @@ export default function Hero() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-foreground/70 mb-10 leading-relaxed max-w-xl">
-                        Final-year Computer Science student and Software Development Engineer Intern building scalable backend systems, REST APIs, and data-driven applications.
+                        Final-year Computer Science student and former SDE Intern building scalable backend systems, REST APIs, and data-driven applications.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4">
