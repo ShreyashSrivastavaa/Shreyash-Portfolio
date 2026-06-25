@@ -6,7 +6,7 @@ const EXPERIENCES = [
   {
     company: 'JBH Tech Innovation',
     role: 'SDE Intern',
-    period: 'January 2026 – Present',
+    period: 'December 2025 – May 2026',
     description: [
       'Developing scalable backend systems and RESTful APIs using Node.js and NestJS.',
       'Designed and optimized relational database schemas in PostgreSQL for multi-tenant applications.',
