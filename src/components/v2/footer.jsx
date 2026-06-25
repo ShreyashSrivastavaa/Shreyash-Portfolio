@@ -49,7 +49,7 @@ export default function FooterV2() {
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </a>
           <a
-            href="https://drive.google.com/file/d/15mD3nfV0yp1Q_6zyBOhkop-FnGnNIlOJ/view?usp=sharing"
+            href="https://drive.google.com/file/d/1ZGcrKcseihHjTDNP4_bQo5VXPYTg2oEO/view?usp=drive_link"
             target="_blank"
             className="px-12 py-5 bg-transparent text-white font-bold rounded-[6px] border border-[#222222] hover:bg-white/5 transition-all flex items-center justify-center gap-2"
           >

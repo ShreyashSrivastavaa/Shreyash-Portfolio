@@ -58,7 +58,7 @@ export default function Hero() {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
-                            onClick={() => window.open('https://drive.google.com/file/d/15mD3nfV0yp1Q_6zyBOhkop-FnGnNIlOJ/view?usp=sharing', '_blank')}
+                            onClick={() => window.open('https://drive.google.com/file/d/1ZGcrKcseihHjTDNP4_bQo5VXPYTg2oEO/view?usp=drive_link', '_blank')}
                             className="px-8 py-3 rounded-full border border-foreground/10 hover:bg-foreground/5 font-semibold flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
                         >
                             Download Resume <Download size={20} />
