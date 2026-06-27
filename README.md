@@ -6,7 +6,7 @@
 Engineering high-impact systems for a safer, scalable digital future. This portfolio showcases my journey as a Software Development Engineer, focusing on backend engineering, security, and architectural depth.
 
 ## 🚀 Live Demo
-[shreyash-portfolio.vercel.app](https://shreyash-portfolio.vercel.app)
+[shreyashsrivastava.vercel.app](https://shreyashsrivastava.vercel.app/)
 
 ## 🏗️ Technical Architecture
 
