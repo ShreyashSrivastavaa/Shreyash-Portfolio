@@ -21,10 +21,12 @@ import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 const GLTF_PATH = '/assets/kartu.glb';
-const TEXTURE_PATH = '/assets/bandd.png';
+const BAND_TEXTURE_PATH = '/assets/bandd.png';
+const CARD_TEXTURE_PATH = '/profile.png';
 
 useGLTF.preload(GLTF_PATH);
-useTexture.preload(TEXTURE_PATH);
+useTexture.preload(BAND_TEXTURE_PATH);
+useTexture.preload(CARD_TEXTURE_PATH);
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -129,8 +131,16 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   };
 
   const { nodes, materials } = useGLTF(GLTF_PATH);
-  const texture = useTexture(TEXTURE_PATH);
+  const bandTexture = useTexture(BAND_TEXTURE_PATH);
+  const cardTexture = useTexture(CARD_TEXTURE_PATH);
   const { width, height } = useThree((state) => state.size);
+
+  useEffect(() => {
+    if (cardTexture) {
+      cardTexture.flipY = false;
+      cardTexture.needsUpdate = true;
+    }
+  }, [cardTexture]);
 
   const [curve] = useState(
     () =>
@@ -216,7 +226,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   });
 
   curve.curveType = 'chordal';
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  bandTexture.wrapS = bandTexture.wrapT = THREE.RepeatWrapping;
 
   return (
     <>
@@ -255,7 +265,14 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
             }}
           >
             <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial {...materials.base} />
+              <meshPhysicalMaterial
+                {...materials.base}
+                map={cardTexture}
+                clearcoat={1}
+                clearcoatRoughness={0.15}
+                roughness={0.3}
+                metalness={0.2}
+              />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
@@ -272,7 +289,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
           depthTest={false}
           resolution={[width, height]}
           useMap
-          map={texture}
+          map={bandTexture}
           repeat={[-4, 1]}
           lineWidth={1}
         />

@@ -2,18 +2,18 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "../components/theme-provider.jsx";
-import Navbar from "../components/navbar.jsx";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata = {
     metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
-    title: "Shreyash Srivastava — Backend Engineer",
-    description: "Final-year CS student and former SDE Intern building scalable backend systems, REST APIs, and data-driven applications.",
-    keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "AI", "S.A.F.E", "Phishing Detection", "System Architecture", "Security Engineer", "Prisma", "PostgreSQL", "Docker", "Redis", "Express.js", "Node.js"],
-    authors: [{ name: "Shreyash" }],
+    title: "Shreyash Srivastava — Full-Stack & Backend Engineer",
+    description: "Backend Engineer building scalable systems, REST APIs, and client-first web apps like IHateLovePDF.",
+    keywords: ["Software Engineer", "Full-Stack Developer", "Next.js", "React", "Node.js", "Express.js", "MongoDB", "TypeScript", "IHateLovePDF"],
+    authors: [{ name: "Shreyash Srivastava" }],
     icons: {
         icon: '/app-logo.png?v=3',
         shortcut: '/app-logo.png?v=3',
@@ -23,23 +23,14 @@ export const metadata = {
         type: "website",
         locale: "en_US",
         url: "https://shreyashsrivastava.vercel.app",
-        title: "Shreyash | Software Engineer",
-        description: "Engineering a Safer, Scalable Web. Part of the Team that created S.A.F.E.- AI-powered scam detection.",
+        title: "Shreyash Srivastava | Software Engineer",
+        description: "Full-Stack & Backend Engineer building high-performance scalable web systems.",
         siteName: "Shreyash Portfolio",
-        images: [
-            {
-                url: "/og-image.webp",
-                width: 1200,
-                height: 630,
-                alt: "Shreyash Portfolio - Software Engineer",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Shreyash | Software Engineer",
-        description: "Engineering high-impact platforms for a safer web.",
-        images: ["/og-image.webp"],
+        title: "Shreyash Srivastava | Software Engineer",
+        description: "Full-Stack & Backend Engineer building high-performance scalable web systems.",
     },
     robots: {
         index: true,
@@ -47,38 +38,23 @@ export const metadata = {
     },
 };
 
-
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
-
-import { VersionProvider } from "../context/version-context.jsx";
-import Footer from "../components/v1/footer.jsx";
-
-export default function RootLayout({
-    children,
-}) {
+export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-foreground bg-background`}>
-                <VersionProvider>
-                    <ThemeProvider
-                        attribute="data-theme"
-                        defaultTheme="dark"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <Navbar />
-                        <main className="pt-16">
-                            {children}
-                        </main>
-                        <Footer />
-                    </ThemeProvider>
-                </VersionProvider>
+                <ThemeProvider
+                    attribute="data-theme"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <main className="min-h-screen">
+                        {children}
+                    </main>
+                </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />
             </body>
         </html>
     );
 }
-
-
