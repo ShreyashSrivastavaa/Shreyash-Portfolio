@@ -1,5 +1,32 @@
 [
     {
+        "id": "ihatelovepdf",
+        "title": "IHateLovePDF – All-in-One PDF Suite",
+        "tagline": "i love hate PDF it. – High-performance client-first PDF utility suite.",
+        "icon": "FileText",
+        "iconColor": "text-red-500",
+        "description": "All-in-one PDF utility platform designed to split, merge, compress, convert, edit, unlock, and protect PDF files directly in the browser with maximum security and sub-second processing speeds. Eliminates payload limits and privacy risks.",
+        "problem": "Traditional PDF tools enforce strict payload limits, push aggressive subscription paywalls, and compromise data privacy by uploading sensitive documents to remote cloud servers.",
+        "solution": "Engineered a high-speed, client-first web suite leveraging WebAssembly & Web Workers for 100% private, zero-latency PDF operations directly inside the user's browser.",
+        "metrics": [
+            { "label": "Privacy & Security", "value": "100% Client-Side" },
+            { "label": "File Size Limit", "value": "Unlimited" },
+            { "label": "Processing Speed", "value": "<100ms" }
+        ],
+        "key_features": [
+            "100% Client-side privacy - documents never leave your browser",
+            "Blazing fast PDF merging, splitting, compressing, and watermarking",
+            "Drag & Drop intuitive visual page reordering",
+            "Zero file size caps and zero subscription paywalls",
+            "Real-time visual preview generator powered by WebAssembly"
+        ],
+        "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "PDF-Lib", "WebAssembly", "Web Workers"],
+        "live_url": "https://www.ihatelovepdf.com/",
+        "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
+        "image_url": "/projects/ihatelovepdf.png",
+        "image_urls": ["/projects/ihatelovepdf.png"]
+    },
+    {
         "id": "quickbite",
         "title": "QuickBite – Food Ordering API",
         "tagline": "Scalable food ordering and real-time order tracking backend API.",
@@ -13,9 +40,17 @@
             { "label": "Security", "value": "Helmet/Zod" },
             { "label": "Real-Time", "value": "Socket.io" }
         ],
+        "key_features": [
+            "Real-time order tracking via WebSockets (Socket.io)",
+            "Role-based access control for User, Admin, and Restaurant roles",
+            "Secure authentication using JWT tokens and Bcrypt password hashing",
+            "Comprehensive input validation and rate limiting using Zod & Helmet"
+        ],
         "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Bcrypt"],
-        "github": "https://github.com/ShreyashSrivastavaa/QuickBite",
-        "image": "/projects/hotel-booking.png"
+        "live_url": "",
+        "github_url": "https://github.com/ShreyashSrivastavaa/QuickBite",
+        "image_url": "/projects/hotel-booking.png",
+        "image_urls": ["/projects/hotel-booking.png"]
     },
     {
         "id": "swiperide",
@@ -31,9 +66,17 @@
             { "label": "Driver Sync", "value": "Redis" },
             { "label": "Latency", "value": "<5ms" }
         ],
-        "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API", "Paystack"],
-        "github": "https://github.com/ShreyashSrivastavaa/SwipeRide",
-        "image": "/projects/safe.webp"
+        "key_features": [
+            "Geospatial driver matching using MongoDB 2DSphere indexing",
+            "Redis caching layer for sub-millisecond driver location updates",
+            "Google Maps Distance Matrix API integration for accurate fare estimation",
+            "Integrated payment gateway using Paystack webhook notifications"
+        ],
+        "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API"],
+        "live_url": "",
+        "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
+        "image_url": "/projects/safe.webp",
+        "image_urls": ["/projects/safe.webp"]
     },
     {
         "id": "password-gen",
@@ -49,8 +92,16 @@
             { "label": "Generation Time", "value": "<5ms" },
             { "label": "Libraries", "value": "None" }
         ],
+        "key_features": [
+            "Purely client-side generation ensuring zero server credential leaks",
+            "Dynamic entropy strength indicator based on character set complexity",
+            "One-click instant clipboard copy with auto-clearing security timer",
+            "Fully custom slider UI with zero external runtime dependencies"
+        ],
         "tech": ["HTML", "CSS", "JavaScript"],
-        "github": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator",
-        "image": "/projects/password.webp"
+        "live_url": "",
+        "github_url": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator",
+        "image_url": "/projects/password.webp",
+        "image_urls": ["/projects/password.webp"]
     }
 ]
