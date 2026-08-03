@@ -4,34 +4,37 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const SMART_RESPONSES = {
-  greeting: "Hey there! 👋 Welcome to Shreyash's portfolio. Ask me about his work, skills, or availability!",
-  skills: "Shreyash specializes in **Next.js, Three.js, TypeScript, Python, and AI/ML**. He's also experienced with Node.js, MongoDB, Docker, and WebAssembly.",
-  projects: "His flagship project is **IHateLovePDF** — a privacy-first PDF toolkit at ihatelovepdf.com. He's also built immersive 3D portfolios and AI developer tools.",
-  contact: "Shreyash is currently accepting new projects! 🎯 Use the Contact section below or email shreyash.srivastava.dev@gmail.com.",
-  price: "Pricing depends on project scope and timeline. Reach out via the contact form for a custom quote! 💰",
-  availability: "Shreyash is **available for new projects** and typically responds within 24 hours. 📅",
-  about: "Shreyash is a Full-Stack Developer & Creative Coder who builds immersive digital experiences. 3+ years shipping production apps.",
-  pdf: "**IHateLovePDF** runs 100% client-side — no server uploads, unlimited file size, and blazing fast. Try it at ihatelovepdf.com! 📄",
-  fallback: "Great question! I'd recommend checking the relevant section on the portfolio, or reach out through the contact form. Shreyash would love to chat! 🤝",
+  greeting: "Hey there! 👋 Welcome to Shreyash's portfolio. Ask me anything about his projects, skills, or availability!",
+  skills: "Shreyash specializes in **Next.js, React, Three.js, TypeScript, Python (FastAPI/Flask), and Node.js/Express**. He also works with MongoDB, PostgreSQL, Docker, and AI integrations.",
+  projects: "Shreyash has built several standout projects:\n1. **IHateLovePDF** (ihatelovepdf.com) — A privacy-first, 100% client-side PDF utility suite.\n2. **3D Interactive Portfolios** — Immersive WebGL & Three.js digital experiences.\n3. **Full-Stack SaaS Applications** — High-performance backends with real-time analytics.",
+  work: "Shreyash is a Full-Stack & Backend Engineer with 3+ years of experience building modern web apps, scalable microservices, and creative 3D web experiences. Check out his projects above!",
+  contact: "You can reach Shreyash directly at **shreyashsr2004@gmail.com** ✉️ or via LinkedIn & GitHub in the Contact section below!",
+  price: "Project pricing depends on scope and complexity. Feel free to send details via the contact form or email **shreyashsr2004@gmail.com** for a custom quote!",
+  availability: "Shreyash is currently **open for full-time opportunities and freelance projects**! 🚀",
+  about: "Shreyash Srivastava is a passionate Full-Stack Engineer and Creative Coder who loves bridging code with design and performance.",
+  pdf: "**IHateLovePDF** (https://www.ihatelovepdf.com/) is Shreyash's flagship privacy-focused PDF toolkit. All processing is done locally in your browser with zero server uploads! 📄",
+  fallback: "Shreyash is a Full-Stack & Backend Engineer skilled in Next.js, Node.js, Python, and Three.js. You can email him at **shreyashsr2004@gmail.com** or browse his projects below! 🤝",
 }
 
 function getSmartReply(message) {
-  const msg = message.toLowerCase()
-  if (/^(hi|hello|hey|sup|yo|hola|namaste)/.test(msg)) return SMART_RESPONSES.greeting
-  if (/skill|tech|stack|know|language/.test(msg)) return SMART_RESPONSES.skills
-  if (/project|work|portfolio|built|made/.test(msg)) return SMART_RESPONSES.projects
-  if (/contact|hire|email|reach|freelance/.test(msg)) return SMART_RESPONSES.contact
-  if (/price|cost|rate|budget|charge|how much/.test(msg)) return SMART_RESPONSES.price
-  if (/available|free|busy|schedule|when/.test(msg)) return SMART_RESPONSES.availability
-  if (/about|who|tell me/.test(msg)) return SMART_RESPONSES.about
-  if (/pdf|ihatelovepdf|compress|merge/.test(msg)) return SMART_RESPONSES.pdf
+  const msg = message.toLowerCase().trim()
+
+  if (/\b(pdf|ihatelovepdf|compress|merge|convert)\b/.test(msg)) return SMART_RESPONSES.pdf
+  if (/\b(project|projects|work|built|made|portfolio|showcase|app|apps)\b/.test(msg)) return SMART_RESPONSES.projects
+  if (/\b(skill|skills|tech|stack|know|language|framework|tools)\b/.test(msg)) return SMART_RESPONSES.skills
+  if (/\b(contact|hire|email|reach|freelance|touch|mail)\b/.test(msg)) return SMART_RESPONSES.contact
+  if (/\b(price|cost|rate|budget|charge|quote)\b/.test(msg)) return SMART_RESPONSES.price
+  if (/\b(available|availability|free|busy|schedule|open|hiring)\b/.test(msg)) return SMART_RESPONSES.availability
+  if (/\b(about|who|experience|background|bio)\b/.test(msg)) return SMART_RESPONSES.about
+  if (/^\b(hi|hello|hey|sup|yo|hola|namaste|greetings)\b/i.test(msg)) return SMART_RESPONSES.greeting
+
   return SMART_RESPONSES.fallback
 }
 
 export default function AIChatbot() {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { role: 'bot', text: "Hi! 👋 I'm Shreyash's AI assistant. Ask me anything about his work!" },
+    { role: 'bot', text: "Hi! 👋 I'm Shreyash's AI assistant. Ask me anything about his work, skills, or projects!" },
   ])
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)
@@ -54,7 +57,6 @@ export default function AIChatbot() {
     setInput('')
     setTyping(true)
 
-    // Try backend first, fall back to local
     let reply
     try {
       const res = await fetch('/api/chat', {
@@ -67,13 +69,12 @@ export default function AIChatbot() {
         reply = data.reply
       }
     } catch {
-      // Backend not available — use local
+      // Backend offline fallback
     }
 
     if (!reply) reply = getSmartReply(text)
 
-    // Simulate typing delay
-    await new Promise((r) => setTimeout(r, 600 + Math.random() * 400))
+    await new Promise((r) => setTimeout(r, 400 + Math.random() * 300))
 
     setTyping(false)
     setMessages((prev) => [...prev, { role: 'bot', text: reply }])
@@ -193,6 +194,7 @@ export default function AIChatbot() {
                     fontSize: 13,
                     lineHeight: 1.6,
                     color: 'var(--text-secondary)',
+                    whiteSpace: 'pre-line',
                   }}
                 >
                   {msg.text}

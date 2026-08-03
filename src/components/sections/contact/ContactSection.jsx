@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 export default function ContactSection() {
   const [copied, setCopied] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const emailAddress = 'shreyash.srivastava.dev@gmail.com'
+  const emailAddress = 'shreyashsr2004@gmail.com'
 
   const copyEmail = () => {
     navigator.clipboard.writeText(emailAddress)
