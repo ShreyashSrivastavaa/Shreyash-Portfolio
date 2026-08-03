@@ -4,10 +4,18 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import AnimatedBackground from '@/components/AnimatedBackground'
+import CustomCursor from '@/components/CustomCursor'
+import ScrollProgress from '@/components/ScrollProgress'
+import ScrollToTop from '@/components/ScrollToTop'
+import AIChatbot from '@/components/AIChatbot'
+import Footer from '@/components/Footer'
 import Navbar from '@/components/ui/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import PortfolioShowcase from '@/components/sections/PortfolioShowcase'
+import ProcessSection from '@/components/sections/ProcessSection'
+import SkillsSection from '@/components/sections/SkillsSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ContactSection from '@/components/sections/contact/ContactSection'
 import WelcomeScreen from '@/components/WelcomeScreen'
 
@@ -68,6 +76,9 @@ export default function Home() {
 
   return (
     <main style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Global enhancements */}
+      <CustomCursor />
+      <ScrollProgress />
       <AnimatedBackground />
 
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -75,9 +86,18 @@ export default function Home() {
         <Hero showApp={showApp} />
         <About />
         <PortfolioShowcase />
+        <ProcessSection />
+        <SkillsSection />
+        <TestimonialsSection />
         <ContactSection />
+        <Footer />
       </div>
 
+      {/* Floating widgets */}
+      <ScrollToTop />
+      <AIChatbot />
+
+      {/* Welcome screen overlay */}
       <AnimatePresence>
         {showWelcome && (
           <motion.div
