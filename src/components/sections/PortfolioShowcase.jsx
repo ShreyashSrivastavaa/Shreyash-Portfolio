@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronDown, ChevronUp } from 'lucide-react'
 import PortfolioCard from './PortfolioCard'
@@ -19,7 +19,6 @@ export default function PortfolioShowcase() {
   const projects = projectsData
   const certificates = certificatesData
   
-  // Extract all unique skills into tech stack items
   const techStacks = skillsData.skillCategories.flatMap((cat, idx) =>
     cat.skills.map((skill, sIdx) => ({
       id: `${idx}-${sIdx}`,
@@ -32,6 +31,16 @@ export default function PortfolioShowcase() {
     ? projects
     : projects.slice(0, 3)
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setPreviewOpen(false)
+    }
+    if (previewOpen) {
+      window.addEventListener('keydown', handleKeyDown)
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [previewOpen])
+
   return (
     <>
       {/* IMAGE PREVIEW LIGHTBOX */}
@@ -41,13 +50,18 @@ export default function PortfolioShowcase() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center px-6"
+            onClick={() => setPreviewOpen(false)}
+            className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center px-6 cursor-pointer"
           >
             <button
-              onClick={() => setPreviewOpen(false)}
-              className="absolute top-6 right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation()
+                setPreviewOpen(false)
+              }}
+              className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition cursor-pointer z-[1000]"
+              title="Close (Esc)"
             >
-              <X size={18} />
+              <X size={22} />
             </button>
 
             <motion.img
@@ -55,9 +69,10 @@ export default function PortfolioShowcase() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               transition={{ duration: 0.35 }}
+              onClick={(e) => e.stopPropagation()}
               src={previewImage}
               alt="Preview"
-              className="max-w-[88vw] max-h-[88vh] rounded-3xl object-contain"
+              className="max-w-[88vw] max-h-[88vh] rounded-3xl object-contain shadow-2xl cursor-default"
             />
           </motion.div>
         )}
