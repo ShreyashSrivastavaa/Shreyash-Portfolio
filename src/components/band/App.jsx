@@ -138,8 +138,15 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   useEffect(() => {
     if (materials?.base && cardTexture) {
       cardTexture.flipY = false;
+      if ('colorSpace' in cardTexture) {
+        cardTexture.colorSpace = THREE.SRGBColorSpace;
+      } else {
+        cardTexture.encoding = THREE.sRGBEncoding;
+      }
       cardTexture.needsUpdate = true;
       materials.base.map = cardTexture;
+      materials.base.roughness = 0.35;
+      materials.base.metalness = 0.05;
       materials.base.needsUpdate = true;
     }
   }, [materials, cardTexture]);
