@@ -141,7 +141,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
       if ('colorSpace' in cardTexture) {
         cardTexture.colorSpace = THREE.SRGBColorSpace;
       } else {
-        cardTexture.encoding = THREE.sRGBEncoding;
+        cardTexture.encoding = 3001; // fallback for older versions without sRGBEncoding export
       }
       cardTexture.needsUpdate = true;
       materials.base.map = cardTexture;
