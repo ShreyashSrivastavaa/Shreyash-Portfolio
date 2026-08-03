@@ -22,7 +22,7 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 
 const GLTF_PATH = '/assets/kartu.glb';
 const BAND_TEXTURE_PATH = '/assets/bandd.png';
-const CARD_TEXTURE_PATH = '/profile.png';
+const CARD_TEXTURE_PATH = '/assets/card_texture.png';
 
 useGLTF.preload(GLTF_PATH);
 useTexture.preload(BAND_TEXTURE_PATH);
@@ -136,11 +136,13 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   const { width, height } = useThree((state) => state.size);
 
   useEffect(() => {
-    if (cardTexture) {
+    if (materials?.base && cardTexture) {
       cardTexture.flipY = false;
       cardTexture.needsUpdate = true;
+      materials.base.map = cardTexture;
+      materials.base.needsUpdate = true;
     }
-  }, [cardTexture]);
+  }, [materials, cardTexture]);
 
   const [curve] = useState(
     () =>
@@ -264,16 +266,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
               );
             }}
           >
-            <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial
-                {...materials.base}
-                map={cardTexture}
-                clearcoat={1}
-                clearcoatRoughness={0.15}
-                roughness={0.3}
-                metalness={0.2}
-              />
-            </mesh>
+            <mesh geometry={nodes.card.geometry} material={materials.base} />
             <mesh geometry={nodes.clip.geometry} material={materials.metal} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
           </group>
