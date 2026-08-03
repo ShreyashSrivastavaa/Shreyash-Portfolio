@@ -116,7 +116,7 @@ export default function ContactSection() {
               </a>
 
               <a
-                href="https://linkedin.com/in/shreyashsrivastava"
+                href="https://www.linkedin.com/in/shreyashsrivastavaa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.04] hover:bg-white/10 transition text-xs text-white/80 hover:text-white"

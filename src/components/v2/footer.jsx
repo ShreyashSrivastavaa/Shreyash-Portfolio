@@ -12,7 +12,7 @@ export default function FooterV2() {
 
   const socialLinks = [
     { name: 'GitHub', href: 'https://github.com/ShreyashSrivastavaa', icon: <Github size={20} /> },
-    { name: 'LinkedIn', href: 'https://linkedin.com/in/shreyash-srivastava-310652273', icon: <Linkedin size={20} /> },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/shreyashsrivastavaa', icon: <Linkedin size={20} /> },
     { name: 'LeetCode', href: 'https://leetcode.com/u/NotRambo', icon: <Terminal size={20} /> }
   ];
 
