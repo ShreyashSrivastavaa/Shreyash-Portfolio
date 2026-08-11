@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, ExternalLink, Github } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -19,139 +19,162 @@ export default function PortfolioCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.65, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       style={{
         position: 'relative',
-        borderRadius: 26,
-        border: `1px solid ${hovered ? 'rgba(230,57,70,0.3)' : 'rgba(255,255,255,0.08)'}`,
+        borderRadius: 22,
+        border: `1px solid ${hovered ? 'rgba(230,57,70,0.28)' : 'rgba(255,255,255,0.07)'}`,
         background: 'rgba(255,255,255,0.025)',
         backdropFilter: 'blur(20px)',
         overflow: 'hidden',
         cursor: 'pointer',
-        transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+        transition: 'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
         boxShadow: hovered
-          ? '0 0 0 1px rgba(230,57,70,0.1), 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(230,57,70,0.1)'
-          : '0 4px 24px rgba(0,0,0,0.3)',
-        display: 'flex', flexDirection: 'column',
+          ? '0 0 0 1px rgba(230,57,70,0.08), 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(230,57,70,0.08)'
+          : '0 2px 16px rgba(0,0,0,0.25)',
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        minHeight: 360,
       }}
     >
-      {/* Inner top gradient shimmer */}
+      {/* Top shimmer line */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0,
         height: 1,
-        background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)',
+        background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)',
         pointerEvents: 'none',
       }} />
 
-      {/* Image */}
+      {/* ── IMAGE ── */}
       <div style={{
-        width: '100%', height: 192,
+        width: '100%', height: 190,
         overflow: 'hidden',
         position: 'relative',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        flexShrink: 0,
+        background: 'rgba(255,255,255,0.03)',
       }}>
         {image ? (
           <>
             <motion.img
               src={image}
               alt={title}
-              animate={{ scale: hovered ? 1.07 : 1 }}
+              animate={{ scale: hovered ? 1.06 : 1 }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
-            {/* Image overlay */}
             <motion.div
               animate={{ opacity: hovered ? 1 : 0 }}
               transition={{ duration: 0.3 }}
               style={{
                 position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(5,5,8,0.7) 0%, transparent 60%)',
+                background: 'linear-gradient(to top, rgba(5,5,8,0.55) 0%, transparent 55%)',
               }}
             />
           </>
         ) : (
           <div style={{
             width: '100%', height: '100%',
-            background: 'linear-gradient(135deg, rgba(230,57,70,0.06) 0%, rgba(5,5,8,0.4) 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: 'linear-gradient(135deg, rgba(230,57,70,0.06) 0%, rgba(5,5,8,0.5) 100%)',
           }}>
             <span style={{
-              fontFamily: 'var(--font-heading)', fontSize: 32, fontWeight: 900,
-              color: 'transparent', WebkitTextStroke: '1px rgba(230,57,70,0.2)',
+              fontFamily: 'var(--font-heading)', fontSize: 48, fontWeight: 900,
+              color: 'transparent',
+              WebkitTextStroke: '1px rgba(230,57,70,0.25)',
             }}>
               {title.charAt(0)}
             </span>
           </div>
         )}
 
-        {/* Live badge */}
+        {/* LIVE badge */}
         {live_url && (
           <div style={{
-            position: 'absolute', top: 12, right: 12,
+            position: 'absolute', top: 10, right: 10,
+            display: 'flex', alignItems: 'center', gap: 5,
             padding: '4px 10px', borderRadius: 999,
-            background: 'rgba(5,5,8,0.8)',
-            border: '1px solid rgba(230,57,70,0.35)',
-            fontSize: 10, fontFamily: 'var(--font-mono)',
-            color: 'var(--accent-red)', backdropFilter: 'blur(10px)',
-            letterSpacing: '0.08em',
+            background: 'rgba(5,5,8,0.82)',
+            border: '1px solid rgba(230,57,70,0.4)',
+            backdropFilter: 'blur(10px)',
           }}>
-            LIVE
+            <span style={{
+              width: 6, height: 6, borderRadius: '50%',
+              background: 'var(--accent-red)',
+              boxShadow: '0 0 6px rgba(230,57,70,0.8)',
+              display: 'inline-block',
+            }} />
+            <span style={{
+              fontSize: 9, fontFamily: 'var(--font-mono)',
+              color: 'var(--accent-red)', letterSpacing: '0.1em',
+            }}>LIVE</span>
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+      {/* ── CONTENT ── */}
+      <div style={{
+        padding: '18px 20px 20px',
+        display: 'flex', flexDirection: 'column',
+        flex: 1,
+        gap: 10,
+      }}>
+        {/* Title */}
         <h3 style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 16, fontWeight: 700, lineHeight: 1.3,
-          color: 'var(--text-sand)', marginBottom: 8,
+          fontSize: 15, fontWeight: 700, lineHeight: 1.3,
+          color: 'var(--text-sand)',
+          margin: 0,
         }}>
           {title}
         </h3>
 
+        {/* Description */}
         <p style={{
           fontSize: 13, color: 'var(--text-secondary)',
-          lineHeight: 1.7, marginBottom: 14,
-          display: '-webkit-box', WebkitLineClamp: 2,
-          WebkitBoxOrient: 'vertical', overflow: 'hidden',
+          lineHeight: 1.65, margin: 0,
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
         }}>
           {description}
         </p>
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
-            {tags.slice(0, 4).map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  padding: '3px 10px', borderRadius: 999,
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  fontSize: 10, fontFamily: 'var(--font-mono)',
-                  color: 'var(--text-muted)', letterSpacing: '0.04em',
-                }}
-              >
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+            {tags.slice(0, 3).map((tag) => (
+              <span key={tag} style={{
+                padding: '3px 9px', borderRadius: 999,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                fontSize: 10, fontFamily: 'var(--font-mono)',
+                color: 'var(--text-muted)', letterSpacing: '0.03em',
+              }}>
                 {tag}
               </span>
             ))}
           </div>
         )}
 
-        {/* Actions */}
-        <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        {/* ── ACTION ROW — pinned to bottom ── */}
+        <div style={{
+          display: 'flex', alignItems: 'center',
+          justifyContent: 'space-between',
+          marginTop: 'auto',
+          paddingTop: 12,
+          borderTop: '1px solid rgba(255,255,255,0.05)',
+        }}>
           {live_url ? (
             <motion.a
               href={live_url}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ x: 3 }}
+              whileHover={{ x: 2 }}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 display: 'flex', alignItems: 'center', gap: 5,
                 fontSize: 12, fontWeight: 600,
@@ -160,46 +183,48 @@ export default function PortfolioCard({
                 fontFamily: 'var(--font-heading)',
               }}
             >
-              <ExternalLink size={13} />
+              <ExternalLink size={12} />
               Live Demo
             </motion.a>
           ) : (
             <span style={{
-              fontSize: 11, color: 'var(--text-muted)',
-              fontFamily: 'var(--font-mono)', letterSpacing: '0.06em',
+              fontSize: 10, color: 'var(--text-muted)',
+              fontFamily: 'var(--font-mono)', letterSpacing: '0.08em',
+              textTransform: 'uppercase',
             }}>
-              BACKEND API
+              Backend API
             </span>
           )}
 
           {id && (
             <motion.button
-              whileHover={{ scale: 1.05, x: 2 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ x: 2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => router.push(`/portfolio/${id}`)}
               style={{
-                padding: '7px 16px', borderRadius: 999,
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
+                display: 'flex', alignItems: 'center', gap: 5,
+                padding: '6px 14px', borderRadius: 8,
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
                 color: 'var(--text-secondary)',
-                fontSize: 12, fontWeight: 600, cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: 6,
-                transition: 'var(--transition)',
+                fontSize: 12, fontWeight: 600,
                 fontFamily: 'var(--font-heading)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(230,57,70,0.12)'
-                e.currentTarget.style.borderColor = 'rgba(230,57,70,0.35)'
+                e.currentTarget.style.background = 'rgba(230,57,70,0.1)'
+                e.currentTarget.style.borderColor = 'rgba(230,57,70,0.3)'
                 e.currentTarget.style.color = 'var(--text-sand)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'
+                e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
                 e.currentTarget.style.color = 'var(--text-secondary)'
               }}
             >
               Details
-              <ArrowRight size={12} />
+              <ArrowRight size={11} />
             </motion.button>
           )}
         </div>
