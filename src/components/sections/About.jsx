@@ -60,12 +60,11 @@ export default function About() {
   if (isMobile === null) return null;
 
   const projectCount = projectsData.length;
-  const certificateCount = 3;
 
   const stats = [
     { icon: <Code size={16} />, value: String(projectCount), title: "PROJECTS" },
-    { icon: <Award size={16} />, value: String(certificateCount), title: "CERTIFICATES" },
-    { icon: <Globe size={16} />, value: String(projectCount + certificateCount), title: "COMPLETED WORKS" },
+    { icon: <Globe size={16} />, value: "100%", title: "CLIENT SATISFACTION" },
+    { icon: <Award size={16} />, value: "2+", title: "YEARS EXP" },
   ];
 
   return (

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronDown, ChevronUp } from 'lucide-react'
 import PortfolioCard from './PortfolioCard'
 import projectsData from '@/data/projects.json'
-import certificatesData from '@/data/certificates.json'
 import skillsData from '@/data/skills.json'
 
 const smoothEase = [0.22, 1, 0.36, 1]
@@ -17,7 +16,6 @@ export default function PortfolioShowcase() {
   const [showAllProjects, setShowAllProjects] = useState(false)
 
   const projects = projectsData
-  const certificates = certificatesData
   
   const techStacks = skillsData.skillCategories.flatMap((cat, idx) =>
     cat.skills.map((skill, sIdx) => ({
@@ -145,15 +143,15 @@ export default function PortfolioShowcase() {
           </h2>
 
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 480, margin: '0 auto', fontSize: 14 }}>
-            Explore my engineering work through featured projects,
-            certifications, and technical skill stacks.
+            Explore my engineering work through featured projects
+            and technical skill stacks.
           </p>
         </motion.div>
 
         {/* TAB BUTTONS */}
         <div className="flex justify-center mb-10" style={{ position: 'relative', zIndex: 1 }}>
           <div className="w-full max-w-3xl rounded-full border border-white/10 bg-white/5 p-2 flex gap-2 backdrop-blur-xl">
-            {['projects', 'certificates', 'techstack'].map((tab) => (
+            {['projects', 'techstack'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => {
@@ -178,11 +176,7 @@ export default function PortfolioShowcase() {
                   outline: activeTab === tab ? '1px solid rgba(230,57,70,0.2)' : 'none',
                 }}
               >
-                {tab === 'projects'
-                  ? 'Projects'
-                  : tab === 'certificates'
-                  ? 'Certificates'
-                  : 'Tech Stack'}
+                {tab === 'projects' ? 'Projects' : 'Tech Stack'}
               </button>
             ))}
           </div>
@@ -276,40 +270,7 @@ export default function PortfolioShowcase() {
               </div>
             )}
 
-            {/* CERTIFICATES TAB */}
-            {activeTab === 'certificates' && (
-              <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 px-1">
-                {certificates.map((item, i) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 25, scale: 0.96 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.5, delay: i * 0.04 }}
-                    whileHover={{ y: -4 }}
-                    onClick={() => {
-                      setPreviewImage(item.image_url)
-                      setPreviewOpen(true)
-                    }}
-                    className="group cursor-pointer rounded-[26px] border border-white/10 bg-white/5 p-4 backdrop-blur-xl"
-                  >
-                    <div className="rounded-2xl overflow-hidden border border-white/10 h-56">
-                      <img
-                        src={item.image_url}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                      />
-                    </div>
 
-                    <h3 className="mt-4 text-[15px] font-semibold text-center text-white/90">
-                      {item.title}
-                    </h3>
-                    <p className="text-[12px] text-center text-white/40 mt-1">
-                      {item.issuer}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            )}
 
             {/* TECH STACK TAB */}
             {activeTab === 'techstack' && (
