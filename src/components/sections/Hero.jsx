@@ -61,17 +61,25 @@ export default function Hero({ showApp }) {
           zIndex: 0,
         }}
       >
-        <img
-          src="/shreyash-hero.png"
-          alt="Hero Background"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center top",
-            display: "block",
-          }}
-        />
+        <picture>
+          {/* Desktop / Laptop — wide landscape shot */}
+          <source
+            srcSet="/bg-laptop-clean.png"
+            media="(min-width: 768px)"
+          />
+          {/* Mobile — portrait crop */}
+          <img
+            src="/bg-phone-clean.png"
+            alt="Hero Background"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center center",
+              display: "block",
+            }}
+          />
+        </picture>
 
         {/* Overlays */}
         <div className="hero-bg-overlay-left" />
