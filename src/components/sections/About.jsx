@@ -302,7 +302,7 @@ export default function About() {
               style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}
             >
               <a
-                href="/Shreyash_Resume.pdf"
+                href="https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -330,7 +330,7 @@ export default function About() {
                 }}
               >
                 <FileText size={14} />
-                Download CV
+                View Resume
               </a>
 
               <button
