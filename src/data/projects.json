@@ -75,8 +75,8 @@
         "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API"],
         "live_url": "",
         "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
-        "image_url": "/projects/safe.webp",
-        "image_urls": ["/projects/safe.webp"]
+        "image_url": "/projects/swiperide.png",
+        "image_urls": ["/projects/swiperide.png"]
     },
     {
         "id": "password-gen",
