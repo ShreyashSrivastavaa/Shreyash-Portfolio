@@ -111,7 +111,7 @@ export default function About() {
             gap: "40px",
           }}
         >
-          {/* PORTRAIT CARD */}
+          {/* PORTRAIT CARD — Real "A-OK" Photo */}
           {!isMobile && (
             <motion.div
               variants={slideLeft}
@@ -120,7 +120,7 @@ export default function About() {
               viewport={{ once: false }}
               style={{
                 flexShrink: 0,
-                width: "42%",
+                width: "44%",
                 display: "flex",
                 justifyContent: "flex-start",
               }}
@@ -128,68 +128,53 @@ export default function About() {
               <div
                 style={{
                   position: "relative",
-                  borderRadius: 28,
+                  borderRadius: 26,
                   overflow: "hidden",
-                  border: "1px solid rgba(230,57,70,0.2)",
-                  boxShadow: "0 0 60px rgba(230,57,70,0.1), 0 20px 60px rgba(0,0,0,0.4)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  boxShadow:
+                    "0 0 0 1px rgba(230,57,70,0.15), 0 32px 80px rgba(0,0,0,0.7), 0 0 60px rgba(193,18,31,0.2)",
                   width: "100%",
-                  maxWidth: 420,
+                  maxWidth: 400,
                   aspectRatio: "3/4",
                 }}
               >
+                {/* The real photo — use cover since image already has bokeh bg */}
                 <img
-                  src="/shreyash-about.png"
+                  src="/shreyash-bg-clean.png"
                   alt="Shreyash Srivastava"
                   style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
+                    objectPosition: "center top",
                     display: "block",
                   }}
                 />
-                {/* Red accent overlay */}
+
+                {/* Subtle bottom vignette to blend into section */}
                 <div
                   style={{
                     position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(to top, rgba(230,57,70,0.12) 0%, transparent 60%)",
+                    bottom: 0, left: 0, right: 0,
+                    height: "25%",
+                    background: "linear-gradient(to top, rgba(5,3,5,0.6) 0%, transparent 100%)",
                     pointerEvents: "none",
                   }}
                 />
-                {/* Floating name badge */}
+
+                {/* "S-OK" tag — top right */}
                 <div
                   style={{
                     position: "absolute",
-                    bottom: 20,
-                    left: 20,
-                    background: "rgba(7,7,13,0.88)",
-                    backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(230,57,70,0.25)",
-                    borderRadius: 14,
-                    padding: "10px 16px",
+                    top: 16, right: 16,
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 10,
+                    letterSpacing: "0.12em",
+                    color: "rgba(255,255,255,0.28)",
+                    userSelect: "none",
                   }}
                 >
-                  <div
-                    style={{
-                      fontSize: 14,
-                      fontWeight: 700,
-                      color: "var(--text-sand)",
-                      fontFamily: "var(--font-heading)",
-                    }}
-                  >
-                    Shreyash Srivastava
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      color: "var(--text-muted)",
-                      fontFamily: "var(--font-mono)",
-                      marginTop: 2,
-                    }}
-                  >
-                    Backend Engineer · Noida, India
-                  </div>
+                  S-OK
                 </div>
               </div>
             </motion.div>
