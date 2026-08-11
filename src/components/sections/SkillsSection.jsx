@@ -3,39 +3,59 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
+const services = [
+  {
+    icon: '⚡',
+    title: 'Backend API Engineering',
+    description:
+      'Designing and building blazing-fast REST & GraphQL APIs with Node.js, Express, and FastAPI. Clean architecture, layered error handling, and sub-millisecond performance.',
+    tags: ['Node.js', 'Express', 'FastAPI', 'REST', 'GraphQL'],
+  },
+  {
+    icon: '🗄️',
+    title: 'Database Architecture',
+    description:
+      'Schema design, query optimization, and scalable data layer setup using MongoDB, PostgreSQL, Redis — with caching strategies that dramatically cut response times.',
+    tags: ['MongoDB', 'PostgreSQL', 'Redis', 'Indexing', 'Caching'],
+  },
+  {
+    icon: '⚛️',
+    title: 'Frontend Development',
+    description:
+      'Building modern, responsive client-side applications with React and Next.js. Pixel-perfect UI, smooth animations, and excellent performance metrics.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Framer Motion', 'CSS'],
+  },
+  {
+    icon: '🐳',
+    title: 'DevOps & Deployment',
+    description:
+      'Containerizing services with Docker, setting up CI/CD pipelines, and deploying on cloud infrastructure — for systems that scale without babysitting.',
+    tags: ['Docker', 'AWS', 'Vercel', 'CI/CD', 'GitHub Actions'],
+  },
+  {
+    icon: '🔮',
+    title: 'AI / LLM Integration',
+    description:
+      'Integrating LLM-powered features, building AI chatbots, and wiring intelligent automation into products using OpenAI, Gemini, and custom ML pipelines.',
+    tags: ['OpenAI', 'Gemini', 'LangChain', 'RAG', 'Embeddings'],
+  },
+  {
+    icon: '🎨',
+    title: 'Creative Tools & WebAssembly',
+    description:
+      'Building performance-critical browser tools with WebAssembly, Three.js, and Canvas — like IHateLovePDF — where native speed meets web accessibility.',
+    tags: ['WebAssembly', 'Three.js', 'Canvas', 'PDF.js', 'WASM'],
+  },
+]
+
 const skillBars = [
-  { label: 'Frontend (React / Next.js)', pct: 95 },
   { label: 'Backend (Node / Express / FastAPI)', pct: 90 },
-  { label: '3D & Creative Coding (Three.js)', pct: 80 },
+  { label: 'Frontend (React / Next.js)', pct: 85 },
+  { label: 'Database Design & Optimization', pct: 88 },
   { label: 'AI / ML Integration', pct: 75 },
   { label: 'DevOps & Cloud (Docker / AWS)', pct: 72 },
-  { label: 'UI/UX Design (Figma)', pct: 85 },
+  { label: 'Creative Coding (Three.js / WASM)', pct: 78 },
 ]
-
-const techBadges = [
-  { icon: '⚛️', name: 'React / Next.js' },
-  { icon: '🟦', name: 'TypeScript' },
-  { icon: '🟢', name: 'Node.js' },
-  { icon: '🐍', name: 'Python' },
-  { icon: '🎲', name: 'Three.js' },
-  { icon: '🍃', name: 'MongoDB' },
-  { icon: '🐳', name: 'Docker' },
-  { icon: '☁️', name: 'AWS / Vercel' },
-  { icon: '🔮', name: 'AI / LLMs' },
-  { icon: '🎨', name: 'Figma' },
-  { icon: '🗄️', name: 'PostgreSQL' },
-  { icon: '⚡', name: 'WebAssembly' },
-]
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 35, filter: 'blur(8px)' },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-}
 
 export default function SkillsSection() {
   const [isMobile, setIsMobile] = useState(false)
@@ -57,7 +77,7 @@ export default function SkillsSection() {
           observer.disconnect()
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
@@ -69,154 +89,237 @@ export default function SkillsSection() {
       id="skills"
       style={{
         padding: isMobile ? '80px 24px' : '120px 60px 120px 120px',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
-      >
-        <motion.span
-          variants={fadeUp}
-          style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: 12,
-            color: 'var(--text-muted)',
-            letterSpacing: '0.2em',
-          }}
-        >
-          MY TOOLKIT
-        </motion.span>
+      {/* Background Watermark */}
+      <span className="section-watermark-left" aria-hidden="true" style={{ top: 20 }}>
+        WHAT I DO
+      </span>
 
-        <motion.h2
-          variants={fadeUp}
-          style={{
-            fontSize: isMobile ? 32 : 'clamp(32px, 5vw, 48px)',
-            fontWeight: 800,
-            lineHeight: 1.05,
-            marginTop: 12,
-            marginBottom: 48,
-          }}
-        >
-          Skills &<br />
-          <span style={{ color: 'var(--text-secondary)' }}>Technologies</span>
-        </motion.h2>
-      </motion.div>
-
-      {/* Tech badges grid */}
+      {/* Ambient orb */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(6, 1fr)',
-          gap: 14,
-          marginBottom: 56,
+          position: 'absolute',
+          bottom: '10%',
+          left: '-80px',
+          width: 400,
+          height: 400,
+          background: 'radial-gradient(circle, rgba(230,57,70,0.07) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
+          zIndex: 0,
         }}
-      >
-        {techBadges.map((badge, i) => (
-          <motion.div
-            key={badge.name}
-            className="skill-badge-wrap"
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.04 }}
-            whileHover={{ y: -6, scale: 1.05 }}
+      />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{ marginBottom: 56 }}
+        >
+          <span
             style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: 16,
-              padding: '18px 12px',
-              textAlign: 'center',
-              cursor: 'pointer',
-              transition: 'border-color 0.3s, box-shadow 0.3s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
-              e.currentTarget.style.boxShadow = '0 0 28px rgba(255,255,255,0.08)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border)'
-              e.currentTarget.style.boxShadow = 'none'
+              fontFamily: 'var(--font-mono)',
+              fontSize: 12,
+              color: 'var(--text-muted)',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
             }}
           >
-            <span style={{ fontSize: 28, display: 'block', marginBottom: 8 }}>
-              {badge.icon}
-            </span>
+            MY TOOLKIT
+          </span>
+
+          <h2
+            style={{
+              fontSize: isMobile ? 32 : 'clamp(32px, 5vw, 48px)',
+              fontWeight: 800,
+              lineHeight: 1.05,
+              marginTop: 12,
+              fontFamily: 'var(--font-heading)',
+            }}
+          >
+            <span style={{ color: 'var(--text-sand)' }}>What I Build</span>
+            <br />
             <span
               style={{
-                fontSize: 11,
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-                color: 'var(--text-secondary)',
+                color: 'transparent',
+                WebkitTextStroke: '1.5px rgba(255,255,255,0.6)',
               }}
             >
-              {badge.name}
+              & How I Do It
             </span>
-          </motion.div>
-        ))}
-      </div>
+          </h2>
+        </motion.div>
 
-      {/* Skill bars */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-          gap: isMobile ? 20 : 40,
-        }}
-      >
-        {skillBars.map((skill, i) => (
-          <motion.div
-            key={skill.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.06 }}
-            style={{ marginBottom: 8 }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginBottom: 6,
-                fontSize: 13,
-              }}
+        {/* Service Cards Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            gap: 20,
+            marginBottom: 72,
+          }}
+        >
+          {services.map((service, i) => (
+            <motion.div
+              key={service.title}
+              className="service-card"
+              initial={{ opacity: 0, y: 30, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
             >
-              <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
-                {skill.label}
-              </span>
-              <span
+              {/* Ghost number */}
+              <span className="service-number">0{i + 1}</span>
+
+              {/* Icon */}
+              <div
                 style={{
-                  fontFamily: "'DM Mono', monospace",
-                  color: 'var(--text-muted)',
-                  fontSize: 12,
+                  fontSize: 30,
+                  marginBottom: 14,
+                  display: 'block',
                 }}
               >
-                {skill.pct}%
-              </span>
-            </div>
-            <div
-              style={{
-                height: 5,
-                background: 'rgba(255,255,255,0.08)',
-                borderRadius: 999,
-                overflow: 'hidden',
-              }}
+                {service.icon}
+              </div>
+
+              {/* Title */}
+              <h3
+                style={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  marginBottom: 10,
+                  color: 'var(--text-sand)',
+                  fontFamily: 'var(--font-heading)',
+                  lineHeight: 1.3,
+                  paddingRight: 40,
+                }}
+              >
+                {service.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                style={{
+                  fontSize: 13,
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.75,
+                  marginBottom: 16,
+                }}
+              >
+                {service.description}
+              </p>
+
+              {/* Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 10,
+                      padding: '3px 10px',
+                      borderRadius: 999,
+                      background: 'rgba(230,57,70,0.1)',
+                      border: '1px solid rgba(230,57,70,0.2)',
+                      color: 'var(--text-muted)',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Skill Bars */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          style={{ marginBottom: 12 }}
+        >
+          <h3
+            style={{
+              fontSize: isMobile ? 22 : 28,
+              fontWeight: 700,
+              marginBottom: 32,
+              color: 'var(--text-sand)',
+              fontFamily: 'var(--font-heading)',
+            }}
+          >
+            Proficiency Levels
+          </h3>
+        </motion.div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? 20 : 40,
+          }}
+        >
+          {skillBars.map((skill, i) => (
+            <motion.div
+              key={skill.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              style={{ marginBottom: 8 }}
             >
               <div
                 style={{
-                  height: '100%',
-                  width: visible ? `${skill.pct}%` : '0%',
-                  background: 'linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.7))',
-                  borderRadius: 999,
-                  transition: 'width 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                  transitionDelay: `${i * 0.1}s`,
-                  boxShadow: '0 0 10px rgba(255,255,255,0.2)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  marginBottom: 8,
+                  fontSize: 13,
                 }}
-              />
-            </div>
-          </motion.div>
-        ))}
+              >
+                <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>{skill.label}</span>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    color: 'var(--accent-red)',
+                    fontSize: 12,
+                    fontWeight: 600,
+                  }}
+                >
+                  {skill.pct}%
+                </span>
+              </div>
+              <div
+                style={{
+                  height: 4,
+                  background: 'rgba(255,255,255,0.06)',
+                  borderRadius: 999,
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    height: '100%',
+                    width: visible ? `${skill.pct}%` : '0%',
+                    background: 'linear-gradient(90deg, var(--accent-crimson), var(--accent-red), rgba(255,120,80,0.8))',
+                    borderRadius: 999,
+                    transition: 'width 1.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    transitionDelay: `${i * 0.1}s`,
+                    boxShadow: '0 0 10px rgba(230,57,70,0.4)',
+                  }}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

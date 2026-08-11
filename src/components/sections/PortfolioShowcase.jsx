@@ -81,26 +81,77 @@ export default function PortfolioShowcase() {
       <section
         id="portfolio"
         className="w-full max-w-[1450px] mx-auto px-6 md:px-12 lg:px-20 pt-20 pb-24 text-white"
+        style={{ position: 'relative', overflow: 'hidden' }}
       >
+        {/* Background Watermark */}
+        <span className="section-watermark" aria-hidden="true">
+          PROJECTS
+        </span>
+
+        {/* Ambient orb */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '20%',
+            right: '-60px',
+            width: 350,
+            height: 350,
+            background: 'radial-gradient(circle, rgba(230,57,70,0.07) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
+
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 45 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
           className="text-center mb-8"
+          style={{ position: 'relative', zIndex: 1 }}
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-3">
-            Portfolio Showcase
-          </h1>
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 12,
+              color: 'var(--text-muted)',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              display: 'block',
+              marginBottom: 12,
+            }}
+          >
+            MY WORK
+          </span>
+          <h2
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(32px, 5vw, 52px)',
+              fontWeight: 800,
+              lineHeight: 1.05,
+              marginBottom: 12,
+            }}
+          >
+            <span style={{ color: 'var(--text-sand)' }}>Portfolio</span>{' '}
+            <span
+              style={{
+                color: 'transparent',
+                WebkitTextStroke: '1.5px rgba(255,255,255,0.6)',
+              }}
+            >
+              Showcase
+            </span>
+          </h2>
 
-          <p className="text-white/55 max-w-xl mx-auto text-sm md:text-base">
+          <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 480, margin: '0 auto', fontSize: 14 }}>
             Explore my engineering work through featured projects,
             certifications, and technical skill stacks.
           </p>
         </motion.div>
 
         {/* TAB BUTTONS */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-10" style={{ position: 'relative', zIndex: 1 }}>
           <div className="w-full max-w-3xl rounded-full border border-white/10 bg-white/5 p-2 flex gap-2 backdrop-blur-xl">
             {['projects', 'certificates', 'techstack'].map((tab) => (
               <button
@@ -111,11 +162,21 @@ export default function PortfolioShowcase() {
                     setShowAllProjects(false)
                   }
                 }}
-                className={`flex-1 rounded-full py-3 text-sm transition-all duration-300 cursor-pointer ${
-                  activeTab === tab
-                    ? 'bg-white/10 text-white font-medium shadow-sm'
-                    : 'text-white/50 hover:text-white'
-                }`}
+                style={{
+                  flex: 1,
+                  borderRadius: 9999,
+                  padding: '10px 0',
+                  fontSize: 13,
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  border: 'none',
+                  background: activeTab === tab ? 'rgba(230,57,70,0.15)' : 'transparent',
+                  color: activeTab === tab ? 'var(--text-sand)' : 'rgba(255,255,255,0.5)',
+                  fontWeight: activeTab === tab ? 600 : 400,
+                  fontFamily: 'var(--font-heading)',
+                  boxShadow: activeTab === tab ? 'inset 0 0 20px rgba(230,57,70,0.1)' : 'none',
+                  outline: activeTab === tab ? '1px solid rgba(230,57,70,0.2)' : 'none',
+                }}
               >
                 {tab === 'projects'
                   ? 'Projects'
@@ -127,6 +188,7 @@ export default function PortfolioShowcase() {
           </div>
         </div>
 
+        <div style={{ position: 'relative', zIndex: 1 }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -279,6 +341,7 @@ export default function PortfolioShowcase() {
             )}
           </motion.div>
         </AnimatePresence>
+        </div>
       </section>
     </>
   )

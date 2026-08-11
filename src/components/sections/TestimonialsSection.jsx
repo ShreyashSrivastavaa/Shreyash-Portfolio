@@ -42,8 +42,30 @@ export default function TestimonialsSection() {
       id="testimonials"
       style={{
         padding: isMobile ? '80px 24px' : '120px 60px 120px 120px',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      {/* Background Watermark */}
+      <span className="section-watermark-left" aria-hidden="true" style={{ top: 20 }}>
+        REVIEWS
+      </span>
+
+      {/* Ambient Glow */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '30%',
+          right: '-60px',
+          width: 350,
+          height: 350,
+          background: 'radial-gradient(circle, rgba(230,57,70,0.07) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -68,11 +90,19 @@ export default function TestimonialsSection() {
             lineHeight: 1.05,
             marginTop: 12,
             marginBottom: 48,
+            fontFamily: 'var(--font-heading)',
           }}
         >
-          What clients
+          <span style={{ color: 'var(--text-sand)' }}>What clients</span>
           <br />
-          <span style={{ color: 'var(--text-secondary)' }}>are saying</span>
+          <span
+            style={{
+              color: 'transparent',
+              WebkitTextStroke: '1.5px rgba(255,255,255,0.6)',
+            }}
+          >
+            are saying
+          </span>
         </h2>
       </motion.div>
 
@@ -99,6 +129,7 @@ export default function TestimonialsSection() {
             style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border)',
+              borderLeft: '3px solid var(--accent-red)',
               borderRadius: 22,
               padding: 28,
               position: 'relative',
@@ -106,11 +137,12 @@ export default function TestimonialsSection() {
               transition: 'border-color 0.3s, box-shadow 0.3s',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
-              e.currentTarget.style.boxShadow = '0 0 40px rgba(255,255,255,0.06)'
+              e.currentTarget.style.borderColor = 'rgba(230,57,70,0.35)'
+              e.currentTarget.style.boxShadow = '0 0 40px rgba(230,57,70,0.1), 0 8px 32px rgba(0,0,0,0.3)'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = 'var(--border)'
+              e.currentTarget.style.borderLeftColor = 'var(--accent-red)'
               e.currentTarget.style.boxShadow = 'none'
             }}
           >
@@ -120,7 +152,7 @@ export default function TestimonialsSection() {
                 position: 'absolute',
                 top: 24,
                 right: 24,
-                color: '#F5C842',
+                color: 'var(--accent-red)',
                 fontSize: 12,
                 letterSpacing: 2,
               }}
@@ -155,28 +187,31 @@ export default function TestimonialsSection() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <div
                 style={{
-                  width: 40,
-                  height: 40,
+                  width: 42,
+                  height: 42,
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))',
-                  border: '1px solid var(--border)',
+                  background: 'linear-gradient(135deg, rgba(230,57,70,0.2), rgba(193,18,31,0.1))',
+                  border: '1.5px solid rgba(230,57,70,0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
                   fontSize: 13,
                   flexShrink: 0,
+                  color: 'var(--text-sand)',
+                  fontFamily: 'var(--font-heading)',
                 }}
               >
                 {t.initials}
               </div>
               <div>
-                <div style={{ fontWeight: 600, fontSize: 13 }}>{t.name}</div>
+                <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--text-sand)', fontFamily: 'var(--font-heading)' }}>{t.name}</div>
                 <div
                   style={{
                     fontSize: 11,
                     color: 'var(--text-muted)',
-                    fontFamily: "'DM Mono', monospace",
+                    fontFamily: 'var(--font-mono)',
+                    marginTop: 2,
                   }}
                 >
                   {t.role}
@@ -185,6 +220,7 @@ export default function TestimonialsSection() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   )

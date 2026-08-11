@@ -21,7 +21,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
 
-      const sections = ['home', 'about', 'portfolio', 'contact']
+    const sections = ['home', 'about', 'portfolio', 'skills', 'testimonials', 'contact']
 
       for (const sectionId of sections) {
         const section = document.getElementById(sectionId)
@@ -88,6 +88,8 @@ export default function Navbar() {
     { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
     { label: 'Portfolio', id: 'portfolio' },
+    { label: 'Services', id: 'skills' },
+    { label: 'Reviews', id: 'testimonials' },
     { label: 'Contact', id: 'contact' },
   ]
 
@@ -141,7 +143,8 @@ export default function Navbar() {
         </a>
 
         {!isMobile && (
-          <div style={{ display: 'flex', gap: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+            <div style={{ display: 'flex', gap: 32 }}>
             {navItems.map((item) => {
               const isActive = activeSection === item.id
 
@@ -153,9 +156,9 @@ export default function Navbar() {
                   style={{
                     position: 'relative',
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: 13,
+                    fontSize: 12,
                     color: isActive
-                      ? 'var(--text-primary)'
+                      ? 'var(--accent-red)'
                       : 'var(--text-secondary)',
                     textDecoration: 'none',
                     letterSpacing: '0.08em',
@@ -173,7 +176,7 @@ export default function Navbar() {
                       left: 0,
                       width: '100%',
                       height: 1,
-                      background: 'white',
+                      background: 'var(--accent-red)',
                       transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
                       transformOrigin: 'left',
                       transition: 'transform 0.25s ease',
@@ -182,6 +185,16 @@ export default function Navbar() {
                 </a>
               )
             })}
+            </div>
+
+            {/* Hire Me CTA */}
+            <a
+              href="#contact"
+              className="btn-hire-me"
+              onClick={(e) => smoothScrollTo(e, '#contact')}
+            >
+              Hire Me
+            </a>
           </div>
         )}
 

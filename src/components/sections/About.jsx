@@ -8,9 +8,7 @@ import projectsData from "@/data/projects.json";
 const container = {
   hidden: {},
   show: {
-    transition: {
-      staggerChildren: 0.16,
-    },
+    transition: { staggerChildren: 0.16 },
   },
 };
 
@@ -20,10 +18,7 @@ const fadeUp = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: {
-      duration: 1,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -33,10 +28,7 @@ const slideLeft = {
     opacity: 1,
     x: 0,
     rotate: 0,
-    transition: {
-      duration: 1.2,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -46,10 +38,7 @@ const pop = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: {
-      duration: 0.85,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -65,9 +54,7 @@ export default function About() {
 
   const scrollToPortfolio = () => {
     const el = document.getElementById("portfolio");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   if (isMobile === null) return null;
@@ -76,21 +63,9 @@ export default function About() {
   const certificateCount = 3;
 
   const stats = [
-    {
-      icon: <Code size={16} />,
-      value: String(projectCount),
-      title: "PROJECTS",
-    },
-    {
-      icon: <Award size={16} />,
-      value: String(certificateCount),
-      title: "CERTIFICATES",
-    },
-    {
-      icon: <Globe size={16} />,
-      value: String(projectCount + certificateCount),
-      title: "COMPLETED WORKS",
-    },
+    { icon: <Code size={16} />, value: String(projectCount), title: "PROJECTS" },
+    { icon: <Award size={16} />, value: String(certificateCount), title: "CERTIFICATES" },
+    { icon: <Globe size={16} />, value: String(projectCount + certificateCount), title: "COMPLETED WORKS" },
   ];
 
   return (
@@ -101,54 +76,167 @@ export default function About() {
         display: "flex",
         alignItems: "flex-start",
         padding: isMobile ? "60px 24px 30px" : "80px 60px 30px 120px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ width: "100%" }}>
+      {/* Background Watermark */}
+      <span className="section-watermark-left" aria-hidden="true">
+        ABOUT ME
+      </span>
+
+      {/* Ambient Glow Orbs */}
+      <div
+        style={{
+          position: "absolute",
+          top: "20%",
+          right: "-100px",
+          width: 400,
+          height: 400,
+          background: "radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      <div style={{ width: "100%", position: "relative", zIndex: 1 }}>
+        {/* TOP: Photo (left) + Text (right) — reversed from Himanshu's layout for dev identity */}
         <div
           style={{
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "32px",
+            gap: "40px",
           }}
         >
-          {/* LEFT */}
+          {/* PORTRAIT CARD */}
+          {!isMobile && (
+            <motion.div
+              variants={slideLeft}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+              style={{
+                flexShrink: 0,
+                width: "42%",
+                display: "flex",
+                justifyContent: "flex-start",
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  borderRadius: 28,
+                  overflow: "hidden",
+                  border: "1px solid rgba(230,57,70,0.2)",
+                  boxShadow: "0 0 60px rgba(230,57,70,0.1), 0 20px 60px rgba(0,0,0,0.4)",
+                  width: "100%",
+                  maxWidth: 420,
+                  aspectRatio: "3/4",
+                }}
+              >
+                <img
+                  src="/shreyash-about.png"
+                  alt="Shreyash Srivastava"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+                {/* Red accent overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(to top, rgba(230,57,70,0.12) 0%, transparent 60%)",
+                    pointerEvents: "none",
+                  }}
+                />
+                {/* Floating name badge */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 20,
+                    left: 20,
+                    background: "rgba(7,7,13,0.88)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid rgba(230,57,70,0.25)",
+                    borderRadius: 14,
+                    padding: "10px 16px",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 700,
+                      color: "var(--text-sand)",
+                      fontFamily: "var(--font-heading)",
+                    }}
+                  >
+                    Shreyash Srivastava
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: "var(--text-muted)",
+                      fontFamily: "var(--font-mono)",
+                      marginTop: 2,
+                    }}
+                  >
+                    Backend Engineer · Noida, India
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* TEXT COLUMN */}
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, margin: "-80px" }}
-            style={{
-              maxWidth: "600px",
-              width: "100%",
-            }}
+            style={{ maxWidth: 560, width: "100%" }}
           >
             <motion.div variants={fadeUp} style={{ marginBottom: 16 }}>
               <span
                 style={{
-                  fontFamily: "'DM Mono', monospace",
+                  fontFamily: "var(--font-mono)",
                   fontSize: 12,
                   color: "var(--text-muted)",
                   letterSpacing: "0.2em",
+                  textTransform: "uppercase",
                 }}
               >
                 ABOUT ME
               </span>
             </motion.div>
 
-            <motion.div variants={fadeUp}>
-              <div
+            <motion.div variants={fadeUp} style={{ marginBottom: 8 }}>
+              <h2
                 style={{
-                  fontSize: isMobile ? 32 : "clamp(32px,5vw,46px)",
+                  fontSize: isMobile ? 32 : "clamp(32px, 5vw, 46px)",
                   fontWeight: 800,
                   lineHeight: 1.03,
-                  color: "var(--text-primary)",
+                  fontFamily: "var(--font-heading)",
                 }}
               >
-                <div>Shreyash</div>
-                <div>Srivastava</div>
-              </div>
+                <span style={{ color: "var(--text-sand)" }}>Crafting Systems</span>
+                <br />
+                <span
+                  style={{
+                    color: "transparent",
+                    WebkitTextStroke: "1.5px rgba(255,255,255,0.7)",
+                  }}
+                >
+                  Request by Request
+                </span>
+              </h2>
             </motion.div>
 
             <motion.p
@@ -157,121 +245,134 @@ export default function About() {
                 show: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    duration: 1.1,
-                    delay: 0.2,
-                  },
+                  transition: { duration: 1.1, delay: 0.2 },
                 },
               }}
               style={{
-                marginTop: 18,
+                marginTop: 16,
                 fontSize: 14,
                 color: "var(--text-secondary)",
-                lineHeight: 1.75,
-                maxWidth: isMobile ? "100%" : "490px",
+                lineHeight: 1.85,
+                maxWidth: isMobile ? "100%" : 490,
               }}
             >
-              Backend-focused Software Engineer passionate about designing scalable REST APIs, real-time microservices, and high-performance client-side web tools. Experienced in Node.js, Express, MongoDB, Redis, React, and WebAssembly technologies.
+              I'm Shreyash Srivastava, a freelance backend engineer based in Noida, India.
+              I've spent 2+ years refining the craft of high-performance API design, scalable
+              microservices, and modern client-side web tools — working with startups and
+              creators who refuse to settle for average.
             </motion.p>
 
-            {/* QUOTE */}
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1.1, delay: 0.35 },
+                },
+              }}
+              style={{
+                marginTop: 12,
+                fontSize: 14,
+                color: "var(--text-secondary)",
+                lineHeight: 1.85,
+                maxWidth: isMobile ? "100%" : 490,
+              }}
+            >
+              My philosophy is simple: every endpoint is intentional, every response
+              serves the system, and every millisecond of latency is earned.
+              I don't just write code — I architect experiences.
+            </motion.p>
+
+            {/* Quote */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, scale: 0.94 },
                 show: {
                   opacity: 1,
                   scale: 1,
-                  transition: {
-                    duration: 0.9,
-                    delay: 0.3,
-                  },
+                  transition: { duration: 0.9, delay: 0.45 },
                 },
               }}
               style={{
-                marginTop: 18,
-                padding: "12px 25px",
-                borderRadius: 10,
-                border: "1px solid var(--border)",
-                background: "var(--bg-card)",
-                fontSize: 12,
+                marginTop: 20,
+                padding: "12px 20px",
+                borderRadius: 12,
+                border: "1px solid rgba(230,57,70,0.2)",
+                borderLeft: "3px solid var(--accent-red)",
+                background: "rgba(230,57,70,0.06)",
+                fontSize: 13,
                 fontStyle: "italic",
+                color: "var(--text-sand)",
                 display: "inline-block",
                 width: "fit-content",
+                maxWidth: "100%",
               }}
             >
-              “Architecting high-performance digital systems with clean code and sub-millisecond efficiency.”
+              "Architecting high-performance digital systems with clean code and sub-millisecond efficiency."
             </motion.div>
 
             {/* BUTTONS */}
             <motion.div
               variants={fadeUp}
-              style={{
-                display: "flex",
-                gap: 10,
-                marginTop: 18,
-                flexWrap: "wrap",
-              }}
+              style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}
             >
-              {/* DOWNLOAD CV */}
               <a
                 href="/Shreyash_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
-              >
-                <button
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "10px 18px",
-                    borderRadius: 8,
-                    border: "1px solid white",
-                    background: "white",
-                    color: "black",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    transition: "transform 0.25s ease, opacity 0.25s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-                    e.currentTarget.style.opacity = "0.92";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0) scale(1)";
-                    e.currentTarget.style.opacity = "1";
-                  }}
-                >
-                  <FileText size={14} />
-                  Download CV
-                </button>
-              </a>
-
-              {/* VIEW PROJECTS */}
-              <button
-                onClick={scrollToPortfolio}
                 style={{
-                  display: "flex",
+                  display: "inline-flex",
                   alignItems: "center",
                   gap: 6,
-                  padding: "10px 18px",
-                  borderRadius: 8,
+                  padding: "10px 20px",
+                  borderRadius: 10,
                   border: "1px solid white",
-                  background: "transparent",
-                  color: "white",
+                  background: "white",
+                  color: "black",
                   fontSize: 13,
                   fontWeight: 600,
-                  cursor: "pointer",
-                  transition: "transform 0.25s ease, opacity 0.25s ease",
+                  fontFamily: "var(--font-heading)",
+                  textDecoration: "none",
+                  transition: "var(--transition)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-                  e.currentTarget.style.opacity = "0.85";
+                  e.currentTarget.style.opacity = "0.92";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0) scale(1)";
                   e.currentTarget.style.opacity = "1";
+                }}
+              >
+                <FileText size={14} />
+                Download CV
+              </a>
+
+              <button
+                onClick={scrollToPortfolio}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  padding: "10px 20px",
+                  borderRadius: 10,
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  background: "transparent",
+                  color: "white",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  fontFamily: "var(--font-heading)",
+                  cursor: "pointer",
+                  transition: "var(--transition)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
                 }}
               >
                 <ArrowUpRight size={14} />
@@ -279,45 +380,9 @@ export default function About() {
               </button>
             </motion.div>
           </motion.div>
-
-          {/* IMAGE */}
-          {!isMobile && (
-            <motion.div
-              variants={slideLeft}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false }}
-              style={{
-                width: "48%",
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <div
-                style={{
-                  padding: 12,
-                  borderRadius: "50%",
-                  border: "1px solid var(--border)",
-                  transform: "translateX(-40px)",
-                }}
-              >
-                <img
-                  src="/profile.png"
-                  alt="Shreyash Srivastava Profile"
-                  style={{
-                    width: 240,
-                    height: 240,
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </div>
-            </motion.div>
-          )}
         </div>
 
-        {/* CARDS */}
+        {/* STATS CARDS */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -327,21 +392,32 @@ export default function About() {
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
             gap: 18,
-            marginTop: 36,
+            marginTop: 48,
           }}
         >
           {stats.map((item, i) => (
             <motion.div
               key={i}
               variants={pop}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.03, y: -4 }}
               style={{
                 position: "relative",
-                padding: 18,
-                borderRadius: 16,
+                padding: 22,
+                borderRadius: 18,
                 border: "1px solid var(--border)",
+                borderLeft: "3px solid var(--accent-red)",
                 background: "var(--bg-card)",
                 cursor: "pointer",
+                transition: "border-color 0.3s, box-shadow 0.3s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(230,57,70,0.4)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(230,57,70,0.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.borderLeftColor = "var(--accent-red)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               <div
@@ -349,11 +425,12 @@ export default function About() {
                   width: 34,
                   height: 34,
                   borderRadius: "50%",
-                  border: "1px solid var(--border)",
+                  border: "1px solid rgba(230,57,70,0.3)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: 10,
+                  color: "var(--accent-red)",
                 }}
               >
                 {item.icon}
@@ -362,10 +439,12 @@ export default function About() {
               <div
                 style={{
                   position: "absolute",
-                  top: 16,
-                  right: 16,
-                  fontSize: 18,
-                  fontWeight: 700,
+                  top: 18,
+                  right: 18,
+                  fontSize: 22,
+                  fontWeight: 800,
+                  color: "var(--text-sand)",
+                  fontFamily: "var(--font-heading)",
                 }}
               >
                 {item.value}
@@ -375,6 +454,8 @@ export default function About() {
                 style={{
                   fontSize: 11,
                   letterSpacing: "0.08em",
+                  color: "var(--text-muted)",
+                  fontFamily: "var(--font-mono)",
                 }}
               >
                 {item.title}
@@ -382,12 +463,7 @@ export default function About() {
 
               <div
                 onClick={scrollToPortfolio}
-                style={{
-                  position: "absolute",
-                  bottom: 14,
-                  right: 14,
-                  cursor: "pointer",
-                }}
+                style={{ position: "absolute", bottom: 16, right: 16, cursor: "pointer", color: "var(--text-muted)" }}
               >
                 <ArrowUpRight size={15} />
               </div>
