@@ -1,5 +1,33 @@
 [
     {
+        "id": "gitfc",
+        "title": "GitFC – EA FC-Style GitHub Player Card Generator",
+        "tagline": "Transform your GitHub profile & developer stats into EA FC Ultimate Team style player cards.",
+        "icon": "Trophy",
+        "iconColor": "text-yellow-500",
+        "description": "Interactive web application that fetches live GitHub contribution metrics via GraphQL and calculates a custom developer rating engine. Translates commits, pull requests, stars, and activity streaks into EA FC-inspired attributes (PAS, DRI, SHO, PAC, DEF, PHY) with dynamic card shells, tactical roles, and 1-click HD card export.",
+        "problem": "Standard GitHub profile visualizers are static, text-heavy, and lack engaging gamified metrics for showcasing developer achievements.",
+        "solution": "Engineered an algorithmic rating engine mapping real GitHub activity into EA FC player attributes with dynamic card rarity rendering (TOTY, Icon, Gold) and instant high-res PNG export.",
+        "metrics": [
+            { "label": "Card Generation", "value": "<1s" },
+            { "label": "Auth Required", "value": "Zero (Public API)" },
+            { "label": "Export Format", "value": "HD PNG" }
+        ],
+        "key_features": [
+            "Algorithmic rating engine translating GitHub commits, PRs, and stars into EA FC player attributes",
+            "Dynamic Tactical Role assignment (Playmaker, Striker, Winger, Defender) based on contribution habits",
+            "Rarity card shells (TOTY, Gold, Icon, In-Form) calculated from overall GitHub rating score",
+            "1-click high-resolution PNG card export for sharing on social media",
+            "Zero authentication required - instant public profile lookup via GitHub GraphQL & REST APIs"
+        ],
+        "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API", "HTML2Canvas"],
+        "tags": ["Next.js", "TypeScript", "GraphQL", "Tailwind CSS"],
+        "live_url": "https://gitfc.vercel.app/",
+        "github_url": "https://github.com/ShreyashSrivastavaa/GitFc",
+        "image_url": "/projects/gitfc.png",
+        "image_urls": ["/projects/gitfc.png", "/projects/gitfc-logo.jpg"]
+    },
+    {
         "id": "ihatelovepdf",
         "title": "IHateLovePDF – All-in-One PDF Suite",
         "tagline": "i love hate PDF it. – High-performance client-first PDF utility suite.",

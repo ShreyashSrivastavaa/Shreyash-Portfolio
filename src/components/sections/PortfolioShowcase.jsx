@@ -258,7 +258,7 @@ export default function PortfolioShowcase() {
                             image={item.image_url}
                             live_url={item.live_url}
                             id={item.id}
-                            tags={item.tags}
+                            tags={item.tags || item.tech}
                           />
                         </motion.div>
                       ))}
