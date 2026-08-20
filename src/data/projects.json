@@ -1,135 +1,230 @@
 [
-    {
-        "id": "gitfc",
-        "title": "GitFC – EA FC-Style GitHub Player Card Generator",
-        "tagline": "Transform your GitHub profile & developer stats into EA FC Ultimate Team style player cards.",
-        "icon": "Trophy",
-        "iconColor": "text-yellow-500",
-        "description": "Interactive web application that fetches live GitHub contribution metrics via GraphQL and calculates a custom developer rating engine. Translates commits, pull requests, stars, and activity streaks into EA FC-inspired attributes (PAS, DRI, SHO, PAC, DEF, PHY) with dynamic card shells, tactical roles, and 1-click HD card export.",
-        "problem": "Standard GitHub profile visualizers are static, text-heavy, and lack engaging gamified metrics for showcasing developer achievements.",
-        "solution": "Engineered an algorithmic rating engine mapping real GitHub activity into EA FC player attributes with dynamic card rarity rendering (TOTY, Icon, Gold) and instant high-res PNG export.",
-        "metrics": [
-            { "label": "Card Generation", "value": "<1s" },
-            { "label": "Auth Required", "value": "Zero (Public API)" },
-            { "label": "Export Format", "value": "HD PNG" }
-        ],
-        "key_features": [
-            "Algorithmic rating engine translating GitHub commits, PRs, and stars into EA FC player attributes",
-            "Dynamic Tactical Role assignment (Playmaker, Striker, Winger, Defender) based on contribution habits",
-            "Rarity card shells (TOTY, Gold, Icon, In-Form) calculated from overall GitHub rating score",
-            "1-click high-resolution PNG card export for sharing on social media",
-            "Zero authentication required - instant public profile lookup via GitHub GraphQL & REST APIs"
-        ],
-        "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API", "HTML2Canvas"],
-        "tags": ["Next.js", "TypeScript", "GraphQL", "Tailwind CSS"],
-        "live_url": "https://gitfc.vercel.app/",
-        "github_url": "https://github.com/ShreyashSrivastavaa/GitFc",
-        "image_url": "/projects/gitfc.png",
-        "image_urls": ["/projects/gitfc.png", "/projects/gitfc-logo.jpg"]
-    },
-    {
-        "id": "ihatelovepdf",
-        "title": "IHateLovePDF – All-in-One PDF Suite",
-        "tagline": "i love hate PDF it. – High-performance client-first PDF utility suite.",
-        "icon": "FileText",
-        "iconColor": "text-red-500",
-        "description": "All-in-one PDF utility platform designed to split, merge, compress, convert, edit, unlock, and protect PDF files directly in the browser with maximum security and sub-second processing speeds. Eliminates payload limits and privacy risks.",
-        "problem": "Traditional PDF tools enforce strict payload limits, push aggressive subscription paywalls, and compromise data privacy by uploading sensitive documents to remote cloud servers.",
-        "solution": "Engineered a high-speed, client-first web suite leveraging WebAssembly & Web Workers for 100% private, zero-latency PDF operations directly inside the user's browser.",
-        "metrics": [
-            { "label": "Privacy & Security", "value": "100% Client-Side" },
-            { "label": "File Size Limit", "value": "Unlimited" },
-            { "label": "Processing Speed", "value": "<100ms" }
-        ],
-        "key_features": [
-            "100% Client-side privacy - documents never leave your browser",
-            "Blazing fast PDF merging, splitting, compressing, and watermarking",
-            "Drag & Drop intuitive visual page reordering",
-            "Zero file size caps and zero subscription paywalls",
-            "Real-time visual preview generator powered by WebAssembly"
-        ],
-        "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "PDF-Lib", "WebAssembly", "Web Workers"],
-        "live_url": "https://www.ihatelovepdf.com/",
-        "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
-        "image_url": "/projects/ihatelovepdf.png",
-        "image_urls": ["/projects/ihatelovepdf.png"]
-    },
-    {
-        "id": "quickbite",
-        "title": "QuickBite – Food Ordering API",
-        "tagline": "Scalable food ordering and real-time order tracking backend API.",
-        "icon": "Cpu",
-        "iconColor": "text-primary",
-        "description": "Built a complete food ordering backend using Node.js, Express.js, and MongoDB with separate logins for users, admin, products, and orders using JWT and bcrypt for password security. Added real-time order status updates using Socket.io and secured the API with Helmet.js, rate limiting, and Zod-based input validation.",
-        "problem": "Traditional food delivery APIs experience latency spikes during high-traffic checkout windows and lack robust role-based access control.",
-        "solution": "Engineered a scalable Node.js/Express.js backend utilizing Socket.io for live order status updates, MVC patterns for codebase modularity, and Zod/Helmet.js for API reinforcement.",
-        "metrics": [
-            { "label": "Latency", "value": "<120ms" },
-            { "label": "Security", "value": "Helmet/Zod" },
-            { "label": "Real-Time", "value": "Socket.io" }
-        ],
-        "key_features": [
-            "Real-time order tracking via WebSockets (Socket.io)",
-            "Role-based access control for User, Admin, and Restaurant roles",
-            "Secure authentication using JWT tokens and Bcrypt password hashing",
-            "Comprehensive input validation and rate limiting using Zod & Helmet"
-        ],
-        "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Bcrypt"],
-        "live_url": "",
-        "github_url": "https://github.com/ShreyashSrivastavaa/QuickBite",
-        "image_url": "/projects/hotel-booking.png",
-        "image_urls": ["/projects/hotel-booking.png"]
-    },
-    {
-        "id": "swiperide",
-        "title": "SwipeRide – Ride Sharing API",
-        "tagline": "Real-time geospatial ride-sharing and matching engine.",
-        "icon": "Cpu",
-        "iconColor": "text-accent",
-        "description": "Building a real-time ride-sharing backend using Node.js, Express.js, MongoDB, JWT (for rider/driver/admin roles), Socket.io (live tracking), and Redis (fast driver location tracking). Used Google Maps API for fare calculation, Paystack for payments, and MongoDB's geospatial queries to find nearby drivers with dynamic radius expansion.",
-        "problem": "Matching riders with nearby drivers in real-time requires high-frequency database reads and calculations that degrade standard SQL performance.",
-        "solution": "Built a high-performance matching engine using MongoDB's geospatial queries with dynamic radius expansion, cached active driver locations in Redis for ultra-low latency updates, and synced status over Socket.io.",
-        "metrics": [
-            { "label": "Radius Match", "value": "Dynamic" },
-            { "label": "Driver Sync", "value": "Redis" },
-            { "label": "Latency", "value": "<5ms" }
-        ],
-        "key_features": [
-            "Geospatial driver matching using MongoDB 2DSphere indexing",
-            "Redis caching layer for sub-millisecond driver location updates",
-            "Google Maps Distance Matrix API integration for accurate fare estimation",
-            "Integrated payment gateway using Paystack webhook notifications"
-        ],
-        "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API"],
-        "live_url": "",
-        "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
-        "image_url": "/projects/swiperide.png",
-        "image_urls": ["/projects/swiperide.png"]
-    },
-    {
-        "id": "password-gen",
-        "title": "Random Password Generator",
-        "tagline": "Secure client-side password builder with real-time strength validation.",
-        "icon": "ShieldCheck",
-        "iconColor": "text-primary",
-        "description": "Made a client-side password generator using HTML, CSS, and JavaScript that checks password strength, lets you choose from 4 character types, and works without any external libraries. Added one-click copy to clipboard functionality and adjustable password length slider.",
-        "problem": "Server-side password generation exposes sensitive credentials to potential logging vulnerability and MITM attacks.",
-        "solution": "Created a purely browser-native utility using vanilla JavaScript to generate high-entropy passwords with adjustable length, character set selectors, and a dynamic strength meter.",
-        "metrics": [
-            { "label": "Server Calls", "value": "0" },
-            { "label": "Generation Time", "value": "<5ms" },
-            { "label": "Libraries", "value": "None" }
-        ],
-        "key_features": [
-            "Purely client-side generation ensuring zero server credential leaks",
-            "Dynamic entropy strength indicator based on character set complexity",
-            "One-click instant clipboard copy with auto-clearing security timer",
-            "Fully custom slider UI with zero external runtime dependencies"
-        ],
-        "tech": ["HTML", "CSS", "JavaScript"],
-        "live_url": "",
-        "github_url": "https://github.com/ShreyashSrivastavaa/Random-Password-Generator",
-        "image_url": "/projects/password.webp",
-        "image_urls": ["/projects/password.webp"]
-    }
+  {
+    "id": "school-erp",
+    "title": "School ERP System",
+    "tagline": "Enterprise multi-tenant educational institution management platform.",
+    "icon": "Building2",
+    "iconColor": "text-blue-500",
+    "description": "Engineered a production-ready, multi-tenant School Enterprise Resource Planning (ERP) platform powering attendance tracking, automated fee invoicing, gradebook processing, and role-based permissions. Built with NestJS, Prisma ORM, RabbitMQ message queues for async notification processing, and containerized via Docker.",
+    "problem": "Legacy school management solutions struggle with data isolation across multi-campus setups and crash under concurrent end-of-term grade publishing loads.",
+    "solution": "Architected a multi-tenant backend infrastructure with tenant-isolated database schemas, asynchronous event-driven task queues using RabbitMQ, and stress-tested under 50,000+ simulated concurrent requests.",
+    "metrics": [
+      { "label": "Architecture", "value": "Multi-Tenant" },
+      { "label": "Queue Throughput", "value": "10k msg/sec" },
+      { "label": "Container", "value": "Dockerized" }
+    ],
+    "key_features": [
+      "Strict multi-tenant data isolation with dynamic database connection routing",
+      "Asynchronous background processing for report generation & SMS alerts via RabbitMQ",
+      "Role-Based Access Control (RBAC) supporting SuperAdmin, Principal, Teacher, Student, and Parent roles",
+      "Automated fee breakdown, invoice generation, and online payment gateway webhooks",
+      "Comprehensive load testing & infrastructure setup using Docker & K6"
+    ],
+    "tech": ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "RabbitMQ", "Docker"],
+    "tags": ["NestJS", "TypeScript", "Prisma", "RabbitMQ", "Docker"],
+    "category": "Backend & APIs",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastava15/School-ERP",
+    "image_url": "/projects/safe.webp",
+    "image_urls": ["/projects/safe.webp"]
+  },
+  {
+    "id": "hms",
+    "title": "Hospital Management System (HMS)",
+    "tagline": "End-to-end clinical workflow and patient record management system.",
+    "icon": "Activity",
+    "iconColor": "text-emerald-500",
+    "description": "Collaborative full-stack healthcare platform built with Node.js/Express, PostgreSQL, and Prisma ORM in partnership with Prisha. Streamlines doctor appointment scheduling, electronic medical records (EMR), bed allocation, and pharmacy inventory with full CRUD operations and strict data compliance.",
+    "problem": "Manual hospital record-keeping leads to fragmented patient histories, scheduling conflicts, and billing discrepancies.",
+    "solution": "Developed a relational PostgreSQL data model with atomic transactions, conflict-free appointment booking locks, and intuitive clinical dashboards.",
+    "metrics": [
+      { "label": "DB Transactions", "value": "100% Atomic" },
+      { "label": "Collaboration", "value": "Team Project" },
+      { "label": "Coverage", "value": "Full CRUD" }
+    ],
+    "key_features": [
+      "Real-time appointment booking with automated double-booking prevention",
+      "Electronic Medical Records (EMR) history timeline for patient diagnoses and prescriptions",
+      "Bed management and admission tracking with live capacity metrics",
+      "Role-based dashboards for Doctors, Nurses, Receptionists, and Admins",
+      "Full relational database integrity with PostgreSQL and Prisma migrations"
+    ],
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "TypeScript", "Tailwind CSS"],
+    "tags": ["Node.js", "PostgreSQL", "Prisma", "Express.js"],
+    "category": "Full-Stack",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastava15/Hospital-Management-System",
+    "image_url": "/projects/hotel-booking.png",
+    "image_urls": ["/projects/hotel-booking.png"]
+  },
+  {
+    "id": "subflip",
+    "title": "SubFlip – Subscription Aggregator",
+    "tagline": "Smart subscription marketplace for managing, switching, & reselling plans.",
+    "icon": "CreditCard",
+    "iconColor": "text-purple-500",
+    "description": "Full-stack subscription management and marketplace aggregator that allows users to monitor active recurring subscriptions, switch or pause plans seamlessly, and monetize unused slots through a commission-based business model with automated Stripe/Razorpay payment integrations.",
+    "problem": "Users lose hundreds of dollars annually on unused subscriptions and lack a unified interface to modify or monetize unused plan slots.",
+    "solution": "Built a centralized subscription aggregator API and dashboard with automated renewal reminders, slot-sharing escrow payments, and commission calculation logic.",
+    "metrics": [
+      { "label": "Payment Integration", "value": "Stripe Webhooks" },
+      { "label": "Revenue Model", "value": "Commission" },
+      { "label": "Management", "value": "Automated" }
+    ],
+    "key_features": [
+      "1-Click subscription cancellation & plan switching workflow engine",
+      "Commission-based subscription slot reseller marketplace with escrow validation",
+      "Automated webhook synchronization for payment collection and payout distribution",
+      "Subscription cost analytics dashboard with monthly spending alerts"
+    ],
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "React", "Stripe API"],
+    "tags": ["Node.js", "PostgreSQL", "React", "Payments"],
+    "category": "Full-Stack",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastava15/SubFlip",
+    "image_url": "/projects/dsa.webp",
+    "image_urls": ["/projects/dsa.webp"]
+  },
+  {
+    "id": "apex-fabricators",
+    "title": "APEX Fabricators Data Analysis",
+    "tagline": "Industrial tender bidding analytics & predictive quotation visualization.",
+    "icon": "BarChart3",
+    "iconColor": "text-amber-500",
+    "description": "Data analytics and interactive visualization platform designed for APEX Fabricators to analyze historical tender bidding records, competitor pricing strategies, and win/loss margins. Transforms raw industrial records into actionable pricing intelligence.",
+    "problem": "Industrial fabrication tenders suffer from narrow profit margins due to manual estimation errors and lack of historical competitor bid data.",
+    "solution": "Processed multi-year bidding records using Python data processing pipelines and built an interactive dashboard surfacing win probability, material cost trends, and optimal quotation ranges.",
+    "metrics": [
+      { "label": "Data Volume", "value": "10k+ Records" },
+      { "label": "Bid Optimization", "value": "+18% Margin" },
+      { "label": "Visuals", "value": "Interactive" }
+    ],
+    "key_features": [
+      "Historical tender record parser and anomaly cleaner",
+      "Competitor price distribution and win/loss ratio analysis charts",
+      "Material cost fluctuation tracking and quotation margin calculator",
+      "Exportable executive summary reports with interactive filters"
+    ],
+    "tech": ["Python", "Pandas", "JavaScript", "Chart.js", "Node.js", "Express.js"],
+    "tags": ["Python", "Data Analysis", "JavaScript", "Visualization"],
+    "category": "Utilities & Data",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastava15/Apex-Fabricators-Analysis",
+    "image_url": "/projects/weather.webp",
+    "image_urls": ["/projects/weather.webp"]
+  },
+  {
+    "id": "gitfc",
+    "title": "GitFC – EA FC-Style GitHub Card Generator",
+    "tagline": "Transform your GitHub profile into EA FC Ultimate Team style cards.",
+    "icon": "Trophy",
+    "iconColor": "text-yellow-500",
+    "description": "Interactive web application that fetches live GitHub contribution metrics via GraphQL and calculates a custom developer rating engine. Translates commits, pull requests, stars, and activity streaks into EA FC-inspired attributes (PAS, DRI, SHO, PAC, DEF, PHY) with dynamic card shells and 1-click HD card export.",
+    "problem": "Standard GitHub profile visualizers are static, text-heavy, and lack engaging gamified metrics for showcasing developer achievements.",
+    "solution": "Engineered an algorithmic rating engine mapping real GitHub activity into EA FC player attributes with dynamic card rarity rendering (TOTY, Icon, Gold) and instant high-res PNG export.",
+    "metrics": [
+      { "label": "Card Generation", "value": "<1s" },
+      { "label": "Auth Required", "value": "Zero (Public API)" },
+      { "label": "Export Format", "value": "HD PNG" }
+    ],
+    "key_features": [
+      "Algorithmic rating engine translating GitHub commits, PRs, and stars into EA FC player attributes",
+      "Dynamic Tactical Role assignment (Playmaker, Striker, Winger, Defender) based on contribution habits",
+      "Rarity card shells (TOTY, Gold, Icon, In-Form) calculated from overall GitHub rating score",
+      "1-click high-resolution PNG card export for sharing on social media",
+      "Zero authentication required - instant public profile lookup via GitHub GraphQL API"
+    ],
+    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API", "HTML2Canvas"],
+    "tags": ["Next.js", "TypeScript", "GraphQL", "Tailwind CSS"],
+    "category": "Full-Stack",
+    "live_url": "https://gitfc.vercel.app/",
+    "github_url": "https://github.com/ShreyashSrivastava15/GitFc",
+    "image_url": "/projects/gitfc.png",
+    "image_urls": ["/projects/gitfc.png", "/projects/gitfc-logo.jpg"]
+  },
+  {
+    "id": "ihatelovepdf",
+    "title": "IHateLovePDF – All-in-One PDF Suite",
+    "tagline": "High-performance client-first PDF utility suite.",
+    "icon": "FileText",
+    "iconColor": "text-red-500",
+    "description": "All-in-one PDF utility platform designed to split, merge, compress, convert, edit, unlock, and protect PDF files directly in the browser with maximum security and sub-second processing speeds. Eliminates payload limits and privacy risks.",
+    "problem": "Traditional PDF tools enforce strict payload limits, push aggressive subscription paywalls, and compromise data privacy by uploading sensitive documents to remote cloud servers.",
+    "solution": "Engineered a high-speed, client-first web suite leveraging WebAssembly & Web Workers for 100% private, zero-latency PDF operations directly inside the user's browser.",
+    "metrics": [
+      { "label": "Privacy & Security", "value": "100% Client-Side" },
+      { "label": "File Size Limit", "value": "Unlimited" },
+      { "label": "Processing Speed", "value": "<100ms" }
+    ],
+    "key_features": [
+      "100% Client-side privacy - documents never leave your browser",
+      "Blazing fast PDF merging, splitting, compressing, and watermarking",
+      "Drag & Drop intuitive visual page reordering",
+      "Zero file size caps and zero subscription paywalls",
+      "Real-time visual preview generator powered by WebAssembly"
+    ],
+    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "PDF-Lib", "WebAssembly", "Web Workers"],
+    "tags": ["Next.js", "TypeScript", "WebAssembly", "Tailwind CSS"],
+    "category": "Utilities & Data",
+    "live_url": "https://www.ihatelovepdf.com/",
+    "github_url": "https://github.com/ShreyashSrivastava15/IHateLovePDF",
+    "image_url": "/projects/ihatelovepdf.png",
+    "image_urls": ["/projects/ihatelovepdf.png"]
+  },
+  {
+    "id": "quickbite",
+    "title": "QuickBite – Food Ordering API",
+    "tagline": "Scalable food ordering and real-time order tracking backend API.",
+    "icon": "Cpu",
+    "iconColor": "text-primary",
+    "description": "Built a complete food ordering backend using Node.js, Express.js, and MongoDB with separate logins for users, admin, products, and orders using JWT and bcrypt for password security. Added real-time order status updates using Socket.io and secured the API with Helmet.js, rate limiting, and Zod-based input validation.",
+    "problem": "Traditional food delivery APIs experience latency spikes during high-traffic checkout windows and lack robust role-based access control.",
+    "solution": "Engineered a scalable Node.js/Express.js backend utilizing Socket.io for live order status updates, MVC patterns for codebase modularity, and Zod/Helmet.js for API reinforcement.",
+    "metrics": [
+      { "label": "Latency", "value": "<120ms" },
+      { "label": "Security", "value": "Helmet/Zod" },
+      { "label": "Real-Time", "value": "Socket.io" }
+    ],
+    "key_features": [
+      "Real-time order tracking via WebSockets (Socket.io)",
+      "Role-based access control for User, Admin, and Restaurant roles",
+      "Secure authentication using JWT tokens and Bcrypt password hashing",
+      "Comprehensive input validation and rate limiting using Zod & Helmet"
+    ],
+    "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Bcrypt", "Zod"],
+    "tags": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Zod"],
+    "category": "Backend & APIs",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastava15/QuickBite",
+    "image_url": "/projects/hotel-booking.png",
+    "image_urls": ["/projects/hotel-booking.png"]
+  },
+  {
+    "id": "swiperide",
+    "title": "SwipeRide – Ride Sharing API",
+    "tagline": "Real-time geospatial ride-sharing and driver matching engine.",
+    "icon": "Cpu",
+    "iconColor": "text-accent",
+    "description": "Building a real-time ride-sharing backend using Node.js, Express.js, MongoDB, JWT (for rider/driver/admin roles), Socket.io (live tracking), and Redis (fast driver location tracking). Used Google Maps API for fare calculation, Paystack for payments, and MongoDB's geospatial queries to find nearby drivers with dynamic radius expansion.",
+    "problem": "Matching riders with nearby drivers in real-time requires high-frequency database reads and calculations that degrade standard SQL performance.",
+    "solution": "Built a high-performance matching engine using MongoDB's geospatial queries with dynamic radius expansion, cached active driver locations in Redis for ultra-low latency updates, and synced status over Socket.io.",
+    "metrics": [
+      { "label": "Radius Match", "value": "Dynamic" },
+      { "label": "Driver Sync", "value": "Redis" },
+      { "label": "Latency", "value": "<5ms" }
+    ],
+    "key_features": [
+      "Geospatial driver matching using MongoDB 2DSphere indexing",
+      "Redis caching layer for sub-millisecond driver location updates",
+      "Google Maps Distance Matrix API integration for accurate fare estimation",
+      "Integrated payment gateway using Paystack webhook notifications"
+    ],
+    "tech": ["Node.js", "Express.js", "MongoDB", "Redis", "JWT", "Socket.io", "Google Maps API"],
+    "tags": ["Node.js", "Express.js", "Redis", "MongoDB", "Socket.io"],
+    "category": "Backend & APIs",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastava15/SwipeRide",
+    "image_url": "/projects/swiperide.png",
+    "image_urls": ["/projects/swiperide.png"]
+  }
 ]

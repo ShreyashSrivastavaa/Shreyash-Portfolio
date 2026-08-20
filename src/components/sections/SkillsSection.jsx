@@ -1,238 +1,161 @@
-'use client'
+'use client';
 
-import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
-
-const services = [
-  {
-    icon: '⚡',
-    title: 'Backend API Engineering',
-    description:
-      'Designing and building blazing-fast REST & GraphQL APIs with Node.js, Express, and FastAPI. Clean architecture, layered error handling, and sub-millisecond performance.',
-    tags: ['Node.js', 'Express', 'FastAPI', 'REST', 'GraphQL'],
-  },
-  {
-    icon: '🗄️',
-    title: 'Database Architecture',
-    description:
-      'Schema design, query optimization, and scalable data layer setup using MongoDB, PostgreSQL, Redis — with caching strategies that dramatically cut response times.',
-    tags: ['MongoDB', 'PostgreSQL', 'Redis', 'Indexing', 'Caching'],
-  },
-  {
-    icon: '⚛️',
-    title: 'Frontend Development',
-    description:
-      'Building modern, responsive client-side applications with React and Next.js. Pixel-perfect UI, smooth animations, and excellent performance metrics.',
-    tags: ['React', 'Next.js', 'TypeScript', 'Framer Motion', 'CSS'],
-  },
-  {
-    icon: '🐳',
-    title: 'DevOps & Deployment',
-    description:
-      'Containerizing services with Docker, setting up CI/CD pipelines, and deploying on cloud infrastructure — for systems that scale without babysitting.',
-    tags: ['Docker', 'AWS', 'Vercel', 'CI/CD', 'GitHub Actions'],
-  },
-  {
-    icon: '🔮',
-    title: 'AI / LLM Integration',
-    description:
-      'Integrating LLM-powered features, building AI chatbots, and wiring intelligent automation into products using OpenAI, Gemini, and custom ML pipelines.',
-    tags: ['OpenAI', 'Gemini', 'LangChain', 'RAG', 'Embeddings'],
-  },
-  {
-    icon: '🎨',
-    title: 'Creative Tools & WebAssembly',
-    description:
-      'Building performance-critical browser tools with WebAssembly, Three.js, and Canvas — like IHateLovePDF — where native speed meets web accessibility.',
-    tags: ['WebAssembly', 'Three.js', 'Canvas', 'PDF.js', 'WASM'],
-  },
-]
-
-const skillBars = [
-  { label: 'Backend (Node / Express / FastAPI)', pct: 90 },
-  { label: 'Frontend (React / Next.js)', pct: 85 },
-  { label: 'Database Design & Optimization', pct: 88 },
-  { label: 'AI / ML Integration', pct: 75 },
-  { label: 'DevOps & Cloud (Docker / AWS)', pct: 72 },
-  { label: 'Creative Coding (Three.js / WASM)', pct: 78 },
-]
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Terminal, Database, ShieldCheck, Cpu, Code2, Layers } from 'lucide-react';
+import skillsData from '@/data/skills.json';
 
 export default function SkillsSection() {
-  const [isMobile, setIsMobile] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const sectionRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('All');
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
+          setVisible(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.15 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const iconMap = {
+    Terminal: <Terminal size={22} color="#60A5FA" />,
+    Database: <Database size={22} color="#34D399" />,
+    ShieldCheck: <ShieldCheck size={22} color="#A78BFA" />,
+    Brain: <Layers size={22} color="#F472B6" />,
+    Code2: <Code2 size={22} color="#FBBF24" />,
+    Cpu: <Cpu size={22} color="#38BDF8" />,
+  };
+
+  const categories = skillsData.skillCategories || [];
+  const coreSkills = skillsData.coreSkills || [];
 
   return (
     <section
       ref={sectionRef}
       id="skills"
       style={{
-        padding: isMobile ? '80px 24px' : '120px 60px 120px 120px',
+        paddingTop: isMobile ? '80px' : '120px',
+        paddingBottom: isMobile ? '80px' : '120px',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background Watermark */}
-      <span className="section-watermark-left" aria-hidden="true" style={{ top: 20 }}>
-        WHAT I DO
-      </span>
-
-      {/* Ambient orb */}
       <div
         style={{
-          position: 'absolute',
-          bottom: '10%',
-          left: '-80px',
-          width: 400,
-          height: 400,
-          background: 'radial-gradient(circle, rgba(230,57,70,0.07) 0%, transparent 70%)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-          zIndex: 0,
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          paddingLeft: isMobile ? '24px' : '60px',
+          paddingRight: isMobile ? '24px' : '60px',
         }}
-      />
-
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        {/* Header */}
+      >
+        {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          style={{ marginBottom: 56 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: '48px' }}
         >
           <span
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 12,
-              color: 'var(--text-muted)',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '12px',
+              color: '#60A5FA',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
             }}
           >
-            MY TOOLKIT
+            TECHNICAL STACK
           </span>
-
           <h2
             style={{
-              fontSize: isMobile ? 32 : 'clamp(32px, 5vw, 48px)',
+              fontSize: isMobile ? '32px' : '44px',
               fontWeight: 800,
-              lineHeight: 1.05,
-              marginTop: 12,
-              fontFamily: 'var(--font-heading)',
+              lineHeight: 1.1,
+              marginTop: '8px',
+              color: '#F8FAFC',
+              fontFamily: "'Inter', sans-serif",
             }}
           >
-            <span style={{ color: 'var(--text-sand)' }}>What I Build</span>
-            <br />
-            <span
-              style={{
-                color: 'transparent',
-                WebkitTextStroke: '1.5px rgba(255,255,255,0.6)',
-              }}
-            >
-              & How I Do It
-            </span>
+            Tools, Technologies & <br />
+            <span style={{ color: '#A78BFA' }}>Core Engineering Skills</span>
           </h2>
         </motion.div>
 
-        {/* Service Cards Grid */}
+        {/* SKILL CATEGORIES GRID */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-            gap: 20,
-            marginBottom: 72,
+            gap: '20px',
+            marginBottom: '64px',
           }}
         >
-          {services.map((service, i) => (
+          {categories.map((cat, i) => (
             <motion.div
-              key={service.title}
-              className="service-card"
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6 }}
+              key={cat.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -5 }}
+              style={{
+                padding: '24px',
+                borderRadius: '20px',
+                background: 'rgba(30, 41, 59, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(16px)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+              }}
             >
-              {/* Ghost number */}
-              <span className="service-number">0{i + 1}</span>
-
-              {/* Icon */}
-              <div
-                style={{
-                  fontSize: 30,
-                  marginBottom: 14,
-                  display: 'block',
-                }}
-              >
-                {service.icon}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div
+                  style={{
+                    padding: '10px',
+                    borderRadius: '12px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                  }}
+                >
+                  {iconMap[cat.icon] || <Cpu size={22} color="#60A5FA" />}
+                </div>
+                <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#F8FAFC', margin: 0 }}>
+                  {cat.title}
+                </h3>
               </div>
 
-              {/* Title */}
-              <h3
-                style={{
-                  fontSize: 16,
-                  fontWeight: 700,
-                  marginBottom: 10,
-                  color: 'var(--text-sand)',
-                  fontFamily: 'var(--font-heading)',
-                  lineHeight: 1.3,
-                  paddingRight: 40,
-                }}
-              >
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: 13,
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.75,
-                  marginBottom: 16,
-                }}
-              >
-                {service.description}
-              </p>
-
-              {/* Tags */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                {service.tags.map((tag) => (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {cat.skills.map((skill) => (
                   <span
-                    key={tag}
+                    key={skill}
                     style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 10,
-                      padding: '3px 10px',
-                      borderRadius: 999,
-                      background: 'rgba(230,57,70,0.1)',
-                      border: '1px solid rgba(230,57,70,0.2)',
-                      color: 'var(--text-muted)',
-                      letterSpacing: '0.05em',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: '12px',
+                      padding: '4px 12px',
+                      borderRadius: '8px',
+                      background: 'rgba(59, 130, 246, 0.1)',
+                      border: '1px solid rgba(59, 130, 246, 0.25)',
+                      color: '#93C5FD',
                     }}
                   >
-                    {tag}
+                    {skill}
                   </span>
                 ))}
               </div>
@@ -240,24 +163,23 @@ export default function SkillsSection() {
           ))}
         </div>
 
-        {/* Skill Bars */}
+        {/* PROFICIENCY BARS SECTION */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          style={{ marginBottom: 12 }}
+          transition={{ duration: 0.6 }}
+          style={{ marginBottom: '24px' }}
         >
           <h3
             style={{
-              fontSize: isMobile ? 22 : 28,
+              fontSize: '24px',
               fontWeight: 700,
-              marginBottom: 32,
-              color: 'var(--text-sand)',
-              fontFamily: 'var(--font-heading)',
+              color: '#F8FAFC',
+              fontFamily: "'Inter', sans-serif",
             }}
           >
-            Proficiency Levels
+            Core Competencies & Proficiency
           </h3>
         </motion.div>
 
@@ -265,55 +187,49 @@ export default function SkillsSection() {
           style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: isMobile ? 20 : 40,
+            gap: isMobile ? '20px' : '36px',
           }}
         >
-          {skillBars.map((skill, i) => (
+          {coreSkills.map((skill, i) => (
             <motion.div
-              key={skill.label}
+              key={skill.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              style={{ marginBottom: 8 }}
             >
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
-                  marginBottom: 8,
-                  fontSize: 13,
+                  marginBottom: '8px',
+                  fontSize: '13px',
                 }}
               >
-                <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>{skill.label}</span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    color: 'var(--accent-red)',
-                    fontSize: 12,
-                    fontWeight: 600,
-                  }}
-                >
-                  {skill.pct}%
+                <span style={{ color: '#F1F5F9', fontWeight: 600, fontFamily: "'JetBrains Mono', monospace" }}>
+                  {skill.name}
+                </span>
+                <span style={{ color: '#60A5FA', fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>
+                  {skill.percentage}%
                 </span>
               </div>
               <div
                 style={{
-                  height: 4,
-                  background: 'rgba(255,255,255,0.06)',
-                  borderRadius: 999,
+                  height: '8px',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  borderRadius: '999px',
                   overflow: 'hidden',
                 }}
               >
                 <div
                   style={{
                     height: '100%',
-                    width: visible ? `${skill.pct}%` : '0%',
-                    background: 'linear-gradient(90deg, var(--accent-crimson), var(--accent-red), rgba(255,120,80,0.8))',
-                    borderRadius: 999,
-                    transition: 'width 1.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    width: visible ? `${skill.percentage}%` : '0%',
+                    background: 'linear-gradient(90deg, #3B82F6, #8B5CF6, #A78BFA)',
+                    borderRadius: '999px',
+                    transition: 'width 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
                     transitionDelay: `${i * 0.1}s`,
-                    boxShadow: '0 0 10px rgba(230,57,70,0.4)',
+                    boxShadow: '0 0 12px rgba(59, 130, 246, 0.5)',
                   }}
                 />
               </div>
@@ -322,5 +238,5 @@ export default function SkillsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

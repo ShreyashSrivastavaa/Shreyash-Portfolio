@@ -1,14 +1,9 @@
 {
     "skillCategories": [
         {
-            "title": "Languages",
-            "icon": "Code2",
-            "skills": ["C++", "JavaScript", "TypeScript", "Python", "SQL"]
-        },
-        {
-            "title": "Backend Engineering",
+            "title": "Backend Frameworks",
             "icon": "Terminal",
-            "skills": ["Node.js", "Express.js", "REST APIs", "WebSockets", "JWT/Auth"]
+            "skills": ["Node.js", "Express.js", "NestJS", "REST APIs", "WebSockets"]
         },
         {
             "title": "Databases & Caching",
@@ -16,27 +11,32 @@
             "skills": ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM"]
         },
         {
+            "title": "Auth & Messaging",
+            "icon": "ShieldCheck",
+            "skills": ["JWT", "RBAC Security", "OAuth 2.0", "RabbitMQ", "Zod Validation"]
+        },
+        {
             "title": "DevOps & Cloud",
             "icon": "Brain",
-            "skills": ["Docker", "AWS Basics", "Vercel", "CI/CD Pipelines"]
+            "skills": ["Docker", "AWS", "Vercel", "CI/CD Pipelines", "Linux/Bash"]
         },
         {
-            "title": "Architecture & Quality",
+            "title": "Languages",
+            "icon": "Code2",
+            "skills": ["TypeScript", "JavaScript", "SQL", "C++", "Python"]
+        },
+        {
+            "title": "Architecture & Tools",
             "icon": "Cpu",
-            "skills": ["Microservices", "System Design", "Unit Testing", "Scalability"]
-        },
-        {
-            "title": "Tools & Ecosystem",
-            "icon": "Layout",
-            "skills": ["Git/GitHub", "Postman", "Linux/Bash", "Agile/Scrum"]
+            "skills": ["System Design", "Microservices", "Git/GitHub", "Postman", "Agile/Scrum"]
         }
     ],
     "coreSkills": [
-        { "name": "JAVASCRIPT", "level": "EXPERT", "percentage": 80 },
-        { "name": "NODE.JS", "level": "EXPERT", "percentage": 85 },
-        { "name": "EXPRESS.JS", "level": "PROFICIENT", "percentage": 85 },
-        { "name": "MONGODB", "level": "PROFICIENT", "percentage": 80 },
-        { "name": "POSTGRESQL", "level": "PROFICIENT", "percentage": 80 },
-        { "name": "REST API DESIGN", "level": "PROFICIENT", "percentage": 85 }
+        { "name": "NODE.JS & EXPRESS", "level": "EXPERT", "percentage": 92 },
+        { "name": "NESTJS & TYPESCRIPT", "level": "PROFICIENT", "percentage": 88 },
+        { "name": "POSTGRESQL & PRISMA", "level": "EXPERT", "percentage": 90 },
+        { "name": "REDIS & RABBITMQ", "level": "PROFICIENT", "percentage": 85 },
+        { "name": "DOCKER & DEVOPS", "level": "PROFICIENT", "percentage": 82 },
+        { "name": "REST & SYSTEM DESIGN", "level": "EXPERT", "percentage": 90 }
     ]
 }

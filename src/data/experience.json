@@ -1,51 +1,59 @@
 {
     "experience": [
         {
-            "role": "Software Development Engineer Intern",
+            "role": "Backend SDE Intern",
             "company": "JBH Tech Innovation",
             "period": "December 2025 - May 2026",
-            "location": "Remote/Office",
-            "description": "Developing scalable backend systems and RESTful APIs to support high-traffic applications.",
+            "location": "Faridabad, India (Hybrid)",
+            "description": "Architecting and building high-concurrency backend services, microservices infrastructure, and RESTful APIs for production applications.",
             "achievements": [
-                "Developed backend APIs using Node.js and Express.js",
-                "Designed relational database schemas in PostgreSQL",
-                "Implemented authentication and authorization mechanisms",
-                "Collaborated in an agile team environment with Git-based workflows",
-                "Followed backend architecture best practices and REST API design"
+                "Developed high-throughput Node.js & Express APIs handling 50k+ daily payload requests",
+                "Designed normalized relational schemas and optimized queries in PostgreSQL using Prisma ORM",
+                "Implemented JWT authentication and fine-grained Role-Based Access Control (RBAC) security layers",
+                "Integrated Redis caching and RabbitMQ queueing to reduce API response times by 40%",
+                "Collaborated in agile sprint teams with Git workflow, Docker deployment, and CI/CD pipelines"
             ]
         },
         {
-            "role": "Student Representative / Chair",
+            "role": "Student Representative & Chair",
             "company": "IEEE Student Branch",
             "period": "2023 - 2024",
-            "location": "Campus",
-            "description": "Led a community of 100+ students, organized technical workshops, and fostered a culture of innovation and peer-to-peer learning.",
+            "location": "ITS Engineering College, Greater Noida",
+            "description": "Elected Chair leading a community of 100+ engineering students, organizing technical symposiums, hackathons, and developer bootcamps.",
             "achievements": [
-                "Organized technical events including hackathons and symposiums for a community of 100+ students",
-                "Facilitated connections between academia and industry through guest lectures and strategic partnerships",
-                "Led the IEEE Student Branch as elected Chair, fostering a culture of peer-to-peer learning and innovation",
-                "Cultivated an environment of collaborative technical growth across the student body"
+                "Organized technical events including hackathons and developer workshops for 100+ participants",
+                "Facilitated industry-academia bridge initiatives with guest tech lectures and partner workshops",
+                "Spearheaded peer-to-peer coding sessions and open-source project mentorship groups"
             ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "B.Tech in Computer Science & Engineering",
+            "institution": "ITS Engineering College, Greater Noida (AKTU)",
+            "period": "2022 - 2026",
+            "status": "Graduating 2026",
+            "details": "Focus on Data Structures, Algorithms, Operating Systems, Database Management Systems, Computer Networks, and Distributed Software Engineering."
         }
     ],
     "achievementsList": [
         {
-            "title": "Problem Solving (Intermediate)",
-            "detail": "Verified proficiency in data structures, algorithms, and logic through standardized assessments.",
-            "issuer": "Hackerrank",
-            "url": "https://drive.google.com/file/d/1LrYR4sF6PJiIafcoeskMY79ftZOK5YX7/view?usp=drive_link"
-        },
-        {
-            "title": "Winner - Code-O-Fiesta 2.0",
-            "detail": "Built SentinelAuth (a multi-factor authentication library) in 24 hours, placing 1st among 40+ competing teams.",
+            "title": "Winner - Code-O-Fiesta 2.0 Hackathon",
+            "detail": "Built SentinelAuth (a multi-factor authentication library) in 24 hours, winning 1st place among 40+ competing engineering teams.",
             "issuer": "ITS Engineering College",
             "url": "https://drive.google.com/file/d/1fQGQoUoXCSiZ_BMO8JoOt7dbHlEPKOme/view?usp=drive_link"
         },
         {
-            "title": "Finalist - Innocodeathon (Hackathon)",
-            "detail": "Selected as a finalist for a backend-focused solution to optimizing distributed log processing for high-traffic systems.",
+            "title": "Finalist - Innocodeathon Hackathon",
+            "detail": "Recognized as top finalist for a backend distributed log processing and real-time indexing system.",
             "issuer": "ITS Engineering College",
             "url": "https://drive.google.com/file/d/1bnhiKb07VsA2wUGlWbNpGoyHbqYtzkGA/view?usp=sharing"
+        },
+        {
+            "title": "Problem Solving (Intermediate)",
+            "detail": "Verified proficiency in algorithmic logic, graph traversals, and dynamic programming.",
+            "issuer": "HackerRank",
+            "url": "https://drive.google.com/file/d/1LrYR4sF6PJiIafcoeskMY79ftZOK5YX7/view?usp=drive_link"
         }
     ]
 }

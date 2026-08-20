@@ -1,44 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Code, Award, Globe, FileText, ArrowUpRight } from "lucide-react";
-import projectsData from "@/data/projects.json";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Code, Award, GraduationCap, Briefcase, FileText, ArrowUpRight, Github, Linkedin, ExternalLink } from 'lucide-react';
+import projectsData from '@/data/projects.json';
 
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.16 },
+    transition: { staggerChildren: 0.14 },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 35, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const slideLeft = {
-  hidden: { opacity: 0, x: 70, rotate: 2 },
-  show: {
-    opacity: 1,
-    x: 0,
-    rotate: 0,
-    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const pop = {
-  hidden: { opacity: 0, scale: 0.92, y: 25 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -48,13 +27,13 @@ export default function About() {
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
     check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   const scrollToPortfolio = () => {
-    const el = document.getElementById("portfolio");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById('portfolio');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   if (isMobile === null) return null;
@@ -62,398 +41,210 @@ export default function About() {
   const projectCount = projectsData.length;
 
   const stats = [
-    { icon: <Code size={16} />, value: String(projectCount), title: "PROJECTS" },
-    { icon: <Globe size={16} />, value: "100%", title: "CLIENT SATISFACTION" },
-    { icon: <Award size={16} />, value: "2+", title: "YEARS EXP" },
+    { icon: <Briefcase size={18} />, value: "SDE Intern", title: "JBH TECH INNOVATION" },
+    { icon: <GraduationCap size={18} />, value: "2026", title: "ITS ENGG COLLEGE (AKTU)" },
+    { icon: <Code size={18} />, value: `${projectCount}+`, title: "SHIPPED PROJECTS" },
+    { icon: <Award size={18} />, value: "1st", title: "CODE-O-FIESTA HACKATHON" },
   ];
 
   return (
     <section
       id="about"
       style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "flex-start",
-        padding: isMobile ? "60px 24px 30px" : "80px 60px 30px 120px",
-        position: "relative",
-        overflow: "hidden",
+        paddingTop: isMobile ? '80px' : '120px',
+        paddingBottom: isMobile ? '80px' : '120px',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {/* Background Watermark */}
-      <span className="section-watermark-left" aria-hidden="true">
-        ABOUT ME
-      </span>
-
-      {/* Ambient Glow Orbs */}
       <div
         style={{
-          position: "absolute",
-          top: "20%",
-          right: "-100px",
-          width: 400,
-          height: 400,
-          background: "radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          pointerEvents: "none",
-          zIndex: 0,
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          paddingLeft: isMobile ? '24px' : '60px',
+          paddingRight: isMobile ? '24px' : '60px',
         }}
-      />
+      >
+        {/* SECTION HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: '48px' }}
+        >
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '12px',
+              color: '#60A5FA',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+            }}
+          >
+            ABOUT ME
+          </span>
+          <h2
+            style={{
+              fontSize: isMobile ? '32px' : '44px',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginTop: '8px',
+              color: '#F8FAFC',
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
+            Architecting Scalable Systems <br />
+            <span style={{ color: '#A78BFA' }}>Driven by Code & Precision.</span>
+          </h2>
+        </motion.div>
 
-      <div style={{ width: "100%", position: "relative", zIndex: 1 }}>
-        {/* TOP: Photo (left) + Text (right) — reversed from Himanshu's layout for dev identity */}
+        {/* CONTENT GRID */}
         <div
           style={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "40px",
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? '32px' : '60px',
+            alignItems: 'start',
           }}
         >
-          {/* PORTRAIT CARD — Real "A-OK" Photo */}
-          {!isMobile && (
-            <motion.div
-              variants={slideLeft}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false }}
-              style={{
-                flexShrink: 0,
-                width: "44%",
-                display: "flex",
-                justifyContent: "flex-start",
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  borderRadius: 26,
-                  overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  boxShadow:
-                    "0 0 0 1px rgba(230,57,70,0.15), 0 32px 80px rgba(0,0,0,0.7), 0 0 60px rgba(193,18,31,0.2)",
-                  width: "100%",
-                  maxWidth: 400,
-                  aspectRatio: "3/4",
-                }}
-              >
-                {/* The real photo — use cover since image already has bokeh bg */}
-                <img
-                  src="/shreyash-bg-clean.png"
-                  alt="Shreyash Srivastava"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center top",
-                    display: "block",
-                  }}
-                />
-
-                {/* Subtle bottom vignette to blend into section */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0, left: 0, right: 0,
-                    height: "25%",
-                    background: "linear-gradient(to top, rgba(5,3,5,0.6) 0%, transparent 100%)",
-                    pointerEvents: "none",
-                  }}
-                />
-
-                {/* "S-OK" tag — top right */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 16, right: 16,
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 10,
-                    letterSpacing: "0.12em",
-                    color: "rgba(255,255,255,0.28)",
-                    userSelect: "none",
-                  }}
-                >
-                  S-OK
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* TEXT COLUMN */}
+          {/* LEFT: BIO & DETAILS */}
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: false, margin: "-80px" }}
-            style={{ maxWidth: 560, width: "100%" }}
+            viewport={{ once: true }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
           >
-            <motion.div variants={fadeUp} style={{ marginBottom: 16 }}>
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  color: "var(--text-muted)",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                }}
-              >
-                ABOUT ME
-              </span>
-            </motion.div>
-
-            <motion.div variants={fadeUp} style={{ marginBottom: 8 }}>
-              <h2
-                style={{
-                  fontSize: isMobile ? 32 : "clamp(32px, 5vw, 46px)",
-                  fontWeight: 800,
-                  lineHeight: 1.03,
-                  fontFamily: "var(--font-heading)",
-                }}
-              >
-                <span style={{ color: "var(--text-sand)" }}>Crafting Systems</span>
-                <br />
-                <span
-                  style={{
-                    color: "transparent",
-                    WebkitTextStroke: "1.5px rgba(255,255,255,0.7)",
-                  }}
-                >
-                  Request by Request
-                </span>
-              </h2>
-            </motion.div>
-
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1.1, delay: 0.2 },
-                },
-              }}
-              style={{
-                marginTop: 16,
-                fontSize: 14,
-                color: "var(--text-secondary)",
-                lineHeight: 1.85,
-                maxWidth: isMobile ? "100%" : 490,
-              }}
-            >
-              I'm Shreyash Srivastava, a freelance backend engineer based in Noida, India.
-              I've spent 2+ years refining the craft of high-performance API design, scalable
-              microservices, and modern client-side web tools — working with startups and
-              creators who refuse to settle for average.
+            <motion.p variants={fadeUp} style={{ fontSize: '15px', color: '#CBD5E1', lineHeight: 1.85, margin: 0 }}>
+              I am <strong>Shreyash Srivastava (Ramboo)</strong>, a dedicated Backend Software Development Engineer currently serving as a <strong>Backend SDE Intern at JBH Tech Innovation</strong> in Faridabad. I am pursuing my <strong>B.Tech in Computer Science & Engineering at ITS Engineering College, Greater Noida (AKTU)</strong>, graduating in 2026.
             </motion.p>
 
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1.1, delay: 0.35 },
-                },
-              }}
-              style={{
-                marginTop: 12,
-                fontSize: 14,
-                color: "var(--text-secondary)",
-                lineHeight: 1.85,
-                maxWidth: isMobile ? "100%" : 490,
-              }}
-            >
-              My philosophy is simple: every endpoint is intentional, every response
-              serves the system, and every millisecond of latency is earned.
-              I don't just write code — I architect experiences.
+            <motion.p variants={fadeUp} style={{ fontSize: '15px', color: '#94A3B8', lineHeight: 1.85, margin: 0 }}>
+              My engineering focus lies in architecting fault-tolerant microservices, high-throughput REST APIs, relational PostgreSQL databases with Prisma ORM, real-time WebSockets with Socket.io, and asynchronous message queues with RabbitMQ and Redis.
             </motion.p>
 
-            {/* Quote */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.94 },
-                show: {
-                  opacity: 1,
-                  scale: 1,
-                  transition: { duration: 0.9, delay: 0.45 },
-                },
-              }}
-              style={{
-                marginTop: 20,
-                padding: "12px 20px",
-                borderRadius: 12,
-                border: "1px solid rgba(230,57,70,0.2)",
-                borderLeft: "3px solid var(--accent-red)",
-                background: "rgba(230,57,70,0.06)",
-                fontSize: 13,
-                fontStyle: "italic",
-                color: "var(--text-sand)",
-                display: "inline-block",
-                width: "fit-content",
-                maxWidth: "100%",
-              }}
-            >
-              "Architecting high-performance digital systems with clean code and sub-millisecond efficiency."
-            </motion.div>
-
-            {/* BUTTONS */}
             <motion.div
               variants={fadeUp}
-              style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}
+              style={{
+                padding: '16px 20px',
+                borderRadius: '16px',
+                background: 'rgba(30, 41, 59, 0.5)',
+                border: '1px solid rgba(59, 130, 246, 0.2)',
+                borderLeft: '4px solid #3B82F6',
+              }}
             >
+              <p style={{ fontSize: '14px', color: '#F1F5F9', fontStyle: 'italic', margin: 0 }}>
+                "Every API endpoint should be clean, resilient, and optimized for sub-millisecond performance."
+              </p>
+            </motion.div>
+
+            {/* QUICK LINK CTAS */}
+            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '10px' }}>
+              <a
+                href="https://github.com/ShreyashSrivastava15"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 20px',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  color: '#F8FAFC',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                }}
+              >
+                <Github size={15} /> GitHub Profile
+              </a>
+
               <a
                 href="https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 6,
-                  padding: "10px 20px",
-                  borderRadius: 10,
-                  border: "1px solid white",
-                  background: "white",
-                  color: "black",
-                  fontSize: 13,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 20px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
+                  color: '#FFFFFF',
+                  fontSize: '13px',
                   fontWeight: 600,
-                  fontFamily: "var(--font-heading)",
-                  textDecoration: "none",
-                  transition: "var(--transition)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-                  e.currentTarget.style.opacity = "0.92";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.opacity = "1";
+                  textDecoration: 'none',
                 }}
               >
-                <FileText size={14} />
-                View Resume
+                <FileText size={15} /> Download CV
               </a>
-
-              <button
-                onClick={scrollToPortfolio}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 6,
-                  padding: "10px 20px",
-                  borderRadius: 10,
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  background: "transparent",
-                  color: "white",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  fontFamily: "var(--font-heading)",
-                  cursor: "pointer",
-                  transition: "var(--transition)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                }}
-              >
-                <ArrowUpRight size={14} />
-                View Projects
-              </button>
             </motion.div>
           </motion.div>
+
+          {/* RIGHT: STAT CARDS & HIGHLIGHTS */}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+              gap: '16px',
+            }}
+          >
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeUp}
+                whileHover={{ y: -4, scale: 1.02 }}
+                style={{
+                  padding: '24px',
+                  borderRadius: '20px',
+                  background: 'rgba(30, 41, 59, 0.6)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(16px)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                }}
+              >
+                <div
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '12px',
+                    background: 'rgba(59, 130, 246, 0.15)',
+                    color: '#60A5FA',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {stat.icon}
+                </div>
+                <div>
+                  <div style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC' }}>{stat.value}</div>
+                  <div
+                    style={{
+                      fontSize: '11px',
+                      color: '#94A3B8',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      marginTop: '2px',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {stat.title}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-
-        {/* STATS CARDS */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false }}
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-            gap: 18,
-            marginTop: 48,
-          }}
-        >
-          {stats.map((item, i) => (
-            <motion.div
-              key={i}
-              variants={pop}
-              whileHover={{ scale: 1.03, y: -4 }}
-              style={{
-                position: "relative",
-                padding: 22,
-                borderRadius: 18,
-                border: "1px solid var(--border)",
-                borderLeft: "3px solid var(--accent-red)",
-                background: "var(--bg-card)",
-                cursor: "pointer",
-                transition: "border-color 0.3s, box-shadow 0.3s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(230,57,70,0.4)";
-                e.currentTarget.style.boxShadow = "0 0 30px rgba(230,57,70,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border)";
-                e.currentTarget.style.borderLeftColor = "var(--accent-red)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              <div
-                style={{
-                  width: 34,
-                  height: 34,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(230,57,70,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 10,
-                  color: "var(--accent-red)",
-                }}
-              >
-                {item.icon}
-              </div>
-
-              <div
-                style={{
-                  position: "absolute",
-                  top: 18,
-                  right: 18,
-                  fontSize: 22,
-                  fontWeight: 800,
-                  color: "var(--text-sand)",
-                  fontFamily: "var(--font-heading)",
-                }}
-              >
-                {item.value}
-              </div>
-
-              <div
-                style={{
-                  fontSize: 11,
-                  letterSpacing: "0.08em",
-                  color: "var(--text-muted)",
-                  fontFamily: "var(--font-mono)",
-                }}
-              >
-                {item.title}
-              </div>
-
-              <div
-                onClick={scrollToPortfolio}
-                style={{ position: "absolute", bottom: 16, right: 16, cursor: "pointer", color: "var(--text-muted)" }}
-              >
-                <ArrowUpRight size={15} />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
