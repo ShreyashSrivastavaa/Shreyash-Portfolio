@@ -1,36 +1,54 @@
+import projectsData from '@/data/projects.json';
+
 export default function sitemap() {
   const baseUrl = 'https://shreyashsrivastava.vercel.app';
-  
-  return [
+  const currentDate = new Date();
+
+  const staticRoutes = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/#about`,
-      lastModified: new Date(),
+      url: `${baseUrl}/about`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
-      url: `${baseUrl}/#portfolio`,
-      lastModified: new Date(),
+      url: `${baseUrl}/projects`,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/#skills`,
-      lastModified: new Date(),
+      url: `${baseUrl}/skills`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#contact`,
-      lastModified: new Date(),
+      url: `${baseUrl}/experience`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.75,
     },
   ];
+
+  const projectRoutes = projectsData.map((project) => ({
+    url: `${baseUrl}/projects/${project.id}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...projectRoutes];
 }

@@ -32,21 +32,27 @@
 }
 
 /* ─── RESET ─────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
 
-html, body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* ─── SCROLLBAR ──────────────────────────────────────────── */

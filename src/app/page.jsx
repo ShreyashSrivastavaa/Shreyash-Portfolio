@@ -12,7 +12,7 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/ui/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
-import PortfolioShowcase from '@/components/sections/PortfolioShowcase'
+import ProjectsSection from '@/components/sections/ProjectsSection'
 import ProcessSection from '@/components/sections/ProcessSection'
 import SkillsSection from '@/components/sections/SkillsSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
@@ -85,7 +85,7 @@ export default function Home() {
         <Navbar />
         <Hero showApp={showApp} />
         <About />
-        <PortfolioShowcase />
+        <ProjectsSection />
         <ProcessSection />
         <SkillsSection />
         <TestimonialsSection />

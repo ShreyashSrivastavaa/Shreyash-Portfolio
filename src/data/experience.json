@@ -1,6 +1,18 @@
 {
     "experience": [
         {
+            "role": "Freelance Backend & Full-Stack Engineer",
+            "company": "UpscaleTechSolutions",
+            "period": "2026 - Present",
+            "location": "Remote",
+            "description": "Architecting bespoke backend systems, high-performance full-stack web applications, and scalable REST APIs for client ventures and digital products.",
+            "achievements": [
+                "Delivering end-to-end full-stack architectures, custom database schemas, and microservices integrations for client platforms",
+                "Implementing low-latency REST/GraphQL APIs with Node.js, Express, PostgreSQL, Prisma, and Redis",
+                "Providing technical consulting on system scalability, database query optimization, and secure third-party API integrations"
+            ]
+        },
+        {
             "role": "Backend SDE Intern",
             "company": "JBH Tech Innovation",
             "period": "December 2025 - May 2026",

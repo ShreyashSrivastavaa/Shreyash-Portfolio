@@ -41,7 +41,8 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       style={{
-        padding: isMobile ? '80px 24px' : '120px 60px 120px 120px',
+        paddingTop: isMobile ? '80px' : '120px',
+        paddingBottom: isMobile ? '80px' : '120px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -65,7 +66,17 @@ export default function TestimonialsSection() {
           zIndex: 0,
         }}
       />
-      <div style={{ position: 'relative', zIndex: 1 }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          paddingLeft: isMobile ? '24px' : '60px',
+          paddingRight: isMobile ? '24px' : '60px',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

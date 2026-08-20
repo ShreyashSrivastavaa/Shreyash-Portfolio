@@ -29,22 +29,23 @@ import {
   Cpu
 } from 'lucide-react'
 
+// Feature icons for the minimal 2-column key features grid
 const FEATURE_ICONS = [Target, Database, Radio, Layers, ShieldCheck, Zap, Activity, Cpu]
 
-export default function PortfolioDetailPage({ params: paramsPromise }) {
+export default function ProjectCaseStudyPage({ params: paramsPromise }) {
   const params = use(paramsPromise)
-  const id = params?.id
+  const slug = params?.slug
 
   const [project, setProject] = useState(null)
   const [currentImage, setCurrentImage] = useState(0)
   const [previewOpen, setPreviewOpen] = useState(false)
 
   useEffect(() => {
-    if (!id) return
-    const found = projectsData.find((p) => p.id === id)
+    if (!slug) return
+    const found = projectsData.find((p) => p.id === slug)
     setProject(found || projectsData[0])
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [id])
+  }, [slug])
 
   if (!project) return null
 
@@ -59,6 +60,7 @@ export default function PortfolioDetailPage({ params: paramsPromise }) {
     project.github_url && project.github_url.trim() !== ''
   )
 
+  // Short, clean title without long dashes (e.g. "SwipeRide — Ride Sharing API" -> "SwipeRide")
   const shortTitle = project.title.split('—')[0].trim()
 
   const nextImage = () => {

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Purple Gradient -->
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+
+    <!-- Blue Gradient -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background container (optional rounded rect for icon presentation) -->
+  <rect width="500" height="500" rx="90" fill="#06060c" />
+
+  <g filter="url(#shadow)" transform="translate(50, 50)">
+    <!-- Top-Left Loop (Purple) -->
+    <path
+      d="M 200,80
+         C 120,80 70,130 70,210
+         C 70,290 130,320 200,320
+         C 230,320 250,300 230,270
+         C 210,240 150,250 130,210
+         C 110,170 140,130 200,130
+         C 230,130 260,110 240,90
+         Z"
+      fill="url(#purpleGrad)"
+    />
+
+    <!-- Top-Right Loop (Blue) -->
+    <path
+      d="M 320,200
+         C 320,120 270,70 190,70
+         C 110,70 80,130 80,200
+         C 80,230 100,250 130,230
+         C 160,210 150,150 190,130
+         C 230,110 270,140 270,200
+         C 270,230 290,260 310,240
+         Z"
+      fill="url(#blueGrad)"
+    />
+
+    <!-- Bottom-Right Loop (Purple) -->
+    <path
+      d="M 200,320
+         C 280,320 330,270 330,190
+         C 330,110 270,80 200,80
+         C 170,80 150,100 170,130
+         C 190,160 250,150 270,190
+         C 290,230 260,270 200,270
+         C 170,270 140,290 160,310
+         Z"
+      fill="url(#purpleGrad)"
+    />
+
+    <!-- Bottom-Left Loop (Blue) -->
+    <path
+      d="M 80,200
+         C 80,280 130,330 210,330
+         C 290,330 320,270 320,200
+         C 320,170 300,150 270,170
+         C 240,190 250,250 210,270
+         C 170,290 130,260 130,200
+         C 130,170 110,140 90,160
+         Z"
+      fill="url(#blueGrad)"
+    />
+  </g>
+</svg>

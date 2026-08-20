@@ -37,7 +37,7 @@ export default function About() {
   const projectCount = projectsData.length;
 
   const stats = [
-    { icon: <Briefcase size={18} />, value: "6-Mo Intern", title: "JBH TECH INNOVATION" },
+    { icon: <Briefcase size={18} />, value: "Freelance", title: "UPSCALETECHSOLUTIONS" },
     { icon: <GraduationCap size={18} />, value: "2026", title: "ITS ENGG COLLEGE (AKTU)" },
     { icon: <Code size={18} />, value: `${projectCount}+`, title: "SHIPPED PROJECTS" },
     { icon: <Award size={18} />, value: "1st", title: "CODE-O-FIESTA HACKATHON" },
@@ -72,51 +72,53 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{ marginBottom: '48px' }}
+          transition={{ duration: 0.8 }}
+          style={{ textAlign: 'center', marginBottom: isMobile ? '40px' : '60px' }}
         >
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
+              fontSize: '12px',
               color: 'var(--accent-red)',
-              letterSpacing: '0.25em',
+              letterSpacing: '0.2em',
               textTransform: 'uppercase',
             }}
           >
-            ABOUT ME
+            WHO I AM
           </span>
           <h2
             style={{
-              fontSize: isMobile ? '32px' : '48px',
+              fontSize: isMobile ? '32px' : 'clamp(32px, 5vw, 52px)',
               fontWeight: 800,
-              lineHeight: 1.05,
-              marginTop: '10px',
+              lineHeight: 1.1,
+              marginTop: '8px',
               fontFamily: 'var(--font-heading)',
+              color: 'var(--text-primary)',
             }}
           >
-            <span style={{ color: 'var(--text-sand)' }}>Architecting</span>{' '}
+            Engineering scalable systems with{' '}
             <span
               style={{
                 color: 'transparent',
-                WebkitTextStroke: '2px rgba(255,255,255,0.55)',
+                WebkitBackgroundClip: 'text',
+                backgroundImage: 'linear-gradient(135deg, var(--accent-red), #ff6b6b)',
               }}
             >
-              Scalable Systems
+              precision & purpose
             </span>
           </h2>
         </motion.div>
 
-        {/* CONTENT GRID */}
+        {/* 2-COLUMN LAYOUT: BIO LEFT, STATS & DETAILS RIGHT */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: isMobile ? '32px' : '60px',
-            alignItems: 'center',
+            gridTemplateColumns: isMobile ? '1fr' : '1.15fr 0.85fr',
+            gap: isMobile ? '36px' : '56px',
+            alignItems: 'start',
           }}
         >
-          {/* LEFT: BIO & DETAILS */}
+          {/* LEFT: EXPANDED BIO */}
           <motion.div
             variants={container}
             initial="hidden"
@@ -125,7 +127,7 @@ export default function About() {
             style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
           >
             <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
-              I am <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a dedicated Backend Software Development Engineer and former <strong style={{ color: 'var(--text-sand)' }}>Backend SDE Intern at JBH Tech Innovation (6 Months)</strong>. I am pursuing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science & Engineering at ITS Engineering College, Greater Noida (AKTU)</strong>, graduating in 2026.
+              I am <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a dedicated Backend & Full-Stack Engineer currently working as a <strong style={{ color: 'var(--text-sand)' }}>Freelancer at UpscaleTechSolutions</strong>, and former <strong style={{ color: 'var(--text-sand)' }}>Backend SDE Intern at JBH Tech Innovation (6 Months)</strong>. I am pursuing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science & Engineering at ITS Engineering College, Greater Noida (AKTU)</strong>, graduating in 2026.
             </motion.p>
 
             <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>

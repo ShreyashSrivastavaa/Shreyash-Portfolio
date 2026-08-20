@@ -2,15 +2,17 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import { Github, Linkedin, Mail, ArrowUpRight, ArrowUp } from 'lucide-react'
 import Image from 'next/image'
 
 const navLinks = [
-  { label: 'Home', id: 'home' },
-  { label: 'About', id: 'about' },
-  { label: 'Projects', id: 'portfolio' },
-  { label: 'Skills', id: 'skills' },
-  { label: 'Contact', id: 'contact' },
+  { label: 'Home', id: 'home', href: '/' },
+  { label: 'About', id: 'about', href: '/about' },
+  { label: 'Projects', id: 'portfolio', href: '/projects' },
+  { label: 'Skills', id: 'skills', href: '/skills' },
+  { label: 'Experience', id: 'experience', href: '/experience' },
+  { label: 'Contact', id: 'contact', href: '/contact' },
 ]
 
 const socials = [
@@ -20,6 +22,8 @@ const socials = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+  const router = useRouter()
   const [isMobile, setIsMobile] = useState(false)
   const year = new Date().getFullYear()
 
@@ -30,9 +34,19 @@ export default function Footer() {
     return () => window.removeEventListener('resize', check)
   }, [])
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  const handleLinkClick = (link) => {
+    if (pathname === '/') {
+      if (link.id === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        return
+      }
+      const el = document.getElementById(link.id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+    }
+    router.push(link.href)
   }
 
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -132,7 +146,7 @@ export default function Footer() {
                 {navLinks.map((link) => (
                   <button
                     key={link.id}
-                    onClick={() => scrollTo(link.id)}
+                    onClick={() => handleLinkClick(link)}
                     style={{
                       background: 'none',
                       border: 'none',

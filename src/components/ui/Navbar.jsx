@@ -1,38 +1,45 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Terminal } from 'lucide-react'
+import { Menu, X, FileText, ArrowUpRight } from 'lucide-react'
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [mounted, setMounted] = useState(false)
-  const [showNavbar, setShowNavbar] = useState(false)
+
+  const isHomePage = pathname === '/'
 
   useEffect(() => {
     setMounted(true)
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(window.innerWidth < 1024)
     }
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 10)
 
-      const sections = ['home', 'about', 'portfolio', 'skills', 'testimonials', 'contact']
+      if (pathname === '/') {
+        const sections = ['home', 'about', 'portfolio', 'skills', 'experience', 'testimonials', 'contact']
 
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId)
-        if (!section) continue
+        for (const sectionId of sections) {
+          const section = document.getElementById(sectionId)
+          if (!section) continue
 
-        const rect = section.getBoundingClientRect()
+          const rect = section.getBoundingClientRect()
 
-        if (rect.top <= 160 && rect.bottom >= 160) {
-          setActiveSection(sectionId)
-          break
+          if (rect.top <= 180 && rect.bottom >= 180) {
+            setActiveSection(sectionId)
+            break
+          }
         }
       }
     }
@@ -47,172 +54,124 @@ export default function Navbar() {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
-
-  useEffect(() => {
-    const navbarPlayed = sessionStorage.getItem('navbarPlayed')
-
-    if (navbarPlayed) {
-      setShowNavbar(true)
-      return
-    }
-
-    const timer = setTimeout(() => {
-      setShowNavbar(true)
-      sessionStorage.setItem('navbarPlayed', 'true')
-    }, 2800)
-
-    return () => clearTimeout(timer)
-  }, [])
+  }, [pathname])
 
   if (!mounted) return null
 
-  const smoothScrollTo = (e, targetId) => {
-    e.preventDefault()
-
-    const target = document.querySelector(targetId)
-    if (!target) return
-
-    const navbarOffset = 30
-    const targetPosition =
-      target.getBoundingClientRect().top + window.scrollY - navbarOffset
-
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth',
-    })
-
+  const handleNavClick = (e, item) => {
     setOpen(false)
+
+    if (isHomePage) {
+      if (item.id === 'home') {
+        e.preventDefault()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        setActiveSection('home')
+        return
+      }
+
+      const target = document.getElementById(item.id)
+      if (target) {
+        e.preventDefault()
+        const navbarOffset = 70
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarOffset
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' })
+        setActiveSection(item.id)
+        return
+      }
+    }
+
+    router.push(item.href)
   }
 
   const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'About', id: 'about' },
-    { label: 'Projects', id: 'portfolio' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Reviews', id: 'testimonials' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'Home', id: 'home', href: '/' },
+    { label: 'About', id: 'about', href: '/about' },
+    { label: 'Projects', id: 'portfolio', href: '/projects' },
+    { label: 'Skills', id: 'skills', href: '/skills' },
+    { label: 'Experience', id: 'experience', href: '/experience' },
+    { label: 'Contact', id: 'contact', href: '/contact' },
   ]
 
+  const isItemActive = (item) => {
+    if (isHomePage) {
+      return activeSection === item.id
+    }
+    if (item.href === '/') return pathname === '/'
+    return pathname.startsWith(item.href)
+  }
+
+  const resumeUrl = 'https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link'
+
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -40 }}
-      animate={{
-        opacity: showNavbar ? 1 : 0,
-        y: showNavbar ? 0 : -40,
-      }}
-      transition={{
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      style={{
-        position: 'fixed',
-        top: 20,
-        left: isMobile ? 16 : 60,
-        right: isMobile ? 16 : 60,
-        zIndex: 990,
-      }}
-      aria-label="Main Navigation"
-    >
+    <header className="sticky top-0 z-50 w-full bg-[#050508]/85 backdrop-blur-md border-b border-white/[0.06] transition-all">
       <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '12px 24px',
-          width: '100%',
-          borderRadius: 999,
-          backgroundColor: scrolled
-            ? 'rgba(5, 5, 8, 0.92)'
-            : 'rgba(5, 5, 8, 0.65)',
-          backdropFilter: 'blur(16px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-          border: '1px solid var(--border)',
-          boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.5)' : 'none',
-          transition: 'var(--transition)',
-        }}
+        style={{ margin: '0 auto' }}
+        className="w-full max-w-[1200px] px-6 sm:px-8 h-16 md:h-18 flex items-center justify-between"
       >
-        {/* BRAND / LOGO */}
-        <a
-          href="#home"
-          onClick={(e) => smoothScrollTo(e, '#home')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            fontFamily: 'var(--font-mono)',
-            fontSize: 14,
-            fontWeight: 700,
-            color: 'var(--text-sand)',
-            letterSpacing: '0.08em',
-            textDecoration: 'none',
+        
+        {/* LEFT: LOGO / NAME */}
+        <Link
+          href="/"
+          onClick={(e) => {
+            if (isHomePage) {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
           }}
+          className="font-heading font-bold text-lg sm:text-xl text-[#f5f5f7] hover:text-white tracking-tight"
         >
-          <span
-            style={{
-              display: 'inline-flex',
-              padding: 4,
-              borderRadius: 6,
-              background: 'rgba(230, 57, 70, 0.15)',
-              color: 'var(--accent-red)',
-            }}
-          >
-            <Terminal size={15} />
-          </span>
-          Shreyash<span style={{ color: 'var(--accent-red)' }}>.dev</span>
-        </a>
+          Shreyash
+        </Link>
 
-        {/* DESKTOP NAV */}
+        {/* CENTER: DESKTOP NAV LINKS */}
         {!isMobile && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-            <div style={{ display: 'flex', gap: 28 }}>
-              {navItems.map((item) => {
-                const isActive = activeSection === item.id
+          <nav className="flex items-center gap-7 sm:gap-8">
+            {navItems.map((item) => {
+              const active = isItemActive(item)
 
-                return (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={(e) => smoothScrollTo(e, `#${item.id}`)}
-                    style={{
-                      position: 'relative',
-                      fontFamily: 'var(--font-heading)',
-                      fontSize: 13,
-                      fontWeight: isActive ? 600 : 400,
-                      color: isActive ? 'var(--text-sand)' : 'var(--text-secondary)',
-                      textDecoration: 'none',
-                      letterSpacing: '0.02em',
-                      cursor: 'pointer',
-                      padding: '4px 0',
-                      transition: 'color 0.25s ease',
-                    }}
-                  >
-                    {item.label}
+              return (
+                <a
+                  key={item.id}
+                  href={isHomePage ? `#${item.id}` : item.href}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className={`text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+                    active
+                      ? 'text-[#ff4d4f]'
+                      : 'text-[#a1a1aa] hover:text-[#f5f5f7]'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              )
+            })}
+          </nav>
+        )}
 
-                    <span
-                      style={{
-                        position: 'absolute',
-                        bottom: -2,
-                        left: 0,
-                        width: '100%',
-                        height: 2,
-                        borderRadius: 2,
-                        background: 'linear-gradient(90deg, var(--accent-red), var(--accent-crimson))',
-                        transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
-                        transformOrigin: 'left',
-                        transition: 'transform 0.25s ease',
-                      }}
-                    />
-                  </a>
-                )
-              })}
-            </div>
-
-            {/* HIRE ME BUTTON */}
+        {/* RIGHT: RESUME & HIRE ME BUTTON */}
+        {!isMobile && (
+          <div className="flex items-center gap-5">
             <a
-              href="#contact"
-              onClick={(e) => smoothScrollTo(e, '#contact')}
-              className="btn-hire-me"
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-[#a1a1aa] hover:text-white transition-colors"
+            >
+              <FileText size={14} className="text-[#a1a1aa]" />
+              <span>Resume</span>
+            </a>
+
+            <a
+              href={isHomePage ? '#contact' : '/contact'}
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault()
+                  const contactEl = document.getElementById('contact')
+                  if (contactEl) {
+                    contactEl.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }
+              }}
+              className="px-4 py-2 rounded-lg bg-[#ff4d4f] hover:bg-[#e03a3c] text-white font-medium text-xs transition-colors shadow-sm cursor-pointer"
             >
               Hire Me
             </a>
@@ -225,76 +184,71 @@ export default function Navbar() {
             onClick={() => setOpen(!open)}
             aria-label="Toggle navigation menu"
             aria-expanded={open}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--text-primary)',
-              cursor: 'pointer',
-              padding: 6,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            className="p-2 text-[#a1a1aa] hover:text-white transition cursor-pointer"
           >
-            {open ? <X size={24} color="var(--accent-red)" /> : <Menu size={24} color="var(--text-primary)" />}
+            {open ? <X size={22} className="text-[#ff4d4f]" /> : <Menu size={22} />}
           </button>
         )}
       </div>
 
-      {/* MOBILE MENU DROPDOWN OVERLAY */}
+      {/* MOBILE MENU DROPDOWN */}
       <AnimatePresence>
         {isMobile && open && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.3 }}
-            style={{
-              marginTop: 10,
-              borderRadius: 20,
-              background: 'rgba(5, 5, 8, 0.96)',
-              border: '1px solid var(--border)',
-              backdropFilter: 'blur(20px)',
-              padding: 24,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 16,
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
-            }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="border-b border-white/[0.08] bg-[#050508] px-6 py-5 flex flex-col gap-3"
           >
-            {navItems.map((item, index) => {
-              const isActive = activeSection === item.id
+            {navItems.map((item) => {
+              const active = isItemActive(item)
 
               return (
-                <motion.a
+                <a
                   key={item.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  href={`#${item.id}`}
-                  onClick={(e) => smoothScrollTo(e, `#${item.id}`)}
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 15,
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? 'var(--text-sand)' : 'var(--text-secondary)',
-                    textDecoration: 'none',
-                    padding: '8px 12px',
-                    borderRadius: 10,
-                    background: isActive ? 'rgba(230, 57, 70, 0.12)' : 'transparent',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
+                  href={isHomePage ? `#${item.id}` : item.href}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className={`text-sm py-2 transition-colors flex items-center justify-between ${
+                    active ? 'text-[#ff4d4f] font-semibold' : 'text-[#a1a1aa]'
+                  }`}
                 >
-                  {item.label}
-                  {isActive && <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-red)' }} />}
-                </motion.a>
+                  <span>{item.label}</span>
+                  {active && <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d4f]" />}
+                </a>
               )
             })}
+
+            <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between gap-4 mt-2">
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#a1a1aa] hover:text-white"
+              >
+                <FileText size={14} />
+                <span>Resume</span>
+                <ArrowUpRight size={12} />
+              </a>
+
+              <a
+                href={isHomePage ? '#contact' : '/contact'}
+                onClick={(e) => {
+                  setOpen(false)
+                  if (isHomePage) {
+                    e.preventDefault()
+                    const contactEl = document.getElementById('contact')
+                    if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="px-4 py-1.5 rounded-lg bg-[#ff4d4f] text-white text-xs font-medium"
+              >
+                Hire Me
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </header>
   )
 }

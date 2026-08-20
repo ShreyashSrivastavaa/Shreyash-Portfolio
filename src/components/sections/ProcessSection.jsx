@@ -49,19 +49,32 @@ export default function ProcessSection() {
     <section
       id="process"
       style={{
-        padding: isMobile ? '80px 24px' : '120px 60px 120px 120px',
+        paddingTop: isMobile ? '80px' : '120px',
+        paddingBottom: isMobile ? '80px' : '120px',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.15 } },
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          paddingLeft: isMobile ? '24px' : '60px',
+          paddingRight: isMobile ? '24px' : '60px',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
         <motion.span
           variants={fadeUp}
           style={{
@@ -191,6 +204,7 @@ export default function ProcessSection() {
           ))}
         </div>
       </motion.div>
+      </div>
     </section>
   )
 }

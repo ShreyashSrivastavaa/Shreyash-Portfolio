@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { ArrowRight, ExternalLink, Github } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { motion } from 'framer-motion';
+import { ExternalLink, ArrowUpRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function PortfolioCard({
   title,
@@ -14,221 +14,107 @@ export default function PortfolioCard({
   live_url,
   tags,
 }) {
-  const router = useRouter()
-  const [hovered, setHovered] = useState(false)
+  const router = useRouter();
+  const [hovered, setHovered] = useState(false);
+
+  const handleCardClick = () => {
+    if (id) {
+      router.push(`/projects/${id}`);
+    }
+  };
 
   return (
     <motion.div
+      onClick={handleCardClick}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      style={{
-        position: 'relative',
-        borderRadius: 22,
-        border: `1px solid ${hovered ? 'rgba(230,57,70,0.28)' : 'rgba(255,255,255,0.07)'}`,
-        background: 'rgba(255,255,255,0.025)',
-        backdropFilter: 'blur(20px)',
-        overflow: 'hidden',
-        cursor: 'pointer',
-        transition: 'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
-        boxShadow: hovered
-          ? '0 0 0 1px rgba(230,57,70,0.08), 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(230,57,70,0.08)'
-          : '0 2px 16px rgba(0,0,0,0.25)',
-        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        minHeight: 360,
-      }}
+      className="group relative rounded-2xl border border-white/10 bg-[#050508]/60 backdrop-blur-md overflow-hidden cursor-pointer flex flex-col h-full min-h-[380px] transition-all duration-300 hover:border-white/20 hover:shadow-2xl"
     >
-      {/* Top shimmer line */}
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0,
-        height: 1,
-        background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)',
-        pointerEvents: 'none',
-      }} />
-
-      {/* ── IMAGE ── */}
-      <div style={{
-        width: '100%', height: 190,
-        overflow: 'hidden',
-        position: 'relative',
-        flexShrink: 0,
-        background: 'rgba(255,255,255,0.03)',
-      }}>
+      {/* ── IMAGE CONTAINER ── */}
+      <div className="w-full h-[200px] overflow-hidden relative flex-shrink-0 bg-[#050508]">
         {image ? (
           <>
             <motion.img
               src={image}
               alt={title}
-              animate={{ scale: hovered ? 1.06 : 1 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              animate={{ scale: hovered ? 1.03 : 1 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full h-full object-cover block"
             />
-            <motion.div
-              animate={{ opacity: hovered ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(5,5,8,0.55) 0%, transparent 55%)',
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent opacity-80" />
           </>
         ) : (
-          <div style={{
-            width: '100%', height: '100%',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'linear-gradient(135deg, rgba(230,57,70,0.06) 0%, rgba(5,5,8,0.5) 100%)',
-          }}>
-            <span style={{
-              fontFamily: 'var(--font-heading)', fontSize: 48, fontWeight: 900,
-              color: 'transparent',
-              WebkitTextStroke: '1px rgba(230,57,70,0.25)',
-            }}>
+          <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
+            <span className="font-heading text-4xl font-bold text-[#f0ece8]/40">
               {title.charAt(0)}
             </span>
           </div>
         )}
 
-        {/* LIVE badge */}
+        {/* LIVE BADGE */}
         {live_url && (
-          <div style={{
-            position: 'absolute', top: 10, right: 10,
-            display: 'flex', alignItems: 'center', gap: 5,
-            padding: '4px 10px', borderRadius: 999,
-            background: 'rgba(5,5,8,0.82)',
-            border: '1px solid rgba(230,57,70,0.4)',
-            backdropFilter: 'blur(10px)',
-          }}>
-            <span style={{
-              width: 6, height: 6, borderRadius: '50%',
-              background: 'var(--accent-red)',
-              boxShadow: '0 0 6px rgba(230,57,70,0.8)',
-              display: 'inline-block',
-            }} />
-            <span style={{
-              fontSize: 9, fontFamily: 'var(--font-mono)',
-              color: 'var(--accent-red)', letterSpacing: '0.1em',
-            }}>LIVE</span>
+          <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#050508]/80 border border-white/10 backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="text-[10px] font-mono text-[#f0ece8]/80 tracking-wider font-semibold">
+              LIVE
+            </span>
           </div>
         )}
       </div>
 
       {/* ── CONTENT ── */}
-      <div style={{
-        padding: '18px 20px 20px',
-        display: 'flex', flexDirection: 'column',
-        flex: 1,
-        gap: 10,
-      }}>
+      <div className="p-6 flex flex-col flex-1 gap-3">
+        <div className="text-[10px] font-mono text-[#f0ece8]/40 uppercase tracking-widest">
+          PROJECT 0{index + 1}
+        </div>
+
         {/* Title */}
-        <h3 style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: 15, fontWeight: 700, lineHeight: 1.3,
-          color: 'var(--text-sand)',
-          margin: 0,
-        }}>
+        <h3 className="font-heading text-lg font-bold text-[#f0ece8] group-hover:text-white transition-colors leading-snug">
           {title}
         </h3>
 
         {/* Description */}
-        <p style={{
-          fontSize: 13, color: 'var(--text-secondary)',
-          lineHeight: 1.65, margin: 0,
-          display: '-webkit-box',
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: 'vertical',
-          overflow: 'hidden',
-        }}>
+        <p className="text-xs text-[#f0ece8]/65 leading-relaxed line-clamp-2">
           {description}
         </p>
 
-        {/* Tags */}
+        {/* Inline Tags */}
         {tags && tags.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {tags.slice(0, 3).map((tag) => (
-              <span key={tag} style={{
-                padding: '3px 9px', borderRadius: 999,
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                fontSize: 10, fontFamily: 'var(--font-mono)',
-                color: 'var(--text-muted)', letterSpacing: '0.03em',
-              }}>
-                {tag}
+          <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-[#f0ece8]/40 mt-auto pt-4">
+            {tags.slice(0, 3).map((tag, idx) => (
+              <span key={tag} className="inline-flex items-center gap-1.5">
+                {idx > 0 && <span>·</span>}
+                <span className="text-[#f0ece8]/60">{tag}</span>
               </span>
             ))}
           </div>
         )}
 
-        {/* ── ACTION ROW — pinned to bottom ── */}
-        <div style={{
-          display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between',
-          marginTop: 'auto',
-          paddingTop: 12,
-          borderTop: '1px solid rgba(255,255,255,0.05)',
-        }}>
+        {/* ── ACTION ROW ── */}
+        <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-2">
           {live_url ? (
-            <motion.a
+            <a
               href={live_url}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ x: 2 }}
               onClick={(e) => e.stopPropagation()}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 5,
-                fontSize: 12, fontWeight: 600,
-                color: 'var(--accent-red)',
-                textDecoration: 'none',
-                fontFamily: 'var(--font-heading)',
-              }}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#f0ece8]/80 hover:text-white transition-colors font-heading"
             >
               <ExternalLink size={12} />
-              Live Demo
-            </motion.a>
+              <span>Live Demo</span>
+            </a>
           ) : (
-            <span style={{
-              fontSize: 10, color: 'var(--text-muted)',
-              fontFamily: 'var(--font-mono)', letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}>
-              Backend API
+            <span className="text-[10px] font-mono text-[#f0ece8]/40 uppercase tracking-widest">
+              Case Study
             </span>
           )}
 
-          {id && (
-            <motion.button
-              whileHover={{ x: 2 }}
-              whileTap={{ scale: 0.96 }}
-              onClick={() => router.push(`/portfolio/${id}`)}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 5,
-                padding: '6px 14px', borderRadius: 8,
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                color: 'var(--text-secondary)',
-                fontSize: 12, fontWeight: 600,
-                fontFamily: 'var(--font-heading)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(230,57,70,0.1)'
-                e.currentTarget.style.borderColor = 'rgba(230,57,70,0.3)'
-                e.currentTarget.style.color = 'var(--text-sand)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                e.currentTarget.style.color = 'var(--text-secondary)'
-              }}
-            >
-              Details
-              <ArrowRight size={11} />
-            </motion.button>
-          )}
+          <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#f0ece8] group-hover:translate-x-0.5 transition-transform font-heading">
+            <span>Read Case Study</span>
+            <ArrowUpRight size={14} />
+          </span>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
