@@ -123,12 +123,13 @@ export default function Navbar() {
           width: '100%',
           borderRadius: 999,
           backgroundColor: scrolled
-            ? 'rgba(15, 23, 42, 0.92)'
-            : 'rgba(15, 23, 42, 0.65)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.4)' : 'none',
-          transition: 'all 0.3s ease',
+            ? 'rgba(5, 5, 8, 0.92)'
+            : 'rgba(5, 5, 8, 0.65)',
+          backdropFilter: 'blur(16px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+          border: '1px solid var(--border)',
+          boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.5)' : 'none',
+          transition: 'var(--transition)',
         }}
       >
         {/* BRAND / LOGO */}
@@ -139,10 +140,10 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: 'var(--font-mono)',
             fontSize: 14,
             fontWeight: 700,
-            color: '#F8FAFC',
+            color: 'var(--text-sand)',
             letterSpacing: '0.08em',
             textDecoration: 'none',
           }}
@@ -152,13 +153,13 @@ export default function Navbar() {
               display: 'inline-flex',
               padding: 4,
               borderRadius: 6,
-              background: 'rgba(59, 130, 246, 0.2)',
-              color: '#60A5FA',
+              background: 'rgba(230, 57, 70, 0.15)',
+              color: 'var(--accent-red)',
             }}
           >
             <Terminal size={15} />
           </span>
-          Shreyash<span style={{ color: '#60A5FA' }}>.dev</span>
+          Shreyash<span style={{ color: 'var(--accent-red)' }}>.dev</span>
         </a>
 
         {/* DESKTOP NAV */}
@@ -175,10 +176,10 @@ export default function Navbar() {
                     onClick={(e) => smoothScrollTo(e, `#${item.id}`)}
                     style={{
                       position: 'relative',
-                      fontFamily: "'Inter', sans-serif",
+                      fontFamily: 'var(--font-heading)',
                       fontSize: 13,
                       fontWeight: isActive ? 600 : 400,
-                      color: isActive ? '#60A5FA' : '#CBD5E1',
+                      color: isActive ? 'var(--text-sand)' : 'var(--text-secondary)',
                       textDecoration: 'none',
                       letterSpacing: '0.02em',
                       cursor: 'pointer',
@@ -196,7 +197,7 @@ export default function Navbar() {
                         width: '100%',
                         height: 2,
                         borderRadius: 2,
-                        background: 'linear-gradient(90deg, #3B82F6, #8B5CF6)',
+                        background: 'linear-gradient(90deg, var(--accent-red), var(--accent-crimson))',
                         transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
                         transformOrigin: 'left',
                         transition: 'transform 0.25s ease',
@@ -211,27 +212,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => smoothScrollTo(e, '#contact')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '8px 20px',
-                borderRadius: 999,
-                background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
-                color: '#FFFFFF',
-                fontSize: 13,
-                fontWeight: 600,
-                textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(59, 130, 246, 0.35)',
-                transition: 'transform 0.2s ease, boxShadow 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.5)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(59, 130, 246, 0.35)'
-              }}
+              className="btn-hire-me"
             >
               Hire Me
             </a>
@@ -247,7 +228,7 @@ export default function Navbar() {
             style={{
               background: 'transparent',
               border: 'none',
-              color: '#F8FAFC',
+              color: 'var(--text-primary)',
               cursor: 'pointer',
               padding: 6,
               display: 'flex',
@@ -255,7 +236,7 @@ export default function Navbar() {
               justifyContent: 'center',
             }}
           >
-            {open ? <X size={24} color="#60A5FA" /> : <Menu size={24} color="#F8FAFC" />}
+            {open ? <X size={24} color="var(--accent-red)" /> : <Menu size={24} color="var(--text-primary)" />}
           </button>
         )}
       </div>
@@ -271,8 +252,8 @@ export default function Navbar() {
             style={{
               marginTop: 10,
               borderRadius: 20,
-              background: 'rgba(15, 23, 42, 0.96)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              background: 'rgba(5, 5, 8, 0.96)',
+              border: '1px solid var(--border)',
               backdropFilter: 'blur(20px)',
               padding: 24,
               display: 'flex',
@@ -293,21 +274,21 @@ export default function Navbar() {
                   href={`#${item.id}`}
                   onClick={(e) => smoothScrollTo(e, `#${item.id}`)}
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: 'var(--font-heading)',
                     fontSize: 15,
                     fontWeight: isActive ? 700 : 500,
-                    color: isActive ? '#60A5FA' : '#CBD5E1',
+                    color: isActive ? 'var(--text-sand)' : 'var(--text-secondary)',
                     textDecoration: 'none',
                     padding: '8px 12px',
                     borderRadius: 10,
-                    background: isActive ? 'rgba(59, 130, 246, 0.15)' : 'transparent',
+                    background: isActive ? 'rgba(230, 57, 70, 0.12)' : 'transparent',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}
                 >
                   {item.label}
-                  {isActive && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#60A5FA' }} />}
+                  {isActive && <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-red)' }} />}
                 </motion.a>
               )
             })}

@@ -9,29 +9,20 @@ const socialLinks = [
   {
     icon: <Github size={16} />,
     label: 'GitHub',
-    sub: '@ShreyashSrivastava15',
-    href: 'https://github.com/ShreyashSrivastava15',
-    color: 'rgba(255,255,255,0.05)',
-    borderColor: 'rgba(255,255,255,0.1)',
-    hoverBorder: 'rgba(255,255,255,0.25)',
+    sub: '@ShreyashSrivastavaa',
+    href: 'https://github.com/ShreyashSrivastavaa',
   },
   {
     icon: <Linkedin size={16} />,
     label: 'LinkedIn',
     sub: 'shreyashsrivastavaa',
     href: 'https://www.linkedin.com/in/shreyashsrivastavaa',
-    color: 'rgba(10,102,194,0.12)',
-    borderColor: 'rgba(10,102,194,0.25)',
-    hoverBorder: 'rgba(10,102,194,0.5)',
   },
   {
     icon: <ExternalLink size={16} />,
     label: 'Existing Portfolio',
     sub: 'shreyashsrivastava.vercel.app',
     href: 'https://shreyashsrivastava.vercel.app',
-    color: 'rgba(59,130,246,0.1)',
-    borderColor: 'rgba(59,130,246,0.25)',
-    hoverBorder: 'rgba(59,130,246,0.55)',
   },
 ]
 
@@ -61,27 +52,77 @@ export default function ContactSection() {
         title: 'Missing Fields',
         text: 'Please fill out all required fields.',
         icon: 'error',
-        background: '#0F172A',
-        color: '#F8FAFC',
-        confirmButtonColor: '#3B82F6',
+        background: '#050508',
+        color: '#f0ece8',
+        confirmButtonColor: '#e63946',
       })
       return
     }
 
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1000))
-    setLoading(false)
 
-    Swal.fire({
-      title: '🚀 Message Sent!',
-      text: "Thanks for reaching out! I'll respond within 24 hours.",
-      icon: 'success',
-      background: '#0F172A',
-      color: '#F8FAFC',
-      confirmButtonColor: '#3B82F6',
-    })
+    try {
+      // Free Web3Forms API integration
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'fedf8580-5bc1-4a76-93cb-64eea1dc6edf'
 
-    setForm({ name: '', email: '', message: '' })
+      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+        // Fallback demo notice if key is not configured yet
+        await new Promise((r) => setTimeout(r, 1000))
+        Swal.fire({
+          title: '⚙️ Setup Required',
+          text: 'To receive real emails in your Gmail inbox, add your free Web3Forms Access Key in .env.local as NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY!',
+          icon: 'info',
+          background: '#050508',
+          color: '#f0ece8',
+          confirmButtonColor: '#e63946',
+        })
+        setForm({ name: '', email: '', message: '' })
+        return
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `Portfolio Contact Form Submission from ${form.name}`,
+          from_name: form.name,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        Swal.fire({
+          title: '🚀 Message Sent!',
+          text: "Thanks for reaching out! I've received your email and will respond within 24 hours.",
+          icon: 'success',
+          background: '#050508',
+          color: '#f0ece8',
+          confirmButtonColor: '#e63946',
+        })
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        throw new Error(result.message || 'Failed to send email')
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Submission Error',
+        text: error.message || 'Something went wrong. Please try emailing directly.',
+        icon: 'error',
+        background: '#050508',
+        color: '#f0ece8',
+        confirmButtonColor: '#e63946',
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -94,6 +135,9 @@ export default function ContactSection() {
         paddingBottom: '80px',
       }}
     >
+      {/* SECTION WATERMARK */}
+      <span className="section-watermark" aria-hidden="true">CONTACT</span>
+
       {/* GLOW ORBS */}
       <div
         style={{
@@ -102,7 +146,7 @@ export default function ContactSection() {
           left: '50%',
           width: '600px',
           height: '600px',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%)',
           filter: 'blur(80px)',
           transform: 'translateX(-50%)',
           pointerEvents: 'none',
@@ -131,10 +175,10 @@ export default function ContactSection() {
         >
           <span
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '12px',
-              color: '#60A5FA',
-              letterSpacing: '0.2em',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '11px',
+              color: 'var(--accent-red)',
+              letterSpacing: '0.25em',
               textTransform: 'uppercase',
             }}
           >
@@ -144,18 +188,24 @@ export default function ContactSection() {
             style={{
               fontSize: 'clamp(32px, 5.5vw, 56px)',
               fontWeight: 800,
-              lineHeight: 1.1,
-              marginTop: '8px',
-              color: '#F8FAFC',
-              fontFamily: "'Inter', sans-serif",
+              lineHeight: 1.05,
+              marginTop: '10px',
+              fontFamily: 'var(--font-heading)',
             }}
           >
-            Let's Build Something <br />
-            <span style={{ color: '#A78BFA' }}>Extraordinary Together.</span>
+            <span style={{ color: 'var(--text-sand)' }}>Let's Build</span>{' '}
+            <span
+              style={{
+                color: 'transparent',
+                WebkitTextStroke: '2px rgba(255,255,255,0.55)',
+              }}
+            >
+              Something Extraordinary.
+            </span>
           </h2>
           <p
             style={{
-              color: '#94A3B8',
+              color: 'var(--text-secondary)',
               fontSize: '15px',
               lineHeight: 1.7,
               maxWidth: '500px',
@@ -185,19 +235,17 @@ export default function ContactSection() {
           >
             {/* Email Card */}
             <div
+              className="glass-card"
               style={{
-                background: 'rgba(30, 41, 59, 0.6)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '24px',
                 padding: '24px',
-                backdropFilter: 'blur(16px)',
               }}
             >
               <div
                 style={{
                   fontSize: '11px',
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: '#60A5FA',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--accent-red)',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   marginBottom: '16px',
@@ -212,15 +260,15 @@ export default function ContactSection() {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   padding: '14px 18px',
-                  background: 'rgba(59, 130, 246, 0.1)',
-                  border: '1px solid rgba(59, 130, 246, 0.25)',
+                  background: 'rgba(230, 57, 70, 0.08)',
+                  border: '1px solid rgba(230, 57, 70, 0.2)',
                   borderRadius: '16px',
                   marginBottom: '16px',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <Mail size={18} color="#60A5FA" />
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', color: '#F8FAFC' }}>
+                  <Mail size={18} color="var(--accent-red)" />
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--text-sand)' }}>
                     {emailAddress}
                   </span>
                 </div>
@@ -233,9 +281,9 @@ export default function ContactSection() {
                     padding: '8px 12px',
                     borderRadius: '10px',
                     cursor: 'pointer',
-                    background: copied ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255, 255, 255, 0.08)',
-                    border: `1px solid ${copied ? '#10B981' : 'rgba(255, 255, 255, 0.15)'}`,
-                    color: copied ? '#34D399' : '#CBD5E1',
+                    background: copied ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255, 255, 255, 0.06)',
+                    border: `1px solid ${copied ? '#10B981' : 'var(--border)'}`,
+                    color: copied ? '#34D399' : 'var(--text-secondary)',
                   }}
                 >
                   {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -252,16 +300,16 @@ export default function ContactSection() {
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '10px 14px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      background: 'rgba(255, 255, 255, 0.02)',
+                      border: '1px solid rgba(255, 255, 255, 0.05)',
                       borderRadius: '12px',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94A3B8', fontSize: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '12px' }}>
                       {fact.icon}
-                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px' }}>{fact.label}</span>
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px' }}>{fact.label}</span>
                     </div>
-                    <span style={{ fontSize: '12px', color: '#F8FAFC', fontWeight: 600 }}>{fact.value}</span>
+                    <span style={{ fontSize: '12px', color: 'var(--text-sand)', fontWeight: 600 }}>{fact.value}</span>
                   </div>
                 ))}
               </div>
@@ -269,19 +317,17 @@ export default function ContactSection() {
 
             {/* Social Grid */}
             <div
+              className="glass-card"
               style={{
-                background: 'rgba(30, 41, 59, 0.6)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '24px',
                 padding: '24px',
-                backdropFilter: 'blur(16px)',
               }}
             >
               <div
                 style={{
                   fontSize: '11px',
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: '#60A5FA',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--accent-red)',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   marginBottom: '16px',
@@ -303,23 +349,24 @@ export default function ContactSection() {
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '12px 16px',
-                      background: link.color,
-                      border: `1px solid ${link.borderColor}`,
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid var(--border)',
                       borderRadius: '14px',
                       textDecoration: 'none',
-                      color: '#F8FAFC',
+                      color: 'var(--text-sand)',
+                      transition: 'var(--transition)',
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span style={{ color: '#60A5FA' }}>{link.icon}</span>
+                      <span style={{ color: 'var(--accent-red)' }}>{link.icon}</span>
                       <div>
-                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#F8FAFC' }}>{link.label}</div>
-                        <div style={{ fontSize: '11px', color: '#94A3B8', fontFamily: "'JetBrains Mono', monospace" }}>
+                        <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-sand)' }}>{link.label}</div>
+                        <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
                           {link.sub}
                         </div>
                       </div>
                     </div>
-                    <ArrowUpRight size={15} color="#94A3B8" />
+                    <ArrowUpRight size={15} color="var(--text-muted)" />
                   </motion.a>
                 ))}
               </div>
@@ -332,18 +379,16 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="glass-card"
             style={{
-              background: 'rgba(30, 41, 59, 0.6)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
               borderRadius: '24px',
               padding: '32px',
-              backdropFilter: 'blur(16px)',
             }}
           >
-            <h3 style={{ fontSize: '22px', fontWeight: 700, color: '#F8FAFC', marginBottom: '8px' }}>
+            <h3 style={{ fontSize: '22px', fontWeight: 700, color: 'var(--text-sand)', marginBottom: '8px', fontFamily: 'var(--font-heading)' }}>
               Send Me a Message
             </h3>
-            <p style={{ fontSize: '13px', color: '#94A3B8', marginBottom: '24px' }}>
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
               Fill out the details below and I'll get back to you shortly.
             </p>
 
@@ -353,11 +398,12 @@ export default function ContactSection() {
                   style={{
                     display: 'block',
                     fontSize: '11px',
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: focused === 'name' ? '#60A5FA' : '#94A3B8',
+                    fontFamily: 'var(--font-mono)',
+                    color: focused === 'name' ? 'var(--accent-red)' : 'var(--text-muted)',
                     letterSpacing: '0.1em',
                     marginBottom: '6px',
                     textTransform: 'uppercase',
+                    transition: 'color 0.2s ease',
                   }}
                 >
                   Name
@@ -365,21 +411,11 @@ export default function ContactSection() {
                 <input
                   type="text"
                   value={form.name}
-                  placeholder="Shreyash Srivastava"
+                  placeholder="Your Name"
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   onFocus={() => setFocused('name')}
                   onBlur={() => setFocused(null)}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    border: `1px solid ${focused === 'name' ? '#3B82F6' : 'rgba(255, 255, 255, 0.1)'}`,
-                    color: '#F8FAFC',
-                    fontSize: '14px',
-                    outline: 'none',
-                    transition: 'border-color 0.2s ease',
-                  }}
+                  className="premium-input"
                 />
               </div>
 
@@ -388,11 +424,12 @@ export default function ContactSection() {
                   style={{
                     display: 'block',
                     fontSize: '11px',
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: focused === 'email' ? '#60A5FA' : '#94A3B8',
+                    fontFamily: 'var(--font-mono)',
+                    color: focused === 'email' ? 'var(--accent-red)' : 'var(--text-muted)',
                     letterSpacing: '0.1em',
                     marginBottom: '6px',
                     textTransform: 'uppercase',
+                    transition: 'color 0.2s ease',
                   }}
                 >
                   Email
@@ -400,21 +437,11 @@ export default function ContactSection() {
                 <input
                   type="email"
                   value={form.email}
-                  placeholder="shreyash@example.com"
+                  placeholder="you@example.com"
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   onFocus={() => setFocused('email')}
                   onBlur={() => setFocused(null)}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    border: `1px solid ${focused === 'email' ? '#3B82F6' : 'rgba(255, 255, 255, 0.1)'}`,
-                    color: '#F8FAFC',
-                    fontSize: '14px',
-                    outline: 'none',
-                    transition: 'border-color 0.2s ease',
-                  }}
+                  className="premium-input"
                 />
               </div>
 
@@ -423,11 +450,12 @@ export default function ContactSection() {
                   style={{
                     display: 'block',
                     fontSize: '11px',
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: focused === 'message' ? '#60A5FA' : '#94A3B8',
+                    fontFamily: 'var(--font-mono)',
+                    color: focused === 'message' ? 'var(--accent-red)' : 'var(--text-muted)',
                     letterSpacing: '0.1em',
                     marginBottom: '6px',
                     textTransform: 'uppercase',
+                    transition: 'color 0.2s ease',
                   }}
                 >
                   Message
@@ -439,41 +467,33 @@ export default function ContactSection() {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   onFocus={() => setFocused('message')}
                   onBlur={() => setFocused(null)}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    border: `1px solid ${focused === 'message' ? '#3B82F6' : 'rgba(255, 255, 255, 0.1)'}`,
-                    color: '#F8FAFC',
-                    fontSize: '14px',
-                    outline: 'none',
-                    resize: 'none',
-                    transition: 'border-color 0.2s ease',
-                  }}
+                  className="premium-input"
+                  style={{ resize: 'none' }}
                 />
               </div>
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={loading}
                 style={{
                   width: '100%',
                   padding: '14px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
+                  borderRadius: '14px',
+                  background: 'linear-gradient(135deg, var(--accent-red) 0%, var(--accent-crimson) 100%)',
                   color: '#FFFFFF',
                   fontWeight: 700,
                   fontSize: '14px',
+                  fontFamily: 'var(--font-heading)',
                   border: 'none',
                   cursor: loading ? 'not-allowed' : 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  boxShadow: '0 4px 14px rgba(59, 130, 246, 0.35)',
+                  boxShadow: '0 6px 20px var(--accent-red-glow)',
+                  transition: 'var(--transition)',
                 }}
               >
                 <Send size={15} />

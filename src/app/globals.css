@@ -142,8 +142,8 @@ body::before {
    ═══════════════════════════════════════════════════════════ */
 .hero-bg-overlay-left {
   position: absolute; top: 0; left: 0;
-  width: 70%; height: 100%;
-  background: linear-gradient(to right, rgba(5,5,8,0.97) 0%, rgba(5,5,8,0.75) 55%, transparent 100%);
+  width: 65%; height: 100%;
+  background: linear-gradient(to right, rgba(5,5,8,0.94) 0%, rgba(5,5,8,0.5) 55%, transparent 100%);
   z-index: 2; pointer-events: none;
 }
 .hero-bg-overlay-bottom {
@@ -168,21 +168,21 @@ body::before {
 /* BG Name watermark */
 .hero-bg-name-wrapper {
   position: absolute; top: 0; right: 0;
-  width: 65%; height: 100%;
+  width: 60%; height: 100%;
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-end;
-  padding-right: 5vw; z-index: 1;
+  padding-right: 4vw; z-index: 1;
   pointer-events: none; user-select: none; overflow: hidden;
 }
 .bg-name-line {
   font-family: var(--font-heading);
-  font-size: clamp(56px, 9.5vw, 125px);
+  font-size: clamp(34px, 5.8vw, 82px);
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.55);
-  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.9));
-  line-height: 0.92; text-align: right;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+  line-height: 0.95; text-align: right;
 }
 
 /* ═══════════════════════════════════════════════════════════

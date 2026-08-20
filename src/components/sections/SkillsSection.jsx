@@ -8,7 +8,6 @@ import skillsData from '@/data/skills.json';
 export default function SkillsSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [activeCategory, setActiveCategory] = useState('All');
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -33,12 +32,12 @@ export default function SkillsSection() {
   }, []);
 
   const iconMap = {
-    Terminal: <Terminal size={22} color="#60A5FA" />,
-    Database: <Database size={22} color="#34D399" />,
-    ShieldCheck: <ShieldCheck size={22} color="#A78BFA" />,
-    Brain: <Layers size={22} color="#F472B6" />,
-    Code2: <Code2 size={22} color="#FBBF24" />,
-    Cpu: <Cpu size={22} color="#38BDF8" />,
+    Terminal: <Terminal size={22} color="var(--accent-red)" />,
+    Database: <Database size={22} color="var(--text-sand)" />,
+    ShieldCheck: <ShieldCheck size={22} color="var(--accent-red)" />,
+    Brain: <Layers size={22} color="var(--text-sand)" />,
+    Code2: <Code2 size={22} color="var(--accent-red)" />,
+    Cpu: <Cpu size={22} color="var(--text-sand)" />,
   };
 
   const categories = skillsData.skillCategories || [];
@@ -55,6 +54,9 @@ export default function SkillsSection() {
         overflow: 'hidden',
       }}
     >
+      {/* SECTION WATERMARK */}
+      <span className="section-watermark" aria-hidden="true">SKILLS</span>
+
       <div
         style={{
           width: '100%',
@@ -62,6 +64,8 @@ export default function SkillsSection() {
           margin: '0 auto',
           paddingLeft: isMobile ? '24px' : '60px',
           paddingRight: isMobile ? '24px' : '60px',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         {/* HEADER */}
@@ -74,10 +78,10 @@ export default function SkillsSection() {
         >
           <span
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '12px',
-              color: '#60A5FA',
-              letterSpacing: '0.2em',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '11px',
+              color: 'var(--accent-red)',
+              letterSpacing: '0.25em',
               textTransform: 'uppercase',
             }}
           >
@@ -85,16 +89,23 @@ export default function SkillsSection() {
           </span>
           <h2
             style={{
-              fontSize: isMobile ? '32px' : '44px',
+              fontSize: isMobile ? '32px' : '48px',
               fontWeight: 800,
-              lineHeight: 1.1,
-              marginTop: '8px',
-              color: '#F8FAFC',
-              fontFamily: "'Inter', sans-serif",
+              lineHeight: 1.05,
+              marginTop: '10px',
+              fontFamily: 'var(--font-heading)',
             }}
           >
-            Tools, Technologies & <br />
-            <span style={{ color: '#A78BFA' }}>Core Engineering Skills</span>
+            <span style={{ color: 'var(--text-sand)' }}>Tools & Technologies</span>
+            <br />
+            <span
+              style={{
+                color: 'transparent',
+                WebkitTextStroke: '2px rgba(255,255,255,0.55)',
+              }}
+            >
+              Core Engineering Skills
+            </span>
           </h2>
         </motion.div>
 
@@ -115,12 +126,10 @@ export default function SkillsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -5 }}
+              className="glass-card"
               style={{
                 padding: '24px',
                 borderRadius: '20px',
-                background: 'rgba(30, 41, 59, 0.6)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                backdropFilter: 'blur(16px)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '16px',
@@ -131,12 +140,12 @@ export default function SkillsSection() {
                   style={{
                     padding: '10px',
                     borderRadius: '12px',
-                    background: 'rgba(255, 255, 255, 0.05)',
+                    background: 'rgba(230, 57, 70, 0.1)',
                   }}
                 >
-                  {iconMap[cat.icon] || <Cpu size={22} color="#60A5FA" />}
+                  {iconMap[cat.icon] || <Cpu size={22} color="var(--accent-red)" />}
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#F8FAFC', margin: 0 }}>
+                <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-sand)', margin: 0, fontFamily: 'var(--font-heading)' }}>
                   {cat.title}
                 </h3>
               </div>
@@ -146,13 +155,14 @@ export default function SkillsSection() {
                   <span
                     key={skill}
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: 'var(--font-mono)',
                       fontSize: '12px',
                       padding: '4px 12px',
                       borderRadius: '8px',
-                      background: 'rgba(59, 130, 246, 0.1)',
-                      border: '1px solid rgba(59, 130, 246, 0.25)',
-                      color: '#93C5FD',
+                      background: 'rgba(230, 57, 70, 0.08)',
+                      border: '1px solid rgba(230, 57, 70, 0.2)',
+                      color: 'var(--text-secondary)',
+                      transition: 'var(--transition-fast)',
                     }}
                   >
                     {skill}
@@ -175,8 +185,8 @@ export default function SkillsSection() {
             style={{
               fontSize: '24px',
               fontWeight: 700,
-              color: '#F8FAFC',
-              fontFamily: "'Inter', sans-serif",
+              color: 'var(--text-sand)',
+              fontFamily: 'var(--font-heading)',
             }}
           >
             Core Competencies & Proficiency
@@ -206,17 +216,17 @@ export default function SkillsSection() {
                   fontSize: '13px',
                 }}
               >
-                <span style={{ color: '#F1F5F9', fontWeight: 600, fontFamily: "'JetBrains Mono', monospace" }}>
+                <span style={{ color: 'var(--text-sand)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
                   {skill.name}
                 </span>
-                <span style={{ color: '#60A5FA', fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>
+                <span style={{ color: 'var(--accent-red)', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
                   {skill.percentage}%
                 </span>
               </div>
               <div
                 style={{
                   height: '8px',
-                  background: 'rgba(255, 255, 255, 0.08)',
+                  background: 'rgba(255, 255, 255, 0.06)',
                   borderRadius: '999px',
                   overflow: 'hidden',
                 }}
@@ -225,11 +235,11 @@ export default function SkillsSection() {
                   style={{
                     height: '100%',
                     width: visible ? `${skill.percentage}%` : '0%',
-                    background: 'linear-gradient(90deg, #3B82F6, #8B5CF6, #A78BFA)',
+                    background: 'linear-gradient(90deg, var(--accent-red), var(--accent-crimson))',
                     borderRadius: '999px',
                     transition: 'width 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
                     transitionDelay: `${i * 0.1}s`,
-                    boxShadow: '0 0 12px rgba(59, 130, 246, 0.5)',
+                    boxShadow: '0 0 12px var(--accent-red-glow)',
                   }}
                 />
               </div>

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Award, GraduationCap, Briefcase, FileText, ArrowUpRight, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Code, Award, GraduationCap, Briefcase, FileText, Github, Terminal } from 'lucide-react';
+import Image from 'next/image';
 import projectsData from '@/data/projects.json';
 
 const container = {
@@ -31,17 +32,12 @@ export default function About() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  const scrollToPortfolio = () => {
-    const el = document.getElementById('portfolio');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   if (isMobile === null) return null;
 
   const projectCount = projectsData.length;
 
   const stats = [
-    { icon: <Briefcase size={18} />, value: "SDE Intern", title: "JBH TECH INNOVATION" },
+    { icon: <Briefcase size={18} />, value: "6-Mo Intern", title: "JBH TECH INNOVATION" },
     { icon: <GraduationCap size={18} />, value: "2026", title: "ITS ENGG COLLEGE (AKTU)" },
     { icon: <Code size={18} />, value: `${projectCount}+`, title: "SHIPPED PROJECTS" },
     { icon: <Award size={18} />, value: "1st", title: "CODE-O-FIESTA HACKATHON" },
@@ -57,6 +53,9 @@ export default function About() {
         overflow: 'hidden',
       }}
     >
+      {/* SECTION WATERMARK */}
+      <span className="section-watermark" aria-hidden="true">ABOUT</span>
+
       <div
         style={{
           width: '100%',
@@ -64,6 +63,8 @@ export default function About() {
           margin: '0 auto',
           paddingLeft: isMobile ? '24px' : '60px',
           paddingRight: isMobile ? '24px' : '60px',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         {/* SECTION HEADER */}
@@ -76,10 +77,10 @@ export default function About() {
         >
           <span
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '12px',
-              color: '#60A5FA',
-              letterSpacing: '0.2em',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '11px',
+              color: 'var(--accent-red)',
+              letterSpacing: '0.25em',
               textTransform: 'uppercase',
             }}
           >
@@ -87,16 +88,22 @@ export default function About() {
           </span>
           <h2
             style={{
-              fontSize: isMobile ? '32px' : '44px',
+              fontSize: isMobile ? '32px' : '48px',
               fontWeight: 800,
-              lineHeight: 1.1,
-              marginTop: '8px',
-              color: '#F8FAFC',
-              fontFamily: "'Inter', sans-serif",
+              lineHeight: 1.05,
+              marginTop: '10px',
+              fontFamily: 'var(--font-heading)',
             }}
           >
-            Architecting Scalable Systems <br />
-            <span style={{ color: '#A78BFA' }}>Driven by Code & Precision.</span>
+            <span style={{ color: 'var(--text-sand)' }}>Architecting</span>{' '}
+            <span
+              style={{
+                color: 'transparent',
+                WebkitTextStroke: '2px rgba(255,255,255,0.55)',
+              }}
+            >
+              Scalable Systems
+            </span>
           </h2>
         </motion.div>
 
@@ -106,7 +113,7 @@ export default function About() {
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
             gap: isMobile ? '32px' : '60px',
-            alignItems: 'start',
+            alignItems: 'center',
           }}
         >
           {/* LEFT: BIO & DETAILS */}
@@ -117,25 +124,23 @@ export default function About() {
             viewport={{ once: true }}
             style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
           >
-            <motion.p variants={fadeUp} style={{ fontSize: '15px', color: '#CBD5E1', lineHeight: 1.85, margin: 0 }}>
-              I am <strong>Shreyash Srivastava (Ramboo)</strong>, a dedicated Backend Software Development Engineer currently serving as a <strong>Backend SDE Intern at JBH Tech Innovation</strong> in Faridabad. I am pursuing my <strong>B.Tech in Computer Science & Engineering at ITS Engineering College, Greater Noida (AKTU)</strong>, graduating in 2026.
+            <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
+              I am <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a dedicated Backend Software Development Engineer and former <strong style={{ color: 'var(--text-sand)' }}>Backend SDE Intern at JBH Tech Innovation (6 Months)</strong>. I am pursuing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science & Engineering at ITS Engineering College, Greater Noida (AKTU)</strong>, graduating in 2026.
             </motion.p>
 
-            <motion.p variants={fadeUp} style={{ fontSize: '15px', color: '#94A3B8', lineHeight: 1.85, margin: 0 }}>
+            <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
               My engineering focus lies in architecting fault-tolerant microservices, high-throughput REST APIs, relational PostgreSQL databases with Prisma ORM, real-time WebSockets with Socket.io, and asynchronous message queues with RabbitMQ and Redis.
             </motion.p>
 
             <motion.div
               variants={fadeUp}
+              className="service-card"
               style={{
                 padding: '16px 20px',
                 borderRadius: '16px',
-                background: 'rgba(30, 41, 59, 0.5)',
-                border: '1px solid rgba(59, 130, 246, 0.2)',
-                borderLeft: '4px solid #3B82F6',
               }}
             >
-              <p style={{ fontSize: '14px', color: '#F1F5F9', fontStyle: 'italic', margin: 0 }}>
+              <p style={{ fontSize: '14px', color: 'var(--text-sand)', fontStyle: 'italic', margin: 0 }}>
                 "Every API endpoint should be clean, resilient, and optimized for sub-millisecond performance."
               </p>
             </motion.div>
@@ -143,7 +148,7 @@ export default function About() {
             {/* QUICK LINK CTAS */}
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '10px' }}>
               <a
-                href="https://github.com/ShreyashSrivastava15"
+                href="https://github.com/ShreyashSrivastavaa"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -152,12 +157,14 @@ export default function About() {
                   gap: '8px',
                   padding: '10px 20px',
                   borderRadius: '12px',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: '#F8FAFC',
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-sand)',
                   fontSize: '13px',
                   fontWeight: 600,
+                  fontFamily: 'var(--font-heading)',
                   textDecoration: 'none',
+                  transition: 'var(--transition)',
                 }}
               >
                 <Github size={15} /> GitHub Profile
@@ -173,11 +180,13 @@ export default function About() {
                   gap: '8px',
                   padding: '10px 20px',
                   borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
+                  background: 'linear-gradient(135deg, var(--accent-red), var(--accent-crimson))',
                   color: '#FFFFFF',
                   fontSize: '13px',
                   fontWeight: 600,
+                  fontFamily: 'var(--font-heading)',
                   textDecoration: 'none',
+                  boxShadow: '0 6px 20px var(--accent-crimson-glow)',
                 }}
               >
                 <FileText size={15} /> Download CV
@@ -185,64 +194,74 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT: STAT CARDS & HIGHLIGHTS */}
+          {/* RIGHT: PORTRAIT PHOTO CARD & STATS */}
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-              gap: '16px',
-            }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
           >
-            {stats.map((stat, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeUp}
-                whileHover={{ y: -4, scale: 1.02 }}
-                style={{
-                  padding: '24px',
-                  borderRadius: '20px',
-                  background: 'rgba(30, 41, 59, 0.6)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  backdropFilter: 'blur(16px)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '12px',
-                }}
-              >
-                <div
+            {/* STAT CARDS */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '16px',
+              }}
+            >
+              {stats.map((stat, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeUp}
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  className="glass-card"
                   style={{
-                    width: '38px',
-                    height: '38px',
-                    borderRadius: '12px',
-                    background: 'rgba(59, 130, 246, 0.15)',
-                    color: '#60A5FA',
+                    padding: '20px',
+                    borderRadius: '20px',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    gap: '10px',
                   }}
                 >
-                  {stat.icon}
-                </div>
-                <div>
-                  <div style={{ fontSize: '22px', fontWeight: 800, color: '#F8FAFC' }}>{stat.value}</div>
                   <div
                     style={{
-                      fontSize: '11px',
-                      color: '#94A3B8',
-                      fontFamily: "'JetBrains Mono', monospace",
-                      marginTop: '2px',
-                      letterSpacing: '0.05em',
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '12px',
+                      background: 'rgba(230, 57, 70, 0.15)',
+                      color: 'var(--accent-red)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
-                    {stat.title}
+                    {stat.icon}
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                  <div>
+                    <div style={{
+                      fontSize: '20px',
+                      fontWeight: 800,
+                      color: 'var(--text-sand)',
+                      fontFamily: 'var(--font-heading)',
+                    }}>
+                      {stat.value}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '11px',
+                        color: 'var(--text-muted)',
+                        fontFamily: 'var(--font-mono)',
+                        marginTop: '2px',
+                        letterSpacing: '0.08em',
+                      }}
+                    >
+                      {stat.title}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

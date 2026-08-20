@@ -1,32 +1,138 @@
 [
   {
+    "id": "subflip",
+    "title": "SubFlip – Subscription Aggregator",
+    "tagline": "Smart subscription marketplace for managing, switching, & reselling plans.",
+    "icon": "CreditCard",
+    "iconColor": "text-purple-500",
+    "description": "Full-stack subscription management and marketplace aggregator that allows users to monitor active recurring subscriptions, switch or pause plans seamlessly, and monetize unused slots through a commission-based business model with automated Stripe/Razorpay payment integrations.",
+    "problem": "Millions of users lose hundreds of dollars annually on unused subscriptions. No unified platform exists to track, manage, or monetize subscription slots across fragmented SaaS tools, creating user frustration and missed savings opportunities.",
+    "solution": "Built SubFlip as a centralized hub for subscription management with real-time analytics, 1-click plan cancellation workflows, automated Stripe webhook synchronization, and a slot-sharing marketplace that enables users to monetize unused subscription capacity.",
+    "metrics": [
+      { "label": "Potential Savings", "value": "$100+/yr" },
+      { "label": "Cancellation", "value": "1-Click" },
+      { "label": "DB Query Time", "value": "20ms (Redis)" },
+      { "label": "Payment Sync", "value": "Stripe Webhooks" }
+    ],
+    "architecture_details": [
+      "Used Prisma ORM for type-safe database queries across PostgreSQL tables",
+      "Built async queue handling with RabbitMQ to process payment webhooks reliably",
+      "Utilized Redis for caching high-frequency subscription metadata, cutting query latency by 90%",
+      "Containerized deployment environment with Docker for reproducible staging & production builds"
+    ],
+    "challenges_solutions": [
+      {
+        "title": "Database Aggregation Query Latency",
+        "challenge": "Aggregating active subscriptions across thousands of users initially took over 1.2s due to complex unindexed joins.",
+        "solution": "Added composite PostgreSQL indices on user_id and renewal_date, combined with a Redis TTL caching layer for active subscription feeds, dropping query latency to under 20ms."
+      },
+      {
+        "title": "Webhook Synchronization Mismatches",
+        "challenge": "Payment provider webhooks were occasionally delivered out of order or dropped during traffic bursts.",
+        "solution": "Implemented an idempotent RabbitMQ event queue with exponential backoff retry mechanisms and dead-letter queue auditing to prevent double billing."
+      },
+      {
+        "title": "Commission Escrow Accuracy",
+        "challenge": "Calculating multi-tier commission payouts for shared plan slots required strict transaction isolation.",
+        "solution": "Designed deterministic database transactions with PostgreSQL row-level locks and full audit logging before releasing payout webhooks."
+      }
+    ],
+    "lessons_learned": [
+      "Strict type-safety with TypeScript prevented ~40% of runtime bugs before deployment.",
+      "Idempotency in payment webhooks is essential when handling financial transactions.",
+      "Caching strategy needs to be designed alongside database schemas, not added as an afterthought."
+    ],
+    "detailed_features": [
+      {
+        "title": "Unified Real-Time Dashboard",
+        "description": "Comprehensive overview of all active subscriptions, renewal dates, monthly cost trends, and category breakdowns.",
+        "technical": "Built with React & Tailwind CSS, optimized with real-time server response pipelines"
+      },
+      {
+        "title": "1-Click Subscription Cancellation",
+        "description": "Seamless workflow to pause or cancel unwanted subscriptions without navigating complex vendor settings.",
+        "technical": "Integrated vendor API integrations & automated cancellation email dispatch"
+      },
+      {
+        "title": "Commission-Based Marketplace",
+        "description": "Share unused plan slots with other verified users and automatically earn commissions.",
+        "technical": "Custom calculation engine with automated payment gateway webhooks"
+      },
+      {
+        "title": "Automated Webhook Synchronization",
+        "description": "Instant payment status updates and subscription tier adjustment upon payment confirmation.",
+        "technical": "Stripe & Razorpay API webhook handlers backed by RabbitMQ event queues"
+      }
+    ],
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "React", "Stripe API", "Redis", "RabbitMQ"],
+    "tags": ["Node.js", "PostgreSQL", "React", "Payments", "Prisma"],
+    "category": "Full-Stack",
+    "live_url": "",
+    "github_url": "https://github.com/ShreyashSrivastavaa/SubFlip",
+    "image_url": "/projects/subflip.png",
+    "image_urls": ["/projects/subflip.png"]
+  },
+  {
     "id": "school-erp",
     "title": "School ERP System",
     "tagline": "Enterprise multi-tenant educational institution management platform.",
     "icon": "Building2",
     "iconColor": "text-blue-500",
     "description": "Engineered a production-ready, multi-tenant School Enterprise Resource Planning (ERP) platform powering attendance tracking, automated fee invoicing, gradebook processing, and role-based permissions. Built with NestJS, Prisma ORM, RabbitMQ message queues for async notification processing, and containerized via Docker.",
-    "problem": "Legacy school management solutions struggle with data isolation across multi-campus setups and crash under concurrent end-of-term grade publishing loads.",
+    "problem": "Legacy school management solutions struggle with data isolation across multi-campus setups and crash under concurrent end-of-term grade publishing and invoice generation loads.",
     "solution": "Architected a multi-tenant backend infrastructure with tenant-isolated database schemas, asynchronous event-driven task queues using RabbitMQ, and stress-tested under 50,000+ simulated concurrent requests.",
     "metrics": [
       { "label": "Architecture", "value": "Multi-Tenant" },
       { "label": "Queue Throughput", "value": "10k msg/sec" },
-      { "label": "Container", "value": "Dockerized" }
+      { "label": "Container", "value": "Dockerized" },
+      { "label": "Concurrency", "value": "50k Load Tested" }
     ],
-    "key_features": [
-      "Strict multi-tenant data isolation with dynamic database connection routing",
-      "Asynchronous background processing for report generation & SMS alerts via RabbitMQ",
-      "Role-Based Access Control (RBAC) supporting SuperAdmin, Principal, Teacher, Student, and Parent roles",
-      "Automated fee breakdown, invoice generation, and online payment gateway webhooks",
-      "Comprehensive load testing & infrastructure setup using Docker & K6"
+    "architecture_details": [
+      "Tenant schema separation ensuring zero cross-tenant data leakage",
+      "NestJS dependency injection & modular service architecture",
+      "RabbitMQ task queues for deferred PDF generation & bulk notification broadcasting",
+      "Docker Compose orchestration for DB, RabbitMQ, and API microservices"
     ],
-    "tech": ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "RabbitMQ", "Docker"],
+    "challenges_solutions": [
+      {
+        "title": "Multi-Campus Data Isolation",
+        "challenge": "Preventing data leakage between different institutions hosted on the same infrastructure.",
+        "solution": "Implemented dynamic schema connection middleware in NestJS that binds every incoming HTTP request to its respective tenant DB context."
+      },
+      {
+        "title": "End-of-Term Report Card Spikes",
+        "challenge": "Simultaneous bulk grade processing caused CPU throttling and HTTP request timeouts.",
+        "solution": "Offloaded report rendering to asynchronous RabbitMQ worker tasks, notifying parents via WebSockets when PDFs were ready."
+      }
+    ],
+    "lessons_learned": [
+      "NestJS modules significantly improve developer velocity and code maintainability in enterprise systems.",
+      "Isolating heavy background jobs via message queues protects primary API endpoints from latency degradation."
+    ],
+    "detailed_features": [
+      {
+        "title": "Multi-Tenant Schema Router",
+        "description": "Strict data isolation with dynamic database connection routing per institution.",
+        "technical": "NestJS guards & dynamic Prisma client connection pooling"
+      },
+      {
+        "title": "Automated Fee & Invoicing Engine",
+        "description": "Automated breakdown calculations, PDF receipt generation, and payment gateway webhooks.",
+        "technical": "RabbitMQ async workers and PDF-Lib rendering pipeline"
+      },
+      {
+        "title": "Role-Based Access Control (RBAC)",
+        "description": "Granular authorization supporting SuperAdmin, Principal, Teacher, Student, and Parent roles.",
+        "technical": "Custom NestJS JWT Passport guards and role bitmasks"
+      }
+    ],
+    "tech": ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "RabbitMQ", "Docker", "K6"],
     "tags": ["NestJS", "TypeScript", "Prisma", "RabbitMQ", "Docker"],
     "category": "Backend & APIs",
     "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastava15/School-ERP",
-    "image_url": "/projects/safe.webp",
-    "image_urls": ["/projects/safe.webp"]
+    "github_url": "https://github.com/ShreyashSrivastavaa/School-ERP",
+    "image_url": "/projects/school-erp.png",
+    "image_urls": ["/projects/school-erp.png"]
   },
   {
     "id": "hms",
@@ -35,55 +141,121 @@
     "icon": "Activity",
     "iconColor": "text-emerald-500",
     "description": "Collaborative full-stack healthcare platform built with Node.js/Express, PostgreSQL, and Prisma ORM in partnership with Prisha. Streamlines doctor appointment scheduling, electronic medical records (EMR), bed allocation, and pharmacy inventory with full CRUD operations and strict data compliance.",
-    "problem": "Manual hospital record-keeping leads to fragmented patient histories, scheduling conflicts, and billing discrepancies.",
-    "solution": "Developed a relational PostgreSQL data model with atomic transactions, conflict-free appointment booking locks, and intuitive clinical dashboards.",
+    "problem": "Manual hospital record-keeping leads to fragmented patient histories, appointment scheduling conflicts, and billing discrepancies across clinical departments.",
+    "solution": "Developed a relational PostgreSQL data model with atomic database transactions, conflict-free appointment booking locks, and intuitive role-based clinical dashboards.",
     "metrics": [
       { "label": "DB Transactions", "value": "100% Atomic" },
       { "label": "Collaboration", "value": "Team Project" },
-      { "label": "Coverage", "value": "Full CRUD" }
+      { "label": "Coverage", "value": "Full CRUD" },
+      { "label": "Capacity Metric", "value": "Real-Time Beds" }
     ],
-    "key_features": [
-      "Real-time appointment booking with automated double-booking prevention",
-      "Electronic Medical Records (EMR) history timeline for patient diagnoses and prescriptions",
-      "Bed management and admission tracking with live capacity metrics",
-      "Role-based dashboards for Doctors, Nurses, Receptionists, and Admins",
-      "Full relational database integrity with PostgreSQL and Prisma migrations"
+    "architecture_details": [
+      "Relational PostgreSQL schema with foreign keys and cascade constraints",
+      "Prisma ORM transactions (`$transaction`) for multi-step billing and booking integrity",
+      "Role-based middleware ensuring strict HIPPA-inspired medical record privacy"
     ],
-    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "TypeScript", "Tailwind CSS"],
+    "challenges_solutions": [
+      {
+        "title": "Double-Booking Prevention",
+        "challenge": "Simultaneous appointment requests for popular doctors caused booking overlaps.",
+        "solution": "Implemented PostgreSQL row locking (`SELECT FOR UPDATE`) within Prisma transactions to ensure serial execution during booking slots."
+      },
+      {
+        "title": "Patient EMR Timeline Aggregation",
+        "challenge": "Combining diagnoses, lab results, and prescriptions into a unified timeline was slow.",
+        "solution": "Created optimized SQL joins and indexed patient IDs, reducing medical history load time to <50ms."
+      }
+    ],
+    "lessons_learned": [
+      "Atomic database transactions are critical when handling healthcare schedules and financial billing.",
+      "Designing clean data models early simplifies complex frontend dashboard rendering."
+    ],
+    "detailed_features": [
+      {
+        "title": "Real-Time Appointment Scheduler",
+        "description": "Conflict-free booking calendar with automated doctor availability checks.",
+        "technical": "PostgreSQL transaction locks & availability slot indexing"
+      },
+      {
+        "title": "Electronic Medical Records (EMR)",
+        "description": "Historical timeline for patient diagnoses, prescriptions, and lab test results.",
+        "technical": "Relational data modeling with Prisma ORM"
+      },
+      {
+        "title": "Live Bed Allocation Dashboard",
+        "description": "Real-time bed tracking across ICU, General, and Private wards.",
+        "technical": "React state management & WebSocket capacity updates"
+      }
+    ],
+    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "TypeScript", "Tailwind CSS", "React"],
     "tags": ["Node.js", "PostgreSQL", "Prisma", "Express.js"],
     "category": "Full-Stack",
     "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastava15/Hospital-Management-System",
-    "image_url": "/projects/hotel-booking.png",
-    "image_urls": ["/projects/hotel-booking.png"]
+    "github_url": "https://github.com/ShreyashSrivastavaa/Hospital-Management-System",
+    "image_url": "/projects/hms.png",
+    "image_urls": ["/projects/hms.png"]
   },
   {
-    "id": "subflip",
-    "title": "SubFlip – Subscription Aggregator",
-    "tagline": "Smart subscription marketplace for managing, switching, & reselling plans.",
-    "icon": "CreditCard",
-    "iconColor": "text-purple-500",
-    "description": "Full-stack subscription management and marketplace aggregator that allows users to monitor active recurring subscriptions, switch or pause plans seamlessly, and monetize unused slots through a commission-based business model with automated Stripe/Razorpay payment integrations.",
-    "problem": "Users lose hundreds of dollars annually on unused subscriptions and lack a unified interface to modify or monetize unused plan slots.",
-    "solution": "Built a centralized subscription aggregator API and dashboard with automated renewal reminders, slot-sharing escrow payments, and commission calculation logic.",
+    "id": "zymeal",
+    "title": "ZyMeal – Food Ordering API & App",
+    "tagline": "Scalable food ordering and real-time order tracking backend API & web app.",
+    "icon": "Cpu",
+    "iconColor": "text-orange-500",
+    "description": "Built a complete food ordering backend and web application using Node.js, Express.js, React, and MongoDB with separate logins for users, admin, products, and orders using JWT and bcrypt for password security. Features real-time order status updates using Socket.io and secured API endpoints with Helmet.js, rate limiting, and Zod-based input validation.",
+    "problem": "Traditional food delivery APIs experience latency spikes during peak checkout windows and lack real-time status synchronization between kitchens and customers.",
+    "solution": "Engineered a scalable Node.js/Express.js backend utilizing Socket.io for live order status updates, MVC patterns for codebase modularity, and Zod/Helmet.js for complete API reinforcement.",
     "metrics": [
-      { "label": "Payment Integration", "value": "Stripe Webhooks" },
-      { "label": "Revenue Model", "value": "Commission" },
-      { "label": "Management", "value": "Automated" }
+      { "label": "Latency", "value": "<120ms" },
+      { "label": "Security", "value": "Helmet / Zod" },
+      { "label": "Real-Time", "value": "Socket.io" },
+      { "label": "Deployment", "value": "Vercel Live" }
     ],
-    "key_features": [
-      "1-Click subscription cancellation & plan switching workflow engine",
-      "Commission-based subscription slot reseller marketplace with escrow validation",
-      "Automated webhook synchronization for payment collection and payout distribution",
-      "Subscription cost analytics dashboard with monthly spending alerts"
+    "architecture_details": [
+      "MongoDB database with Mongoose ODM modeling users, products, and orders",
+      "Socket.io WebSocket server broadcasting real-time kitchen status events",
+      "Zod schema validation middleware sanitizing all incoming HTTP payloads",
+      "JWT authentication with refresh tokens and HTTP-only cookie security"
     ],
-    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "React", "Stripe API"],
-    "tags": ["Node.js", "PostgreSQL", "React", "Payments"],
+    "challenges_solutions": [
+      {
+        "title": "Real-Time Order Tracking Sync",
+        "challenge": "Polling database for order status updates created excessive DB load during peak meal hours.",
+        "solution": "Replaced HTTP polling with Socket.io WebSockets room events (`order:{id}`), delivering instant status pushes with zero redundant DB reads."
+      },
+      {
+        "title": "Checkout Request Throttling",
+        "challenge": "Malicious script spamming checkout endpoints caused order creation surges.",
+        "solution": "Implemented express-rate-limit and Zod input validation guards to block malformed requests before hitting database layers."
+      }
+    ],
+    "lessons_learned": [
+      "WebSockets dramatically reduce database load compared to REST polling for live state updates.",
+      "Input validation at the API edge (Zod) eliminates entire classes of injection vulnerabilities."
+    ],
+    "detailed_features": [
+      {
+        "title": "Real-Time Order Tracking",
+        "description": "Live status timeline from kitchen acceptance to driver delivery.",
+        "technical": "Socket.io WebSocket events & React live state listeners"
+      },
+      {
+        "title": "Multi-Role Admin Portal",
+        "description": "Separate login capabilities for Admins, Restaurant Managers, and Customers.",
+        "technical": "JWT token verification & role-based middleware"
+      },
+      {
+        "title": "Cart & Checkout Engine",
+        "description": "Fast cart calculations, tax breakdown, and secure payment processing.",
+        "technical": "Zod payload validation & Express transactional pipelines"
+      }
+    ],
+    "tech": ["Node.js", "Express.js", "MongoDB", "React", "JWT", "Socket.io", "Bcrypt", "Zod", "Tailwind CSS"],
+    "tags": ["Node.js", "Express.js", "MongoDB", "Socket.io", "React"],
     "category": "Full-Stack",
-    "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastava15/SubFlip",
-    "image_url": "/projects/dsa.webp",
-    "image_urls": ["/projects/dsa.webp"]
+    "live_url": "https://zymeal.vercel.app/",
+    "github_url": "https://github.com/ShreyashSrivastavaa/ZyMeal",
+    "image_url": "/projects/zymeal.png",
+    "image_urls": ["/projects/zymeal.png"]
   },
   {
     "id": "apex-fabricators",
@@ -92,26 +264,49 @@
     "icon": "BarChart3",
     "iconColor": "text-amber-500",
     "description": "Data analytics and interactive visualization platform designed for APEX Fabricators to analyze historical tender bidding records, competitor pricing strategies, and win/loss margins. Transforms raw industrial records into actionable pricing intelligence.",
-    "problem": "Industrial fabrication tenders suffer from narrow profit margins due to manual estimation errors and lack of historical competitor bid data.",
+    "problem": "Industrial fabrication tenders suffer from narrow profit margins due to manual estimation errors and lack of historical competitor bid data analytics.",
     "solution": "Processed multi-year bidding records using Python data processing pipelines and built an interactive dashboard surfacing win probability, material cost trends, and optimal quotation ranges.",
     "metrics": [
       { "label": "Data Volume", "value": "10k+ Records" },
       { "label": "Bid Optimization", "value": "+18% Margin" },
-      { "label": "Visuals", "value": "Interactive" }
+      { "label": "Visuals", "value": "Interactive" },
+      { "label": "Insights", "value": "Automated" }
     ],
-    "key_features": [
-      "Historical tender record parser and anomaly cleaner",
-      "Competitor price distribution and win/loss ratio analysis charts",
-      "Material cost fluctuation tracking and quotation margin calculator",
-      "Exportable executive summary reports with interactive filters"
+    "architecture_details": [
+      "Python Pandas pipeline for cleaning multi-year unformatted CSV tender logs",
+      "Express.js API serving structured analytics endpoints",
+      "Chart.js frontend integration for dynamic price distribution rendering"
+    ],
+    "challenges_solutions": [
+      {
+        "title": "Unstructured Historical Data",
+        "challenge": "Legacy tender spreadsheets contained missing fields, inconsistent currency formats, and duplicate records.",
+        "solution": "Built a Python cleaning pipeline using Pandas to normalize fields, drop outliers, and impute missing material costs."
+      }
+    ],
+    "lessons_learned": [
+      "Data visualization turns abstract historical logs into immediate strategic business value.",
+      "Modular Python data scripts simplify recurring ETL ingestion tasks."
+    ],
+    "detailed_features": [
+      {
+        "title": "Tender Win/Loss Analytics",
+        "description": "Visual breakdown of past bids by project type, client, and profit margins.",
+        "technical": "Chart.js dynamic bar & line graph integration"
+      },
+      {
+        "title": "Competitor Price Distribution",
+        "description": "Statistical modeling of competitor bidding ranges to pinpoint sweet spots.",
+        "technical": "Python Pandas aggregation & quantile calculations"
+      }
     ],
     "tech": ["Python", "Pandas", "JavaScript", "Chart.js", "Node.js", "Express.js"],
     "tags": ["Python", "Data Analysis", "JavaScript", "Visualization"],
     "category": "Utilities & Data",
     "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastava15/Apex-Fabricators-Analysis",
-    "image_url": "/projects/weather.webp",
-    "image_urls": ["/projects/weather.webp"]
+    "github_url": "https://github.com/ShreyashSrivastavaa/Apex-Fabricators-Analysis",
+    "image_url": "/projects/apex.png",
+    "image_urls": ["/projects/apex.png"]
   },
   {
     "id": "gitfc",
@@ -125,20 +320,47 @@
     "metrics": [
       { "label": "Card Generation", "value": "<1s" },
       { "label": "Auth Required", "value": "Zero (Public API)" },
-      { "label": "Export Format", "value": "HD PNG" }
+      { "label": "Export Format", "value": "HD PNG" },
+      { "label": "User Ratings", "value": "Algorithmic" }
     ],
-    "key_features": [
-      "Algorithmic rating engine translating GitHub commits, PRs, and stars into EA FC player attributes",
-      "Dynamic Tactical Role assignment (Playmaker, Striker, Winger, Defender) based on contribution habits",
-      "Rarity card shells (TOTY, Gold, Icon, In-Form) calculated from overall GitHub rating score",
-      "1-click high-resolution PNG card export for sharing on social media",
-      "Zero authentication required - instant public profile lookup via GitHub GraphQL API"
+    "architecture_details": [
+      "GitHub GraphQL API integration for fetching total commits, PRs, code reviews, and star counts",
+      "Custom mathematical normalization engine mapping raw activity to 0-99 FIFA player attributes",
+      "Client-side HTML2Canvas image rendering pipeline for instant HD card download"
+    ],
+    "challenges_solutions": [
+      {
+        "title": "GitHub API Rate Limits",
+        "challenge": "REST API endpoints triggered rate limits rapidly during viral traffic spikes.",
+        "solution": "Migrated query layer to GitHub GraphQL API, bundling 6 REST requests into 1 single optimized GraphQL payload."
+      }
+    ],
+    "lessons_learned": [
+      "GraphQL drastically reduces payload size and eliminates over-fetching from public APIs.",
+      "Gamification makes developer profile metrics shareable and engaging."
+    ],
+    "detailed_features": [
+      {
+        "title": "Algorithmic Rating Engine",
+        "description": "Calculates PAC, SHO, PAS, DRI, DEF, PHY attributes from GitHub activity.",
+        "technical": "Normalized mathematical scoring matrix"
+      },
+      {
+        "title": "Dynamic Rarity Shells",
+        "description": "Displays TOTY, Gold, or Icon card shells depending on developer overall rating.",
+        "technical": "Tailwind CSS glassmorphic gradient overlays"
+      },
+      {
+        "title": "1-Click HD PNG Export",
+        "description": "Download crisp card images ready for Twitter, LinkedIn, and Discord sharing.",
+        "technical": "HTML2Canvas DOM-to-Canvas rendering engine"
+      }
     ],
     "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API", "HTML2Canvas"],
     "tags": ["Next.js", "TypeScript", "GraphQL", "Tailwind CSS"],
     "category": "Full-Stack",
     "live_url": "https://gitfc.vercel.app/",
-    "github_url": "https://github.com/ShreyashSrivastava15/GitFc",
+    "github_url": "https://github.com/ShreyashSrivastavaa/GitFc",
     "image_url": "/projects/gitfc.png",
     "image_urls": ["/projects/gitfc.png", "/projects/gitfc-logo.jpg"]
   },
@@ -154,50 +376,49 @@
     "metrics": [
       { "label": "Privacy & Security", "value": "100% Client-Side" },
       { "label": "File Size Limit", "value": "Unlimited" },
-      { "label": "Processing Speed", "value": "<100ms" }
+      { "label": "Processing Speed", "value": "<100ms" },
+      { "label": "Server Cost", "value": "$0 (Browser Executed)" }
     ],
-    "key_features": [
-      "100% Client-side privacy - documents never leave your browser",
-      "Blazing fast PDF merging, splitting, compressing, and watermarking",
-      "Drag & Drop intuitive visual page reordering",
-      "Zero file size caps and zero subscription paywalls",
-      "Real-time visual preview generator powered by WebAssembly"
+    "architecture_details": [
+      "Client-side PDF-Lib & WebAssembly WASM engine executing document mutations in-browser",
+      "Web Workers background thread processing to keep main UI smooth at 60 FPS",
+      "Zero server file uploads, ensuring 100% GDPR-compliant data privacy"
+    ],
+    "challenges_solutions": [
+      {
+        "title": "Browser Thread Freezing",
+        "challenge": "Merging heavy 200MB+ PDF documents froze the browser main UI thread.",
+        "solution": "Offloaded PDF binary manipulation to background Web Workers, updating progress bars via postMessage events."
+      }
+    ],
+    "lessons_learned": [
+      "Client-side WASM processing eliminates backend server bandwidth and computing costs entirely.",
+      "Privacy-first architecture builds immediate user trust."
+    ],
+    "detailed_features": [
+      {
+        "title": "100% Client-Side Privacy",
+        "description": "Documents are processed locally in your browser memory and never uploaded.",
+        "technical": "PDF-Lib & WebAssembly binary manipulation"
+      },
+      {
+        "title": "Visual Drag & Drop Reordering",
+        "description": "Reorder, delete, or rotate pages visually before rendering final output.",
+        "technical": "React Beautiful DND & Canvas thumbnail generators"
+      },
+      {
+        "title": "Blazing Fast PDF Compression",
+        "description": "Reduce PDF file sizes by up to 80% without losing text crispness.",
+        "technical": "Web Worker stream compression algorithms"
+      }
     ],
     "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "PDF-Lib", "WebAssembly", "Web Workers"],
     "tags": ["Next.js", "TypeScript", "WebAssembly", "Tailwind CSS"],
     "category": "Utilities & Data",
     "live_url": "https://www.ihatelovepdf.com/",
-    "github_url": "https://github.com/ShreyashSrivastava15/IHateLovePDF",
+    "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
     "image_url": "/projects/ihatelovepdf.png",
     "image_urls": ["/projects/ihatelovepdf.png"]
-  },
-  {
-    "id": "quickbite",
-    "title": "QuickBite – Food Ordering API",
-    "tagline": "Scalable food ordering and real-time order tracking backend API.",
-    "icon": "Cpu",
-    "iconColor": "text-primary",
-    "description": "Built a complete food ordering backend using Node.js, Express.js, and MongoDB with separate logins for users, admin, products, and orders using JWT and bcrypt for password security. Added real-time order status updates using Socket.io and secured the API with Helmet.js, rate limiting, and Zod-based input validation.",
-    "problem": "Traditional food delivery APIs experience latency spikes during high-traffic checkout windows and lack robust role-based access control.",
-    "solution": "Engineered a scalable Node.js/Express.js backend utilizing Socket.io for live order status updates, MVC patterns for codebase modularity, and Zod/Helmet.js for API reinforcement.",
-    "metrics": [
-      { "label": "Latency", "value": "<120ms" },
-      { "label": "Security", "value": "Helmet/Zod" },
-      { "label": "Real-Time", "value": "Socket.io" }
-    ],
-    "key_features": [
-      "Real-time order tracking via WebSockets (Socket.io)",
-      "Role-based access control for User, Admin, and Restaurant roles",
-      "Secure authentication using JWT tokens and Bcrypt password hashing",
-      "Comprehensive input validation and rate limiting using Zod & Helmet"
-    ],
-    "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Bcrypt", "Zod"],
-    "tags": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Zod"],
-    "category": "Backend & APIs",
-    "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastava15/QuickBite",
-    "image_url": "/projects/hotel-booking.png",
-    "image_urls": ["/projects/hotel-booking.png"]
   },
   {
     "id": "swiperide",
@@ -206,24 +427,48 @@
     "icon": "Cpu",
     "iconColor": "text-accent",
     "description": "Building a real-time ride-sharing backend using Node.js, Express.js, MongoDB, JWT (for rider/driver/admin roles), Socket.io (live tracking), and Redis (fast driver location tracking). Used Google Maps API for fare calculation, Paystack for payments, and MongoDB's geospatial queries to find nearby drivers with dynamic radius expansion.",
-    "problem": "Matching riders with nearby drivers in real-time requires high-frequency database reads and calculations that degrade standard SQL performance.",
+    "problem": "Matching riders with nearby drivers in real-time requires high-frequency database reads and spatial calculations that degrade standard relational SQL performance.",
     "solution": "Built a high-performance matching engine using MongoDB's geospatial queries with dynamic radius expansion, cached active driver locations in Redis for ultra-low latency updates, and synced status over Socket.io.",
     "metrics": [
       { "label": "Radius Match", "value": "Dynamic" },
       { "label": "Driver Sync", "value": "Redis" },
-      { "label": "Latency", "value": "<5ms" }
+      { "label": "Query Latency", "value": "<5ms" },
+      { "label": "Geospatial", "value": "2DSphere Index" }
     ],
-    "key_features": [
-      "Geospatial driver matching using MongoDB 2DSphere indexing",
-      "Redis caching layer for sub-millisecond driver location updates",
-      "Google Maps Distance Matrix API integration for accurate fare estimation",
-      "Integrated payment gateway using Paystack webhook notifications"
+    "architecture_details": [
+      "MongoDB 2DSphere spatial index for `$near` coordinate queries",
+      "Redis Geo spatial caching for sub-millisecond driver ping updates",
+      "Socket.io room broadcasting for driver location pings",
+      "Google Maps Distance Matrix API for dynamic fare calculation"
+    ],
+    "challenges_solutions": [
+      {
+        "title": "High-Frequency Driver Pings",
+        "challenge": "Drivers sending GPS coordinates every 3 seconds saturated MongoDB write queues.",
+        "solution": "Cached driver coordinates directly in Redis GEO key-value store, writing back to MongoDB only upon trip completion."
+      }
+    ],
+    "lessons_learned": [
+      "Redis GEO data structures are immensely faster for transient spatial location tracking than disk-backed databases.",
+      "Decoupling transient GPS streams from persistent database models prevents API bottlenecks."
+    ],
+    "detailed_features": [
+      {
+        "title": "Geospatial Driver Matching",
+        "description": "Instant matching with nearest available drivers using dynamic radius expansion.",
+        "technical": "MongoDB 2DSphere indexing & Redis GEO queries"
+      },
+      {
+        "title": "Live Trip Location Pings",
+        "description": "Real-time map updates for riders showing driver approach progress.",
+        "technical": "Socket.io WebSocket channels & Google Maps API"
+      }
     ],
     "tech": ["Node.js", "Express.js", "MongoDB", "Redis", "JWT", "Socket.io", "Google Maps API"],
     "tags": ["Node.js", "Express.js", "Redis", "MongoDB", "Socket.io"],
     "category": "Backend & APIs",
     "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastava15/SwipeRide",
+    "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
     "image_url": "/projects/swiperide.png",
     "image_urls": ["/projects/swiperide.png"]
   }

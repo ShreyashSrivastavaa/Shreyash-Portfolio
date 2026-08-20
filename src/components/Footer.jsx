@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { Github, Linkedin, Mail, ArrowUpRight, Heart, ArrowUp } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowUpRight, ArrowUp } from 'lucide-react'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Home', id: 'home' },
@@ -13,7 +14,7 @@ const navLinks = [
 ]
 
 const socials = [
-  { icon: <Github size={15} />, href: 'https://github.com/ShreyashSrivastava15', label: 'GitHub' },
+  { icon: <Github size={15} />, href: 'https://github.com/ShreyashSrivastavaa', label: 'GitHub' },
   { icon: <Linkedin size={15} />, href: 'https://www.linkedin.com/in/shreyashsrivastavaa', label: 'LinkedIn' },
   { icon: <Mail size={15} />, href: 'mailto:shreyashsr2004@gmail.com', label: 'Email' },
 ]
@@ -41,8 +42,8 @@ export default function Footer() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-        background: '#0B132B',
+        borderTop: '1px solid var(--border)',
+        background: 'var(--bg-primary)',
         paddingTop: '64px',
         paddingBottom: '32px',
       }}
@@ -70,18 +71,18 @@ export default function Footer() {
             <div
               onClick={scrollTop}
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: 'var(--font-heading)',
                 fontSize: '22px',
                 fontWeight: 800,
-                color: '#F8FAFC',
+                color: 'var(--text-sand)',
                 marginBottom: '12px',
                 cursor: 'pointer',
               }}
             >
-              Shreyash<span style={{ color: '#60A5FA' }}>.dev</span>
+              Shreyash<span style={{ color: 'var(--accent-red)' }}>.dev</span>
             </div>
-            <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
-              Backend SDE Intern at JBH Tech Innovation & B.Tech CSE student at ITS Engineering College (AKTU).
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>
+              Former Backend SDE Intern at JBH Tech Innovation (6 Months) & B.Tech CSE student at ITS Engineering College (AKTU).
             </p>
 
             <div style={{ display: 'flex', gap: '10px', marginTop: '16px' }}>
@@ -96,14 +97,14 @@ export default function Footer() {
                     width: '36px',
                     height: '36px',
                     borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid var(--border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#CBD5E1',
+                    color: 'var(--text-secondary)',
                     textDecoration: 'none',
-                    transition: 'all 0.2s ease',
+                    transition: 'var(--transition)',
                   }}
                 >
                   {s.icon}
@@ -118,8 +119,8 @@ export default function Footer() {
               <div
                 style={{
                   fontSize: '11px',
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: '#60A5FA',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--accent-red)',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   marginBottom: '16px',
@@ -135,11 +136,12 @@ export default function Footer() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#94A3B8',
+                      color: 'var(--text-secondary)',
                       fontSize: '13px',
                       cursor: 'pointer',
                       textAlign: 'left',
                       padding: 0,
+                      fontFamily: 'var(--font-body)',
                       transition: 'color 0.2s ease',
                     }}
                   >
@@ -153,8 +155,8 @@ export default function Footer() {
               <div
                 style={{
                   fontSize: '11px',
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: '#60A5FA',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--accent-red)',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   marginBottom: '16px',
@@ -167,7 +169,7 @@ export default function Footer() {
                   href="https://gitfc.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#94A3B8', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+                  style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
                 >
                   GitFC <ArrowUpRight size={12} />
                 </a>
@@ -175,15 +177,15 @@ export default function Footer() {
                   href="https://www.ihatelovepdf.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#94A3B8', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+                  style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
                 >
                   IHateLovePDF <ArrowUpRight size={12} />
                 </a>
                 <a
-                  href="https://github.com/ShreyashSrivastava15"
+                  href="https://github.com/ShreyashSrivastavaa"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#94A3B8', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+                  style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
                 >
                   GitHub Repositories <ArrowUpRight size={12} />
                 </a>
@@ -192,10 +194,141 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* BOTTOM DIVIDER & BACK TO TOP */}
+        {/* ═══ UPSCALE TECH SOLUTIONS BRANDING ═══ */}
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            borderTop: '1px solid var(--border)',
+            paddingTop: '32px',
+            marginBottom: '24px',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: isMobile ? '20px' : '28px',
+              padding: '28px 32px',
+              borderRadius: '20px',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid var(--border)',
+              backdropFilter: 'blur(12px)',
+            }}
+          >
+            {/* Profile Photo - Rounded Squircle Card */}
+            <div
+              style={{
+                position: 'relative',
+                width: '68px',
+                height: '68px',
+                borderRadius: '22px',
+                overflow: 'hidden',
+                border: '2px solid #e63946',
+                boxShadow: '0 0 25px rgba(230, 57, 70, 0.4), inset 0 0 15px rgba(230, 57, 70, 0.2)',
+                background: 'radial-gradient(circle at center, #141824 0%, #050508 100%)',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Image
+                src="/profile-transparent.png"
+                alt="Shreyash Srivastava"
+                width={68}
+                height={68}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'top center',
+                  transform: 'scale(1.15) translateY(4px)',
+                }}
+              />
+              {/* Lens Flare Ring Accent */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-10px',
+                  left: '-10px',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
+                  pointerEvents: 'none',
+                }}
+              />
+            </div>
+
+            {/* Branding Text */}
+            <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '18px',
+                  fontWeight: 800,
+                  color: 'var(--text-sand)',
+                  letterSpacing: '0.02em',
+                  marginBottom: '4px',
+                }}
+              >
+                Upscale<span style={{ color: 'var(--accent-red)' }}>TechSolutions</span>
+              </div>
+              <div
+                style={{
+                  fontSize: '12px',
+                  color: 'var(--text-muted)',
+                  fontFamily: 'var(--font-mono)',
+                  letterSpacing: '0.05em',
+                }}
+              >
+                Created By Shreyash Srivastava
+              </div>
+            </div>
+
+            {/* Divider (desktop only) */}
+            {!isMobile && (
+              <div
+                style={{
+                  width: '1px',
+                  height: '40px',
+                  background: 'var(--border)',
+                  flexShrink: 0,
+                }}
+              />
+            )}
+
+            {/* Contact Email */}
+            <a
+              href="mailto:upscaletechsolution@gmail.com"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 18px',
+                borderRadius: '999px',
+                background: 'rgba(230, 57, 70, 0.08)',
+                border: '1px solid rgba(230, 57, 70, 0.2)',
+                color: 'var(--accent-red)',
+                fontSize: '12px',
+                fontFamily: 'var(--font-mono)',
+                textDecoration: 'none',
+                letterSpacing: '0.03em',
+                transition: 'var(--transition)',
+              }}
+            >
+              <Mail size={13} />
+              upscaletechsolution@gmail.com
+            </a>
+          </div>
+        </div>
+
+        {/* ═══ BOTTOM ROW ═══ */}
+        <div
+          style={{
+            borderTop: '1px solid var(--border)',
             paddingTop: '24px',
             display: 'flex',
             justifyContent: 'space-between',
@@ -206,15 +339,18 @@ export default function Footer() {
         >
           <span
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: '12px',
-              color: '#64748B',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '11px',
+              color: 'var(--text-muted)',
+              lineHeight: 1.6,
             }}
           >
-            © {year} Shreyash Srivastava (Ramboo). Built with Next.js & Framer Motion.
+            © {year} <span style={{ color: 'var(--text-sand)' }}>UpscaleTechSolutions</span>. All rights reserved.
           </span>
 
-          <button
+          <motion.button
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.95 }}
             onClick={scrollTop}
             style={{
               display: 'inline-flex',
@@ -222,16 +358,17 @@ export default function Footer() {
               gap: '6px',
               padding: '8px 16px',
               borderRadius: '999px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              color: '#F8FAFC',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-sand)',
               fontSize: '12px',
+              fontFamily: 'var(--font-heading)',
               cursor: 'pointer',
-              transition: 'all 0.2s ease',
+              transition: 'var(--transition)',
             }}
           >
             Back to Top <ArrowUp size={14} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </footer>
