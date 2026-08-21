@@ -24,7 +24,7 @@ import AnimatedBackground from '@/components/AnimatedBackground'
 import experienceData from '@/data/experience.json'
 
 export default function ExperiencePage() {
-  const resumeUrl = 'https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link'
+  const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
   return (
     <main className="min-h-screen bg-[#050508] text-[#f0ece8] relative overflow-hidden">

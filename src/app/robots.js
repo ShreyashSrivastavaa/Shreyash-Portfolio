@@ -1,12 +1,26 @@
 export default function robots() {
+  const baseUrl = 'https://shreyashsrivastava.vercel.app';
+
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/'],
+        disallow: ['/api/'],
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: ['/api/'],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://shreyashsrivastava.vercel.app/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
+

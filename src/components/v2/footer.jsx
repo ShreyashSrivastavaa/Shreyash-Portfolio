@@ -49,8 +49,9 @@ export default function FooterV2() {
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </a>
           <a
-            href="https://drive.google.com/file/d/1ha5RPXGGp1SDw-8gI4YtqnNVgxUqrkso/view?usp=sharing"
+            href="https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing"
             target="_blank"
+            rel="noopener noreferrer"
             className="px-12 py-5 bg-transparent text-white font-bold rounded-[6px] border border-[#222222] hover:bg-white/5 transition-all flex items-center justify-center gap-2"
           >
             Download Resume

@@ -56,8 +56,6 @@ export default function Navbar() {
     }
   }, [pathname])
 
-  if (!mounted) return null
-
   const handleNavClick = (e, item) => {
     setOpen(false)
 
@@ -100,7 +98,7 @@ export default function Navbar() {
     return pathname.startsWith(item.href)
   }
 
-  const resumeUrl = 'https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link'
+  const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#050508]/85 backdrop-blur-md border-b border-white/[0.06] transition-all">
@@ -124,62 +122,58 @@ export default function Navbar() {
         </Link>
 
         {/* CENTER: DESKTOP NAV LINKS */}
-        {!isMobile && (
-          <nav className="flex items-center gap-7 sm:gap-8">
-            {navItems.map((item) => {
-              const active = isItemActive(item)
+        <nav className="hidden lg:flex items-center gap-7 sm:gap-8">
+          {navItems.map((item) => {
+            const active = isItemActive(item)
 
-              return (
-                <a
-                  key={item.id}
-                  href={isHomePage ? `#${item.id}` : item.href}
-                  onClick={(e) => handleNavClick(e, item)}
-                  className={`text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
-                    active
-                      ? 'text-[#ff4d4f]'
-                      : 'text-[#a1a1aa] hover:text-[#f5f5f7]'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              )
-            })}
-          </nav>
-        )}
+            return (
+              <a
+                key={item.id}
+                href={isHomePage ? `#${item.id}` : item.href}
+                onClick={(e) => handleNavClick(e, item)}
+                className={`text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+                  active
+                    ? 'text-[#ff4d4f]'
+                    : 'text-[#a1a1aa] hover:text-[#f5f5f7]'
+                }`}
+              >
+                {item.label}
+              </a>
+            )
+          })}
+        </nav>
 
         {/* RIGHT: RESUME & HIRE ME BUTTON */}
-        {!isMobile && (
-          <div className="flex items-center gap-5">
-            <a
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-mono text-[#a1a1aa] hover:text-white transition-colors"
-            >
-              <FileText size={14} className="text-[#a1a1aa]" />
-              <span>Resume</span>
-            </a>
+        <div className="hidden lg:flex items-center gap-5">
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#a1a1aa] hover:text-white transition-colors"
+          >
+            <FileText size={14} className="text-[#a1a1aa]" />
+            <span>Resume</span>
+          </a>
 
-            <a
-              href={isHomePage ? '#contact' : '/contact'}
-              onClick={(e) => {
-                if (isHomePage) {
-                  e.preventDefault()
-                  const contactEl = document.getElementById('contact')
-                  if (contactEl) {
-                    contactEl.scrollIntoView({ behavior: 'smooth' })
-                  }
+          <a
+            href={isHomePage ? '#contact' : '/contact'}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault()
+                const contactEl = document.getElementById('contact')
+                if (contactEl) {
+                  contactEl.scrollIntoView({ behavior: 'smooth' })
                 }
-              }}
-              className="px-4 py-2 rounded-lg bg-[#ff4d4f] hover:bg-[#e03a3c] text-white font-medium text-xs transition-colors shadow-sm cursor-pointer"
-            >
-              Hire Me
-            </a>
-          </div>
-        )}
+              }
+            }}
+            className="px-4 py-2 rounded-lg bg-[#ff4d4f] hover:bg-[#e03a3c] text-white font-medium text-xs transition-colors shadow-sm cursor-pointer"
+          >
+            Hire Me
+          </a>
+        </div>
 
         {/* MOBILE MENU TRIGGER BUTTON */}
-        {isMobile && (
+        <div className="lg:hidden">
           <button
             onClick={() => setOpen(!open)}
             aria-label="Toggle navigation menu"
@@ -188,7 +182,7 @@ export default function Navbar() {
           >
             {open ? <X size={22} className="text-[#ff4d4f]" /> : <Menu size={22} />}
           </button>
-        )}
+        </div>
       </div>
 
       {/* MOBILE MENU DROPDOWN */}

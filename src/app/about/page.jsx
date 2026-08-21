@@ -47,7 +47,7 @@ const fadeUp = {
 }
 
 export default function AboutPage() {
-  const resumeUrl = 'https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link'
+  const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
   const engineeringPrinciples = [
     {

@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-
-Sitemap: https://shreyashsrivastava.vercel.app/sitemap.xml

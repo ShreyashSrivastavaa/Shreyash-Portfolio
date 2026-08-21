@@ -1,0 +1,70 @@
+export const metadata = {
+  title: "Work Experience & Education",
+  description: "Career history, internships, and education of Shreyash Srivastava — Backend SDE at UpscaleTechSolutions & JBH Tech Innovation, B.Tech CSE at ITS Engineering College.",
+  keywords: [
+    "Shreyash Srivastava Experience",
+    "Shreyash Srivastava Career",
+    "JBH Tech Innovation Intern",
+    "UpscaleTechSolutions Freelance",
+    "ITS Engineering College AKTU",
+    "Backend SDE Experience",
+    "Software Engineer Resume"
+  ],
+  alternates: {
+    canonical: 'https://shreyashsrivastava.vercel.app/experience',
+  },
+  openGraph: {
+    type: 'profile',
+    locale: 'en_US',
+    url: 'https://shreyashsrivastava.vercel.app/experience',
+    title: 'Work Experience & Education | Shreyash Srivastava',
+    description: 'Career history and engineering roles held by Shreyash Srivastava.',
+    siteName: 'Shreyash Srivastava Portfolio',
+    images: [
+      {
+        url: 'https://shreyashsrivastava.vercel.app/shreyash-hero.png',
+        width: 1200,
+        height: 630,
+        alt: 'Shreyash Srivastava Experience',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Experience | Shreyash Srivastava',
+    description: 'Backend SDE at UpscaleTechSolutions & JBH Tech Innovation.',
+    images: ['https://shreyashsrivastava.vercel.app/shreyash-hero.png'],
+    creator: '@ShreyashSrivastavaa',
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://shreyashsrivastava.vercel.app',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Experience',
+      'item': 'https://shreyashsrivastava.vercel.app/experience',
+    },
+  ],
+}
+
+export default function ExperienceLayout({ children }) {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {children}
+    </>
+  )
+}

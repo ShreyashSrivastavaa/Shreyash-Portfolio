@@ -23,7 +23,7 @@ const fadeUp = {
 };
 
 export default function About() {
-  const [isMobile, setIsMobile] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -32,7 +32,6 @@ export default function About() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  if (isMobile === null) return null;
 
   const projectCount = projectsData.length;
 
@@ -173,7 +172,7 @@ export default function About() {
               </a>
 
               <a
-                href="https://drive.google.com/file/d/1Uwuk1fc6j7idN7o6-coz9A8sOyV0TDfA/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

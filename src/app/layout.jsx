@@ -10,26 +10,38 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 
 export const metadata = {
     metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
-    title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
-    description: "Backend Software Engineer & former SDE Intern at JBH Tech Innovation (6 Months). Expert in Node.js, NestJS, PostgreSQL, Docker. Building scalable systems and high-throughput APIs.",
+    title: {
+        default: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
+        template: "%s | Shreyash Srivastava"
+    },
+    description: "Official portfolio of Shreyash Srivastava — Backend Software Engineer & Full-Stack Developer. Former Backend SDE Intern @ JBH Tech Innovation. Expert in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, Docker, and high-throughput microservices.",
     keywords: [
         "Shreyash Srivastava",
-        "Backend Developer",
+        "Shreyash Srivastava Portfolio",
+        "Shreyash Srivastava Backend Developer",
+        "Shreyash Srivastava SDE",
+        "Shreyash Srivastava Software Engineer",
+        "Shreyash Srivastava Delhi NCR",
+        "Shreyash Srivastava India",
         "Backend Engineer",
+        "Backend Developer",
         "Full-Stack Developer",
         "Backend SDE India",
         "NestJS Developer",
         "Node.js Engineer",
         "PostgreSQL Developer",
         "REST API Developer",
+        "Distributed Systems Engineer",
         "Microservices Architecture",
-        "IHateLovePDF"
+        "SubFlip",
+        "IHateLovePDF",
+        "School ERP"
     ],
     authors: [{ name: "Shreyash Srivastava", url: "https://shreyashsrivastava.vercel.app" }],
     creator: "Shreyash Srivastava",
     publisher: "Shreyash Srivastava",
     alternates: {
-        canonical: 'https://shreyashsrivastava.vercel.app/',
+        canonical: 'https://shreyashsrivastava.vercel.app',
     },
     icons: {
         icon: '/app-logo.png?v=3',
@@ -38,15 +50,15 @@ export const metadata = {
     },
     manifest: '/site.webmanifest',
     openGraph: {
-        type: "website",
+        type: "profile",
         locale: "en_US",
         url: "https://shreyashsrivastava.vercel.app",
         title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
-        description: "Backend SDE @ JBH Tech Innovation. Expert in Node.js, NestJS, PostgreSQL, Docker. Building scalable systems and high-throughput APIs.",
+        description: "Official portfolio of Shreyash Srivastava. Backend Software Engineer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and scalable distributed systems.",
         siteName: "Shreyash Srivastava Portfolio",
         images: [
             {
-                url: "/shreyash-hero.png",
+                url: "https://shreyashsrivastava.vercel.app/shreyash-hero.png",
                 width: 1200,
                 height: 630,
                 alt: "Shreyash Srivastava - Backend Engineer & Full-Stack Developer",
@@ -56,8 +68,9 @@ export const metadata = {
     twitter: {
         card: "summary_large_image",
         title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
-        description: "Building scalable backends and high-throughput APIs. Node.js, NestJS, PostgreSQL expert.",
-        images: ["/shreyash-hero.png"],
+        description: "Building scalable backends and high-throughput APIs. Node.js, NestJS, PostgreSQL, Redis expert.",
+        images: ["https://shreyashsrivastava.vercel.app/shreyash-hero.png"],
+        creator: "@ShreyashSrivastavaa",
     },
     robots: {
         index: true,
@@ -70,10 +83,14 @@ export const metadata = {
             'max-snippet': -1,
         },
     },
+    verification: {
+        google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification-token',
+    },
     other: {
-        'geo.region': 'IN-DL',
-        'geo.position': '28.7041;77.1025',
-        'ICBM': '28.7041,77.1025',
+        'geo.region': 'IN-UP',
+        'geo.placename': 'Greater Noida, Delhi NCR, India',
+        'geo.position': '28.4744;77.5040',
+        'ICBM': '28.4744, 77.5040',
     },
 };
 
@@ -84,45 +101,79 @@ const jsonLdSchema = {
             "@type": "Person",
             "@id": "https://shreyashsrivastava.vercel.app/#person",
             "name": "Shreyash Srivastava",
+            "givenName": "Shreyash",
+            "familyName": "Srivastava",
+            "alternateName": [
+                "Shreyash Srivastava Backend Developer",
+                "Shreyash Srivastava SDE",
+                "Shreyash Srivastava Portfolio",
+                "Shreyash Srivastava Full-Stack Engineer"
+            ],
             "url": "https://shreyashsrivastava.vercel.app",
             "image": "https://shreyashsrivastava.vercel.app/profile.png",
-            "description": "Backend Engineer and Full-Stack Developer specializing in scalable systems, REST APIs, NestJS, PostgreSQL, and microservices architecture.",
+            "description": "Backend Software Engineer & Full-Stack Developer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, Docker, and distributed microservices architecture.",
             "email": "shreyashsr2004@gmail.com",
             "sameAs": [
-                "https://github.com/ShreyashSrivastava15",
                 "https://github.com/ShreyashSrivastavaa",
+                "https://github.com/ShreyashSrivastava15",
                 "https://linkedin.com/in/shreyashsrivastavaa"
             ],
-            "jobTitle": "Backend SDE Intern",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "JBH Tech Innovation"
+            "jobTitle": "Backend Software Engineer & Full-Stack Developer",
+            "worksFor": [
+                {
+                    "@type": "Organization",
+                    "name": "UpscaleTechSolutions"
+                },
+                {
+                    "@type": "Organization",
+                    "name": "JBH Tech Innovation"
+                }
+            ],
+            "alumnusOf": {
+                "@type": "EducationalOrganization",
+                "name": "ITS Engineering College, Greater Noida (AKTU)",
+                "url": "https://its.edu.in"
             },
-            "workLocation": {
-                "@type": "Place",
-                "name": "Faridabad, India"
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Greater Noida",
+                "addressRegion": "Uttar Pradesh",
+                "addressCountry": "IN"
             },
             "knowsAbout": [
-                "Backend Development",
+                "Backend Engineering",
+                "Distributed Systems",
                 "Full-Stack Development",
                 "Node.js",
                 "NestJS",
                 "TypeScript",
+                "JavaScript",
                 "PostgreSQL",
                 "Prisma ORM",
                 "REST APIs",
                 "Docker",
-                "Microservices",
+                "Microservices Architecture",
                 "RabbitMQ",
-                "Redis"
-            ]
+                "Redis",
+                "System Design"
+            ],
+            "knowsLanguage": ["English", "Hindi"]
+        },
+        {
+            "@type": "ProfilePage",
+            "@id": "https://shreyashsrivastava.vercel.app/#profilepage",
+            "url": "https://shreyashsrivastava.vercel.app",
+            "name": "Shreyash Srivastava - Portfolio & Professional Profile",
+            "mainEntity": {
+                "@id": "https://shreyashsrivastava.vercel.app/#person"
+            }
         },
         {
             "@type": "WebSite",
             "@id": "https://shreyashsrivastava.vercel.app/#website",
             "url": "https://shreyashsrivastava.vercel.app",
             "name": "Shreyash Srivastava Portfolio",
-            "description": "Portfolio showcasing full-stack and backend development projects built with Node.js, NestJS, React, and modern web technologies.",
+            "description": "Official portfolio of Shreyash Srivastava showcasing scalable backend systems, microservices, and full-stack projects.",
             "publisher": {
                 "@id": "https://shreyashsrivastava.vercel.app/#person"
             },
