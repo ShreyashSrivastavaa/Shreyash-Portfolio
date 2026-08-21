@@ -84,7 +84,7 @@ export const metadata = {
         },
     },
     verification: {
-        google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification-token',
+        google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'm8KoSeRzU9slpYn6QHT5ZBRMnb_wkcU00sdc_B-ZPvg',
     },
     other: {
         'geo.region': 'IN-UP',
