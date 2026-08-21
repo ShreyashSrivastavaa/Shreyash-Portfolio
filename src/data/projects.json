@@ -101,6 +101,7 @@
     "category": "Full-Stack",
     "live_url": "https://zymeal.vercel.app/",
     "github_url": "https://github.com/ShreyashSrivastavaa/ZyMeal",
+    "logo_url": "/projects/zymeal.png",
     "image_url": "/projects/zymeal.png",
     "image_urls": ["/projects/zymeal.png"]
   },
@@ -205,6 +206,7 @@
     "category": "Backend & APIs",
     "live_url": "",
     "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
+    "logo_url": "/projects/swiperide.png",
     "image_url": "/projects/swiperide.png",
     "image_urls": ["/projects/swiperide.png"]
   }
