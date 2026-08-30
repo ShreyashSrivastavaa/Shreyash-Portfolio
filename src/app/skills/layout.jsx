@@ -23,10 +23,10 @@ export const metadata = {
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/shreyash-hero.png',
+        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'Shreyash Srivastava Skills',
+        alt: 'Shreyash Srivastava Skills & Tech Stack',
       },
     ],
   },
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Technical Skills | Shreyash Srivastava',
     description: 'Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and Docker skills.',
-    images: ['https://shreyashsrivastava.vercel.app/shreyash-hero.png'],
+    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }

@@ -22,10 +22,10 @@ export const metadata = {
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/shreyash-hero.png',
+        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'Shreyash Srivastava Experience',
+        alt: 'Shreyash Srivastava Work Experience & Background',
       },
     ],
   },
@@ -33,7 +33,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Experience | Shreyash Srivastava',
     description: 'Backend SDE at UpscaleTechSolutions & JBH Tech Innovation.',
-    images: ['https://shreyashsrivastava.vercel.app/shreyash-hero.png'],
+    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }

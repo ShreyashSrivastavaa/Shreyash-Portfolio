@@ -21,10 +21,10 @@ export const metadata = {
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/shreyash-hero.png',
+        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'Contact Shreyash Srivastava',
+        alt: 'Contact Shreyash Srivastava - Backend Engineer & Full-Stack Developer',
       },
     ],
   },
@@ -32,7 +32,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Contact Shreyash Srivastava',
     description: 'Get in touch with Shreyash Srivastava for backend engineering roles and consulting.',
-    images: ['https://shreyashsrivastava.vercel.app/shreyash-hero.png'],
+    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }

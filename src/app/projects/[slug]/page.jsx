@@ -22,9 +22,9 @@ export async function generateMetadata({ params: paramsPromise }) {
 
   const title = `${project.title} | Case Study | Shreyash Srivastava`
   const description = project.tagline || project.description || `Case study of ${project.title} built by Shreyash Srivastava.`
-  const ogImage = project.image_url
-    ? `https://shreyashsrivastava.vercel.app${project.image_url}`
-    : 'https://shreyashsrivastava.vercel.app/shreyash-hero.png'
+  const ogImage = (project.image_url || project.image)
+    ? `https://shreyashsrivastava.vercel.app${project.image_url || project.image}`
+    : 'https://shreyashsrivastava.vercel.app/og-banner.jpg'
 
   return {
     title,
@@ -90,9 +90,9 @@ export default async function ProjectCaseStudyPage({ params: paramsPromise }) {
         'programmingLanguage': project.tech || [],
         'codeRepository': project.github_url || 'https://github.com/ShreyashSrivastavaa',
         'url': `https://shreyashsrivastava.vercel.app/projects/${slug}`,
-        'image': project.image_url
-          ? `https://shreyashsrivastava.vercel.app${project.image_url}`
-          : 'https://shreyashsrivastava.vercel.app/shreyash-hero.png',
+        'image': (project.image_url || project.image)
+          ? `https://shreyashsrivastava.vercel.app${project.image_url || project.image}`
+          : 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
       },
       {
         '@type': 'BreadcrumbList',
