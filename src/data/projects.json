@@ -73,7 +73,7 @@
     ],
     "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "TypeScript", "React"],
     "category": "Full-Stack",
-    "live_url": "",
+    "live_url": "https://hospital-management-system-d3o5.onrender.com/",
     "github_url": "https://github.com/ShreyashSrivastavaa/Hospital-Management-System",
     "image_url": "/projects/hms.png",
     "image_urls": ["/projects/hms.png"]
@@ -204,7 +204,7 @@
     ],
     "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API"],
     "category": "Backend & APIs",
-    "live_url": "",
+    "live_url": "https://swipe-ride.vercel.app/",
     "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
     "logo_url": "/projects/swiperide.png",
     "image_url": "/projects/swiperide.png",
