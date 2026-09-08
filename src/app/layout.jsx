@@ -121,10 +121,6 @@ const jsonLdSchema = {
             "worksFor": [
                 {
                     "@type": "Organization",
-                    "name": "UpscaleTechSolutions"
-                },
-                {
-                    "@type": "Organization",
                     "name": "JBH Tech Innovation"
                 }
             ],
