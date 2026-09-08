@@ -36,10 +36,10 @@ export default function WelcomeScreen() {
           alignItems: 'center',
           gap: '24px',
           width: '100%',
-          maxWidth: '360px',
+          maxWidth: '440px',
         }}
       >
-        {/* BRAND LOGO - SHREYASH.DEV */}
+        {/* BRAND LOGO - SHREYASHSRIVASTAVA.IN */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -47,12 +47,14 @@ export default function WelcomeScreen() {
           style={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '10px',
             fontFamily: 'var(--font-heading)',
-            fontSize: 'clamp(28px, 5vw, 36px)',
+            fontSize: 'clamp(18px, 4.5vw, 30px)',
             fontWeight: 800,
             color: 'var(--text-sand)',
             letterSpacing: '-0.02em',
+            whiteSpace: 'nowrap',
           }}
         >
           <span
@@ -63,11 +65,12 @@ export default function WelcomeScreen() {
               background: 'rgba(230, 57, 70, 0.15)',
               color: 'var(--accent-red)',
               border: '1px solid rgba(230, 57, 70, 0.3)',
+              flexShrink: 0,
             }}
           >
             <Terminal size={24} />
           </span>
-          Shreyash<span style={{ color: 'var(--accent-red)' }}>.dev</span>
+          ShreyashSrivastava<span style={{ color: 'var(--accent-red)' }}>.in</span>
         </motion.div>
 
         {/* PROGRESS BAR ANIMATION */}
