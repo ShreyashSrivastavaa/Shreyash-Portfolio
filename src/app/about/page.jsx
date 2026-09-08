@@ -115,7 +115,7 @@ export default function AboutPage() {
                   <span>THE BACKGROUND</span>
                 </div>
                 <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  I am a <strong className="text-white font-semibold">Backend and Full-Stack Software Engineer</strong> freelancing with <strong className="text-white font-semibold">UpscaleTechSolutions</strong>, after completing a 6-month backend internship at <strong className="text-white font-semibold">JBH Tech Innovation</strong>. I am currently completing my <strong className="text-white font-semibold">B.Tech in Computer Science and Engineering</strong> at ITS Engineering College, Greater Noida (AKTU), graduating in 2026.
+                  I am a <strong className="text-white font-semibold">Backend and Full-Stack Software Engineer</strong> working on freelance client projects, after completing a 6-month backend internship at <strong className="text-white font-semibold">JBH Tech Innovation</strong>. I am currently completing my <strong className="text-white font-semibold">B.Tech in Computer Science and Engineering</strong> at ITS Engineering College, Greater Noida (AKTU), graduating in 2026.
                 </p>
                 <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
                   Over the past few years, I have built and shipped multiple real-world systems, including client-side WebAssembly tools, hospital management workflows, and real-time food delivery platforms.
@@ -187,7 +187,7 @@ export default function AboutPage() {
                   </div>
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
                     <div className="text-[10px] font-mono text-[#f0ece8]/50 uppercase">Experience</div>
-                    <div className="text-xs font-semibold text-white mt-0.5">Freelancer (Upscale)</div>
+                    <div className="text-xs font-semibold text-white mt-0.5">Freelance Engineer</div>
                   </div>
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
                     <div className="text-[10px] font-mono text-[#f0ece8]/50 uppercase">Status</div>
