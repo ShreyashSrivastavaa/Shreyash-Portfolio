@@ -1,6 +1,6 @@
 export const metadata = {
   title: "About Me",
-  description: "About Shreyash Srivastava, a Backend Software Engineer and Full-Stack Developer with experience at JBH Tech Innovation and UpscaleTechSolutions.",
+  description: "About Shreyash Srivastava, a Backend Software Engineer and Full-Stack Developer with experience at JBH Tech Innovation and freelance client work.",
   keywords: [
     "About Shreyash Srivastava",
     "Shreyash Srivastava Background",
@@ -8,7 +8,7 @@ export const metadata = {
     "Full-Stack Developer India",
     "ITS Engineering College AKTU",
     "JBH Tech Innovation Intern",
-    "UpscaleTechSolutions Freelance",
+    "Freelance Software Engineer",
     "Software Engineer Bio"
   ],
   alternates: {
