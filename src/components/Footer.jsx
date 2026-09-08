@@ -208,137 +208,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ═══ UPSCALE TECH SOLUTIONS BRANDING ═══ */}
-        <div
-          style={{
-            borderTop: '1px solid var(--border)',
-            paddingTop: '32px',
-            marginBottom: '24px',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: isMobile ? '20px' : '28px',
-              padding: '28px 32px',
-              borderRadius: '20px',
-              background: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid var(--border)',
-              backdropFilter: 'blur(12px)',
-            }}
-          >
-            {/* Profile Photo - Rounded Squircle Card */}
-            <div
-              style={{
-                position: 'relative',
-                width: '68px',
-                height: '68px',
-                borderRadius: '22px',
-                overflow: 'hidden',
-                border: '2px solid #e63946',
-                boxShadow: '0 0 25px rgba(230, 57, 70, 0.4), inset 0 0 15px rgba(230, 57, 70, 0.2)',
-                background: 'radial-gradient(circle at center, #141824 0%, #050508 100%)',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src="/profile-transparent.png"
-                alt="Shreyash Srivastava"
-                width={68}
-                height={68}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'top center',
-                  transform: 'scale(1.15) translateY(4px)',
-                }}
-              />
-              {/* Lens Flare Ring Accent */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  left: '-10px',
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
-                  background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
-                  pointerEvents: 'none',
-                }}
-              />
-            </div>
-
-            {/* Branding Text */}
-            <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
-              <div
-                style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '18px',
-                  fontWeight: 800,
-                  color: 'var(--text-sand)',
-                  letterSpacing: '0.02em',
-                  marginBottom: '4px',
-                }}
-              >
-                Upscale<span style={{ color: 'var(--accent-red)' }}>TechSolutions</span>
-              </div>
-              <div
-                style={{
-                  fontSize: '12px',
-                  color: 'var(--text-muted)',
-                  fontFamily: 'var(--font-mono)',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                Created By Shreyash Srivastava
-              </div>
-            </div>
-
-            {/* Divider (desktop only) */}
-            {!isMobile && (
-              <div
-                style={{
-                  width: '1px',
-                  height: '40px',
-                  background: 'var(--border)',
-                  flexShrink: 0,
-                }}
-              />
-            )}
-
-            {/* Contact Email */}
-            <a
-              href="mailto:upscaletechsolution@gmail.com"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 18px',
-                borderRadius: '999px',
-                background: 'rgba(230, 57, 70, 0.08)',
-                border: '1px solid rgba(230, 57, 70, 0.2)',
-                color: 'var(--accent-red)',
-                fontSize: '12px',
-                fontFamily: 'var(--font-mono)',
-                textDecoration: 'none',
-                letterSpacing: '0.03em',
-                transition: 'var(--transition)',
-              }}
-            >
-              <Mail size={13} />
-              upscaletechsolution@gmail.com
-            </a>
-          </div>
-        </div>
-
         {/* ═══ BOTTOM ROW ═══ */}
         <div
           style={{
@@ -359,7 +228,7 @@ export default function Footer() {
               lineHeight: 1.6,
             }}
           >
-            © {year} <span style={{ color: 'var(--text-sand)' }}>UpscaleTechSolutions</span>. All rights reserved.
+            © {year} <span style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</span>. All rights reserved.
           </span>
 
           <motion.button

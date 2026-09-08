@@ -8,7 +8,7 @@ const SMART_RESPONSES = {
   skills: "Shreyash specializes in Node.js, Express, NestJS, PostgreSQL, Prisma ORM, Redis, RabbitMQ, Docker, Next.js, and TypeScript.",
   projects: "Shreyash has built several active projects:\n1. IHateLovePDF (ihatelovepdf.com): In-browser PDF utility suite with zero server uploads.\n2. HMS: Hospital workflow and clinical record management platform.\n3. ZyMeal (zymeal.vercel.app): Real-time food ordering app with live order tracking.\n4. GitFC (gitfc.vercel.app): EA FC style GitHub developer card generator.\n5. SwipeRide: Ride-sharing backend with geospatial driver matching.",
   work: "Shreyash completed a 6-month Backend SDE Internship at JBH Tech Innovation and is a B.Tech CSE student at ITS Engineering College (AKTU), graduating in 2026.",
-  contact: "You can reach Shreyash directly at shreyashsr2004@gmail.com ✉️ or upscaletechsolution@gmail.com, or via LinkedIn & GitHub in the Contact section below!",
+  contact: "You can reach Shreyash directly at shreyashsr2004@gmail.com ✉️, or via LinkedIn & GitHub in the Contact section below!",
   price: "Project pricing depends on scope and complexity. Feel free to send details via the contact form or email shreyashsr2004@gmail.com for a custom quote!",
   availability: "Shreyash is currently open for full-time Backend SDE roles, internships, and freelance projects! 🚀",
   about: "Shreyash Srivastava is a Backend Software Engineer and former SDE Intern at JBH Tech Innovation (6 Months). He is pursuing B.Tech CSE at ITS Engineering College (AKTU), graduating in 2026.",

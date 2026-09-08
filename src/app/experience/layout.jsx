@@ -1,11 +1,11 @@
 export const metadata = {
   title: "Work Experience & Career History",
-  description: "Work history, internships, and education of Shreyash Srivastava, Backend SDE at UpscaleTechSolutions and former intern at JBH Tech Innovation.",
+  description: "Work history, internships, and education of Shreyash Srivastava, Backend Software Engineer and former intern at JBH Tech Innovation.",
   keywords: [
     "Shreyash Srivastava Experience",
     "Shreyash Srivastava Career",
     "JBH Tech Innovation Intern",
-    "UpscaleTechSolutions Freelance",
+    "Freelance Software Engineer",
     "ITS Engineering College AKTU",
     "Backend SDE Experience",
     "Software Engineer Resume"
@@ -32,7 +32,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Experience | Shreyash Srivastava',
-    description: 'Backend SDE at UpscaleTechSolutions & JBH Tech Innovation.',
+    description: 'Backend Software Engineer and former SDE intern at JBH Tech Innovation.',
     images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
