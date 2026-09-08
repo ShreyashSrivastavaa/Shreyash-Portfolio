@@ -36,7 +36,7 @@ export default function About() {
   const projectCount = projectsData.length;
 
   const stats = [
-    { icon: <Briefcase size={18} />, value: "Freelance", title: "UPSCALETECHSOLUTIONS" },
+    { icon: <Briefcase size={18} />, value: "Freelance", title: "FULL-STACK & BACKEND" },
     { icon: <GraduationCap size={18} />, value: "2026", title: "ITS ENGG COLLEGE (AKTU)" },
     { icon: <Code size={18} />, value: `${projectCount}+`, title: "SHIPPED PROJECTS" },
     { icon: <Award size={18} />, value: "1st", title: "CODE-O-FIESTA HACKATHON" },
@@ -126,7 +126,7 @@ export default function About() {
             style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
           >
             <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
-              I'm <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a backend and full-stack engineer based in Greater Noida, India. Right now, I freelance with <strong style={{ color: 'var(--text-sand)' }}>UpscaleTechSolutions</strong> after finishing a 6-month backend internship at <strong style={{ color: 'var(--text-sand)' }}>JBH Tech Innovation</strong>. I am completing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science at ITS Engineering College (AKTU)</strong>, graduating in 2026.
+              I'm <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a backend and full-stack engineer based in Greater Noida, India. Right now, I work as an independent freelance engineer after finishing a 6-month backend internship at <strong style={{ color: 'var(--text-sand)' }}>JBH Tech Innovation</strong>. I am completing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science at ITS Engineering College (AKTU)</strong>, graduating in 2026.
             </motion.p>
 
             <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
