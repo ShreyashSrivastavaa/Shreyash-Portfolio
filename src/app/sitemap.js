@@ -1,7 +1,7 @@
 import projectsData from '@/data/projects.json';
 
 export default function sitemap() {
-  const baseUrl = 'https://shreyashsrivastava.vercel.app';
+  const baseUrl = 'https://www.shreyashsrivastava.in';
   const currentDate = new Date();
 
   const staticRoutes = [

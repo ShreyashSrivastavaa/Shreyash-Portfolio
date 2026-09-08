@@ -10,18 +10,18 @@ export const metadata = {
     "Shreyash Srivastava Email"
   ],
   alternates: {
-    canonical: 'https://shreyashsrivastava.vercel.app/contact',
+    canonical: 'https://www.shreyashsrivastava.in/contact',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://shreyashsrivastava.vercel.app/contact',
+    url: 'https://www.shreyashsrivastava.in/contact',
     title: 'Contact & Hire | Shreyash Srivastava - Backend Engineer',
     description: 'Get in touch with Shreyash Srivastava for backend engineering roles and consulting.',
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
+        url: 'https://www.shreyashsrivastava.in/og-banner.jpg',
         width: 1200,
         height: 630,
         alt: 'Contact Shreyash Srivastava - Backend Engineer & Full-Stack Developer',
@@ -32,7 +32,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Contact Shreyash Srivastava',
     description: 'Get in touch with Shreyash Srivastava for backend engineering roles and consulting.',
-    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
+    images: ['https://www.shreyashsrivastava.in/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }
@@ -45,13 +45,13 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       'position': 1,
       'name': 'Home',
-      'item': 'https://shreyashsrivastava.vercel.app',
+      'item': 'https://www.shreyashsrivastava.in',
     },
     {
       '@type': 'ListItem',
       'position': 2,
       'name': 'Contact',
-      'item': 'https://shreyashsrivastava.vercel.app/contact',
+      'item': 'https://www.shreyashsrivastava.in/contact',
     },
   ],
 }

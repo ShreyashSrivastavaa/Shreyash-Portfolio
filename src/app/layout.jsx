@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata = {
-    metadataBase: new URL('https://shreyashsrivastava.vercel.app'),
+    metadataBase: new URL('https://www.shreyashsrivastava.in'),
     title: {
         default: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
         template: "%s | Shreyash Srivastava"
@@ -36,11 +36,11 @@ export const metadata = {
         "IHateLovePDF",
         "SwipeRide"
     ],
-    authors: [{ name: "Shreyash Srivastava", url: "https://shreyashsrivastava.vercel.app" }],
+    authors: [{ name: "Shreyash Srivastava", url: "https://www.shreyashsrivastava.in" }],
     creator: "Shreyash Srivastava",
     publisher: "Shreyash Srivastava",
     alternates: {
-        canonical: 'https://shreyashsrivastava.vercel.app',
+        canonical: 'https://www.shreyashsrivastava.in',
     },
     icons: {
         icon: '/app-logo.png?v=3',
@@ -51,13 +51,13 @@ export const metadata = {
     openGraph: {
         type: "profile",
         locale: "en_US",
-        url: "https://shreyashsrivastava.vercel.app",
+        url: "https://www.shreyashsrivastava.in",
         title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
         description: "Official portfolio of Shreyash Srivastava. Backend Software Engineer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and scalable distributed systems.",
         siteName: "Shreyash Srivastava Portfolio",
         images: [
             {
-                url: "https://shreyashsrivastava.vercel.app/og-banner.jpg",
+                url: "https://www.shreyashsrivastava.in/og-banner.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Shreyash Srivastava - Backend Engineer & Full-Stack Developer",
@@ -68,7 +68,7 @@ export const metadata = {
         card: "summary_large_image",
         title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
         description: "Building scalable backends and high-throughput APIs. Node.js, NestJS, PostgreSQL, Redis expert.",
-        images: ["https://shreyashsrivastava.vercel.app/og-banner.jpg"],
+        images: ["https://www.shreyashsrivastava.in/og-banner.jpg"],
         creator: "@ShreyashSrivastavaa",
     },
     robots: {
@@ -98,7 +98,7 @@ const jsonLdSchema = {
     "@graph": [
         {
             "@type": "Person",
-            "@id": "https://shreyashsrivastava.vercel.app/#person",
+            "@id": "https://www.shreyashsrivastava.in/#person",
             "name": "Shreyash Srivastava",
             "givenName": "Shreyash",
             "familyName": "Srivastava",
@@ -108,8 +108,8 @@ const jsonLdSchema = {
                 "Shreyash Srivastava Portfolio",
                 "Shreyash Srivastava Full-Stack Engineer"
             ],
-            "url": "https://shreyashsrivastava.vercel.app",
-            "image": "https://shreyashsrivastava.vercel.app/profile.png",
+            "url": "https://www.shreyashsrivastava.in",
+            "image": "https://www.shreyashsrivastava.in/profile.png",
             "description": "Backend Software Engineer & Full-Stack Developer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, Docker, and distributed microservices architecture.",
             "email": "shreyashsr2004@gmail.com",
             "sameAs": [
@@ -156,21 +156,21 @@ const jsonLdSchema = {
         },
         {
             "@type": "ProfilePage",
-            "@id": "https://shreyashsrivastava.vercel.app/#profilepage",
-            "url": "https://shreyashsrivastava.vercel.app",
+            "@id": "https://www.shreyashsrivastava.in/#profilepage",
+            "url": "https://www.shreyashsrivastava.in",
             "name": "Shreyash Srivastava - Portfolio & Professional Profile",
             "mainEntity": {
-                "@id": "https://shreyashsrivastava.vercel.app/#person"
+                "@id": "https://www.shreyashsrivastava.in/#person"
             }
         },
         {
             "@type": "WebSite",
-            "@id": "https://shreyashsrivastava.vercel.app/#website",
-            "url": "https://shreyashsrivastava.vercel.app",
+            "@id": "https://www.shreyashsrivastava.in/#website",
+            "url": "https://www.shreyashsrivastava.in",
             "name": "Shreyash Srivastava Portfolio",
             "description": "Official portfolio of Shreyash Srivastava showcasing scalable backend systems, microservices, and full-stack projects.",
             "publisher": {
-                "@id": "https://shreyashsrivastava.vercel.app/#person"
+                "@id": "https://www.shreyashsrivastava.in/#person"
             },
             "inLanguage": "en-US"
         }

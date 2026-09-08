@@ -11,18 +11,18 @@ export const metadata = {
     "Software Engineer Resume"
   ],
   alternates: {
-    canonical: 'https://shreyashsrivastava.vercel.app/experience',
+    canonical: 'https://www.shreyashsrivastava.in/experience',
   },
   openGraph: {
     type: 'profile',
     locale: 'en_US',
-    url: 'https://shreyashsrivastava.vercel.app/experience',
+    url: 'https://www.shreyashsrivastava.in/experience',
     title: 'Work Experience & Education | Shreyash Srivastava',
     description: 'Career history and engineering roles held by Shreyash Srivastava.',
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
+        url: 'https://www.shreyashsrivastava.in/og-banner.jpg',
         width: 1200,
         height: 630,
         alt: 'Shreyash Srivastava Work Experience & Background',
@@ -33,7 +33,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Experience | Shreyash Srivastava',
     description: 'Backend Software Engineer and former SDE intern at JBH Tech Innovation.',
-    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
+    images: ['https://www.shreyashsrivastava.in/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }
@@ -46,13 +46,13 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       'position': 1,
       'name': 'Home',
-      'item': 'https://shreyashsrivastava.vercel.app',
+      'item': 'https://www.shreyashsrivastava.in',
     },
     {
       '@type': 'ListItem',
       'position': 2,
       'name': 'Experience',
-      'item': 'https://shreyashsrivastava.vercel.app/experience',
+      'item': 'https://www.shreyashsrivastava.in/experience',
     },
   ],
 }

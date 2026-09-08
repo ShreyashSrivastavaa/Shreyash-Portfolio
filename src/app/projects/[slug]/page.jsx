@@ -23,8 +23,8 @@ export async function generateMetadata({ params: paramsPromise }) {
   const title = `${project.title} | Case Study | Shreyash Srivastava`
   const description = project.tagline || project.description || `Case study of ${project.title} built by Shreyash Srivastava.`
   const ogImage = (project.image_url || project.image)
-    ? `https://shreyashsrivastava.vercel.app${project.image_url || project.image}`
-    : 'https://shreyashsrivastava.vercel.app/og-banner.jpg'
+    ? `https://www.shreyashsrivastava.in${project.image_url || project.image}`
+    : 'https://www.shreyashsrivastava.in/og-banner.jpg'
 
   return {
     title,
@@ -39,12 +39,12 @@ export async function generateMetadata({ params: paramsPromise }) {
       "Full-Stack Development"
     ],
     alternates: {
-      canonical: `https://shreyashsrivastava.vercel.app/projects/${slug}`,
+      canonical: `https://www.shreyashsrivastava.in/projects/${slug}`,
     },
     openGraph: {
       type: 'article',
       locale: 'en_US',
-      url: `https://shreyashsrivastava.vercel.app/projects/${slug}`,
+      url: `https://www.shreyashsrivastava.in/projects/${slug}`,
       title,
       description,
       siteName: 'Shreyash Srivastava Portfolio',
@@ -81,40 +81,40 @@ export default async function ProjectCaseStudyPage({ params: paramsPromise }) {
     '@graph': [
       {
         '@type': 'SoftwareSourceCode',
-        '@id': `https://shreyashsrivastava.vercel.app/projects/${slug}#software`,
+        '@id': `https://www.shreyashsrivastava.in/projects/${slug}#software`,
         'name': project.title,
         'description': project.description || project.tagline,
         'author': {
-          '@id': 'https://shreyashsrivastava.vercel.app/#person',
+          '@id': 'https://www.shreyashsrivastava.in/#person',
         },
         'programmingLanguage': project.tech || [],
         'codeRepository': project.github_url || 'https://github.com/ShreyashSrivastavaa',
-        'url': `https://shreyashsrivastava.vercel.app/projects/${slug}`,
+        'url': `https://www.shreyashsrivastava.in/projects/${slug}`,
         'image': (project.image_url || project.image)
-          ? `https://shreyashsrivastava.vercel.app${project.image_url || project.image}`
-          : 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
+          ? `https://www.shreyashsrivastava.in${project.image_url || project.image}`
+          : 'https://www.shreyashsrivastava.in/og-banner.jpg',
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': `https://shreyashsrivastava.vercel.app/projects/${slug}#breadcrumb`,
+        '@id': `https://www.shreyashsrivastava.in/projects/${slug}#breadcrumb`,
         'itemListElement': [
           {
             '@type': 'ListItem',
             'position': 1,
             'name': 'Home',
-            'item': 'https://shreyashsrivastava.vercel.app',
+            'item': 'https://www.shreyashsrivastava.in',
           },
           {
             '@type': 'ListItem',
             'position': 2,
             'name': 'Projects',
-            'item': 'https://shreyashsrivastava.vercel.app/projects',
+            'item': 'https://www.shreyashsrivastava.in/projects',
           },
           {
             '@type': 'ListItem',
             'position': 3,
             'name': project.title,
-            'item': `https://shreyashsrivastava.vercel.app/projects/${slug}`,
+            'item': `https://www.shreyashsrivastava.in/projects/${slug}`,
           },
         ],
       },

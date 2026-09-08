@@ -12,18 +12,18 @@ export const metadata = {
     "TypeScript Developer Skills"
   ],
   alternates: {
-    canonical: 'https://shreyashsrivastava.vercel.app/skills',
+    canonical: 'https://www.shreyashsrivastava.in/skills',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://shreyashsrivastava.vercel.app/skills',
+    url: 'https://www.shreyashsrivastava.in/skills',
     title: 'Technical Skills & Tech Stack | Shreyash Srivastava',
     description: 'Technical proficiencies, frameworks, databases, and DevOps tools mastered by Shreyash Srivastava.',
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
+        url: 'https://www.shreyashsrivastava.in/og-banner.jpg',
         width: 1200,
         height: 630,
         alt: 'Shreyash Srivastava Skills & Tech Stack',
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Technical Skills | Shreyash Srivastava',
     description: 'Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and Docker skills.',
-    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
+    images: ['https://www.shreyashsrivastava.in/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }
@@ -47,13 +47,13 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       'position': 1,
       'name': 'Home',
-      'item': 'https://shreyashsrivastava.vercel.app',
+      'item': 'https://www.shreyashsrivastava.in',
     },
     {
       '@type': 'ListItem',
       'position': 2,
       'name': 'Skills',
-      'item': 'https://shreyashsrivastava.vercel.app/skills',
+      'item': 'https://www.shreyashsrivastava.in/skills',
     },
   ],
 }

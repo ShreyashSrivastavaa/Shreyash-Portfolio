@@ -12,18 +12,18 @@ export const metadata = {
     "Software Engineer Bio"
   ],
   alternates: {
-    canonical: 'https://shreyashsrivastava.vercel.app/about',
+    canonical: 'https://www.shreyashsrivastava.in/about',
   },
   openGraph: {
     type: 'profile',
     locale: 'en_US',
-    url: 'https://shreyashsrivastava.vercel.app/about',
+    url: 'https://www.shreyashsrivastava.in/about',
     title: 'About Shreyash Srivastava | Backend Engineer & Full-Stack Developer',
     description: 'About Shreyash Srivastava, a Backend Software Engineer working with Node.js, NestJS, PostgreSQL, and Docker.',
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/shreyash-about.png',
+        url: 'https://www.shreyashsrivastava.in/shreyash-about.png',
         width: 1200,
         height: 630,
         alt: 'About Shreyash Srivastava',
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'About Shreyash Srivastava | Backend Engineer',
     description: 'Backend Software Engineer & Full-Stack Developer. Node.js, NestJS, PostgreSQL expert.',
-    images: ['https://shreyashsrivastava.vercel.app/shreyash-about.png'],
+    images: ['https://www.shreyashsrivastava.in/shreyash-about.png'],
     creator: '@ShreyashSrivastavaa',
   },
 }
@@ -47,13 +47,13 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       'position': 1,
       'name': 'Home',
-      'item': 'https://shreyashsrivastava.vercel.app',
+      'item': 'https://www.shreyashsrivastava.in',
     },
     {
       '@type': 'ListItem',
       'position': 2,
       'name': 'About',
-      'item': 'https://shreyashsrivastava.vercel.app/about',
+      'item': 'https://www.shreyashsrivastava.in/about',
     },
   ],
 }

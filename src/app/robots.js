@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = 'https://shreyashsrivastava.vercel.app';
+  const baseUrl = 'https://www.shreyashsrivastava.in';
 
   return {
     rules: [

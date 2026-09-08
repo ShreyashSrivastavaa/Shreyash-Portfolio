@@ -40,8 +40,8 @@ const socialLinks = [
   {
     icon: <ExternalLink size={16} />,
     label: 'Live Portfolio',
-    sub: 'shreyashsrivastava.vercel.app',
-    href: 'https://shreyashsrivastava.vercel.app',
+    sub: 'shreyashsrivastava.in',
+    href: 'https://www.shreyashsrivastava.in',
   },
 ]
 

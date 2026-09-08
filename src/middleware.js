@@ -6,7 +6,7 @@ export function middleware(request) {
   // Redirect from old/secondary domain to primary domain
   if (host === 'shreyash.vercel.app') {
     const url = request.nextUrl.clone();
-    url.hostname = 'shreyashsrivastava.vercel.app';
+    url.hostname = 'www.shreyashsrivastava.in';
     url.port = ''; // Clear port if any
     return NextResponse.redirect(url, 301);
   }

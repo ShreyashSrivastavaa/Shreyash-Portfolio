@@ -20,9 +20,9 @@ const socialLinks = [
   },
   {
     icon: <ExternalLink size={16} />,
-    label: 'Existing Portfolio',
-    sub: 'shreyashsrivastava.vercel.app',
-    href: 'https://shreyashsrivastava.vercel.app',
+    label: 'Website',
+    sub: 'shreyashsrivastava.in',
+    href: 'https://www.shreyashsrivastava.in',
   },
 ]
 

@@ -12,18 +12,18 @@ export const metadata = {
     "Full-Stack Portfolio Projects"
   ],
   alternates: {
-    canonical: 'https://shreyashsrivastava.vercel.app/projects',
+    canonical: 'https://www.shreyashsrivastava.in/projects',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://shreyashsrivastava.vercel.app/projects',
+    url: 'https://www.shreyashsrivastava.in/projects',
     title: 'Projects & Architecture Case Studies | Shreyash Srivastava',
     description: 'Explore production-ready backend systems and full-stack applications built by Shreyash Srivastava.',
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {
-        url: 'https://shreyashsrivastava.vercel.app/og-banner.jpg',
+        url: 'https://www.shreyashsrivastava.in/og-banner.jpg',
         width: 1200,
         height: 630,
         alt: 'Shreyash Srivastava Projects & Case Studies',
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Projects | Shreyash Srivastava',
     description: 'Explore backend engineering and full-stack projects built with Node.js, NestJS, and PostgreSQL.',
-    images: ['https://shreyashsrivastava.vercel.app/og-banner.jpg'],
+    images: ['https://www.shreyashsrivastava.in/og-banner.jpg'],
     creator: '@ShreyashSrivastavaa',
   },
 }
@@ -47,13 +47,13 @@ const breadcrumbJsonLd = {
       '@type': 'ListItem',
       'position': 1,
       'name': 'Home',
-      'item': 'https://shreyashsrivastava.vercel.app',
+      'item': 'https://www.shreyashsrivastava.in',
     },
     {
       '@type': 'ListItem',
       'position': 2,
       'name': 'Projects',
-      'item': 'https://shreyashsrivastava.vercel.app/projects',
+      'item': 'https://www.shreyashsrivastava.in/projects',
     },
   ],
 }
