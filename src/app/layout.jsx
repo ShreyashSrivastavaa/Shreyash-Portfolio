@@ -14,7 +14,7 @@ export const metadata = {
         default: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
         template: "%s | Shreyash Srivastava"
     },
-    description: "Official portfolio of Shreyash Srivastava — Backend Software Engineer & Full-Stack Developer. Former Backend SDE Intern @ JBH Tech Innovation. Expert in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, Docker, and high-throughput microservices.",
+    description: "Portfolio of Shreyash Srivastava, a Backend Software Engineer and Full-Stack Developer. Experienced in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and Docker.",
     keywords: [
         "Shreyash Srivastava",
         "Shreyash Srivastava Portfolio",
@@ -33,9 +33,8 @@ export const metadata = {
         "REST API Developer",
         "Distributed Systems Engineer",
         "Microservices Architecture",
-        "SubFlip",
         "IHateLovePDF",
-        "School ERP"
+        "SwipeRide"
     ],
     authors: [{ name: "Shreyash Srivastava", url: "https://shreyashsrivastava.vercel.app" }],
     creator: "Shreyash Srivastava",

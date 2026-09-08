@@ -5,11 +5,11 @@
             "company": "UpscaleTechSolutions",
             "period": "2026 - Present",
             "location": "Remote",
-            "description": "Architecting bespoke backend systems, high-performance full-stack web applications, and scalable REST APIs for client ventures and digital products.",
+            "description": "Building custom backend services, web applications, and REST APIs for client projects and early-stage products.",
             "achievements": [
-                "Delivering end-to-end full-stack architectures, custom database schemas, and microservices integrations for client platforms",
-                "Implementing low-latency REST/GraphQL APIs with Node.js, Express, PostgreSQL, Prisma, and Redis",
-                "Providing technical consulting on system scalability, database query optimization, and secure third-party API integrations"
+                "Built full-stack web applications, designed database schemas, and integrated third-party APIs for clients",
+                "Developed REST endpoints with Node.js, Express, PostgreSQL, Prisma, and Redis",
+                "Advised clients on database indexing, API security, and improving query response times"
             ]
         },
         {
@@ -17,13 +17,13 @@
             "company": "JBH Tech Innovation",
             "period": "December 2025 - May 2026",
             "location": "Faridabad, India (Hybrid)",
-            "description": "Architecting and building high-concurrency backend services, microservices infrastructure, and RESTful APIs for production applications.",
+            "description": "Developed backend services, internal tooling, and REST APIs for production systems.",
             "achievements": [
-                "Developed high-throughput Node.js & Express APIs handling 50k+ daily payload requests",
+                "Developed Node.js and Express APIs handling over 50k daily requests",
                 "Designed normalized relational schemas and optimized queries in PostgreSQL using Prisma ORM",
-                "Implemented JWT authentication and fine-grained Role-Based Access Control (RBAC) security layers",
-                "Integrated Redis caching and RabbitMQ queueing to reduce API response times by 40%",
-                "Collaborated in agile sprint teams with Git workflow, Docker deployment, and CI/CD pipelines"
+                "Implemented JWT authentication and role-based access control (RBAC) middleware",
+                "Integrated Redis caching and RabbitMQ message queues, reducing API latency by 40%",
+                "Worked within sprint teams using Git workflows, Docker environments, and CI/CD pipelines"
             ]
         },
         {
@@ -31,11 +31,11 @@
             "company": "IEEE Student Branch",
             "period": "2023 - 2024",
             "location": "ITS Engineering College, Greater Noida",
-            "description": "Elected Chair leading a community of 100+ engineering students, organizing technical symposiums, hackathons, and developer bootcamps.",
+            "description": "Served as student chair, coordinating technical workshops, hackathons, and developer bootcamps.",
             "achievements": [
-                "Organized technical events including hackathons and developer workshops for 100+ participants",
-                "Facilitated industry-academia bridge initiatives with guest tech lectures and partner workshops",
-                "Spearheaded peer-to-peer coding sessions and open-source project mentorship groups"
+                "Organized hackathons and technical workshops for over 100 student participants",
+                "Arranged technical lectures and hands-on developer sessions with industry engineers",
+                "Led peer coding sessions and project mentorship groups"
             ]
         }
     ],

@@ -126,11 +126,11 @@ export default function About() {
             style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
           >
             <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
-              I am <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a dedicated Backend & Full-Stack Engineer currently working as a <strong style={{ color: 'var(--text-sand)' }}>Freelancer at UpscaleTechSolutions</strong>, and former <strong style={{ color: 'var(--text-sand)' }}>Backend SDE Intern at JBH Tech Innovation (6 Months)</strong>. I am pursuing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science & Engineering at ITS Engineering College, Greater Noida (AKTU)</strong>, graduating in 2026.
+              I'm <strong style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</strong>, a backend and full-stack engineer based in Greater Noida, India. Right now, I freelance with <strong style={{ color: 'var(--text-sand)' }}>UpscaleTechSolutions</strong> after finishing a 6-month backend internship at <strong style={{ color: 'var(--text-sand)' }}>JBH Tech Innovation</strong>. I am completing my <strong style={{ color: 'var(--text-sand)' }}>B.Tech in Computer Science at ITS Engineering College (AKTU)</strong>, graduating in 2026.
             </motion.p>
 
             <motion.p variants={fadeUp} style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
-              My engineering focus lies in architecting fault-tolerant microservices, high-throughput REST APIs, relational PostgreSQL databases with Prisma ORM, real-time WebSockets with Socket.io, and asynchronous message queues with RabbitMQ and Redis.
+              Most of my work centers around building REST APIs, designing PostgreSQL schemas with Prisma, and setting up asynchronous message workers with RabbitMQ and Redis. When a product calls for real-time updates, I integrate Socket.io.
             </motion.p>
 
             <motion.div
@@ -142,7 +142,7 @@ export default function About() {
               }}
             >
               <p style={{ fontSize: '14px', color: 'var(--text-sand)', fontStyle: 'italic', margin: 0 }}>
-                "Every API endpoint should be clean, resilient, and optimized for sub-millisecond performance."
+                "Good backend code is simple, handles failure predictably, and stays out of the user's way."
               </p>
             </motion.div>
 

@@ -93,10 +93,10 @@ export default function Footer() {
                 cursor: 'pointer',
               }}
             >
-              Shreyash<span style={{ color: 'var(--accent-red)' }}>.dev</span>
+              ShreyashSrivastava<span style={{ color: 'var(--accent-red)' }}>.in</span>
             </div>
             <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>
-              Former Backend SDE Intern at JBH Tech Innovation (6 Months) & B.Tech CSE student at ITS Engineering College (AKTU).
+              Backend software engineer and full-stack developer. Former SDE intern at JBH Tech Innovation, graduating from ITS Engineering College in 2026.
             </p>
 
             <div style={{ display: 'flex', gap: '10px', marginTop: '16px' }}>

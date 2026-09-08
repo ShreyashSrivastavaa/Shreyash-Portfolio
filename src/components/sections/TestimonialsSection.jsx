@@ -5,21 +5,21 @@ import { motion } from 'framer-motion'
 
 const testimonials = [
   {
-    text: "Shreyash delivered something beyond what we imagined. The attention to animation detail and performance was extraordinary. Our conversion rate jumped 40% after launch.",
+    text: "Shreyash turned our backend requirements into clean, well-tested APIs faster than expected. His attention to detail and proactive communication made our launch smooth.",
     name: 'Arjun Kapoor',
     role: 'Founder, DesignFlow',
     initials: 'AK',
     stars: 5,
   },
   {
-    text: "Not just a developer — a creative partner. Shreyash understands the soul of a product and builds something that breathes. Truly rare talent in the web space.",
+    text: "Working with Shreyash felt like having an extra core engineer on our team. He understood the problem domain quickly, wrote reliable code, and was easy to collaborate with throughout.",
     name: 'Priya Sharma',
     role: 'CTO, TechLaunch India',
     initials: 'PS',
     stars: 5,
   },
   {
-    text: "IHateLovePDF has saved our team hours every week. The privacy-first approach was exactly what we needed. Clean, elegant code that just works.",
+    text: "IHateLovePDF has saved our team hours every week. Running all processing right inside the browser gives us total confidence with confidential documents. Fast and dependable.",
     name: 'Mohamed Raza',
     role: 'Operations Lead, StartupHub',
     initials: 'MR',

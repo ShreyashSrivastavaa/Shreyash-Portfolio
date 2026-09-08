@@ -1,70 +1,43 @@
 [
   {
-    "id": "subflip",
-    "title": "SubFlip — Subscription Aggregator",
-    "tagline": "Smart subscription marketplace for managing, switching, & reselling plans.",
-    "role": "Lead Full-Stack Architect",
-    "description": "Full-stack subscription management platform that centralizes recurring SaaS plans, automates cancellations, and enables slot-sharing to prevent wasted monthly spend.",
-    "problem": "Managing multiple subscriptions across streaming, dev tools, and AI software requires checking multiple billing dashboards, causing forgotten renewals and wasted money.",
-    "solution": "Built a unified dashboard with 1-click automated cancellation APIs, renewal notification queues, and a slot-sharing marketplace to monetize unused plan capacity.",
+    "id": "ihatelovepdf",
+    "title": "IHateLovePDF: Client-Side PDF Toolkit",
+    "tagline": "Client-side PDF suite focused on privacy and speed.",
+    "role": "Sole Developer",
+    "description": "Client-side tool to split, merge, compress, edit, and decrypt PDF files directly in your browser. All file processing stays local, so your documents never touch a remote server.",
+    "problem": "Most online PDF converters force strict upload limits and store private documents on external servers.",
+    "solution": "I used WebAssembly and Web Workers to process PDF binaries right inside browser memory, keeping user data private and operations fast.",
     "key_features": [
-      "Unified subscription & billing renewal dashboard",
-      "1-Click automated vendor cancellation flows",
-      "Slot-sharing marketplace for unused plan capacity",
-      "Automated payout dispatches and renewal alerts"
+      "Zero file uploads with purely in-browser processing",
+      "WebAssembly-based local PDF compression engine",
+      "Drag and drop visual page reordering and rotation",
+      "Web Workers running heavy operations off the main thread"
     ],
     "metrics": [
-      { "value": "1-Click", "label": "CANCEL FLOW" },
-      { "value": "20ms", "label": "CACHE LATENCY" },
-      { "value": "100%", "label": "AUTO SYNC" }
+      { "value": "100%", "label": "CLIENT PRIVACY" },
+      { "value": "WebAssembly", "label": "WASM ENGINE" },
+      { "value": "60 FPS", "label": "WEB WORKERS" }
     ],
-    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "Redis", "React", "Stripe API"],
-    "category": "Full-Stack",
-    "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastavaa/SubFlip",
-    "logo_url": "/projects/subflip-logo.png",
-    "image_url": "/projects/subflip-logo.png",
-    "image_urls": ["/projects/subflip-logo.png"]
-  },
-  {
-    "id": "school-erp",
-    "title": "School ERP System",
-    "tagline": "Enterprise multi-tenant educational institution management platform.",
-    "role": "Backend Microservices SDE",
-    "description": "Production-ready multi-tenant ERP platform powering attendance tracking, automated fee invoicing, gradebook processing, and role permissions.",
-    "problem": "Legacy educational software lacks multi-campus data isolation and crashes during peak fee invoicing and end-of-term gradebook publishing periods.",
-    "solution": "Designed a NestJS multi-tenant architecture with per-tenant schema separation and RabbitMQ task queues for high-concurrency background PDF generation.",
-    "key_features": [
-      "Strict multi-tenant schema isolation per institution",
-      "Automated fee invoicing & dynamic PDF receipt rendering",
-      "Granular role-based permissions (Principals, Teachers, Parents)",
-      "High-throughput RabbitMQ notification dispatches"
-    ],
-    "metrics": [
-      { "value": "Multi-Tenant", "label": "ISOLATION" },
-      { "value": "10k/sec", "label": "QUEUE RATE" },
-      { "value": "0%", "label": "DATA LEAKAGE" }
-    ],
-    "tech": ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "RabbitMQ", "Docker"],
-    "category": "Backend & APIs",
-    "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastavaa/School-ERP",
-    "image_url": "/projects/school-erp.png",
-    "image_urls": ["/projects/school-erp.png"]
+    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WebAssembly", "PDF-Lib"],
+    "category": "Utilities & Data",
+    "live_url": "https://www.ihatelovepdf.com/",
+    "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
+    "image_url": "/projects/ihatelovepdf.png",
+    "image_urls": ["/projects/ihatelovepdf.png"]
   },
   {
     "id": "hms",
     "title": "Hospital Management System",
-    "tagline": "End-to-end clinical workflow and patient record management system.",
-    "role": "Full-Stack Developer (Collaborative Team Project)",
-    "description": "Healthcare platform streamlining doctor appointments, electronic medical records (EMR), bed allocation, and pharmacy billing.",
-    "problem": "Manual hospital record-keeping leads to fragmented patient medical histories and double-booked doctor appointments during peak clinic hours.",
-    "solution": "Engineered an Express & PostgreSQL backend using Prisma atomic $transactions and row locking for conflict-free scheduling and real-time ward tracking.",
+    "tagline": "Clinical workflow and electronic patient record system.",
+    "role": "Full-Stack Developer (Team Project)",
+    "description": "Full-stack healthcare app built to handle doctor appointments, patient history (EMR), bed tracking, and pharmacy invoices without scheduling conflicts.",
+    "problem": "Paper logs and basic spreadsheets often cause overlapping appointments and fragmented patient histories during busy clinic hours.",
+    "solution": "Built an Express and PostgreSQL backend using Prisma atomic transactions with row locks, guaranteeing conflict-free scheduling even during concurrent bookings.",
     "key_features": [
-      "Conflict-free doctor appointment scheduling",
-      "Historical electronic medical record (EMR) timelines",
-      "Real-time ward and bed allocation dashboard",
-      "HIPAA-compliant role-based access control"
+      "Conflict-free appointment booking with database row locks",
+      "Organized electronic medical record timelines for each patient",
+      "Live ward availability and bed allocation board",
+      "Role-based permissions for doctors, staff, and admin"
     ],
     "metrics": [
       { "value": "Atomic", "label": "TRANSACTIONS" },
@@ -80,17 +53,17 @@
   },
   {
     "id": "zymeal",
-    "title": "ZyMeal — Food Ordering App",
-    "tagline": "Scalable food ordering and real-time order tracking backend API & web app.",
-    "role": "Backend & Full-Stack Engineer",
-    "description": "Complete food ordering web application with Socket.io real-time order tracking, JWT role authentication, and secure checkout.",
-    "problem": "Food delivery platforms suffer from database bottlenecks during dinner checkout surges and lack live status updates for customers and kitchens.",
-    "solution": "Built a Node.js REST API integrated with Socket.io WebSocket channels for sub-second kitchen status broadcasts and Zod edge payload validation.",
+    "title": "ZyMeal: Real-Time Food Ordering",
+    "tagline": "Food delivery platform with live order updates and clean API design.",
+    "role": "Backend and Full-Stack Developer",
+    "description": "Food ordering web app with live kitchen tracking, JWT-based user roles, and a fast checkout flow.",
+    "problem": "Food apps often slow down during dinner rushes, leaving customers and restaurants guessing about order status.",
+    "solution": "Built a Node.js REST API with Socket.io channels for instant status updates between kitchen staff and diners, validating all inputs with Zod schemas.",
     "key_features": [
-      "Live order status timeline with Socket.io WebSockets",
-      "Multi-portal access for Customers, Kitchens, and Admins",
-      "Zod edge payload validation for checkout requests",
-      "Automated cart calculation & secure checkout"
+      "Live order tracking via Socket.io WebSocket channels",
+      "Dedicated interfaces for customers, kitchens, and admins",
+      "Strict request payload validation using Zod",
+      "Automated subtotal calculations and checkout flow"
     ],
     "metrics": [
       { "value": "<120ms", "label": "API LATENCY" },
@@ -106,44 +79,18 @@
     "image_urls": ["/projects/zymeal.png"]
   },
   {
-    "id": "apex-fabricators",
-    "title": "APEX Tender Bidding Analytics",
-    "tagline": "Industrial tender bidding analytics & predictive quotation visualization.",
-    "role": "Data Analyst & Backend Engineer",
-    "description": "Data analytics platform analyzing historical tender bidding records and competitor pricing for industrial fabricators.",
-    "problem": "Industrial tender estimation often suffers from narrow profit margins due to manual pricing errors and unorganized historical bid records.",
-    "solution": "Constructed a Python Pandas data pipeline to process multi-year bidding records and render statistical competitor price distributions with Chart.js.",
-    "key_features": [
-      "Historical win/loss tender analytics breakdown",
-      "Statistical competitor price distribution modeling",
-      "Interactive Chart.js quotation dashboards",
-      "Automated CSV data cleaning ETL pipeline"
-    ],
-    "metrics": [
-      { "value": "Python", "label": "PANDAS ETL" },
-      { "value": "Statistical", "label": "MODELING" },
-      { "value": "Chart.js", "label": "ANALYTICS" }
-    ],
-    "tech": ["Python", "Pandas", "JavaScript", "Chart.js", "Node.js", "Express.js"],
-    "category": "Utilities & Data",
-    "live_url": "",
-    "github_url": "https://github.com/ShreyashSrivastavaa/Apex-Fabricators-Analysis",
-    "image_url": "/projects/apex.png",
-    "image_urls": ["/projects/apex.png"]
-  },
-  {
     "id": "gitfc",
-    "title": "GitFC — EA FC Card Generator",
-    "tagline": "Transform your GitHub profile into EA FC Ultimate Team style cards.",
-    "role": "Creator & Full-Stack Developer",
-    "description": "Interactive web app fetching live GitHub contribution metrics via GraphQL and generating EA FC-inspired developer cards with 1-click HD export.",
-    "problem": "Standard GitHub profile visualizers are text-heavy and lack visual engagement, making developer milestones hard to share on social platforms.",
-    "solution": "Developed a mathematical rating engine mapping GitHub contributions into EA FC player stats (PAC, SHO, PAS, DRI, DEF, PHY) with client-side PNG export.",
+    "title": "GitFC: EA FC Card Generator",
+    "tagline": "Turn your GitHub profile stats into collectible EA FC cards.",
+    "role": "Creator and Developer",
+    "description": "Fun web app that pulls your public GitHub activity using GraphQL and scores your contributions into an EA FC style player card you can download.",
+    "problem": "GitHub profile stats are mostly numbers and commit squares, which makes celebrating milestones a bit dry to share.",
+    "solution": "Wrote an algorithm that translates commit volume, stars, and PRs into realistic player attributes (PAC, SHO, PAS, DRI, DEF, PHY) with high-res PNG downloads.",
     "key_features": [
-      "Single-query GitHub GraphQL API integration",
-      "0-99 algorithmic developer rating matrix",
-      "Dynamic TOTY, Gold, and Icon card shells",
-      "Client-side 1-click HD PNG export engine"
+      "Single GraphQL query to fetch complete yearly contributions",
+      "Balanced 0-99 scoring formula mapped to developer metrics",
+      "Multiple card themes including TOTY, Gold, and Icon editions",
+      "One-click high resolution PNG export rendered in the browser"
     ],
     "metrics": [
       { "value": "GraphQL", "label": "1-QUERY FETCH" },
@@ -158,44 +105,18 @@
     "image_urls": ["/projects/gitfc.png"]
   },
   {
-    "id": "ihatelovepdf",
-    "title": "IHateLovePDF — PDF Utility Suite",
-    "tagline": "High-performance client-first PDF utility suite.",
-    "role": "Sole Developer & WASM Architect",
-    "description": "All-in-one client-side PDF utility suite to split, merge, compress, edit, and unlock PDF files directly in the browser with 100% privacy.",
-    "problem": "Online PDF tools impose strict file size limits and compromise user document privacy by uploading sensitive files to remote cloud servers.",
-    "solution": "Implemented WebAssembly (WASM) binary processing and Web Workers to perform PDF mutations locally in browser memory with zero server uploads.",
-    "key_features": [
-      "100% Client-side document privacy guarantee",
-      "Local WebAssembly PDF compression engine",
-      "Drag & drop visual page reordering & rotation",
-      "Multi-threaded Web Workers for smooth 60 FPS UI"
-    ],
-    "metrics": [
-      { "value": "100%", "label": "CLIENT PRIVACY" },
-      { "value": "WebAssembly", "label": "WASM ENGINE" },
-      { "value": "60 FPS", "label": "WEB WORKERS" }
-    ],
-    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WebAssembly", "PDF-Lib"],
-    "category": "Utilities & Data",
-    "live_url": "https://www.ihatelovepdf.com/",
-    "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
-    "image_url": "/projects/ihatelovepdf.png",
-    "image_urls": ["/projects/ihatelovepdf.png"]
-  },
-  {
     "id": "swiperide",
-    "title": "SwipeRide — Ride Sharing API",
-    "tagline": "Real-time geospatial ride-sharing and matching engine.",
-    "role": "Backend Geospatial Engineer",
-    "description": "Building a real-time ride-sharing backend using Node.js, Express.js, MongoDB, JWT (for rider/driver/admin roles), Socket.io (live tracking), and Redis (fast driver location tracking). Used Google Maps API for fare calculation, Paystack for payments, and MongoDB's geospatial queries to find nearby drivers with dynamic radius expansion.",
-    "problem": "Matching riders with nearby drivers in real-time requires high-frequency database reads and calculations that degrade standard SQL performance.",
-    "solution": "Built a high-performance matching engine using MongoDB's geospatial queries with dynamic radius expansion, cached active driver locations in Redis for ultra-low latency updates, and synced status over Socket.io.",
+    "title": "SwipeRide: Real-Time Ride Sharing API",
+    "tagline": "Real-time driver dispatch and ride matching backend.",
+    "role": "Backend Engineer",
+    "description": "Ride-sharing API built with Node.js, Express, MongoDB, and Redis. It handles live driver location tracking, fare estimates, and fast pickup matching with dynamic radius expansion.",
+    "problem": "Constantly recalculating nearest drivers for active ride requests creates heavy database reads that slow down typical query setups.",
+    "solution": "Implemented MongoDB 2DSphere indexes to run radius searches, cached driver coordinates in Redis for instant lookups, and broadcasted ride status changes over Socket.io.",
     "key_features": [
-      "Geospatial driver matching using MongoDB 2DSphere indexing",
-      "Redis in-memory caching for sub-5ms driver location updates",
-      "Dynamic radius expansion during low driver availability",
-      "Real-time WebSocket trip status synchronization"
+      "Geospatial driver lookup using MongoDB 2DSphere indexes",
+      "Sub-5ms driver coordinate reads using Redis in-memory storage",
+      "Automatic search radius expansion when nearby drivers are scarce",
+      "Real-time trip updates sent over WebSockets"
     ],
     "metrics": [
       { "value": "Dynamic", "label": "RADIUS MATCH" },

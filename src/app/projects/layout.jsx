@@ -1,11 +1,11 @@
 export const metadata = {
   title: "Projects & Architecture Case Studies",
-  description: "Explore backend engineering and full-stack projects built by Shreyash Srivastava — including SubFlip, School ERP, HMS, SwipeRide API, and SentinelAuth.",
+  description: "Projects built by Shreyash Srivastava, including IHateLovePDF, HMS, ZyMeal, GitFC, and SwipeRide API.",
   keywords: [
     "Shreyash Srivastava Projects",
-    "SubFlip Subscription Aggregator",
-    "School ERP NestJS",
+    "IHateLovePDF WebAssembly",
     "Hospital Management System",
+    "ZyMeal Food Ordering API",
     "Backend Projects Node.js",
     "PostgreSQL Projects",
     "Microservices Case Studies",

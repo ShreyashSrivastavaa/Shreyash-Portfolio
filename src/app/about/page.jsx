@@ -115,13 +115,13 @@ export default function AboutPage() {
                   <span>THE BACKGROUND</span>
                 </div>
                 <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  I am a passionate <strong className="text-white font-semibold">Backend & Full-Stack Software Development Engineer</strong> currently working as a <strong className="text-white font-semibold">Freelancer at UpscaleTechSolutions</strong>, and former <strong className="text-white font-semibold">Backend SDE Intern at JBH Tech Innovation (6 Months)</strong>. I am currently completing my <strong className="text-white font-semibold">B.Tech in Computer Science & Engineering</strong> at ITS Engineering College, Greater Noida (AKTU), graduating in 2026.
+                  I am a <strong className="text-white font-semibold">Backend and Full-Stack Software Engineer</strong> freelancing with <strong className="text-white font-semibold">UpscaleTechSolutions</strong>, after completing a 6-month backend internship at <strong className="text-white font-semibold">JBH Tech Innovation</strong>. I am currently completing my <strong className="text-white font-semibold">B.Tech in Computer Science and Engineering</strong> at ITS Engineering College, Greater Noida (AKTU), graduating in 2026.
                 </p>
                 <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  Over the past few years, I have architected and shipped over 8 production-grade systems spanning multi-tenant ERP software, real-time food ordering engines, client-side WebAssembly utility suites, and predictive data pipelines.
+                  Over the past few years, I have built and shipped multiple real-world systems, including client-side WebAssembly tools, hospital management workflows, and real-time food delivery platforms.
                 </p>
                 <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  Whether building fault-tolerant microservices, tuning complex SQL queries in PostgreSQL, or orchestrating asynchronous message queues in RabbitMQ, I focus on clean code, system reliability, and sub-millisecond execution.
+                  My core stack revolves around Node.js, NestJS, PostgreSQL, Prisma, Redis, and Docker. I focus on keeping services simple to maintain, designing normalized database schemas, and writing endpoints that perform well under load.
                 </p>
               </motion.div>
 

@@ -69,7 +69,7 @@ export default function ProjectsPage() {
               Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Projects & Systems</span>
             </h1>
             <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              Explore production applications, multi-tenant architectures, high-concurrency APIs, and open-source developer utilities.
+              A directory of projects I've built, covering web applications, backend APIs, and browser tools.
             </p>
           </motion.div>
 

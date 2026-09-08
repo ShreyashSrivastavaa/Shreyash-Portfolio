@@ -6,20 +6,20 @@ const EXPERIENCES = [
   {
     company: 'JBH Tech Innovation',
     role: 'SDE Intern',
-    period: 'December 2025 – May 2026',
+    period: 'December 2025 - May 2026',
     description: [
       'Developing scalable backend systems and RESTful APIs using Node.js and NestJS.',
       'Designed and optimized relational database schemas in PostgreSQL for multi-tenant applications.',
       'Implemented JWT-based authentication and granular authorization (RBAC) across microservices.',
       'Collaborated in an agile team using Git-based workflows and participated in code reviews.',
-      'Leveraged RabbitMQ for asynchronous processing of intensive background tasks.'
+      'Utilized RabbitMQ for asynchronous processing of intensive background tasks.'
     ],
     stack: ['Node.js', 'NestJS', 'PostgreSQL', 'RabbitMQ', 'Docker']
   },
   {
     company: 'IEEE Student Branch',
     role: 'Student Representative / Chair',
-    period: '2023 – 2024',
+    period: '2023 - 2024',
     description: [
       'Led a community of 100+ technical students, overseeing branch operations and strategy.',
       'Organized large-scale hackathons, technical symposiums, and hands-on workshops for peer learning.',

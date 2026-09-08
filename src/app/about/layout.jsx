@@ -1,14 +1,15 @@
 export const metadata = {
-  title: "About Me | Backend SDE & Software Engineer",
-  description: "Learn more about Shreyash Srivastava — Backend Software Engineer & Full-Stack Developer. Background at JBH Tech Innovation and UpscaleTechSolutions, B.Tech CSE @ ITS Engineering College.",
+  title: "About Me",
+  description: "About Shreyash Srivastava, a Backend Software Engineer and Full-Stack Developer with experience at JBH Tech Innovation and UpscaleTechSolutions.",
   keywords: [
     "About Shreyash Srivastava",
     "Shreyash Srivastava Background",
-    "Shreyash Srivastava Bio",
-    "Shreyash Srivastava Education",
-    "Shreyash Srivastava Experience",
-    "Backend SDE Greater Noida",
-    "ITS Engineering College Developer"
+    "Backend SDE Experience",
+    "Full-Stack Developer India",
+    "ITS Engineering College AKTU",
+    "JBH Tech Innovation Intern",
+    "UpscaleTechSolutions Freelance",
+    "Software Engineer Bio"
   ],
   alternates: {
     canonical: 'https://shreyashsrivastava.vercel.app/about',
@@ -18,7 +19,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://shreyashsrivastava.vercel.app/about',
     title: 'About Shreyash Srivastava | Backend Engineer & Full-Stack Developer',
-    description: 'Learn more about Shreyash Srivastava — Backend Software Engineer with expertise in Node.js, NestJS, PostgreSQL, and scalable microservices.',
+    description: 'About Shreyash Srivastava, a Backend Software Engineer working with Node.js, NestJS, PostgreSQL, and Docker.',
     siteName: 'Shreyash Srivastava Portfolio',
     images: [
       {

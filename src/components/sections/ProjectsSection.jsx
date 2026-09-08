@@ -105,7 +105,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.7, delay: 0.2, ease: smoothEasing }}
             className="mt-4 text-sm sm:text-base text-[#f0ece8]/70 font-light leading-relaxed max-w-2xl mx-auto"
           >
-            A curated showcase of production architectures — solving real business challenges with clean system design, high concurrency, and resilient microservices.
+            A collection of projects I've built and deployed, focusing on clean system design, reliable APIs, and responsive frontends.
           </motion.p>
 
           {/* ── CATEGORY FILTER TABS ── */}

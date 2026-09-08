@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Work Experience & Education",
-  description: "Career history, internships, and education of Shreyash Srivastava — Backend SDE at UpscaleTechSolutions & JBH Tech Innovation, B.Tech CSE at ITS Engineering College.",
+  title: "Work Experience & Career History",
+  description: "Work history, internships, and education of Shreyash Srivastava, Backend SDE at UpscaleTechSolutions and former intern at JBH Tech Innovation.",
   keywords: [
     "Shreyash Srivastava Experience",
     "Shreyash Srivastava Career",

@@ -179,8 +179,7 @@ export default function Hero({ showApp }) {
                   margin: 0,
                 }}
               >
-                Specializing in Node.js, Express, NestJS, PostgreSQL, Prisma, Redis, RabbitMQ, and Docker.
-                Crafting high-throughput APIs, clean database architectures, and production systems with sub-second performance.
+                I build reliable backend services and web applications using Node.js, NestJS, PostgreSQL, Prisma, Redis, and Docker. Focused on clean API design, sensible database schemas, and services that stay fast under load.
               </p>
             </motion.div>
 

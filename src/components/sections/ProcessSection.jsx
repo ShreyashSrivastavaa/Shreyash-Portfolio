@@ -7,26 +7,26 @@ const steps = [
   {
     num: '01',
     label: 'DISCOVER',
-    title: 'Deep Dive & Discovery',
-    desc: 'I immerse myself in your world — goals, users, and competitive landscape. No assumptions, just deep, curious listening. The clearer the problem, the better the solution.',
+    title: 'Understanding the Problem',
+    desc: 'Before writing any code, I make sure we are aligned on requirements, user constraints, and data flows. Clear specs upfront prevent surprises down the road.',
   },
   {
     num: '02',
     label: 'DESIGN',
-    title: 'Craft the Experience',
-    desc: 'Design is not decoration — it\'s communication. I architect experiences that guide users effortlessly, combining aesthetic beauty with functional clarity.',
+    title: 'Schema & System Design',
+    desc: 'I map out database relations, choose appropriate indexes, and define API contracts. Getting the data model right first keeps everything else straightforward.',
   },
   {
     num: '03',
     label: 'BUILD',
-    title: 'Engineer with Precision',
-    desc: 'Clean code, performant systems, and scalable architectures. I write software that\'s maintainable and built to last — from API design to the last animation.',
+    title: 'Writing the Code',
+    desc: 'I build out endpoints, handle edge cases, and test failure states locally. Code is written to be clean, readable, and easy for any teammate to maintain.',
   },
   {
     num: '04',
     label: 'LAUNCH',
-    title: 'Ship & Iterate',
-    desc: 'Deployment is just the beginning. I monitor, measure, and iterate — ensuring your product improves with real user feedback. Launch boldly, improve endlessly.',
+    title: 'Deploying & Monitoring',
+    desc: 'Once the service is in production, I watch query speeds and error logs. When bottlenecks or unexpected issues appear, I address them directly.',
   },
 ]
 
@@ -176,7 +176,7 @@ export default function ProcessSection() {
                   display: 'block',
                 }}
               >
-                {step.num} — {step.label}
+                {step.num} · {step.label}
               </span>
 
               <h3

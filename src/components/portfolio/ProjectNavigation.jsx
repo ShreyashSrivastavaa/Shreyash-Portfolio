@@ -23,7 +23,7 @@ export default function ProjectNavigation({ currentId }) {
           <div className="flex flex-col text-left">
             <span className="text-[11px] font-mono uppercase tracking-wider text-[#6b7280]">Previous</span>
             <span className="font-medium text-xs sm:text-sm text-[#d1d5db] group-hover:text-white transition-colors">
-              {prevProject.title.split('—')[0].trim()}
+              {prevProject.title.split(/[:—]/)[0].trim()}
             </span>
           </div>
         </Link>
@@ -37,7 +37,7 @@ export default function ProjectNavigation({ currentId }) {
           <div className="flex flex-col text-right">
             <span className="text-[11px] font-mono uppercase tracking-wider text-[#6b7280]">Next</span>
             <span className="font-medium text-xs sm:text-sm text-[#d1d5db] group-hover:text-white transition-colors">
-              {nextProject.title.split('—')[0].trim()}
+              {nextProject.title.split(/[:—]/)[0].trim()}
             </span>
           </div>
           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

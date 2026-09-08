@@ -58,7 +58,7 @@ export default function SkillsPage() {
               Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Domain Expertise</span>
             </h1>
             <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              Comprehensive breakdown of my backend engineering toolkit, distributed systems design, database management, and cloud devops proficiencies.
+              Languages, frameworks, databases, and development tools I work with daily.
             </p>
           </motion.div>
 

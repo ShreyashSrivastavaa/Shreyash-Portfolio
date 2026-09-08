@@ -50,7 +50,7 @@ export default function ExperiencePage() {
               Work Experience & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Leadership</span>
             </h1>
             <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              Demonstrated track record of delivering production-ready microservices, building backend architectures, and driving engineering communities.
+              A summary of my roles, internship experience, and technical leadership work.
             </p>
           </motion.div>
 

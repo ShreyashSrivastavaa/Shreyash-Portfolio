@@ -93,7 +93,7 @@ export default function Skills() {
                                 </div>
                                 <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Education:</span>
-                                    <span className="text-sm md:text-base font-medium text-foreground/80">Final Year — Bachelor of Computer Science</span>
+                                    <span className="text-sm md:text-base font-medium text-foreground/80">Final Year, Bachelor of Computer Science</span>
                                 </div>
                                 <div className="grid grid-cols-[100px_1fr] gap-4 items-baseline">
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-primary">Experience:</span>

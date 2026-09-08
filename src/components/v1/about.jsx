@@ -18,7 +18,7 @@ export default function About() {
 
                     <div className="space-y-4 text-foreground/80 leading-relaxed">
                         <p>
-                            I&apos;m a final-year Computer Science student and former SDE Intern at JBH Tech Innovation. Having successfully designed and optimized core backend services during my internship, I am now seeking full-time SDE/Backend opportunities. I specialize in RESTful API architecture, database design, and building systems that stay fast under pressure. I don&apos;t just write code that works — I write code that holds up at scale.
+                            I&apos;m a final-year Computer Science student and former SDE Intern at JBH Tech Innovation. Having successfully designed and optimized core backend services during my internship, I am now seeking full-time SDE/Backend opportunities. I specialize in RESTful API architecture, database design, and building systems that stay fast under pressure. I don&apos;t just write code that works, I write code that holds up at scale.
                         </p>
                     </div>
 

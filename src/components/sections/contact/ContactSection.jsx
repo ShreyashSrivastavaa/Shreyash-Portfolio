@@ -200,7 +200,7 @@ export default function ContactSection() {
                 WebkitTextStroke: '2px rgba(255,255,255,0.55)',
               }}
             >
-              Something Extraordinary.
+              Something Great.
             </span>
           </h2>
           <p
@@ -212,7 +212,7 @@ export default function ContactSection() {
               margin: '16px auto 0',
             }}
           >
-            Have a backend architecture challenge, project opportunity, or internship query? I'm always open to discussing new technical projects.
+            Have a project in mind, an open backend role, or a technical problem to discuss? Send a message here or reach out directly by email.
           </p>
         </motion.div>
 

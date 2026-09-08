@@ -168,7 +168,7 @@ export default function ContactPage() {
               Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Touch</span>
             </h1>
             <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              Have a backend architecture challenge, full-stack project opportunity, or role query? Let's discuss how I can add value to your team.
+              Have a question, a project you'd like to collaborate on, or an open role? Feel free to reach out.
             </p>
           </motion.div>
 
