@@ -275,7 +275,9 @@ export default function ProjectsSection() {
                           <GitBranch size={15} />
                         </a>
                       )}
-                      {project.live_url && (
+                      {project.id === 'ihatelovepdf' ? (
+                        <a href="https://www.ihatelovepdf.com" rel="noopener">I Hate Love PDF</a>
+                      ) : project.live_url ? (
                         <a
                           href={project.live_url}
                           target="_blank"
@@ -285,7 +287,7 @@ export default function ProjectsSection() {
                         >
                           <ExternalLink size={15} />
                         </a>
-                      )}
+                      ) : null}
                     </div>
 
                     <Link

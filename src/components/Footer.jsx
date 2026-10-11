@@ -188,12 +188,12 @@ export default function Footer() {
                   GitFC <ArrowUpRight size={12} />
                 </a>
                 <a
-                  href="https://www.ihatelovepdf.com/"
+                  href="https://www.ihatelovepdf.com"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
                 >
-                  IHateLovePDF <ArrowUpRight size={12} />
+                  I Hate Love PDF <ArrowUpRight size={12} />
                 </a>
                 <a
                   href="https://github.com/ShreyashSrivastavaa"

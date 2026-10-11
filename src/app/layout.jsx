@@ -93,6 +93,23 @@ export const metadata = {
     },
 };
 
+const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shreyash Srivastava",
+    "url": "https://www.shreyashsrivastava.in/",
+    "sameAs": [
+        "https://github.com/ShreyashSrivastavaa",
+        "https://www.linkedin.com/in/shreyashsrivastavaa",
+        "https://buymeacoffee.com/shreyashsrivastavaa"
+    ],
+    "founder": {
+        "@type": "Organization",
+        "name": "I Hate Love PDF",
+        "url": "https://www.ihatelovepdf.com"
+    }
+};
+
 const jsonLdSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -108,14 +125,15 @@ const jsonLdSchema = {
                 "Shreyash Srivastava Portfolio",
                 "Shreyash Srivastava Full-Stack Engineer"
             ],
-            "url": "https://www.shreyashsrivastava.in",
+            "url": "https://www.shreyashsrivastava.in/",
             "image": "https://www.shreyashsrivastava.in/profile.png",
             "description": "Backend Software Engineer & Full-Stack Developer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, Docker, and distributed microservices architecture.",
             "email": "shreyashsr2004@gmail.com",
             "sameAs": [
                 "https://github.com/ShreyashSrivastavaa",
                 "https://github.com/ShreyashSrivastava15",
-                "https://linkedin.com/in/shreyashsrivastavaa"
+                "https://www.linkedin.com/in/shreyashsrivastavaa",
+                "https://buymeacoffee.com/shreyashsrivastavaa"
             ],
             "jobTitle": "Backend Software Engineer & Full-Stack Developer",
             "worksFor": [
@@ -124,6 +142,11 @@ const jsonLdSchema = {
                     "name": "JBH Tech Innovation"
                 }
             ],
+            "founder": {
+                "@type": "Organization",
+                "name": "I Hate Love PDF",
+                "url": "https://www.ihatelovepdf.com"
+            },
             "alumnusOf": {
                 "@type": "EducationalOrganization",
                 "name": "ITS Engineering College, Greater Noida (AKTU)",
@@ -181,6 +204,10 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}

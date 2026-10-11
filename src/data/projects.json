@@ -20,7 +20,7 @@
     ],
     "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WebAssembly", "PDF-Lib"],
     "category": "Utilities & Data",
-    "live_url": "https://www.ihatelovepdf.com/",
+    "live_url": "https://www.ihatelovepdf.com",
     "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
     "image_url": "/projects/ihatelovepdf.png",
     "image_urls": ["/projects/ihatelovepdf.png"]

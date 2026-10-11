@@ -363,3 +363,30 @@ body::before {
   }
   .text-shimmer { animation: none; -webkit-text-fill-color: white; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   DIRECT BACKLINK STYLING (I HATE LOVE PDF)
+   ═══════════════════════════════════════════════════════════ */
+a[href="https://www.ihatelovepdf.com"][rel="noopener"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: #34d399;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+a[href="https://www.ihatelovepdf.com"][rel="noopener"]:hover {
+  color: #6ee7b7;
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.45);
+}
+
+a[href="https://www.ihatelovepdf.com"][rel="noopener"]::after {
+  content: '↗';
+  font-size: 0.7rem;
+  opacity: 0.85;
+}

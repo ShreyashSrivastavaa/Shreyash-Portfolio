@@ -35,7 +35,9 @@ export default function ProjectHero({ project, onExpandGallery }) {
 
         {/* ACTION LINKS */}
         <div className="flex flex-wrap items-center gap-5 pt-1">
-          {project.live_url && (
+          {project.id === 'ihatelovepdf' ? (
+            <a href="https://www.ihatelovepdf.com" rel="noopener">I Hate Love PDF</a>
+          ) : project.live_url ? (
             <a
               href={project.live_url}
               target="_blank"
@@ -45,7 +47,7 @@ export default function ProjectHero({ project, onExpandGallery }) {
               <span>View Live Demo</span>
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
-          )}
+          ) : null}
 
           {project.github_url && (
             <a
