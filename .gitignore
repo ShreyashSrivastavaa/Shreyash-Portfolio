@@ -24,6 +24,8 @@
 .DS_Store
 *.pem
 *.exe
+*.docx
+design-extract-output/
 
 # debug
 npm-debug.log*
