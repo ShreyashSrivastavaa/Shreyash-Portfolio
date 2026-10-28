@@ -1,105 +1,175 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Github, Linkedin, Mail, ArrowUpRight, ArrowUp } from 'lucide-react'
-import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { Github, Linkedin, Mail, ArrowUpRight, ArrowUp, Coffee, FileText } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home', id: 'home', href: '/' },
-  { label: 'About', id: 'about', href: '/about' },
-  { label: 'Projects', id: 'portfolio', href: '/projects' },
-  { label: 'Skills', id: 'skills', href: '/skills' },
-  { label: 'Experience', id: 'experience', href: '/experience' },
-  { label: 'Contact', id: 'contact', href: '/contact' },
+  { label: 'work', id: 'portfolio', href: '/projects' },
+  { label: 'about me', id: 'about', href: '/about' },
+  { label: 'stack', id: 'skills', href: '/skills' },
+  { label: 'methodology', id: 'process', href: '/#process' },
+  { label: 'contact', id: 'contact', href: '/contact' },
 ]
 
 const socials = [
   { icon: <Github size={15} />, href: 'https://github.com/ShreyashSrivastavaa', label: 'GitHub' },
   { icon: <Linkedin size={15} />, href: 'https://www.linkedin.com/in/shreyashsrivastavaa', label: 'LinkedIn' },
   { icon: <Mail size={15} />, href: 'mailto:shreyashsr2004@gmail.com', label: 'Email' },
+  { icon: <Coffee size={15} />, href: 'https://buymeacoffee.com/shreyashsrivastavaa', label: 'BuyMeACoffee' },
 ]
 
 export default function Footer() {
   const pathname = usePathname()
   const router = useRouter()
-  const [isMobile, setIsMobile] = useState(false)
   const year = new Date().getFullYear()
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  const handleLinkClick = (link) => {
-    if (pathname === '/') {
-      if (link.id === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        return
-      }
-      const el = document.getElementById(link.id)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-        return
-      }
-    }
-    router.push(link.href)
-  }
-
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
   return (
-    <footer
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        borderTop: '1px solid var(--border)',
-        background: 'var(--bg-primary)',
-        paddingTop: '64px',
-        paddingBottom: '32px',
-      }}
-    >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          paddingLeft: '24px',
-          paddingRight: '24px',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            justifyContent: 'space-between',
-            gap: '40px',
-            marginBottom: '48px',
-          }}
+    <footer className="w-full relative z-20 text-[#242620] bg-[#f1f0eb] select-none">
+      
+      {/* HIGH-THROUGHPUT TELEMETRY WAVEFORM GRAPH */}
+      <div className="relative w-full h-[180px] sm:h-[240px] md:h-[280px] overflow-hidden">
+        <svg
+          viewBox="0 0 1440 320"
+          fill="none"
+          preserveAspectRatio="none"
+          className="w-full h-full block"
         >
-          {/* BRAND */}
-          <div style={{ maxWidth: '320px' }}>
-            <div
-              onClick={scrollTop}
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '22px',
-                fontWeight: 800,
-                color: 'var(--text-sand)',
-                marginBottom: '12px',
-                cursor: 'pointer',
-              }}
-            >
-              ShreyashSrivastava<span style={{ color: 'var(--accent-red)' }}>.in</span>
-            </div>
-            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>
-              Backend software engineer and full-stack developer. Former SDE intern at JBH Tech Innovation, graduating from ITS Engineering College in 2026.
-            </p>
+          <defs>
+            <linearGradient id="footer-wave-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#0066ff" stopOpacity="0.14" />
+              <stop offset="100%" stopColor="#0066ff" stopOpacity="0.0" />
+            </linearGradient>
+            <linearGradient id="footer-wave-grad-base" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#e2e0d5" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#f1f0eb" stopOpacity="0.9" />
+            </linearGradient>
+          </defs>
 
-            <div style={{ display: 'flex', gap: '10px', marginTop: '16px' }}>
+          {/* Background baseline shaded envelope */}
+          <path
+            d="M0 260 C 240 250, 480 230, 720 180 C 960 130, 1180 90, 1440 60 L 1440 320 L 0 320 Z"
+            fill="url(#footer-wave-grad-base)"
+          />
+
+          {/* High-throughput throughput fill */}
+          <path
+            d="M0 260 C 200 255, 380 230, 560 170 C 740 110, 960 70, 1140 50 C 1260 36, 1360 42, 1440 45 L 1440 320 L 0 320 Z"
+            fill="url(#footer-wave-grad)"
+          />
+
+          {/* Telemetry Grid Guideline 1: Baseline */}
+          <line
+            x1="0"
+            y1="260"
+            x2="1440"
+            y2="260"
+            stroke="#d3d3c8"
+            strokeWidth="1"
+            strokeDasharray="6 8"
+            opacity="0.6"
+          />
+
+          {/* Telemetry Grid Guideline 2: Median Load */}
+          <line
+            x1="0"
+            y1="160"
+            x2="1440"
+            y2="160"
+            stroke="#d3d3c8"
+            strokeWidth="1"
+            strokeDasharray="6 8"
+            opacity="0.4"
+          />
+
+          {/* Telemetry Grid Guideline 3: Peak Threshold */}
+          <line
+            x1="0"
+            y1="60"
+            x2="1440"
+            y2="60"
+            stroke="#0066ff"
+            strokeWidth="1"
+            strokeDasharray="4 6"
+            opacity="0.5"
+          />
+
+          {/* Primary Throughput Wave Line */}
+          <motion.path
+            d="M0 260 C 200 255, 380 230, 560 170 C 740 110, 960 70, 1140 50 C 1260 36, 1360 42, 1440 45"
+            stroke="#242620"
+            strokeWidth="2.2"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, ease: 'easeInOut' }}
+          />
+
+          {/* Pulse Latency Glow Stroke */}
+          <motion.path
+            d="M560 170 C 740 110, 960 70, 1140 50"
+            stroke="#0066ff"
+            strokeWidth="2.5"
+            strokeDasharray="6 6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.85 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.6 }}
+          />
+        </svg>
+
+        {/* TELEMETRY PEAK STATUS INDICATOR */}
+        <div className="absolute top-[22%] left-[78%] -translate-x-1/2 -translate-y-1/2 flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.25)] animate-pulse" />
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#242620] font-semibold bg-[#ffffff]/90 backdrop-blur-sm px-2.5 py-1 rounded-full border border-[#d3d3c8] shadow-sm flex items-center gap-2">
+            <span>DELHI · 28.6139° N, 77.2090° E</span>
+            <span className="text-[#8e9087]">|</span>
+            <span className="text-[#0066ff]">99.999% SLA</span>
+          </span>
+        </div>
+      </div>
+
+      {/* FOOTER BODY */}
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 pb-16 pt-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pb-16 border-b border-[#d3d3c8]">
+          
+          {/* LEFT COLUMN: EDITORIAL STATEMENT */}
+          <div className="lg:col-span-7 space-y-6">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-sans font-bold text-[#242620] tracking-tight leading-[1.05]">
+              someday, <span className="font-serif italic font-normal text-[#0066ff]">a million rps.</span>
+            </h2>
+            <p className="font-sans text-sm sm:text-base text-[#6f7168] max-w-lg leading-relaxed">
+              Zero dropped packets, sub-millisecond p99 latency, and resilient architectures engineered backwards from failure cases. Building deterministic distributed systems that handle internet scale without flinching.
+            </p>
+            <div className="font-hand text-xl text-[#0066ff]">
+              see you in production ✌️
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: ACTIONS & CONTACT */}
+          <div className="lg:col-span-5 flex flex-col items-start lg:items-end space-y-6">
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-sans font-medium text-sm text-[#ffffff] bg-[#242620] hover:bg-[#0066ff] px-6 py-2.5 rounded-full shadow-md transition-all hover:-translate-y-0.5"
+            >
+              <span>resume</span>
+              <ArrowUpRight size={15} />
+            </a>
+
+            <a
+              href="mailto:shreyashsr2004@gmail.com"
+              className="font-serif text-2xl sm:text-3xl text-[#242620] underline decoration-[#0066ff] decoration-1 underline-offset-8 hover:text-[#0066ff] transition-colors"
+            >
+              shreyashsr2004@gmail.com
+            </a>
+
+            <div className="flex items-center gap-3">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -107,151 +177,58 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid var(--border)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--text-secondary)',
-                    textDecoration: 'none',
-                    transition: 'var(--transition)',
-                  }}
+                  className="w-10 h-10 rounded-full bg-[#ffffff] border border-[#d3d3c8] flex items-center justify-center text-[#242620] hover:bg-[#0066ff] hover:text-[#ffffff] hover:border-[#0066ff] transition-all shadow-sm"
                 >
                   {s.icon}
                 </a>
               ))}
             </div>
           </div>
-
-          {/* QUICK LINKS */}
-          <div style={{ display: 'flex', gap: '60px', flexWrap: 'wrap' }}>
-            <div>
-              <div
-                style={{
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--accent-red)',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  marginBottom: '16px',
-                }}
-              >
-                Quick Links
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {navLinks.map((link) => (
-                  <button
-                    key={link.id}
-                    onClick={() => handleLinkClick(link)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--text-secondary)',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      padding: 0,
-                      fontFamily: 'var(--font-body)',
-                      transition: 'color 0.2s ease',
-                    }}
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div
-                style={{
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--accent-red)',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  marginBottom: '16px',
-                }}
-              >
-                Featured Work
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <a
-                  href="https://gitfc.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
-                >
-                  GitFC <ArrowUpRight size={12} />
-                </a>
-                <a
-                  href="https://www.ihatelovepdf.com"
-                  target="_blank"
-                  rel="noopener"
-                  style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
-                >
-                  I Hate Love PDF <ArrowUpRight size={12} />
-                </a>
-                <a
-                  href="https://github.com/ShreyashSrivastavaa"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
-                >
-                  GitHub Repositories <ArrowUpRight size={12} />
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* ═══ BOTTOM ROW ═══ */}
-        <div
-          style={{
-            borderTop: '1px solid var(--border)',
-            paddingTop: '24px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '16px',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              color: 'var(--text-muted)',
-              lineHeight: 1.6,
-            }}
-          >
-            © {year} <span style={{ color: 'var(--text-sand)' }}>Shreyash Srivastava</span>. All rights reserved.
-          </span>
-
-          <motion.button
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollTop}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '8px 16px',
-              borderRadius: '999px',
-              background: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid var(--border)',
-              color: 'var(--text-sand)',
-              fontSize: '12px',
-              fontFamily: 'var(--font-heading)',
-              cursor: 'pointer',
-              transition: 'var(--transition)',
-            }}
-          >
-            Back to Top <ArrowUp size={14} />
-          </motion.button>
+        {/* BOTTOM COLOPHON */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#6f7168]">
+          <p>© {year} Shreyash Srivastava · Delhi, India</p>
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 text-center sm:text-right">
+            <p>
+              VR headset model:{' '}
+              <a
+                href="https://sketchfab.com/3d-models/lowpoly-vr-glasses-c37e201c0f4a49deb2415b4949e011e7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[#242620] transition-colors"
+              >
+                &ldquo;Lowpoly VR glasses&rdquo;
+              </a>{' '}
+              by{' '}
+              <a
+                href="https://sketchfab.com/taigo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#242620] transition-colors"
+              >
+                taigo
+              </a>
+              , licensed{' '}
+              <a
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[#242620] transition-colors"
+              >
+                CC BY 4.0
+              </a>
+              .
+            </p>
+            <button
+              onClick={scrollTop}
+              className="inline-flex items-center gap-1.5 hover:text-[#242620] transition-colors cursor-pointer ml-2"
+              aria-label="Back to top"
+            >
+              <span>TOP</span>
+              <ArrowUp size={12} className="text-[#0066ff]" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
