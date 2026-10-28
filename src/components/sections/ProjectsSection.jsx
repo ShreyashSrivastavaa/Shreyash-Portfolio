@@ -1,321 +1,370 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  ExternalLink,
-  Github,
-  ArrowUpRight,
-  Sparkles,
-  TrendingUp,
-  Clock,
-  Layers,
-  CheckCircle2,
-  Box,
-  GitBranch,
-  ArrowRight
-} from 'lucide-react';
-import Link from 'next/link';
-import projectsData from '@/data/projects.json';
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react'
+import { useReducedMotion } from 'framer-motion'
+import { ArrowUpRight, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import projectsData from '@/data/projects.json'
 
-const CATEGORIES = ['All', 'Full-Stack', 'Backend & APIs', 'Utilities & Data'];
-const smoothEasing = [0.22, 1, 0.36, 1];
+// Dynamically import WebGL gallery with SSR disabled
+const CurvedWorkGalleryWebGL = dynamic(
+  () => import('./CurvedWorkGalleryWebGL'),
+  { ssr: false }
+)
+
+// Curated 6 core featured projects
+const ORDERED_FEATURED_IDS = [
+  'ihatelovepdf',
+  'weddinginvite',
+  'gitfc',
+  'zymeal',
+  'swiperide',
+  'savethesystem',
+]
+
+const FEATURED_PROJECTS = ORDERED_FEATURED_IDS.map((id) =>
+  projectsData.find((p) => p.id === id)
+).filter(Boolean)
+
+const MORE_PROJECTS = projectsData.filter(
+  (p) => !ORDERED_FEATURED_IDS.includes(p.id)
+)
+
+const EDITORIAL_PROJECT_DATA = {
+  ihatelovepdf: {
+    heroHeadline:
+      'Zero server file uploads, client-side WebAssembly OCR, and 45 tools built for 100% private document processing.',
+    heroSubtext:
+      'A privacy-first web toolkit replacing slow, paywalled online converters with instant in-browser WebAssembly execution.',
+    brandMark: 'Client-Side · Utility',
+    brandBadge: '45-TOOL SUITE',
+  },
+  weddinginvite: {
+    heroHeadline:
+      'WhatsApp-first wedding guest list and RSVP platform built for Indian weddings.',
+    heroSubtext:
+      'A simple way for couples and families to share invites on WhatsApp, collect RSVPs, and track headcounts without per-message costs.',
+    brandMark: 'Web App · Events',
+    brandBadge: 'RSVP PLATFORM',
+  },
+  savethesystem: {
+    heroHeadline:
+      'Interactive browser simulator for debugging high-traffic server outages.',
+    heroSubtext:
+      'A hands-on training sandbox where engineers practice incident triage, inspecting logs, and configuring rate limiters under simulated stress.',
+    brandMark: 'Systems Design · Simulator',
+    brandBadge: 'INCIDENT LAB',
+  },
+  gitfc: {
+    heroHeadline:
+      'Turn your GitHub commits, PRs, and top languages into a custom EA FC-style trading card.',
+    heroSubtext:
+      'A fun web app that connects to the GitHub API, calculates your dev stats, and renders high-res cards directly in your browser.',
+    brandMark: 'Developer Tools · Web App',
+    brandBadge: 'STAT CARD GENERATOR',
+  },
+  zymeal: {
+    heroHeadline:
+      'Real-time cafeteria food ordering with live order tracking over WebSockets.',
+    heroSubtext:
+      'A full-stack app for diners and kitchen staff to browse menus, place orders, and follow food preparation live without refreshing.',
+    brandMark: 'Full-Stack · WebSockets',
+    brandBadge: 'LIVE FOOD ORDERING',
+  },
+  swiperide: {
+    heroHeadline:
+      'Real-time ride-hailing backend API with fast geospatial driver matching.',
+    heroSubtext:
+      'Matches riders with nearby drivers in milliseconds using Redis coordinate caching, MongoDB 2DSphere indexes, and WebSocket trip updates.',
+    brandMark: 'Backend Architecture · APIs',
+    brandBadge: 'RIDE-HAILING API',
+  },
+}
+
+// Fallback mobile card
+function MobileWorkCard({ project, index }) {
+  const img = project.image_urls?.[0] || project.image_url || null
+  const editorial = EDITORIAL_PROJECT_DATA[project.id] || {
+    heroHeadline: project.tagline || project.description,
+    heroSubtext: project.description,
+    brandMark: 'Engineering Project',
+    brandBadge: 'PRODUCTION',
+  }
+  const paddedIndex = String(index + 1).padStart(2, '0')
+
+  return (
+    <article className="w-full flex flex-col justify-between bg-[#ffffff] text-[#242620] rounded-2xl overflow-hidden shadow-2xl border border-[#d3d3c8]">
+      <div className="p-6 flex flex-col justify-between space-y-4">
+        <div className="flex items-center justify-between border-b border-[#e6e5df] pb-3">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#6f7168]">
+            {paddedIndex} / FEATURED WORK
+          </span>
+          <span className="font-mono text-[10px] text-[#0066ff] bg-[#0066ff]/10 border border-[#0066ff]/20 px-2 py-0.5 rounded-sm">
+            {editorial.brandBadge}
+          </span>
+        </div>
+
+        <div>
+          <h3 className="font-sans font-bold text-xl text-[#242620] leading-snug">
+            {editorial.heroHeadline}
+          </h3>
+          <p className="font-sans text-xs text-[#6f7168] mt-2 leading-relaxed">
+            {editorial.heroSubtext}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 pt-2">
+          <Link
+            href={`/projects/${project.id}`}
+            className="inline-flex items-center gap-1.5 font-sans font-semibold text-xs text-[#ffffff] bg-[#242620] px-4 py-2 rounded-full"
+          >
+            <span>view case study</span>
+            <ArrowRight size={13} />
+          </Link>
+          {project.tech?.slice(0, 3).map((t) => (
+            <span
+              key={t}
+              className="font-mono text-[10px] text-[#6f7168] bg-[#f1f0eb] border border-[#d3d3c8] px-2 py-0.5 rounded-md"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {img && (
+        <div className="w-full aspect-[16/10] bg-[#141212] border-t border-[#d3d3c8] overflow-hidden flex items-center justify-center p-3">
+          <img src={img} alt={project.title} className="w-full h-full object-contain" />
+        </div>
+      )}
+    </article>
+  )
+}
 
 export default function ProjectsSection() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true)
+  const shouldReduceMotion = useReducedMotion()
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
+  const markerRef = useRef(null)
+  const percentTextRef = useRef(null)
+  const containerRef = useRef(null)
 
-  const filteredProjects =
-    selectedCategory === 'All'
-      ? projectsData
-      : projectsData.filter((p) =>
-          p.category.toLowerCase().includes(selectedCategory.toLowerCase())
-        );
+  useLayoutEffect(() => {
+    const checkScreen = () => {
+      setIsDesktop(window.innerWidth >= 768 && !shouldReduceMotion)
+    }
+    checkScreen()
+    window.addEventListener('resize', checkScreen)
+    return () => window.removeEventListener('resize', checkScreen)
+  }, [shouldReduceMotion])
+
+  const handleProgressChange = useCallback((progress) => {
+    if (markerRef.current) {
+      markerRef.current.style.transform = `translate3d(-50%, ${(progress * 145).toFixed(1)}px, 0px)`
+    }
+    if (percentTextRef.current) {
+      percentTextRef.current.textContent = `${Math.round(progress * 100)}%`
+    }
+  }, [])
 
   return (
     <section
       id="portfolio"
-      aria-label="Featured Projects & Case Studies"
-      style={{
-        paddingTop: isMobile ? '80px' : '120px',
-        paddingBottom: isMobile ? '80px' : '120px',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-      className="scroll-mt-28 bg-[#050508] text-[#f0ece8] selection:bg-[#e63946]/30 selection:text-white"
+      suppressHydrationWarning
+      className="relative w-full bg-[#141212] text-[#f1f0eb]"
+      aria-label="Featured Projects Showcase"
     >
-      {/* ── SECTION WATERMARK ── */}
-      <span className="section-watermark" aria-hidden="true">PROJECTS</span>
-
-      {/* ── AMBIENT BACKGROUND GLOWS ── */}
-      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-[radial-gradient(circle,rgba(230,57,70,0.08)_0%,transparent_70%)] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 -left-32 w-96 h-96 bg-[radial-gradient(circle,rgba(193,18,31,0.06)_0%,transparent_70%)] blur-3xl pointer-events-none" />
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          paddingLeft: isMobile ? '24px' : '60px',
-          paddingRight: isMobile ? '24px' : '60px',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        {/* ── SECTION HEADER ── */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: smoothEasing }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-4"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#e63946] animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-widest text-[#f0ece8]/70">
-              // SELECTED WORK
-            </span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: smoothEasing }}
-            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#f0ece8] leading-[1.15]"
-          >
-            Engineered for <span className="text-[#e63946]">Impact</span> & Scale
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2, ease: smoothEasing }}
-            className="mt-4 text-sm sm:text-base text-[#f0ece8]/70 font-light leading-relaxed max-w-2xl mx-auto"
-          >
-            A collection of projects I've built and deployed, focusing on clean system design, reliable APIs, and responsive frontends.
-          </motion.p>
-
-          {/* ── CATEGORY FILTER TABS ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: smoothEasing }}
-            className="flex flex-wrap items-center justify-center gap-2 mt-8"
-          >
-            {CATEGORIES.map((cat) => {
-              const isActive = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`min-h-[40px] px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#e63946] text-white shadow-lg shadow-[#e63946]/25 font-semibold'
-                      : 'bg-white/[0.03] text-[#f0ece8]/60 hover:text-white hover:bg-white/[0.07] border border-white/5'
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </motion.div>
-        </div>
-
-        {/* ── COMPACT SMALL BLOCKS GRID ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => {
-              const isHovered = hoveredProject === project.id;
-              const galleryImg =
-                project.image_urls?.[0] || project.image_url || null;
-
-              return (
-                <motion.article
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.06, ease: smoothEasing }}
-                  onMouseEnter={() => setHoveredProject(project.id)}
-                  onMouseLeave={() => setHoveredProject(null)}
-                  className={`group relative flex flex-col justify-between rounded-2xl sm:rounded-3xl border transition-all duration-300 bg-[#09090e]/80 backdrop-blur-xl overflow-hidden ${
-                    isHovered
-                      ? 'border-[#e63946]/50 shadow-[0_16px_40px_-10px_rgba(230,57,70,0.2)] -translate-y-1'
-                      : 'border-white/10 shadow-xl shadow-black/40'
-                  }`}
-                >
-                  <div>
-                    {/* ── CARD TOP IMAGE BLOCK ── */}
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="block relative w-full aspect-[16/10] overflow-hidden bg-[#050508] border-b border-white/10 group/img cursor-pointer"
-                    >
-                      {/* Live Badge Overlay */}
-                      {project.live_url && (
-                        <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#050508]/85 border border-white/15 backdrop-blur-md">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                          <span className="font-mono text-[10px] font-semibold text-emerald-300 tracking-wider">
-                            LIVE
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Category Pill */}
-                      <span className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-[#050508]/80 backdrop-blur-md border border-white/10 text-[#f0ece8]/80">
-                        {project.category}
-                      </span>
-
-                      {/* Image */}
-                      {galleryImg ? (
-                        <img
-                          src={galleryImg}
-                          alt={project.title}
-                          className="w-full h-full object-cover object-top group-hover/img:scale-105 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-br from-[#0c0c14] to-[#050508]">
-                          <Layers className="w-10 h-10 text-[#e63946]/40 mb-2" />
-                          <span className="font-heading text-sm font-bold text-[#f0ece8]/60">
-                            {project.title}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Subtle Dark Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#09090e] via-transparent to-transparent opacity-70 group-hover/img:opacity-40 transition-opacity duration-300" />
-                    </Link>
-
-                    {/* ── CARD BODY ── */}
-                    <div className="p-5 sm:p-6 space-y-4">
-                      {/* Role & Number */}
-                      <div className="flex items-center justify-between text-[11px] font-mono">
-                        <span className="text-[#e63946] font-semibold tracking-wider uppercase">
-                          {project.role}
-                        </span>
-                        <span className="text-[#f0ece8]/40">
-                          // 0{index + 1}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <Link href={`/projects/${project.id}`}>
-                        <h3 className="font-heading text-lg sm:text-xl font-bold text-[#f0ece8] group-hover:text-[#e63946] transition-colors leading-snug line-clamp-1">
-                          {project.title}
-                        </h3>
-                      </Link>
-
-                      {/* Tagline / Description */}
-                      <p className="text-xs text-[#f0ece8]/70 leading-relaxed line-clamp-2 font-light">
-                        {project.description || project.tagline}
-                      </p>
-
-                      {/* 3-Column Metrics Strip */}
-                      {project.metrics && project.metrics.length > 0 && (
-                        <div className="grid grid-cols-3 gap-2 py-2 px-2.5 rounded-xl bg-white/[0.02] border border-white/5 text-center">
-                          {project.metrics.slice(0, 3).map((m, mIdx) => (
-                            <div key={mIdx} className="min-w-0">
-                              <div className="font-mono text-xs font-bold text-white truncate">
-                                {m.value}
-                              </div>
-                              <div className="font-mono text-[9px] text-[#f0ece8]/45 uppercase tracking-tight truncate">
-                                {m.label}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Tech Stack Pills */}
-                      {project.tech && project.tech.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          {project.tech.slice(0, 4).map((t) => (
-                            <span
-                              key={t}
-                              className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-[#111118] text-[#f0ece8]/80 border border-white/10"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                          {project.tech.length > 4 && (
-                            <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono text-[#f0ece8]/45 bg-white/[0.02]">
-                              +{project.tech.length - 4}
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* ── CARD FOOTER ACTIONS ── */}
-                  <div className="px-5 py-3.5 sm:px-6 border-t border-white/10 flex items-center justify-between bg-black/25">
-                    <div className="flex items-center gap-3">
-                      {project.github_url && (
-                        <a
-                          href={project.github_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#f0ece8]/60 hover:text-[#e63946] transition-colors"
-                          title="GitHub Repository"
-                        >
-                          <GitBranch size={15} />
-                        </a>
-                      )}
-                      {project.id === 'ihatelovepdf' ? (
-                        <a href="https://www.ihatelovepdf.com" rel="noopener">I Hate Love PDF</a>
-                      ) : project.live_url ? (
-                        <a
-                          href={project.live_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#f0ece8]/60 hover:text-emerald-400 transition-colors"
-                          title="Live Demo"
-                        >
-                          <ExternalLink size={15} />
-                        </a>
-                      ) : null}
-                    </div>
-
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-white group-hover:text-[#e63946] transition-colors font-heading"
-                    >
-                      <span>Case Study</span>
-                      <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </Link>
-                  </div>
-                </motion.article>
-              );
-            })}
-          </AnimatePresence>
-        </div>
-
-        {/* ── VIEW FULL ARCHIVE BUTTON ── */}
-        <div className="text-center">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/25 text-white font-mono text-xs transition-all shadow-md group"
-          >
-            <span>Explore All Projects in Full Archive</span>
-            <ArrowRight size={14} className="text-[#e63946] group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+      {/* 1. TOP CURVED SECTION EDGE TRANSITION INTO PRECEDING STAGE */}
+      <div className="absolute -top-12 sm:-top-16 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg
+          viewBox="0 0 1440 90"
+          fill="none"
+          preserveAspectRatio="none"
+          className="w-full h-12 sm:h-16 block text-[#141212]"
+        >
+          <path d="M0,90 Q720,15 1440,90 L1440,90 L0,90 Z" fill="currentColor" />
+        </svg>
       </div>
-    </section>
-  );
-}
 
+      {/* 2. BOTTOM CURVED SECTION EDGE TRANSITION INTO SUBSEQUENT SECTION */}
+      <div className="absolute -bottom-12 sm:-bottom-16 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg
+          viewBox="0 0 1440 90"
+          fill="none"
+          preserveAspectRatio="none"
+          className="w-full h-12 sm:h-16 block text-[#141212]"
+        >
+          <path d="M0,0 Q720,75 1440,0 L1440,0 L0,0 Z" fill="currentColor" />
+        </svg>
+      </div>
+
+      {isDesktop ? (
+        <div ref={containerRef} suppressHydrationWarning className="relative w-full h-[550vh]">
+          {/* STICKY VIEWPORT CONTAINER - Confined strictly to #portfolio */}
+          <div suppressHydrationWarning className="sticky top-0 h-screen w-full overflow-hidden bg-[#141212]">
+            {/* TOP HUD HEADER (absolute within sticky stage, NOT fixed) */}
+            <div className="absolute top-6 sm:top-8 left-0 right-0 z-20 pointer-events-none px-6 sm:px-12 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#a0a0a0]">
+                  01 / FEATURED WORK
+                </span>
+                <span className="font-hand text-lg text-[#0066ff] hidden sm:inline">
+                  · scroll horizontally
+                </span>
+              </div>
+              <div className="pointer-events-auto flex items-center gap-3">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-[#f1f0eb] bg-[#1f1e1e] hover:bg-[#0066ff] border border-[#333] px-3.5 py-1.5 rounded-full transition-all shadow-md group"
+                >
+                  <span>ALL {projectsData.length} PROJECTS</span>
+                  <ArrowUpRight size={13} className="text-[#0066ff] group-hover:text-white transition-colors" />
+                </Link>
+                <span className="font-mono text-xs text-[#6f7168] hidden lg:inline">
+                  USE MOUSE SCROLL WHEEL TO EXPLORE →
+                </span>
+              </div>
+            </div>
+
+            {/* RIGHT HUD VERTICAL PROGRESS TRACK WITH PEN MARKER (absolute within sticky stage) */}
+            <div className="absolute right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-20">
+              <div className="relative w-8 h-[160px] flex items-center justify-center">
+                {/* Hairline Rail */}
+                <div className="w-[1.5px] h-full bg-[#2a2a2a] rounded-full" />
+
+                {/* Moving Marker Container (Direct Ref Update - 0 React Rerenders!) */}
+                <div
+                  ref={markerRef}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: '50%',
+                    transform: 'translate3d(-50%, 0px, 0px)',
+                    willChange: 'transform',
+                    transition: 'none',
+                  }}
+                  className="flex items-center gap-1.5"
+                >
+                  {/* Pen Marker Icon */}
+                  <div className="w-5 h-5 rounded-full bg-[#1f1f1f] border border-[#0066ff]/40 flex items-center justify-center shadow-lg">
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0066ff"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="-rotate-45"
+                    >
+                      <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                      <path d="M2 2l7.586 7.586" />
+                      <circle cx="11" cy="11" r="2" />
+                    </svg>
+                  </div>
+
+                  {/* Percentage Text */}
+                  <span
+                    ref={percentTextRef}
+                    className="font-mono text-[10px] sm:text-[11px] font-semibold text-[#0066ff] bg-[#141212]/90 border border-[#2a2a2a] px-1.5 py-0.5 rounded-sm"
+                  >
+                    0%
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* BOTTOM SKIP BAR (absolute within sticky stage) */}
+            <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 px-6 sm:px-12 flex items-center justify-between text-xs font-mono text-[#6f7168] pointer-events-none">
+              <div className="flex items-center gap-3">
+                <div
+                  className="flex items-center justify-center w-6 h-6 rounded-full border border-[#333] bg-[#1a1919] text-[#0066ff]"
+                  title="Sound"
+                  aria-label="Sound ambiance"
+                >
+                  <div className="flex items-end gap-0.5 h-2">
+                    <span className="w-[1.5px] h-1.5 bg-[#0066ff] rounded-full animate-pulse" />
+                    <span className="w-[1.5px] h-2 bg-[#0066ff] rounded-full animate-pulse delay-75" />
+                    <span className="w-[1.5px] h-1 bg-[#0066ff] rounded-full animate-pulse delay-150" />
+                  </div>
+                </div>
+                <span className="hidden sm:inline">
+                  {FEATURED_PROJECTS.length} FEATURED PRODUCTS · ARCHIVE AT END
+                </span>
+                <Link
+                  href="/projects"
+                  className="pointer-events-auto text-[#0066ff] hover:underline underline-offset-4 font-semibold ml-2"
+                >
+                  [EXPLORE ALL {projectsData.length} PROJECTS →]
+                </Link>
+              </div>
+              <a
+                href="#about"
+                className="pointer-events-auto hover:text-[#f1f0eb] text-[#a0a0a0] underline underline-offset-4 tracking-wider transition-colors"
+              >
+                SKIP AHEAD →
+              </a>
+            </div>
+
+            {/* THE WEBGL CURVED SURFACE GALLERY */}
+            <CurvedWorkGalleryWebGL
+              containerRef={containerRef}
+              onProgressChange={handleProgressChange}
+            />
+          </div>
+        </div>
+      ) : (
+        /* MOBILE & REDUCED MOTION CLEAN VERTICAL STACK */
+        <div className="py-20 px-4 sm:px-6 max-w-4xl mx-auto space-y-12">
+          <div className="flex items-center justify-between border-b border-[#2a2a2a] pb-4">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#a0a0a0]">
+              01 / FEATURED WORK
+            </span>
+            <span className="font-mono text-xs text-[#0066ff]">ALL PROJECTS</span>
+          </div>
+
+          <div className="space-y-10">
+            {FEATURED_PROJECTS.map((project, index) => (
+              <MobileWorkCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+
+          <div className="bg-[#1a1919] border border-[#2a2a2a] rounded-2xl p-6 sm:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="font-sans font-bold text-2xl text-[#f1f0eb]">More work</h3>
+                <p className="font-sans text-xs text-[#a0a0a0] mt-1">
+                  Explore all {projectsData.length} projects, utilities, and applications.
+                </p>
+              </div>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1.5 font-sans font-semibold text-xs text-[#ffffff] bg-[#0066ff] px-4 py-2 rounded-full hover:bg-[#0052d4] transition-colors w-fit"
+              >
+                <span>all {projectsData.length} projects</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+            <div className="space-y-3">
+              {MORE_PROJECTS.map((proj) => (
+                <Link
+                  key={proj.id}
+                  href={`/projects/${proj.id}`}
+                  className="flex items-center justify-between p-3 rounded-xl border border-[#2a2a2a] bg-[#1f1f1f] hover:bg-[#252525] transition-colors"
+                >
+                  <span className="font-sans text-sm font-semibold text-[#f1f0eb]">
+                    {proj.title}
+                  </span>
+                  <ArrowRight size={14} className="text-[#0066ff]" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}

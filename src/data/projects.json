@@ -1,134 +1,708 @@
 [
   {
     "id": "ihatelovepdf",
-    "title": "IHateLovePDF: Client-Side PDF Toolkit",
-    "tagline": "Client-side PDF suite focused on privacy and speed.",
-    "role": "Sole Developer",
-    "description": "Client-side tool to split, merge, compress, edit, and decrypt PDF files directly in your browser. All file processing stays local, so your documents never touch a remote server.",
-    "problem": "Most online PDF converters force strict upload limits and store private documents on external servers.",
-    "solution": "I used WebAssembly and Web Workers to process PDF binaries right inside browser memory, keeping user data private and operations fast.",
+    "title": "I Hate Love PDF: 45-in-1 Client-Side PDF Suite",
+    "tagline": "Zero-upload client-side PDF manipulation engine powered by WebAssembly.",
+    "role": "Sole Creator & Developer",
+    "description": "A browser-based document processing suite executing all 45 operations locally via WebAssembly and Web Workers. Merges, splits, compresses, converts, and extracts OCR text without streaming sensitive file bytes to remote infrastructure.",
+    "problem": "Traditional cloud PDF converters require uploading sensitive documents (tax filings, contracts, identity proofs) to remote servers, introducing data retention risks, subscription paywalls, and artificial file-size throttling.",
+    "solution": "Engineered an in-browser processing architecture using compiled WebAssembly modules (PDF-Lib and Tesseract.js) executed inside background Web Workers. The host machine's hardware handles compute directly in isolated memory buffers, guaranteeing zero network data leakage while keeping the UI thread unblocked.",
     "key_features": [
-      "Zero file uploads with purely in-browser processing",
-      "WebAssembly-based local PDF compression engine",
-      "Drag and drop visual page reordering and rotation",
-      "Web Workers running heavy operations off the main thread"
+      "45 browser-based PDF utilities including merge, split, compress, format conversion, and cryptographic signing",
+      "Client-side OCR text extraction without streaming a single byte across the network",
+      "Zero server uploads: files remain strictly within local browser memory buffers",
+      "Off-thread compute handled via Web Workers to prevent UI thread freezing during large document processing"
     ],
     "metrics": [
-      { "value": "100%", "label": "CLIENT PRIVACY" },
-      { "value": "WebAssembly", "label": "WASM ENGINE" },
-      { "value": "60 FPS", "label": "WEB WORKERS" }
+      {
+        "value": "45 Tools",
+        "label": "BROWSER UTILITIES"
+      },
+      {
+        "value": "Zero-Upload",
+        "label": "LOCAL MEMORY BUFFER"
+      },
+      {
+        "value": "WebAssembly",
+        "label": "CLIENT RUNTIME"
+      }
     ],
-    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WebAssembly", "PDF-Lib"],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "WebAssembly",
+      "PDF-Lib",
+      "Tesseract.js"
+    ],
     "category": "Utilities & Data",
     "live_url": "https://www.ihatelovepdf.com",
     "github_url": "https://github.com/ShreyashSrivastavaa/IHateLovePDF",
     "image_url": "/projects/ihatelovepdf.png",
-    "image_urls": ["/projects/ihatelovepdf.png"]
-  },
-  {
-    "id": "hms",
-    "title": "Hospital Management System",
-    "tagline": "Clinical workflow and electronic patient record system.",
-    "role": "Full-Stack Developer (Team Project)",
-    "description": "Full-stack healthcare app built to handle doctor appointments, patient history (EMR), bed tracking, and pharmacy invoices without scheduling conflicts.",
-    "problem": "Paper logs and basic spreadsheets often cause overlapping appointments and fragmented patient histories during busy clinic hours.",
-    "solution": "Built an Express and PostgreSQL backend using Prisma atomic transactions with row locks, guaranteeing conflict-free scheduling even during concurrent bookings.",
-    "key_features": [
-      "Conflict-free appointment booking with database row locks",
-      "Organized electronic medical record timelines for each patient",
-      "Live ward availability and bed allocation board",
-      "Role-based permissions for doctors, staff, and admin"
+    "image_urls": [
+      "/projects/ihatelovepdf.png"
     ],
-    "metrics": [
-      { "value": "Atomic", "label": "TRANSACTIONS" },
-      { "value": "0", "label": "DOUBLE BOOKINGS" },
-      { "value": "Real-Time", "label": "BED TRACKING" }
-    ],
-    "tech": ["Node.js", "Express.js", "PostgreSQL", "Prisma", "TypeScript", "React"],
-    "category": "Full-Stack",
-    "live_url": "https://hospital-management-system-d3o5.onrender.com/",
-    "github_url": "https://github.com/ShreyashSrivastavaa/Hospital-Management-System",
-    "image_url": "/projects/hms.png",
-    "image_urls": ["/projects/hms.png"]
-  },
-  {
-    "id": "zymeal",
-    "title": "ZyMeal: Real-Time Food Ordering",
-    "tagline": "Food delivery platform with live order updates and clean API design.",
-    "role": "Backend and Full-Stack Developer",
-    "description": "Food ordering web app with live kitchen tracking, JWT-based user roles, and a fast checkout flow.",
-    "problem": "Food apps often slow down during dinner rushes, leaving customers and restaurants guessing about order status.",
-    "solution": "Built a Node.js REST API with Socket.io channels for instant status updates between kitchen staff and diners, validating all inputs with Zod schemas.",
-    "key_features": [
-      "Live order tracking via Socket.io WebSocket channels",
-      "Dedicated interfaces for customers, kitchens, and admins",
-      "Strict request payload validation using Zod",
-      "Automated subtotal calculations and checkout flow"
-    ],
-    "metrics": [
-      { "value": "<120ms", "label": "API LATENCY" },
-      { "value": "Socket.io", "label": "LIVE SYNC" },
-      { "value": "100%", "label": "ZOD VALIDATED" }
-    ],
-    "tech": ["Node.js", "Express.js", "MongoDB", "React", "Socket.io", "Zod"],
-    "category": "Full-Stack",
-    "live_url": "https://zymeal.vercel.app/",
-    "github_url": "https://github.com/ShreyashSrivastavaa/ZyMeal",
-    "logo_url": "/projects/zymeal.png",
-    "image_url": "/projects/zymeal.png",
-    "image_urls": ["/projects/zymeal.png"]
+    "logo_url": "/projects/ihatelovepdf-logo.jpg"
   },
   {
     "id": "gitfc",
-    "title": "GitFC: EA FC Card Generator",
-    "tagline": "Turn your GitHub profile stats into collectible EA FC cards.",
-    "role": "Creator and Developer",
-    "description": "Fun web app that pulls your public GitHub activity using GraphQL and scores your contributions into an EA FC style player card you can download.",
-    "problem": "GitHub profile stats are mostly numbers and commit squares, which makes celebrating milestones a bit dry to share.",
-    "solution": "Wrote an algorithm that translates commit volume, stars, and PRs into realistic player attributes (PAC, SHO, PAS, DRI, DEF, PHY) with high-res PNG downloads.",
+    "title": "GitFC: EA FC Developer Card Generator",
+    "tagline": "Algorithmic transformation of GitHub contribution graphs into sports trading cards.",
+    "role": "Sole Creator & Developer",
+    "description": "A client-side analytics web app that aggregates public GitHub developer metadata via GraphQL, normalizes activity metrics across commits, PRs, and languages into a 0–99 rating scale, and renders downloadable vector-quality cards on HTML5 Canvas.",
+    "problem": "Raw GitHub activity graphs present raw metrics without contextual synthesis or shareable visual summaries.",
+    "solution": "Optimized data ingestion with a single parameterized GraphQL query targeting GitHub's API, eliminating multiple REST roundtrips. Built a deterministic heuristic algorithm that normalizes commits, pull requests, stars, and language diversity into balanced attribute ratings, rendered dynamically onto a layered HTML5 Canvas for instant PNG export.",
     "key_features": [
-      "Single GraphQL query to fetch complete yearly contributions",
-      "Balanced 0-99 scoring formula mapped to developer metrics",
-      "Multiple card themes including TOTY, Gold, and Icon editions",
-      "One-click high resolution PNG export rendered in the browser"
+      "Single-roundtrip contribution graph ingestion via GitHub GraphQL API",
+      "Deterministic 0–99 rating heuristic factoring commit velocity, pull requests, and multi-language breadth",
+      "Dynamic procedural card themes including Gold, Icon, and Team of the Year layouts",
+      "In-browser canvas composition with high-DPI export for crisp artifact generation"
     ],
     "metrics": [
-      { "value": "GraphQL", "label": "1-QUERY FETCH" },
-      { "value": "0-99", "label": "RATING MATRIX" },
-      { "value": "HD PNG", "label": "EXPORT" }
+      {
+        "value": "GraphQL",
+        "label": "SINGLE-QUERY FETCH"
+      },
+      {
+        "value": "0–99",
+        "label": "RATING FORMULA"
+      },
+      {
+        "value": "HTML5 Canvas",
+        "label": "CLIENT COMPOSITION"
+      }
     ],
-    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub GraphQL API"],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub GraphQL API"
+    ],
     "category": "Full-Stack",
-    "live_url": "https://gitfc.vercel.app/",
+    "live_url": "https://gitfc.vercel.app",
     "github_url": "https://github.com/ShreyashSrivastavaa/GitFc",
     "image_url": "/projects/gitfc.png",
-    "image_urls": ["/projects/gitfc.png"]
+    "image_urls": [
+      "/projects/gitfc.png"
+    ],
+    "logo_url": "/projects/gitfc-logo.jpg"
+  },
+  {
+    "id": "zymeal",
+    "title": "QuickBite / ZyMeal: Real-Time Food Ordering & Status Sync",
+    "tagline": "Full-stack ordering and kitchen dispatch pipeline with bi-directional WebSocket state sync.",
+    "role": "Full-Stack Developer",
+    "description": "A high-throughput food ordering web application designed for high-density campus cafeterias. Synchronizes real-time order states across customer, kitchen, and manager interfaces without manual polling.",
+    "problem": "High-volume cafeteria rush periods suffer from communication breakdowns between ordering counters and kitchen queues, leading to order drops, stale ticket statuses, and crowded physical counters.",
+    "solution": "Engineered a Node.js and Express REST API integrated with Socket.io room multiplexing. Order mutations are validated at the perimeter with strict Zod schemas, persisted to MongoDB, and broadcasted over WebSockets so kitchen display terminals and customer order screens update instantaneously with zero page reloads.",
+    "key_features": [
+      "Bidirectional order state propagation via Socket.io rooms",
+      "Segmented operational interfaces for customer ordering, kitchen queuing, and administrative management",
+      "Perimeter payload validation enforcing type safety across all mutation endpoints via Zod",
+      "Stateless session authentication with role-based access control (RBAC) middleware"
+    ],
+    "metrics": [
+      {
+        "value": "Socket.io",
+        "label": "EVENT BROADCAST"
+      },
+      {
+        "value": "Zod",
+        "label": "STRICT VALIDATION"
+      },
+      {
+        "value": "JWT RBAC",
+        "label": "ACCESS CONTROL"
+      }
+    ],
+    "tech": [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "React",
+      "Socket.io",
+      "Zod",
+      "JWT"
+    ],
+    "category": "Full-Stack",
+    "live_url": "https://zymeal.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/ZyMeal",
+    "image_url": "/projects/zymeal.png",
+    "image_urls": [
+      "/projects/zymeal.png"
+    ],
+    "logo_url": "/projects/zymeal-logo.png"
   },
   {
     "id": "swiperide",
-    "title": "SwipeRide: Real-Time Ride Sharing API",
-    "tagline": "Real-time driver dispatch and ride matching backend.",
+    "title": "SwipeRide: Real-Time Ride-Hailing API",
+    "tagline": "Real-time geospatial dispatch and ride-hailing backend API.",
     "role": "Backend Engineer",
-    "description": "Ride-sharing API built with Node.js, Express, MongoDB, and Redis. It handles live driver location tracking, fare estimates, and fast pickup matching with dynamic radius expansion.",
-    "problem": "Constantly recalculating nearest drivers for active ride requests creates heavy database reads that slow down typical query setups.",
-    "solution": "Implemented MongoDB 2DSphere indexes to run radius searches, cached driver coordinates in Redis for instant lookups, and broadcasted ride status changes over Socket.io.",
+    "description": "A ride-hailing backend service engineered for low-latency driver matching and stateful trip coordination. Utilizes Redis in-memory geospatial indexes and MongoDB 2DSphere queries for rapid proximity searches.",
+    "problem": "Executing dynamic distance calculations across hundreds of concurrently moving driver coordinates against traditional disk storage introduces query latency and bottlenecks dispatch queues during peak commute spikes.",
+    "solution": "Decoupled volatile geospatial telemetry from disk storage by maintaining active driver coordinates in Redis in-memory geospatial sets (GEOADD/GEORADIUS), backed by MongoDB 2DSphere indexing for durable trip history. Synchronized real-time trip lifecycles (requested, accepted, arrived, completed) across connected clients using Socket.io.",
     "key_features": [
-      "Geospatial driver lookup using MongoDB 2DSphere indexes",
-      "Sub-5ms driver coordinate reads using Redis in-memory storage",
-      "Automatic search radius expansion when nearby drivers are scarce",
-      "Real-time trip updates sent over WebSockets"
+      "High-efficiency geospatial proximity queries leveraging MongoDB 2DSphere indexes",
+      "In-memory driver telemetry caching via Redis geospatial sets",
+      "Adaptive radius expansion logic when local candidate driver density is constrained",
+      "Deterministic trip state machine synchronized in real time across rider and driver sockets"
     ],
     "metrics": [
-      { "value": "Dynamic", "label": "RADIUS MATCH" },
-      { "value": "Redis", "label": "DRIVER SYNC" },
-      { "value": "<5ms", "label": "LATENCY" }
+      {
+        "value": "2DSphere",
+        "label": "GEOSPATIAL INDEX"
+      },
+      {
+        "value": "Redis GEO",
+        "label": "IN-MEMORY CACHE"
+      },
+      {
+        "value": "Socket.io",
+        "label": "DISPATCH SYNC"
+      }
     ],
-    "tech": ["Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Redis", "Google Maps API"],
+    "tech": [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Redis",
+      "Socket.io",
+      "JWT"
+    ],
     "category": "Backend & APIs",
-    "live_url": "https://swipe-ride.vercel.app/",
+    "live_url": "https://swipe-ride.vercel.app",
     "github_url": "https://github.com/ShreyashSrivastavaa/SwipeRide",
-    "logo_url": "/projects/swiperide.png",
     "image_url": "/projects/swiperide.png",
-    "image_urls": ["/projects/swiperide.png"]
+    "image_urls": [
+      "/projects/swiperide.png"
+    ],
+    "logo_url": "/projects/swiperide-logo.png"
+  },
+  {
+    "id": "weddinginvite",
+    "title": "WeddingInvite: WhatsApp-First Wedding Guest & RSVP SaaS",
+    "tagline": "WhatsApp-first wedding guest management and RSVP synchronization platform.",
+    "role": "Full-Stack Developer",
+    "description": "A digital invitation and RSVP coordination application tailored for Indian weddings. Leverages WhatsApp Click-to-Chat deep links for frictionless distribution, tracking multi-event headcounts and dietary numbers without transactional SMS overhead.",
+    "problem": "Multi-event celebrations (Mehendi, Haldi, Sangeet, Reception) involving hundreds of guests across family chat groups lead to inaccurate headcounts, uncoordinated catering orders, and high per-SMS gateway costs.",
+    "solution": "Constructed a responsive web application that generates personalized WhatsApp Click-to-Chat URLs with pre-formatted RSVP payloads. Centralized guest responses into an atomic database layer, providing real-time multi-event headcount dashboards and structured CSV exports for catering logistics.",
+    "key_features": [
+      "Frictionless guest dispatch via automated WhatsApp Click-to-Chat payload URLs with zero SMS gateway costs",
+      "Real-time headcount consolidation across distinct celebration itineraries (Mehendi, Sangeet, Reception)",
+      "Strict data normalization preventing duplicate family attendee counts",
+      "Single-click tabular CSV exports configured for catering and banquet coordinators"
+    ],
+    "metrics": [
+      {
+        "value": "WhatsApp",
+        "label": "CLICK-TO-CHAT"
+      },
+      {
+        "value": "Real-Time",
+        "label": "HEADCOUNT SYNC"
+      },
+      {
+        "value": "Multi-Event",
+        "label": "RSVP ENGINE"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "WhatsApp API"
+    ],
+    "category": "Full-Stack",
+    "live_url": "https://weddinginvite-umber-nine.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/WeddingInvite",
+    "image_url": "/projects/weddinginvite.png",
+    "image_urls": [
+      "/projects/weddinginvite.png",
+      "/projects/weddinginvite-logo.png"
+    ],
+    "logo_url": "/projects/weddinginvite-logo.png"
+  },
+  {
+    "id": "handcricketomegle",
+    "title": "HandCricketOmegle: 1v1 Real-Time Multiplayer Cricket",
+    "tagline": "Deterministic 1v1 multiplayer game engine with authoritative turn synchronization.",
+    "role": "Full-Stack Developer",
+    "description": "A real-time multiplayer Hand Cricket web application pairing players anonymously. Manages concurrent turn resolution, cryptographically verified coin tosses, and wicket state transitions over persistent WebSockets.",
+    "problem": "Casual browser games frequently suffer from state desynchronization on unstable networks and client-side inspect-element cheating in simultaneous reveal mechanics.",
+    "solution": "Designed an authoritative server state machine with simultaneous hidden-move submission: both clients commit their integers into an ephemeral match queue before the server evaluates match conditions (run scored vs. wicket out) and broadcasts the updated score delta back to both clients in real time.",
+    "key_features": [
+      "Instant 1v1 anonymous queue matchmaking with automated session handshakes",
+      "Server-authoritative turn execution verifying coin toss and batting/bowling state transitions",
+      "Concurrently masked integer commit protocol preventing client-side network inspection cheats",
+      "Real-time event stream broadcasting score updates, wicket events, and final run deltas"
+    ],
+    "metrics": [
+      {
+        "value": "1v1 Match",
+        "label": "PAIRING ENGINE"
+      },
+      {
+        "value": "WebSocket",
+        "label": "STATE SYNC"
+      },
+      {
+        "value": "Authoritative",
+        "label": "STATE MACHINE"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "WebSockets"
+    ],
+    "category": "Full-Stack",
+    "live_url": "https://handcricketomegle.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/HandCricketOmegle",
+    "image_url": "/projects/handcricket.png",
+    "image_urls": [
+      "/projects/handcricket.png"
+    ],
+    "logo_url": "/projects/handcricket-logo.png"
+  },
+  {
+    "id": "diyaverse",
+    "title": "DiyaVerse: Sacred Virtual Diwali Lights & Wall of Wishes",
+    "tagline": "Virtual festive illumination experience powered by HTML5 Canvas particle physics.",
+    "role": "Full-Stack Developer",
+    "description": "An interactive cultural web application featuring a physics-driven matchstick ignition mechanic and a communal wall of wishes. Renders real-time flickering flame dynamics and spatial particle systems smoothly across mobile viewports.",
+    "problem": "Standard festive greeting pages rely on static imagery or heavy pre-rendered videos that load sluggishly on constrained mobile connections.",
+    "solution": "Built an interactive touch-and-drag matchstick ignition flow using HTML5 Canvas and procedural particle physics. Optimized rendering loops with requestAnimationFrame and off-screen canvas buffers, ensuring fluid flame luminescence and persistent wish feeds with minimal memory overhead.",
+    "key_features": [
+      "Interactive touch-and-drag matchstick strike detection with responsive friction particle sparks",
+      "Procedural flame particle emitter rendering flickering candle luminescence",
+      "Communal blessing stream syncing user wishes across an infinite spatial grid",
+      "Targeted deep-link routing allowing recipients to view their specific personalized diya"
+    ],
+    "metrics": [
+      {
+        "value": "Canvas 2D",
+        "label": "PARTICLE SYSTEM"
+      },
+      {
+        "value": "Mobile-1st",
+        "label": "TOUCH INTERACTION"
+      },
+      {
+        "value": "Real-Time",
+        "label": "WISH STREAM"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "HTML5 Canvas"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://diyaverse.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/DiyaVerse",
+    "image_url": "/projects/diyaverse.png",
+    "image_urls": [
+      "/projects/diyaverse.png"
+    ],
+    "logo_url": "/projects/diyaverse-logo.png"
+  },
+  {
+    "id": "vandrishti",
+    "title": "VanDrishti: India Tree Cover & Forest Loss Observatory",
+    "tagline": "Geospatial canopy density and vegetation index observatory using Sentinel-2 imagery.",
+    "role": "Lead Developer",
+    "description": "A browser-based environmental observatory integrating Copernicus Sentinel-2 multispectral satellite feeds to analyze Normalized Difference Vegetation Index (NDVI) dynamics and forest canopy density across Indian districts.",
+    "problem": "Satellite spectral data is traditionally siloed within specialized desktop GIS software, creating friction for researchers and analysts seeking rapid district-level vegetation comparisons.",
+    "solution": "Integrated Copernicus Sentinel-2 satellite imagery layers within an interactive Leaflet map interface. Implemented dynamic NDVI raster visualization and vector district boundaries directly in the browser, allowing real-time temporal comparison of vegetative health without local GIS tooling.",
+    "key_features": [
+      "Direct ingestion of Copernicus Sentinel-2 multispectral earth observation tiles",
+      "Dynamic client-side NDVI (Normalized Difference Vegetation Index) color-ramp rendering",
+      "Interactive district polygon boundaries with metadata inspection on hover",
+      "Zero-dependency browser GIS execution without local software prerequisites"
+    ],
+    "metrics": [
+      {
+        "value": "Sentinel-2",
+        "label": "SATELLITE SOURCE"
+      },
+      {
+        "value": "NDVI",
+        "label": "SPECTRAL INDEX"
+      },
+      {
+        "value": "Browser GIS",
+        "label": "RASTER MAPPING"
+      }
+    ],
+    "tech": [
+      "React",
+      "TypeScript",
+      "Leaflet",
+      "Copernicus Sentinel-2",
+      "Tailwind CSS"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://vandrishti-delta.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/VanDrishti",
+    "image_url": "/projects/vandrishti.png",
+    "image_urls": [
+      "/projects/vandrishti.png"
+    ],
+    "logo_url": "/projects/vandrishti-logo.jpg"
+  },
+  {
+    "id": "chess-hub",
+    "title": "Chess Hub: Personalized Online Chess Coaching Platform",
+    "tagline": "Interactive coaching curriculum platform and mentor scheduling interface.",
+    "role": "Full-Stack Developer",
+    "description": "A structured online chess education portal designed to transition students from tactical fundamentals to tournament preparation. Organizes rated curriculums, master coach profiles, and booking schedules within a high-contrast study interface.",
+    "problem": "Self-directed chess study online often fragments across disjointed video tutorials and tactical puzzle sites without structured rating benchmarks.",
+    "solution": "Engineered an organized coaching platform pairing curated pedagogical study tracks (openings, middlegame positional strategy, endgame calculations) with an integrated mentor booking flow, optimized for high readability during prolonged analysis.",
+    "key_features": [
+      "Curated developmental tracks segmented by FIDE/chess rating cohorts",
+      "Tactical study modules covering opening repertoires, positional pawn structures, and endgame tablebases",
+      "Direct coach availability scheduling pipeline for 1v1 analysis sessions",
+      "High-contrast reading interface tailored for sustained visual focus"
+    ],
+    "metrics": [
+      {
+        "value": "Rating-Tiered",
+        "label": "CURRICULUM ENGINE"
+      },
+      {
+        "value": "1v1 Mentorship",
+        "label": "SESSION BOOKING"
+      },
+      {
+        "value": "Tactics Suite",
+        "label": "STUDY MODULES"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "category": "Full-Stack",
+    "live_url": "https://chess-hub-six.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/ChessHub",
+    "image_url": "/projects/chess-hub.png",
+    "image_urls": [
+      "/projects/chess-hub.png"
+    ],
+    "logo_url": "/projects/chess-hub-logo.jpg"
+  },
+  {
+    "id": "logodesigner",
+    "title": "LogoDesigner: Zenith Lab Print-on-Demand Studio",
+    "tagline": "Print-on-demand vector prepress engine with automated DPI metadata and alpha defringing.",
+    "role": "Full-Stack Developer",
+    "description": "A client-side prepress graphics studio built to validate and prepare artwork for garment printing. Enforces 300 DPI print standards, purges alpha fringing halos, and renders real-time 2D apparel mockups entirely in browser memory.",
+    "problem": "Direct-to-garment (DTG) print suppliers reject high percentages of consumer graphic uploads due to sub-300 DPI resolutions, missing physical print dimensions, and semi-transparent alpha halos that print as murky white outlines on dark fabrics.",
+    "solution": "Engineered an in-browser canvas processing pipeline that inspects pixel densities, writes binary 300 DPI pHYs chunks directly into exported PNG metadata, and applies alpha threshold clamping to eliminate edge fringing before submitting designs to production print queues.",
+    "key_features": [
+      "Alpha threshold clamping algorithm eliminating semi-transparent fringing halos on dark textile prints",
+      "Binary PNG chunk manipulation injecting physical pixel dimension headers (300 DPI pHYs)",
+      "Real-time apparel projection mockups across t-shirt and hoodie vector templates",
+      "Entirely client-side canvas buffer processing with zero server compute dependency"
+    ],
+    "metrics": [
+      {
+        "value": "300 DPI",
+        "label": "PRINT COMPLIANCE"
+      },
+      {
+        "value": "Color Type 6",
+        "label": "RGBA TRANSPARENCY"
+      },
+      {
+        "value": "Zero Halo",
+        "label": "EDGE DEFRINGING"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "HTML5 Canvas",
+      "Tailwind CSS"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://logodesigner-eight.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/LogoDesigner",
+    "image_url": "/projects/logodesigner.png",
+    "image_urls": [
+      "/projects/logodesigner.png"
+    ],
+    "logo_url": "/projects/logodesigner-logo.jpg"
+  },
+  {
+    "id": "housie",
+    "title": "Housie: Production-Ready Live Event Conductor Platform",
+    "tagline": "A digital number caller and ticket checker for live Tambola games.",
+    "role": "Full-Stack Developer",
+    "description": "A web app for hosting Housie (Tambola) games at parties and family gatherings. It generates random number calls with voice announcements, tracks called numbers on a master board, and validates winning tickets instantly.",
+    "problem": "Calling numbers manually at parties gets exhausting, disputes happen over whether a number was called, and verifying winning tickets takes forever.",
+    "solution": "Built a presenter screen for Tambola games that calls random numbers using the Web Audio API, displays a clean 1-90 board, and verifies claimed winning tickets in seconds.",
+    "key_features": [
+      "Random 1-90 number caller with full history board and recent calls",
+      "Clear voice announcements so everyone in the room hears the number",
+      "Instant ticket validation for Early Five, Lines, Corners, and Full House",
+      "High-contrast presenter screen that looks great projected on a TV or wall"
+    ],
+    "metrics": [
+      {
+        "value": "1-90 Numbers",
+        "label": "RANDOM DRAW ENGINE"
+      },
+      {
+        "value": "Web Audio",
+        "label": "VOICE CALLER"
+      },
+      {
+        "value": "Instant",
+        "label": "CLAIM VALIDATION"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Web Audio API",
+      "Tailwind CSS"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://housie-mu.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/Housie",
+    "image_url": "/projects/housie.png",
+    "image_urls": [
+      "/projects/housie.png"
+    ],
+    "logo_url": "/projects/housie-logo.jpg"
+  },
+  {
+    "id": "stayalive",
+    "title": "StayAlive: Fast-Paced Rapid-Decision Comparison Game",
+    "tagline": "A fast-paced trivia game where one wrong guess ends your streak.",
+    "role": "Frontend Developer",
+    "description": "A rapid-fire number comparison game. Players guess whether a statistic, population figure, or historical fact is higher or lower, racing against the clock to keep their survival streak alive.",
+    "problem": "Most trivia games are slow, require reading long paragraphs, and don't feel exciting to play in short breaks on a phone.",
+    "solution": "Created a fast binary 'Higher or Lower' game with instant visual feedback, snappy animations, and a streak counter where one wrong guess ends your run.",
+    "key_features": [
+      "Fast Higher or Lower decision loop designed for quick mobile sessions",
+      "Streak-based survival gameplay with high-score tracking",
+      "Diverse question bank across geography, pop culture, and internet stats",
+      "Zero loading delays between questions with instant CSS animations"
+    ],
+    "metrics": [
+      {
+        "value": "Streak",
+        "label": "SCORING SYSTEM"
+      },
+      {
+        "value": "< 100ms",
+        "label": "DECISION FEEDBACK"
+      },
+      {
+        "value": "Mobile-1st",
+        "label": "TOUCH CONTROLS"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Web APIs"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://playstayalive.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa",
+    "image_url": "/projects/stayalive.png",
+    "image_urls": [
+      "/projects/stayalive.png"
+    ],
+    "logo_url": "/projects/stayalive-logo.jpg"
+  },
+  {
+    "id": "racebid",
+    "title": "RaceBid: 3D Real-Time Multiplayer Racing Arena",
+    "tagline": "A 3D browser racing game where projects race each other.",
+    "role": "Full-Stack Developer",
+    "description": "An experimental 3D racing game built in Three.js where cars represent web projects on a circular track, moving forward as community members cast boosts and votes in real time.",
+    "problem": "Project directories are usually boring lists where new indie projects get buried quickly.",
+    "solution": "Built an experimental 3D racing track in Three.js where each car represents a submitted project. Community votes and boosts make the cars move in real time over WebSockets.",
+    "key_features": [
+      "Interactive 3D circular racetrack rendered with Three.js in the browser",
+      "Real-time car positions synced across all viewers using WebSockets",
+      "Vote and boost buttons that accelerate projects forward on the track",
+      "Leaderboard showing leading projects and their details"
+    ],
+    "metrics": [
+      {
+        "value": "Three.js",
+        "label": "3D RACETRACK"
+      },
+      {
+        "value": "WebSockets",
+        "label": "LIVE BOOST SYNC"
+      },
+      {
+        "value": "Multiplayer",
+        "label": "COMPETITIVE ARENA"
+      }
+    ],
+    "tech": [
+      "Three.js",
+      "React",
+      "Node.js",
+      "WebSockets",
+      "Tailwind CSS"
+    ],
+    "category": "Full-Stack",
+    "live_url": "https://www.racebid.lol",
+    "github_url": "https://github.com/ShreyashSrivastavaa",
+    "image_url": "/projects/racebid.png",
+    "image_urls": [
+      "/projects/racebid.png"
+    ],
+    "logo_url": "/projects/racebid-logo.jpg"
+  },
+  {
+    "id": "opencircle",
+    "title": "OpenCircle: Collaborative Community Networking Platform",
+    "tagline": "A community platform for developers and indie creators to share projects.",
+    "role": "Full-Stack Developer",
+    "description": "A collaborative web directory where developers, indie hackers, and open-source creators can publish their side projects, gather feedback, and discover other builders' work.",
+    "problem": "Early-stage developers and indie makers often build in isolation and struggle to get candid, constructive feedback from fellow builders.",
+    "solution": "Built a community platform organized into circles by tech stack and interest, where builders can post projects, ask for feedback, and chat with peers.",
+    "key_features": [
+      "Community circles grouped by technology and topic (React, Node, AI, Open Source)",
+      "Project feedback posts with structured comment threads",
+      "Developer profiles highlighting skills, GitHub links, and live projects",
+      "Clean, responsive forum interface with markdown support"
+    ],
+    "metrics": [
+      {
+        "value": "Circles",
+        "label": "GROUP TAXONOMY"
+      },
+      {
+        "value": "Peer Review",
+        "label": "FEEDBACK SYSTEM"
+      },
+      {
+        "value": "Next.js",
+        "label": "COMMUNITY UI"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "category": "Full-Stack",
+    "live_url": "https://opencircle-eight.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa",
+    "image_url": "/projects/opencircle.png",
+    "image_urls": [
+      "/projects/opencircle.png"
+    ],
+    "logo_url": "/projects/opencircle-logo.jpg"
+  },
+  {
+    "id": "savethesystem",
+    "title": "SaveTheSystem: System Design Failure Lab & Incident Simulator",
+    "tagline": "An interactive outage simulator for practicing production debugging.",
+    "role": "Sole Creator & Developer",
+    "description": "A browser-based training lab that simulates high-traffic server outages. Engineers diagnose traffic spikes, configure rate limiters, and inspect logs under simulated stress.",
+    "problem": "Most software developers only learn how to debug production outages when something is actually burning in production at 3 AM.",
+    "solution": "Built an interactive outage sandbox with simulated traffic graphs, error logs, and mitigation buttons (like rate limiting, cache warming, and replica scaling) to practice incident triage.",
+    "key_features": [
+      "Realistic incident scenarios including database lockups, traffic surges, and cache misses",
+      "Interactive controls to adjust rate limiters, add server replicas, and warm caches",
+      "Simulated telemetry showing latency, CPU usage, error rate, and queue sizes",
+      "Post-incident breakdown scoring how quickly you stabilized the system"
+    ],
+    "metrics": [
+      {
+        "value": "Incident Lab",
+        "label": "FAILURE SIMULATOR"
+      },
+      {
+        "value": "Telemetry",
+        "label": "REAL-TIME METRICS"
+      },
+      {
+        "value": "Post-Mortem",
+        "label": "TRIAGE SCORING"
+      }
+    ],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Simulation Engine"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://www.savethesystem.site",
+    "github_url": "https://github.com/ShreyashSrivastavaa",
+    "image_url": "/projects/savethesystem.png",
+    "image_urls": [
+      "/projects/savethesystem.png"
+    ],
+    "logo_url": "/projects/savethesystem-logo.jpg"
+  },
+  {
+    "id": "personalmoney",
+    "title": "PersonalMoney: KhataBook Ledger & Smart Expense Tracker",
+    "tagline": "A simple digital khata book and daily expense tracker.",
+    "role": "Full-Stack Developer",
+    "description": "A clean digital ledger inspired by Indian Kirana store khata books. It lets you record income and expenses, calculate balances, and see where your money goes each month.",
+    "problem": "Traditional personal finance apps are often bloated with investment pitches, bank link errors, and confusing financial jargon.",
+    "solution": "Built a simple, cultural cash ledger using straightforward 'Mujhe Mile' (Credit) and 'Maine Diye' (Debit) flows, keeping tracking fast and private.",
+    "key_features": [
+      "Simple dual-entry ledger inspired by traditional Indian khata books",
+      "Monthly expense breakdown showing where your money actually went",
+      "Runs fully client-side with localStorage so your financial data stays on your phone",
+      "Clean summary showing current balance and net monthly cash flow"
+    ],
+    "metrics": [
+      {
+        "value": "Khata Style",
+        "label": "DUAL-ENTRY LEDGER"
+      },
+      {
+        "value": "Real-Time",
+        "label": "NET CASHFLOW"
+      },
+      {
+        "value": "Fast Entry",
+        "label": "TRACKING ENGINE"
+      }
+    ],
+    "tech": [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Local Storage"
+    ],
+    "category": "Utilities & Data",
+    "live_url": "https://personalmoney-nu.vercel.app",
+    "github_url": "https://github.com/ShreyashSrivastavaa/MoneyTracker",
+    "image_url": "/projects/personalmoney.png",
+    "image_urls": [
+      "/projects/personalmoney.png"
+    ],
+    "logo_url": "/projects/personalmoney-logo.jpg"
   }
 ]
