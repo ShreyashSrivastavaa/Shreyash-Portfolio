@@ -2,39 +2,44 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Github, Linkedin, Send, Copy, Check, ExternalLink, ArrowUpRight, MessageSquare, Clock, Globe } from 'lucide-react'
+import { Mail, Github, Linkedin, Send, Copy, Check, ExternalLink, ArrowUpRight, Clock, Globe, Briefcase, Coffee } from 'lucide-react'
 import Swal from 'sweetalert2'
 
 const socialLinks = [
   {
-    icon: <Github size={16} />,
+    icon: <Github size={15} />,
     label: 'GitHub',
     sub: '@ShreyashSrivastavaa',
     href: 'https://github.com/ShreyashSrivastavaa',
   },
   {
-    icon: <Linkedin size={16} />,
+    icon: <Linkedin size={15} />,
     label: 'LinkedIn',
     sub: 'shreyashsrivastavaa',
     href: 'https://www.linkedin.com/in/shreyashsrivastavaa',
   },
   {
-    icon: <ExternalLink size={16} />,
-    label: 'Website',
-    sub: 'shreyashsrivastava.in',
-    href: 'https://www.shreyashsrivastava.in',
+    icon: <Coffee size={15} />,
+    label: 'Buy Me a Coffee',
+    sub: 'buymeacoffee.com/shreyashsrivastavaa',
+    href: 'https://buymeacoffee.com/shreyashsrivastavaa',
+  },
+  {
+    icon: <ExternalLink size={15} />,
+    label: 'Zenith District',
+    sub: 'zenithdistrict.com',
+    href: 'https://zenithdistrict.com',
   },
 ]
 
 const quickFacts = [
-  { icon: <Clock size={14} />, label: 'Response time', value: '< 24 hours' },
-  { icon: <Globe size={14} />, label: 'Timezone', value: 'IST (UTC +5:30)' },
-  { icon: <MessageSquare size={14} />, label: 'Open to', value: 'Backend SDE & Full-Stack' },
+  { icon: <Clock size={13} />, label: 'Response turnaround', value: '< 24 Hours' },
+  { icon: <Globe size={13} />, label: 'Timezone', value: 'IST (UTC +5:30)' },
+  { icon: <Briefcase size={13} />, label: 'Availability', value: 'Full-Stack Roles & Ventures' },
 ]
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false)
-  const [focused, setFocused] = useState(null)
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const emailAddress = 'shreyashsr2004@gmail.com'
@@ -50,11 +55,11 @@ export default function ContactSection() {
     if (!form.name || !form.email || !form.message) {
       Swal.fire({
         title: 'Missing Fields',
-        text: 'Please fill out all required fields.',
+        text: 'Please complete all required fields.',
         icon: 'error',
-        background: '#050508',
-        color: '#f0ece8',
-        confirmButtonColor: '#e63946',
+        background: '#ffffff',
+        color: '#242620',
+        confirmButtonColor: '#0066ff',
       })
       return
     }
@@ -62,23 +67,9 @@ export default function ContactSection() {
     setLoading(true)
 
     try {
-      // Free Web3Forms API integration
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'fedf8580-5bc1-4a76-93cb-64eea1dc6edf'
-
-      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
-        // Fallback demo notice if key is not configured yet
-        await new Promise((r) => setTimeout(r, 1000))
-        Swal.fire({
-          title: '⚙️ Setup Required',
-          text: 'To receive real emails in your Gmail inbox, add your free Web3Forms Access Key in .env.local as NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY!',
-          icon: 'info',
-          background: '#050508',
-          color: '#f0ece8',
-          confirmButtonColor: '#e63946',
-        })
-        setForm({ name: '', email: '', message: '' })
-        return
-      }
+      const accessKey =
+        process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+        'fedf8580-5bc1-4a76-93cb-64eea1dc6edf'
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -91,7 +82,7 @@ export default function ContactSection() {
           name: form.name,
           email: form.email,
           message: form.message,
-          subject: `Portfolio Contact Form Submission from ${form.name}`,
+          subject: `Portfolio Inquiry from ${form.name}`,
           from_name: form.name,
         }),
       })
@@ -100,25 +91,25 @@ export default function ContactSection() {
 
       if (result.success) {
         Swal.fire({
-          title: '🚀 Message Sent!',
-          text: "Thanks for reaching out! I've received your email and will respond within 24 hours.",
+          title: 'Message Sent!',
+          text: "Thanks for reaching out! I've received your note and will get back to you soon.",
           icon: 'success',
-          background: '#050508',
-          color: '#f0ece8',
-          confirmButtonColor: '#e63946',
+          background: '#ffffff',
+          color: '#242620',
+          confirmButtonColor: '#0066ff',
         })
         setForm({ name: '', email: '', message: '' })
       } else {
-        throw new Error(result.message || 'Failed to send email')
+        throw new Error(result.message || 'Failed to send message')
       }
     } catch (error) {
       Swal.fire({
         title: 'Submission Error',
-        text: error.message || 'Something went wrong. Please try emailing directly.',
+        text: error.message || 'Could not send message. Please email me directly at shreyashsr2004@gmail.com.',
         icon: 'error',
-        background: '#050508',
-        color: '#f0ece8',
-        confirmButtonColor: '#e63946',
+        background: '#ffffff',
+        color: '#242620',
+        confirmButtonColor: '#0066ff',
       })
     } finally {
       setLoading(false)
@@ -128,379 +119,190 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        paddingTop: '100px',
-        paddingBottom: '80px',
-      }}
+      className="relative w-full pt-16 pb-20 sm:pb-28 px-4 sm:px-6"
     >
-      {/* SECTION WATERMARK */}
-      <span className="section-watermark" aria-hidden="true">CONTACT</span>
-
-      {/* GLOW ORBS */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          transform: 'translateX(-50%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          width: '100%',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          paddingLeft: '24px',
-          paddingRight: '24px',
-        }}
-      >
-        {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{ textAlign: 'center', marginBottom: '64px' }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              color: 'var(--accent-red)',
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-            }}
-          >
-            GET IN TOUCH
-          </span>
-          <h2
-            style={{
-              fontSize: 'clamp(32px, 5.5vw, 56px)',
-              fontWeight: 800,
-              lineHeight: 1.05,
-              marginTop: '10px',
-              fontFamily: 'var(--font-heading)',
-            }}
-          >
-            <span style={{ color: 'var(--text-sand)' }}>Let's Build</span>{' '}
-            <span
-              style={{
-                color: 'transparent',
-                WebkitTextStroke: '2px rgba(255,255,255,0.55)',
-              }}
-            >
-              Something Great.
+      <div className="max-w-[1240px] mx-auto">
+        {/* SECTION EYEBROW */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="section-numeral">06 / GET IN TOUCH</span>
+            <span className="font-hand text-xl text-[#0066ff] -rotate-1 hidden sm:inline">
+              · say hey anytime!
             </span>
-          </h2>
-          <p
-            style={{
-              color: 'var(--text-secondary)',
-              fontSize: '15px',
-              lineHeight: 1.7,
-              maxWidth: '500px',
-              margin: '16px auto 0',
-            }}
-          >
-            Have a project in mind, an open backend role, or a technical problem to discuss? Send a message here or reach out directly by email.
-          </p>
-        </motion.div>
+          </div>
 
-        {/* MAIN GRID */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '32px',
-            alignItems: 'start',
-          }}
-        >
-          {/* LEFT: DIRECT CONTACT & SOCIALS */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
-          >
-            {/* Email Card */}
-            <div
-              className="glass-card"
-              style={{
-                borderRadius: '24px',
-                padding: '24px',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--accent-red)',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  marginBottom: '16px',
-                }}
-              >
-                Direct Contact
+          <span className="font-mono text-xs text-[#6f7168]">
+            OPEN FOR OPPORTUNITIES
+          </span>
+        </div>
+
+        {/* SECTION HEADLINE */}
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-5xl font-sans font-bold text-[#242620] tracking-tight">
+            have a project, a role, or an{' '}
+            <span className="font-serif italic font-normal text-[#242620]">
+              idea
+            </span>{' '}
+            to discuss?
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-[#6f7168] mt-2">
+            Drop a note using the form below or send an email directly.
+          </p>
+        </div>
+
+        {/* 2-COLUMN SPLIT */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* LEFT 5 COLS: INBOX & DIRECT CHANNELS */}
+          <div className="lg:col-span-5 flex flex-col space-y-6">
+            {/* DIRECT EMAIL PILL CARD */}
+            <div className="samay-card p-6 bg-[#ffffff] space-y-4">
+              <div className="flex items-center justify-between pb-2 border-b border-[#f1f0eb]">
+                <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#242620]">
+                  Direct Inbox
+                </span>
+                <span className="text-[11px] font-mono text-[#22c55e]">● ACTIVE</span>
               </div>
 
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '14px 18px',
-                  background: 'rgba(230, 57, 70, 0.08)',
-                  border: '1px solid rgba(230, 57, 70, 0.2)',
-                  borderRadius: '16px',
-                  marginBottom: '16px',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <Mail size={18} color="var(--accent-red)" />
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--text-sand)' }}>
+              <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#f1f0eb] border border-[#d3d3c8]">
+                <div className="flex items-center gap-2.5 overflow-hidden">
+                  <Mail size={16} className="text-[#0066ff] flex-shrink-0" />
+                  <span className="font-mono text-xs text-[#242620] font-medium truncate">
                     {emailAddress}
                   </span>
                 </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
                   onClick={copyEmail}
-                  style={{
-                    padding: '8px 12px',
-                    borderRadius: '10px',
-                    cursor: 'pointer',
-                    background: copied ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255, 255, 255, 0.06)',
-                    border: `1px solid ${copied ? '#10B981' : 'var(--border)'}`,
-                    color: copied ? '#34D399' : 'var(--text-secondary)',
-                  }}
+                  className="px-3 py-1.5 rounded-full text-xs font-sans font-semibold bg-[#ffffff] border border-[#d3d3c8] hover:border-[#242620] text-[#242620] transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
                 >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
-                </motion.button>
+                  {copied ? (
+                    <>
+                      <Check size={12} className="text-[#22c55e]" />
+                      <span className="text-[#22c55e]">copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={12} />
+                      <span>copy</span>
+                    </>
+                  )}
+                </button>
               </div>
 
-              {/* Quick Facts */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {quickFacts.map((fact, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '10px 14px',
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      border: '1px solid rgba(255, 255, 255, 0.05)',
-                      borderRadius: '12px',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '12px' }}>
+              {/* QUICK FACTS LIST */}
+              <div className="divide-y divide-[#f1f0eb] pt-2">
+                {quickFacts.map((fact, idx) => (
+                  <div key={idx} className="py-2.5 flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2 text-[#6f7168]">
                       {fact.icon}
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px' }}>{fact.label}</span>
+                      <span>{fact.label}</span>
                     </div>
-                    <span style={{ fontSize: '12px', color: 'var(--text-sand)', fontWeight: 600 }}>{fact.value}</span>
+                    <span className="font-sans text-[11px] text-[#242620] font-semibold">
+                      {fact.value}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Social Grid */}
-            <div
-              className="glass-card"
-              style={{
-                borderRadius: '24px',
-                padding: '24px',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--accent-red)',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  marginBottom: '16px',
-                }}
-              >
-                Social Media & Links
+            {/* PLATFORMS */}
+            <div className="samay-card p-6 bg-[#ffffff] space-y-3">
+              <div className="pb-2 border-b border-[#f1f0eb] text-xs font-bold uppercase tracking-wider text-[#242620]">
+                Where to Find Me
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {socialLinks.map((link, i) => (
-                  <motion.a
-                    key={i}
+              <div className="divide-y divide-[#f1f0eb]">
+                {socialLinks.map((link, idx) => (
+                  <a
+                    key={idx}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ x: 4 }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '12px 16px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid var(--border)',
-                      borderRadius: '14px',
-                      textDecoration: 'none',
-                      color: 'var(--text-sand)',
-                      transition: 'var(--transition)',
-                    }}
+                    className="py-3 flex items-center justify-between group text-xs hover:text-[#0066ff] transition-colors"
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span style={{ color: 'var(--accent-red)' }}>{link.icon}</span>
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-[#242620] group-hover:text-[#0066ff] transition-colors">
+                        {link.icon}
+                      </span>
                       <div>
-                        <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-sand)' }}>{link.label}</div>
-                        <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                        <div className="font-sans font-bold text-[#242620] group-hover:text-[#0066ff] transition-colors">
+                          {link.label}
+                        </div>
+                        <div className="font-mono text-[11px] text-[#6f7168]">
                           {link.sub}
                         </div>
                       </div>
                     </div>
-                    <ArrowUpRight size={15} color="var(--text-muted)" />
-                  </motion.a>
+                    <ArrowUpRight size={14} className="text-[#6f7168] group-hover:text-[#0066ff]" />
+                  </a>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* RIGHT: CONTACT FORM */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="glass-card"
-            style={{
-              borderRadius: '24px',
-              padding: '32px',
-            }}
-          >
-            <h3 style={{ fontSize: '22px', fontWeight: 700, color: 'var(--text-sand)', marginBottom: '8px', fontFamily: 'var(--font-heading)' }}>
-              Send Me a Message
-            </h3>
-            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
-              Fill out the details below and I'll get back to you shortly.
-            </p>
+          {/* RIGHT 7 COLS: FORM */}
+          <div className="lg:col-span-7 samay-card p-6 sm:p-8 bg-[#ffffff]">
+            <div className="flex items-center justify-between pb-3 border-b border-[#f1f0eb] mb-6">
+              <span className="font-sans font-bold text-sm uppercase tracking-wider text-[#242620]">
+                Send a Note
+              </span>
+              <span className="font-hand text-lg text-[#0066ff]">
+                friendly inbox, promise!
+              </span>
+            </div>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label
-                  style={{
-                    display: 'block',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-mono)',
-                    color: focused === 'name' ? 'var(--accent-red)' : 'var(--text-muted)',
-                    letterSpacing: '0.1em',
-                    marginBottom: '6px',
-                    textTransform: 'uppercase',
-                    transition: 'color 0.2s ease',
-                  }}
-                >
-                  Name
+                <label className="block text-xs font-sans font-semibold text-[#242620] mb-1.5">
+                  Your Name
                 </label>
                 <input
                   type="text"
                   value={form.name}
-                  placeholder="Your Name"
+                  placeholder="e.g. Alex Morgan"
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  onFocus={() => setFocused('name')}
-                  onBlur={() => setFocused(null)}
-                  className="premium-input"
+                  className="samay-input"
                 />
               </div>
 
               <div>
-                <label
-                  style={{
-                    display: 'block',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-mono)',
-                    color: focused === 'email' ? 'var(--accent-red)' : 'var(--text-muted)',
-                    letterSpacing: '0.1em',
-                    marginBottom: '6px',
-                    textTransform: 'uppercase',
-                    transition: 'color 0.2s ease',
-                  }}
-                >
-                  Email
+                <label className="block text-xs font-sans font-semibold text-[#242620] mb-1.5">
+                  Email Address
                 </label>
                 <input
                   type="email"
                   value={form.email}
-                  placeholder="you@example.com"
+                  placeholder="e.g. alex@example.com"
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  onFocus={() => setFocused('email')}
-                  onBlur={() => setFocused(null)}
-                  className="premium-input"
+                  className="samay-input"
                 />
               </div>
 
               <div>
-                <label
-                  style={{
-                    display: 'block',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-mono)',
-                    color: focused === 'message' ? 'var(--accent-red)' : 'var(--text-muted)',
-                    letterSpacing: '0.1em',
-                    marginBottom: '6px',
-                    textTransform: 'uppercase',
-                    transition: 'color 0.2s ease',
-                  }}
-                >
-                  Message
+                <label className="block text-xs font-sans font-semibold text-[#242620] mb-1.5">
+                  Message Details
                 </label>
                 <textarea
-                  rows={4}
+                  rows={5}
                   value={form.message}
-                  placeholder="Tell me about your project or opportunity..."
+                  placeholder="Tell me about your team, your project idea, or what you're looking to build..."
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  onFocus={() => setFocused('message')}
-                  onBlur={() => setFocused(null)}
-                  className="premium-input"
-                  style={{ resize: 'none' }}
+                  className="samay-input resize-none"
                 />
               </div>
 
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={loading}
-                style={{
-                  width: '100%',
-                  padding: '14px',
-                  borderRadius: '14px',
-                  background: 'linear-gradient(135deg, var(--accent-red) 0%, var(--accent-crimson) 100%)',
-                  color: '#FFFFFF',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  fontFamily: 'var(--font-heading)',
-                  border: 'none',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  boxShadow: '0 6px 20px var(--accent-red-glow)',
-                  transition: 'var(--transition)',
-                }}
-              >
-                <Send size={15} />
-                {loading ? 'Sending...' : 'Send Message'}
-              </motion.button>
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full btn-pill-accent py-3.5 flex items-center justify-center gap-2 shadow-sm hover:shadow-md cursor-pointer"
+                >
+                  <Send size={14} />
+                  <span>{loading ? 'sending...' : 'send message ↗'}</span>
+                </button>
+              </div>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,41 +1,42 @@
 {
     "experience": [
         {
-            "role": "Freelance Backend & Full-Stack Engineer",
-            "company": "Freelance / Client Projects",
-            "period": "2026 - Present",
-            "location": "Remote",
-            "description": "Building custom backend services, web applications, and REST APIs for client projects and early-stage products.",
+            "role": "Founder",
+            "company": "Zenith District",
+            "period": "2024 - Present",
+            "location": "Delhi, India · Remote",
+            "website": "https://zenithdistrict.com",
+            "description": "Established Zenith District as an independent engineering studio to prototype, build, and deploy production web utilities. I handle architecture end-to-end: relational schema design, backend REST services, and high-performance client interfaces.",
             "achievements": [
-                "Built full-stack web applications, designed database schemas, and integrated third-party APIs for clients",
-                "Developed REST endpoints with Node.js, Express, PostgreSQL, Prisma, and Redis",
-                "Advised clients on database indexing, API security, and improving query response times"
+                "Architected and deployed production web applications including I Hate Love PDF (WASM client-side toolkit) and GitFC",
+                "Implemented modular full-stack architectures using TypeScript, Next.js, Node.js, Express, and PostgreSQL",
+                "Engineered digital product prototypes with automated asset pipelines and API integrations"
             ]
         },
         {
-            "role": "Backend SDE Intern",
+            "role": "Software Development Intern",
             "company": "JBH Tech Innovation",
             "period": "December 2025 - May 2026",
             "location": "Faridabad, India (Hybrid)",
-            "description": "Developed backend services, internal tooling, and REST APIs for production systems.",
+            "description": "Completed a six-month software engineering internship focused on developing backend services, RESTful API endpoints, and relational database integrations for production applications.",
             "achievements": [
-                "Developed Node.js and Express APIs handling over 50k daily requests",
-                "Designed normalized relational schemas and optimized queries in PostgreSQL using Prisma ORM",
-                "Implemented JWT authentication and role-based access control (RBAC) middleware",
-                "Integrated Redis caching and RabbitMQ message queues, reducing API latency by 40%",
-                "Worked within sprint teams using Git workflows, Docker environments, and CI/CD pipelines"
+                "Developed and maintained production REST endpoints using Node.js and Express",
+                "Modeled relational schemas and optimized queries in PostgreSQL utilizing Prisma ORM",
+                "Engineered JWT authentication and role-based access control (RBAC) middleware layers",
+                "Implemented in-memory caching and background worker tasks to minimize response latency",
+                "Collaborated within standard Git feature-branch workflows, Dockerized environments, and peer code reviews"
             ]
         },
         {
-            "role": "Student Representative & Chair",
-            "company": "IEEE Student Branch",
-            "period": "2023 - 2024",
-            "location": "ITS Engineering College, Greater Noida",
-            "description": "Served as student chair, coordinating technical workshops, hackathons, and developer bootcamps.",
+            "role": "Full-Stack Developer",
+            "company": "Independent & Client Projects",
+            "period": "2024 - Present",
+            "location": "Delhi, India · Remote",
+            "description": "Engineering bespoke web applications, responsive client interfaces, and robust backend services with an emphasis on maintainability, data integrity, and deterministic execution.",
             "achievements": [
-                "Organized hackathons and technical workshops for over 100 student participants",
-                "Arranged technical lectures and hands-on developer sessions with industry engineers",
-                "Led peer coding sessions and project mentorship groups"
+                "Delivered full-stack applications leveraging Next.js, React, Node.js, and PostgreSQL",
+                "Constructed type-safe API boundaries utilizing Express, Prisma ORM, and Zod runtime schema validation",
+                "Optimized client-side rendering performance, asset payloads, and operational reliability"
             ]
         }
     ],
@@ -44,8 +45,8 @@
             "degree": "B.Tech in Computer Science & Engineering",
             "institution": "ITS Engineering College, Greater Noida (AKTU)",
             "period": "2022 - 2026",
-            "status": "Graduating 2026",
-            "details": "Focus on Data Structures, Algorithms, Operating Systems, Database Management Systems, Computer Networks, and Distributed Software Engineering."
+            "status": "B.Tech Graduate",
+            "details": "Coursework centered on Data Structures, Algorithms, Operating Systems, Database Management Systems, Computer Networks, and Distributed Software Engineering."
         }
     ],
     "achievementsList": [

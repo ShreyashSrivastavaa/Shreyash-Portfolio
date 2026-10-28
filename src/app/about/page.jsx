@@ -10,14 +10,12 @@ import {
   Github,
   Linkedin,
   Mail,
-  Terminal,
   ArrowRight,
-  Sparkles,
-  CheckCircle2,
   Server,
   Database,
   Cpu,
-  Layers
+  Layers,
+  ArrowUpRight
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,50 +28,34 @@ import AnimatedBackground from '@/components/AnimatedBackground'
 import experienceData from '@/data/experience.json'
 import projectsData from '@/data/projects.json'
 
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.12 },
-  },
-}
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-}
-
 export default function AboutPage() {
   const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
   const engineeringPrinciples = [
     {
-      icon: <Server size={20} className="text-[#e63946]" />,
-      title: 'High-Throughput Microservices',
-      desc: 'Architecting scalable Node.js & NestJS services handling 50k+ daily payloads with sub-second response latencies.'
+      num: '01',
+      title: 'Full-Stack Web Engineering',
+      desc: 'Building responsive user interfaces with Next.js, React, and Tailwind CSS, backed by dependable Node.js and Express APIs.'
     },
     {
-      icon: <Database size={20} className="text-[#e63946]" />,
-      title: 'Relational & Distributed Data',
-      desc: 'Optimized schema design, atomic transactions, row-level locking, and Redis caching for zero-bottleneck data layers.'
+      num: '02',
+      title: 'Relational & Document Data',
+      desc: 'Structuring normalized schemas, atomic transactions, and queries across PostgreSQL and MongoDB using Prisma ORM.'
     },
     {
-      icon: <Cpu size={20} className="text-[#e63946]" />,
-      title: 'Event-Driven Concurrency',
-      desc: 'Asynchronous task processing with RabbitMQ message queues and WebSocket channels for real-time sync.'
+      num: '03',
+      title: 'Real-Time Communication',
+      desc: 'Implementing live state updates with Socket.io WebSockets and structured event handling for interactive applications.'
     },
     {
-      icon: <Layers size={20} className="text-[#e63946]" />,
-      title: 'Enterprise Multi-Tenancy & Security',
-      desc: 'Tenant schema isolation, JWT rotation, fine-grained RBAC, and Zod edge validation for rock-solid security.'
+      num: '04',
+      title: 'Type Safety & Validation',
+      desc: 'Enforcing strict runtime payload validation with Zod, JWT-based authentication middleware, and clean API contracts.'
     }
   ]
 
   return (
-    <main className="min-h-screen bg-[#050508] text-[#f0ece8] relative overflow-hidden">
+    <main className="min-h-screen bg-[#f1f0eb] text-[#242620] relative overflow-hidden">
       <CustomCursor />
       <ScrollProgress />
       <AnimatedBackground />
@@ -82,228 +64,221 @@ export default function AboutPage() {
         <Navbar />
 
         {/* HERO BANNER */}
-        <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 pt-36 md:pt-44 pb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-xs font-mono text-[#e63946] tracking-[0.25em] uppercase font-semibold">
-              ENGINEERING PROFILE
+        <section className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 pt-12 pb-16">
+          {/* TOP SECTION BAR */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="section-numeral">02 / ABOUT ME</span>
+            <span className="font-mono text-xs text-[#6f7168]">
+              DELHI, INDIA
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-[#f0ece8] mt-3 mb-6 tracking-tight">
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Shreyash Srivastava</span>
+          </div>
+
+          <div className="max-w-4xl mb-12">
+            <h1 className="text-4xl sm:text-6xl font-sans font-bold text-[#242620] tracking-tight">
+              about{' '}
+              <span className="font-serif italic font-normal text-[#242620]">
+                Shreyash Srivastava
+              </span>
             </h1>
-            <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              Software Development Engineer specializing in backend systems, distributed architectures, database optimization, and high-performance full-stack web applications.
+            <p className="font-sans text-base sm:text-lg text-[#6f7168] mt-3 leading-relaxed max-w-2xl">
+              Developer, product builder, and founder from Delhi. Building websites, testing ideas, and shipping things into production.
             </p>
-          </motion.div>
+          </div>
 
           {/* MAIN BIO & PROFILE CARD */}
-          <div className="grid lg:grid-cols-12 gap-10 items-start mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
             {/* LEFT: BIO & STORY */}
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="lg:col-span-7 flex flex-col gap-6"
-            >
-              <motion.div variants={fadeUp} className="glass-card p-8 rounded-3xl border border-white/10 space-y-5">
-                <div className="flex items-center gap-2 text-xs font-mono text-[#e63946] uppercase tracking-widest font-bold">
-                  <Terminal size={15} />
-                  <span>THE BACKGROUND</span>
+            <div className="lg:col-span-7 flex flex-col space-y-6">
+              <div className="samay-card p-6 sm:p-8 bg-[#ffffff] space-y-4">
+                <div className="flex items-center justify-between pb-2 border-b border-[#f1f0eb]">
+                  <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#242620]">
+                    Background &amp; Story
+                  </span>
+                  <span className="font-hand text-lg text-[#0066ff]">architecting &amp; shipping</span>
                 </div>
-                <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  I am a <strong className="text-white font-semibold">Backend and Full-Stack Software Engineer</strong> working on freelance client projects, after completing a 6-month backend internship at <strong className="text-white font-semibold">JBH Tech Innovation</strong>. I am currently completing my <strong className="text-white font-semibold">B.Tech in Computer Science and Engineering</strong> at ITS Engineering College, Greater Noida (AKTU), graduating in 2026.
-                </p>
-                <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  Over the past few years, I have built and shipped multiple real-world systems, including client-side WebAssembly tools, hospital management workflows, and real-time food delivery platforms.
-                </p>
-                <p className="text-sm sm:text-base text-[#f0ece8]/85 leading-relaxed">
-                  My core stack revolves around Node.js, NestJS, PostgreSQL, Prisma, Redis, and Docker. I focus on keeping services simple to maintain, designing normalized database schemas, and writing endpoints that perform well under load.
-                </p>
-              </motion.div>
 
-              {/* ACTION LINKS */}
-              <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+                <p className="font-sans text-base text-[#555852] leading-relaxed">
+                  I'm <strong className="text-[#242620] font-semibold">Shreyash Srivastava</strong>. Full-stack engineer and backend architect based in Delhi, India. I don't build software to pad a repository. I engineer deterministic systems: high-throughput APIs, resilient data structures, and web applications that run fast and never flinch under load.
+                </p>
+
+                <p className="font-sans text-base text-[#555852] leading-relaxed">
+                  I hold a B.Tech in Computer Science and Engineering from ITS Engineering College (affiliated with AKTU), backed by real-world production engineering experience. My focus: low-latency backend architectures, relational data models, and high-precision frontend execution.
+                </p>
+
+                <p className="font-sans text-base text-[#555852] leading-relaxed">
+                  My goal: engineer high-leverage software architectures and sovereign product engines through <strong className="text-[#242620] font-semibold">Zenith District</strong> that solve complex real-world operational bottlenecks. I don't follow industry hype cycles: I design resilient systems from first principles, eliminate latency and state inconsistencies, and refine every layer until the platform runs with deterministic precision.
+                </p>
+
+                <p className="font-sans text-base text-[#555852] leading-relaxed">
+                  My working stack includes JavaScript, TypeScript, React, Next.js, Node.js, Express, PostgreSQL, MongoDB, Prisma ORM, and Docker. If a system has race conditions, unoptimized queries, or state inconsistencies, I eliminate them.
+                </p>
+              </div>
+
+              {/* ACTION PILLS */}
+              <div className="flex flex-wrap gap-3 pt-2">
                 <a
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#e63946] to-[#c1121f] text-white font-semibold text-xs shadow-lg shadow-red-500/20 hover:scale-[1.02] transition-transform"
+                  className="btn-pill-primary shadow-sm"
                 >
-                  <FileText size={15} />
-                  <span>Download Full Resume (PDF)</span>
+                  <FileText size={14} />
+                  <span>resume (pdf)</span>
                 </a>
 
                 <Link
                   href="/experience"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#121218] border border-white/10 text-white font-semibold text-xs hover:border-white/20 transition-colors"
+                  className="btn-pill-secondary"
                 >
-                  <Briefcase size={15} />
-                  <span>View Work History</span>
-                  <ArrowRight size={14} className="text-[#e63946]" />
+                  <Briefcase size={14} />
+                  <span>work history</span>
                 </Link>
 
                 <Link
                   href="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#121218] border border-white/10 text-white font-semibold text-xs hover:border-white/20 transition-colors"
+                  className="btn-pill-secondary"
                 >
-                  <Code size={15} />
-                  <span>Explore Projects</span>
+                  <Code size={14} />
+                  <span>explore projects</span>
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* RIGHT: PHOTO & QUICK STATS */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 flex flex-col gap-6"
-            >
-              {/* Profile Card */}
-              <div className="glass-card p-6 rounded-3xl border border-white/10 flex flex-col items-center text-center">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-[#e63946] shadow-xl shadow-red-500/20 mb-5 bg-[#0a0a0f]">
+            <div className="lg:col-span-5 flex flex-col space-y-6">
+              <div className="samay-card p-5 sm:p-6 bg-[#ffffff]">
+                <div className="relative aspect-[4/4.5] w-full bg-gradient-to-b from-[#e6e5df] to-[#dcdad3] rounded-xl overflow-hidden flex items-end justify-center mb-5">
                   <Image
                     src="/profile-transparent.png"
                     alt="Shreyash Srivastava"
-                    width={144}
-                    height={144}
-                    className="w-full h-full object-cover object-top scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 380px"
+                    className="object-cover object-top scale-105"
                   />
                 </div>
-                <h3 className="text-xl font-bold font-heading text-white">Shreyash Srivastava</h3>
-                <p className="text-xs font-mono text-[#e63946] mt-1 mb-4">Backend SDE & Full-Stack Architect</p>
-                <div className="w-full grid grid-cols-2 gap-3 pt-4 border-t border-white/10 text-left">
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <div className="text-[10px] font-mono text-[#f0ece8]/50 uppercase">Location</div>
-                    <div className="text-xs font-semibold text-white mt-0.5">Delhi NCR, India</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <div className="text-[10px] font-mono text-[#f0ece8]/50 uppercase">Graduation</div>
-                    <div className="text-xs font-semibold text-white mt-0.5">2026 (B.Tech CSE)</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <div className="text-[10px] font-mono text-[#f0ece8]/50 uppercase">Experience</div>
-                    <div className="text-xs font-semibold text-white mt-0.5">Freelance Engineer</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <div className="text-[10px] font-mono text-[#f0ece8]/50 uppercase">Status</div>
-                    <div className="text-xs font-semibold text-emerald-400 mt-0.5">Available for Roles</div>
-                  </div>
-                </div>
-              </div>
 
-              {/* Social Connect */}
-              <div className="glass-card p-6 rounded-3xl border border-white/10 flex items-center justify-between">
-                <div className="text-xs font-mono text-[#f0ece8]/60 uppercase tracking-wider">Social Channels</div>
-                <div className="flex gap-2">
-                  <a
-                    href="https://github.com/ShreyashSrivastavaa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-[#e63946] text-white transition-colors"
-                  >
-                    <Github size={16} />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/shreyashsrivastavaa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-[#e63946] text-white transition-colors"
-                  >
-                    <Linkedin size={16} />
-                  </a>
-                  <a
-                    href="mailto:shreyashsr2004@gmail.com"
-                    className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-[#e63946] text-white transition-colors"
-                  >
-                    <Mail size={16} />
-                  </a>
+                <h3 className="font-sans font-bold text-2xl text-[#242620]">Shreyash Srivastava</h3>
+                <p className="font-sans text-xs uppercase tracking-wider text-[#6f7168] mt-1 mb-4">
+                  Full-Stack Developer, Product Builder &amp; Founder
+                </p>
+
+                <div className="w-full grid grid-cols-2 gap-2 p-3 rounded-xl bg-[#f1f0eb] border border-[#d3d3c8] text-left text-xs">
+                  <div>
+                    <div className="text-[10px] font-sans uppercase tracking-widest text-[#6f7168]">Location</div>
+                    <div className="font-semibold text-[#242620] mt-0.5">Delhi, India</div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-sans uppercase tracking-widest text-[#6f7168]">Graduation</div>
+                    <div className="font-semibold text-[#242620] mt-0.5">B.Tech CSE Graduate</div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-sans uppercase tracking-widest text-[#6f7168]">Experience</div>
+                    <div className="font-semibold text-[#242620] mt-0.5">Founder &amp; ~6 Mo SDE Intern</div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-sans uppercase tracking-widest text-[#6f7168]">Status</div>
+                    <div className="font-semibold text-[#0066ff] mt-0.5">Available for Roles</div>
+                  </div>
+                </div>
+
+                {/* Social Connect */}
+                <div className="pt-4 mt-4 border-t border-[#f1f0eb] flex items-center justify-between text-xs">
+                  <span className="font-sans font-medium text-[#6f7168]">
+                    Verified Profiles
+                  </span>
+                  <div className="flex gap-2">
+                    <a
+                      href="https://github.com/ShreyashSrivastavaa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-full bg-[#f1f0eb] border border-[#d3d3c8] flex items-center justify-center text-[#242620] hover:bg-[#0066ff] hover:text-[#ffffff] hover:border-[#0066ff] transition-all"
+                    >
+                      <Github size={13} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/shreyashsrivastavaa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-full bg-[#f1f0eb] border border-[#d3d3c8] flex items-center justify-center text-[#242620] hover:bg-[#0066ff] hover:text-[#ffffff] hover:border-[#0066ff] transition-all"
+                    >
+                      <Linkedin size={13} />
+                    </a>
+                    <a
+                      href="mailto:shreyashsr2004@gmail.com"
+                      className="w-8 h-8 rounded-full bg-[#f1f0eb] border border-[#d3d3c8] flex items-center justify-center text-[#242620] hover:bg-[#0066ff] hover:text-[#ffffff] hover:border-[#0066ff] transition-all"
+                    >
+                      <Mail size={13} />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* ENGINEERING PRINCIPLES */}
-          <div className="mb-20">
-            <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-xs font-mono text-[#e63946] tracking-[0.25em] uppercase font-semibold">
+          <div className="mb-16">
+            <div className="mb-8">
+              <span className="section-numeral">
                 SYSTEM PHILOSOPHY
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white mt-2">
+              <h2 className="text-3xl font-sans font-bold text-[#242620] mt-1">
                 Core Architectural Principles
               </h2>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {engineeringPrinciples.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-[#e63946]/40 transition-all"
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {engineeringPrinciples.map((item) => (
+                <div
+                  key={item.num}
+                  className="samay-card p-6 flex flex-col justify-between min-h-[220px] bg-[#ffffff]"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-[#e63946]/10 flex items-center justify-center mb-4">
-                      {item.icon}
+                    <div className="font-mono text-xs text-[#0066ff] mb-2">
+                      PRIN. {item.num}
                     </div>
-                    <h3 className="text-base font-bold font-heading text-white mb-2">{item.title}</h3>
-                    <p className="text-xs text-[#f0ece8]/70 leading-relaxed">{item.desc}</p>
+                    <h3 className="font-sans font-bold text-lg text-[#242620] mb-2">{item.title}</h3>
+                    <p className="font-sans text-xs text-[#6f7168] leading-relaxed">{item.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* EDUCATION & HACKATHONS SUMMARY */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {/* EDUCATION & HACKATHONS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {/* Education */}
-            <div className="glass-card p-8 rounded-3xl border border-white/10">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                  <GraduationCap size={20} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold font-heading text-white">Education & Academia</h3>
-                  <p className="text-xs font-mono text-[#f0ece8]/50">Foundational Engineering</p>
-                </div>
+            <div className="samay-card bg-[#ffffff] p-6 sm:p-8">
+              <div className="flex items-center justify-between pb-3 border-b border-[#f1f0eb] mb-6">
+                <h3 className="font-sans font-bold text-2xl text-[#242620]">Education &amp; Degree</h3>
+                <span className="font-mono text-xs text-[#6f7168]">B.TECH CSE</span>
               </div>
 
               {experienceData.education.map((edu, idx) => (
                 <div key={idx} className="space-y-2">
-                  <div className="text-base font-semibold text-white">{edu.degree}</div>
-                  <div className="text-xs font-mono text-[#e63946]">{edu.institution} ({edu.period})</div>
-                  <p className="text-xs text-[#f0ece8]/75 leading-relaxed pt-2">{edu.details}</p>
+                  <div className="font-sans font-bold text-xl text-[#242620]">{edu.degree}</div>
+                  <div className="font-sans text-xs font-semibold uppercase tracking-wider text-[#0066ff]">
+                    {edu.institution} ({edu.period})
+                  </div>
+                  <p className="font-sans text-xs text-[#6f7168] leading-relaxed pt-2">{edu.details}</p>
                 </div>
               ))}
             </div>
 
             {/* Hackathons */}
-            <div className="glass-card p-8 rounded-3xl border border-white/10">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-[#e63946]/10 text-[#e63946] flex items-center justify-center">
-                  <Award size={20} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold font-heading text-white">Hackathons & Honors</h3>
-                  <p className="text-xs font-mono text-[#f0ece8]/50">Competitive Problem Solving</p>
-                </div>
+            <div className="samay-card bg-[#ffffff] p-6 sm:p-8">
+              <div className="flex items-center justify-between pb-3 border-b border-[#f1f0eb] mb-6">
+                <h3 className="font-sans font-bold text-2xl text-[#242620]">Hackathons & Honors</h3>
+                <span className="font-mono text-xs text-[#6f7168]">AWARDS</span>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {experienceData.achievementsList.map((ach, idx) => (
-                  <div key={idx} className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                    <div className="text-xs font-bold text-white flex items-center justify-between">
+                  <div key={idx} className="p-3.5 rounded-xl bg-[#f1f0eb] border border-[#d3d3c8] space-y-1">
+                    <div className="text-xs font-sans font-semibold text-[#242620] flex items-center justify-between">
                       <span>{ach.title}</span>
-                      <span className="text-[10px] font-mono text-amber-400">{ach.issuer}</span>
+                      <span className="font-mono text-[10px] text-[#0066ff]">{ach.issuer}</span>
                     </div>
-                    <p className="text-xs text-[#f0ece8]/70">{ach.detail}</p>
+                    <p className="font-sans text-xs text-[#6f7168]">{ach.detail}</p>
                   </div>
                 ))}
               </div>

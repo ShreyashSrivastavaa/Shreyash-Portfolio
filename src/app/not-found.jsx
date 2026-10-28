@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Terminal, Home, ArrowLeft, Code } from 'lucide-react'
+import { Terminal, Home, Code, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/Footer'
@@ -10,52 +10,53 @@ import AnimatedBackground from '@/components/AnimatedBackground'
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-[#050508] text-[#f0ece8] relative overflow-hidden flex flex-col justify-between">
+    <main className="min-h-screen bg-[#f1f0eb] text-[#242620] relative overflow-hidden flex flex-col justify-between">
       <CustomCursor />
       <AnimatedBackground />
 
       <div className="relative z-10 w-full">
         <Navbar />
 
-        <section className="pt-44 pb-24 px-6 md:px-12 max-w-4xl mx-auto text-center">
+        <section className="pt-28 pb-20 px-6 md:px-12 max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            className="glass-card p-10 sm:p-16 rounded-3xl border border-white/10 max-w-2xl mx-auto"
+            transition={{ duration: 0.5 }}
+            className="samay-card p-10 sm:p-16 bg-[#ffffff] max-w-2xl mx-auto border border-[#d3d3c8]"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e63946]/10 border border-[#e63946]/30 text-[#e63946] font-mono text-xs font-bold uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0066ff]/10 border border-[#0066ff]/30 text-[#0066ff] font-mono text-xs font-bold uppercase tracking-widest mb-6">
               <Terminal size={14} />
-              <span>ERROR 404: ROUTE_NOT_FOUND</span>
+              <span>404: ROUTE_NOT_FOUND</span>
             </div>
 
-            <h1 className="text-6xl sm:text-8xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 mb-4 tracking-tighter">
+            <h1 className="text-6xl sm:text-8xl font-black font-sans text-[#242620] mb-4 tracking-tighter">
               404
             </h1>
 
-            <h2 className="text-xl sm:text-2xl font-bold font-heading text-white mb-3">
-              System Endpoint Not Found
+            <h2 className="text-xl sm:text-2xl font-bold font-sans text-[#242620] mb-3">
+              Page or Project Not Found
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#f0ece8]/70 max-w-md mx-auto mb-8 leading-relaxed font-light">
-              The requested route or module does not exist in the routing table. It may have been moved, renamed, or temporarily deprecated.
+            <p className="text-xs sm:text-sm text-[#6f7168] max-w-md mx-auto mb-8 leading-relaxed">
+              The requested page or project case study does not exist or has been relocated.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#e63946] to-[#c1121f] text-white font-semibold text-xs shadow-lg shadow-red-500/20 hover:scale-105 transition-transform"
+                className="btn-pill-primary inline-flex items-center gap-2"
               >
                 <Home size={14} />
-                <span>Return to Headquarters</span>
+                <span>Return to Home</span>
               </Link>
 
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-white font-semibold text-xs hover:border-white/20 transition-colors"
+                className="btn-pill-secondary inline-flex items-center gap-2"
               >
                 <Code size={14} />
                 <span>Explore Projects Archive</span>
+                <ArrowRight size={14} />
               </Link>
             </div>
           </motion.div>

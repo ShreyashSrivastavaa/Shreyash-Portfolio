@@ -11,30 +11,30 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export const metadata = {
     metadataBase: new URL('https://www.shreyashsrivastava.in'),
     title: {
-        default: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
+        default: "Shreyash Srivastava | Full-Stack Developer, Product Builder & Founder",
         template: "%s | Shreyash Srivastava"
     },
-    description: "Portfolio of Shreyash Srivastava, a Backend Software Engineer and Full-Stack Developer. Experienced in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and Docker.",
+    description: "Official portfolio of Shreyash Srivastava, Full-Stack Developer, Product Builder, and Founder of Zenith District. Turning ideas into digital products people can use.",
     keywords: [
         "Shreyash Srivastava",
         "Shreyash Srivastava Portfolio",
-        "Shreyash Srivastava Backend Developer",
-        "Shreyash Srivastava SDE",
-        "Shreyash Srivastava Software Engineer",
-        "Shreyash Srivastava Delhi NCR",
-        "Shreyash Srivastava India",
-        "Backend Engineer",
-        "Backend Developer",
         "Full-Stack Developer",
-        "Backend SDE India",
-        "NestJS Developer",
+        "Product Builder",
+        "Founder Zenith District",
+        "Zenith District",
+        "Shreyash Srivastava Founder",
+        "Shreyash Srivastava Software Engineer",
+        "Shreyash Srivastava Delhi",
+        "Shreyash Srivastava India",
+        "Next.js Developer",
+        "React Developer",
         "Node.js Engineer",
         "PostgreSQL Developer",
         "REST API Developer",
-        "Distributed Systems Engineer",
-        "Microservices Architecture",
         "IHateLovePDF",
-        "SwipeRide"
+        "Product.forum",
+        "GitFC",
+        "ZyMeal"
     ],
     authors: [{ name: "Shreyash Srivastava", url: "https://www.shreyashsrivastava.in" }],
     creator: "Shreyash Srivastava",
@@ -52,22 +52,22 @@ export const metadata = {
         type: "profile",
         locale: "en_US",
         url: "https://www.shreyashsrivastava.in",
-        title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
-        description: "Official portfolio of Shreyash Srivastava. Backend Software Engineer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, and scalable distributed systems.",
+        title: "Shreyash Srivastava | Full-Stack Developer, Product Builder & Founder",
+        description: "Full-Stack Developer, Product Builder, and Founder of Zenith District. Turning ideas into digital products people can use.",
         siteName: "Shreyash Srivastava Portfolio",
         images: [
             {
                 url: "https://www.shreyashsrivastava.in/og-banner.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Shreyash Srivastava - Backend Engineer & Full-Stack Developer",
+                alt: "Shreyash Srivastava - Full-Stack Developer, Product Builder & Founder",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Shreyash Srivastava | Backend Engineer & Full-Stack Developer",
-        description: "Building scalable backends and high-throughput APIs. Node.js, NestJS, PostgreSQL, Redis expert.",
+        title: "Shreyash Srivastava | Full-Stack Developer, Product Builder & Founder",
+        description: "Full-Stack Developer, Product Builder, and Founder of Zenith District. Turning ideas into digital products people can use.",
         images: ["https://www.shreyashsrivastava.in/og-banner.jpg"],
         creator: "@ShreyashSrivastavaa",
     },
@@ -86,10 +86,10 @@ export const metadata = {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'm8KoSeRzU9slpYn6QHT5ZBRMnb_wkcU00sdc_B-ZPvg',
     },
     other: {
-        'geo.region': 'IN-UP',
-        'geo.placename': 'Greater Noida, Delhi NCR, India',
-        'geo.position': '28.4744;77.5040',
-        'ICBM': '28.4744, 77.5040',
+        'geo.region': 'IN-DL',
+        'geo.placename': 'Delhi, India',
+        'geo.position': '28.6139;77.2090',
+        'ICBM': '28.6139, 77.2090',
     },
 };
 
@@ -103,11 +103,18 @@ const personJsonLd = {
         "https://www.linkedin.com/in/shreyashsrivastavaa",
         "https://buymeacoffee.com/shreyashsrivastavaa"
     ],
-    "founder": {
-        "@type": "Organization",
-        "name": "I Hate Love PDF",
-        "url": "https://www.ihatelovepdf.com"
-    }
+    "founder": [
+        {
+            "@type": "Organization",
+            "name": "Zenith District",
+            "url": "https://zenithdistrict.com"
+        },
+        {
+            "@type": "Organization",
+            "name": "I Hate Love PDF",
+            "url": "https://www.ihatelovepdf.com"
+        }
+    ]
 };
 
 const jsonLdSchema = {
@@ -120,14 +127,14 @@ const jsonLdSchema = {
             "givenName": "Shreyash",
             "familyName": "Srivastava",
             "alternateName": [
-                "Shreyash Srivastava Backend Developer",
-                "Shreyash Srivastava SDE",
-                "Shreyash Srivastava Portfolio",
-                "Shreyash Srivastava Full-Stack Engineer"
+                "Shreyash Srivastava Full-Stack Developer",
+                "Shreyash Srivastava Product Builder",
+                "Shreyash Srivastava Founder Zenith District",
+                "Shreyash Srivastava Portfolio"
             ],
             "url": "https://www.shreyashsrivastava.in/",
             "image": "https://www.shreyashsrivastava.in/profile.png",
-            "description": "Backend Software Engineer & Full-Stack Developer specializing in Node.js, NestJS, PostgreSQL, Redis, RabbitMQ, Docker, and distributed microservices architecture.",
+            "description": "Full-Stack Developer, Product Builder, and Founder of Zenith District. Experienced in building digital products, scalable web apps, and dependable backend APIs.",
             "email": "shreyashsr2004@gmail.com",
             "sameAs": [
                 "https://github.com/ShreyashSrivastavaa",
@@ -135,18 +142,25 @@ const jsonLdSchema = {
                 "https://www.linkedin.com/in/shreyashsrivastavaa",
                 "https://buymeacoffee.com/shreyashsrivastavaa"
             ],
-            "jobTitle": "Backend Software Engineer & Full-Stack Developer",
+            "jobTitle": "Full-Stack Developer, Product Builder & Founder",
             "worksFor": [
                 {
                     "@type": "Organization",
-                    "name": "JBH Tech Innovation"
+                    "name": "Zenith District"
                 }
             ],
-            "founder": {
-                "@type": "Organization",
-                "name": "I Hate Love PDF",
-                "url": "https://www.ihatelovepdf.com"
-            },
+            "founder": [
+                {
+                    "@type": "Organization",
+                    "name": "Zenith District",
+                    "url": "https://zenithdistrict.com"
+                },
+                {
+                    "@type": "Organization",
+                    "name": "I Hate Love PDF",
+                    "url": "https://www.ihatelovepdf.com"
+                }
+            ],
             "alumnusOf": {
                 "@type": "EducationalOrganization",
                 "name": "ITS Engineering College, Greater Noida (AKTU)",
@@ -154,26 +168,28 @@ const jsonLdSchema = {
             },
             "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Greater Noida",
-                "addressRegion": "Uttar Pradesh",
+                "addressLocality": "Delhi",
+                "addressRegion": "Delhi",
                 "addressCountry": "IN"
             },
             "knowsAbout": [
-                "Backend Engineering",
-                "Distributed Systems",
                 "Full-Stack Development",
-                "Node.js",
-                "NestJS",
-                "TypeScript",
+                "Frontend Development",
+                "Backend Engineering",
                 "JavaScript",
+                "TypeScript",
+                "React",
+                "Next.js",
+                "Node.js",
+                "Express.js",
                 "PostgreSQL",
+                "MongoDB",
                 "Prisma ORM",
                 "REST APIs",
                 "Docker",
-                "Microservices Architecture",
-                "RabbitMQ",
-                "Redis",
-                "System Design"
+                "WebSockets",
+                "Tailwind CSS",
+                "WebAssembly"
             ],
             "knowsLanguage": ["English", "Hindi"]
         },
@@ -191,7 +207,7 @@ const jsonLdSchema = {
             "@id": "https://www.shreyashsrivastava.in/#website",
             "url": "https://www.shreyashsrivastava.in",
             "name": "Shreyash Srivastava Portfolio",
-            "description": "Official portfolio of Shreyash Srivastava showcasing scalable backend systems, microservices, and full-stack projects.",
+            "description": "Official portfolio of Shreyash Srivastava, full-stack developer, product builder, and founder of Zenith District from Delhi, India.",
             "publisher": {
                 "@id": "https://www.shreyashsrivastava.in/#person"
             },
@@ -213,16 +229,17 @@ export default function RootLayout({ children }) {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
                 />
             </head>
-            <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-foreground bg-background`}>
+            <body suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#f1f0eb] text-[#242620]`}>
                 <ThemeProvider
                     attribute="data-theme"
-                    defaultTheme="dark"
-                    enableSystem
+                    defaultTheme="light"
+                    enableSystem={false}
+                    forcedTheme="light"
                     disableTransitionOnChange
                 >
-                    <main className="min-h-screen">
+                    <div className="min-h-screen bg-[#f1f0eb]">
                         {children}
-                    </main>
+                    </div>
                 </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />

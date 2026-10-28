@@ -4,15 +4,14 @@ import { motion } from 'framer-motion'
 import {
   Briefcase,
   GraduationCap,
-  Award,
   Calendar,
   MapPin,
-  CheckCircle2,
+  Check,
   FileText,
-  ArrowRight,
-  Sparkles,
   Download,
-  Building2
+  Building2,
+  ArrowRight,
+  ArrowUpRight
 } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/ui/Navbar'
@@ -27,7 +26,7 @@ export default function ExperiencePage() {
   const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
   return (
-    <main className="min-h-screen bg-[#050508] text-[#f0ece8] relative overflow-hidden">
+    <main className="min-h-screen bg-[#f1f0eb] text-[#242620] relative overflow-hidden">
       <CustomCursor />
       <ScrollProgress />
       <AnimatedBackground />
@@ -36,137 +35,128 @@ export default function ExperiencePage() {
         <Navbar />
 
         {/* HERO BANNER */}
-        <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 pt-36 md:pt-44 pb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-xs font-mono text-[#e63946] tracking-[0.25em] uppercase font-semibold">
-              CAREER & MILESTONES
+        <section className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 pt-12 pb-16">
+          {/* TOP SECTION BAR */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="section-numeral">05 / CAREER & ROLES</span>
+            <span className="font-mono text-xs text-[#6f7168]">
+              EXPERIENCE: 2024 - PRESENT
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-[#f0ece8] mt-3 mb-6 tracking-tight">
-              Work Experience & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Leadership</span>
-            </h1>
-            <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              A summary of my roles, internship experience, and technical leadership work.
-            </p>
-          </motion.div>
+          </div>
 
-          {/* WORK EXPERIENCE TIMELINE */}
-          <div className="max-w-4xl mx-auto mb-24">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 rounded-xl bg-[#e63946]/10 text-[#e63946] flex items-center justify-center">
-                <Briefcase size={20} />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold font-heading text-white">Work History</h2>
-                <p className="text-xs font-mono text-[#f0ece8]/50">Professional Positions & Internships</p>
-              </div>
+          <div className="max-w-4xl mb-12">
+            <h1 className="text-4xl sm:text-6xl font-sans font-bold text-[#242620] tracking-tight">
+              work history &amp;{' '}
+              <span className="font-serif italic font-normal text-[#242620]">
+                experience
+              </span>
+            </h1>
+            <p className="font-sans text-base sm:text-lg text-[#6f7168] mt-3 leading-relaxed max-w-2xl">
+              Where I've been building: founding Zenith District to ship product ideas, ~6 months internship experience at JBH Tech Innovation, and self-directed web apps.
+            </p>
+          </div>
+
+          {/* WORK EXPERIENCE CARDS */}
+          <div className="max-w-4xl mx-auto mb-16 space-y-6">
+            <div className="flex items-center justify-between pb-2 border-b border-[#d3d3c8]">
+              <h2 className="text-2xl font-sans font-bold text-[#242620]">
+                Work &amp; Experience
+              </h2>
+              <span className="font-mono text-xs text-[#6f7168]">
+                {experienceData.experience.length} ROLES
+              </span>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {experienceData.experience.map((exp, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden"
+                  className="samay-card p-6 sm:p-8 bg-[#ffffff]"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[#f1f0eb] mb-4">
                     <div>
-                      <h3 className="text-xl font-bold font-heading text-white">{exp.role}</h3>
-                      <div className="text-sm font-semibold text-[#e63946] flex items-center gap-1.5 mt-0.5">
-                        <Building2 size={15} />
-                        <span>{exp.company}</span>
+                      <h3 className="font-sans font-bold text-2xl text-[#242620]">
+                        {exp.role}
+                      </h3>
+                      <div className="font-sans text-xs font-semibold uppercase tracking-wider text-[#0066ff] mt-1">
+                        {exp.company}
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:items-end gap-1">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-[#f0ece8] bg-white/[0.05] border border-white/10">
-                        <Calendar size={13} className="text-[#e63946]" />
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#6f7168]">
+                      <span className="px-3 py-1 rounded-full bg-[#f1f0eb] text-[#242620] border border-[#d3d3c8]">
                         {exp.period}
                       </span>
-                      <span className="text-[11px] font-mono text-[#f0ece8]/50 flex items-center gap-1">
-                        <MapPin size={11} />
-                        {exp.location}
-                      </span>
+                      <span>{exp.location}</span>
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[#f0ece8]/80 leading-relaxed mb-6 font-light">
+                  <p className="font-sans text-sm text-[#555852] leading-relaxed mb-6">
                     {exp.description}
                   </p>
 
-                  <div className="space-y-3 pt-4 border-t border-white/5">
-                    <div className="text-[11px] font-mono text-[#f0ece8]/50 uppercase tracking-widest font-semibold">
-                      Key Quantified Deliverables:
+                  <div className="space-y-2.5 pt-4 border-t border-[#f1f0eb]">
+                    <div className="text-xs font-sans uppercase tracking-wider text-[#6f7168] font-bold">
+                      WHAT I WORKED ON:
                     </div>
                     {exp.achievements.map((ach, aIdx) => (
-                      <div key={aIdx} className="flex items-start gap-3">
-                        <CheckCircle2 size={16} className="text-[#e63946] shrink-0 mt-0.5" />
-                        <span className="text-xs sm:text-sm text-[#f0ece8]/85 leading-relaxed">
+                      <div key={aIdx} className="flex items-start gap-2.5">
+                        <span className="font-mono text-xs text-[#0066ff] font-bold mt-0.5">•</span>
+                        <span className="font-sans text-xs sm:text-sm text-[#242620] leading-relaxed">
                           {ach}
                         </span>
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
           {/* EDUCATION SECTION */}
-          <div className="max-w-4xl mx-auto mb-20">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                <GraduationCap size={20} />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold font-heading text-white">Education & Academia</h2>
-                <p className="text-xs font-mono text-[#f0ece8]/50">Degree & Core Curriculum</p>
-              </div>
+          <div className="max-w-4xl mx-auto mb-16 space-y-6">
+            <div className="flex items-center justify-between pb-2 border-b border-[#d3d3c8]">
+              <h2 className="text-2xl font-sans font-bold text-[#242620]">
+                Education &amp; Degree
+              </h2>
+              <span className="font-mono text-xs text-[#6f7168]">
+                DEGREE PROGRAM
+              </span>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {experienceData.education.map((edu, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="glass-card p-8 rounded-3xl border border-white/10"
+                  className="samay-card p-6 sm:p-8 bg-[#ffffff]"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-[#f1f0eb] mb-3">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold font-heading text-white">{edu.degree}</h3>
-                      <div className="text-xs sm:text-sm font-mono text-[#e63946] font-semibold mt-0.5">
+                      <h3 className="font-sans font-bold text-xl text-[#242620]">{edu.degree}</h3>
+                      <div className="font-sans text-xs font-semibold uppercase tracking-wider text-[#0066ff] mt-0.5">
                         {edu.institution}
                       </div>
                     </div>
-                    <span className="px-3 py-1 rounded-full text-xs font-mono text-[#f0ece8] bg-white/[0.05] border border-white/10 self-start sm:self-auto">
+                    <span className="font-mono text-xs text-[#6f7168]">
                       {edu.period} • {edu.status}
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#f0ece8]/75 leading-relaxed pt-2 border-t border-white/5">
+                  <p className="font-sans text-xs sm:text-sm text-[#555852] leading-relaxed pt-2">
                     {edu.details}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* RESUME CTA */}
-          <div className="max-w-4xl mx-auto p-8 sm:p-10 rounded-3xl glass-card border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          {/* RESUME CTA BANNER */}
+          <div className="max-w-4xl mx-auto samay-card bg-[#ffffff] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <h3 className="text-xl font-bold font-heading text-white mb-1">
-                Need a print-friendly version?
+              <h3 className="font-sans font-bold text-2xl text-[#242620]">
+                One-Page Resume
               </h3>
-              <p className="text-xs text-[#f0ece8]/70">
-                Download my comprehensive single-page engineering resume PDF.
+              <p className="font-sans text-xs sm:text-sm text-[#6f7168] mt-1">
+                Download a clean PDF copy covering my experience, projects, and stack.
               </p>
             </div>
 
@@ -174,10 +164,10 @@ export default function ExperiencePage() {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#e63946] to-[#c1121f] text-white font-semibold text-xs shadow-lg shadow-red-500/20 hover:scale-105 transition-transform shrink-0 flex items-center gap-2"
+              className="btn-pill-primary shrink-0 shadow-sm"
             >
-              <Download size={15} />
-              <span>Download Resume PDF</span>
+              <Download size={14} />
+              <span>download resume (pdf)</span>
             </a>
           </div>
         </section>

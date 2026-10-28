@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowUp } from 'lucide-react'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false)
@@ -20,41 +21,30 @@ export default function ScrollToTop() {
     <AnimatePresence>
       {visible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.35 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 15 }}
+          transition={{ duration: 0.2 }}
           onClick={scrollTop}
-          whileHover={{ scale: 1.1, rotate: 360 }}
           style={{
             position: 'fixed',
-            bottom: 32,
-            right: 32,
-            width: 44,
-            height: 44,
-            borderRadius: 12,
-            background: 'rgba(255,255,255,0.1)',
-            border: '1px solid var(--border)',
-            backdropFilter: 'blur(12px)',
-            color: 'white',
-            fontSize: 18,
+            bottom: 28,
+            right: 28,
+            width: 40,
+            height: 40,
+            background: '#000000',
+            border: '1px solid #000000',
+            color: '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
             zIndex: 500,
-            transition: 'box-shadow 0.3s',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+            boxShadow: 'none',
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(255,255,255,0.15)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)'
-          }}
-          aria-label="Scroll to top"
+          aria-label="Scroll to top of exhibition"
         >
-          ↑
+          <ArrowUp size={16} />
         </motion.button>
       )}
     </AnimatePresence>

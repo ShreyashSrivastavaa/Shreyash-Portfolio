@@ -8,11 +8,7 @@ import {
   Brain,
   Code2,
   Cpu,
-  CheckCircle2,
-  Award,
-  ExternalLink,
-  ArrowRight,
-  Sparkles
+  ArrowRight
 } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/ui/Navbar'
@@ -22,20 +18,19 @@ import ScrollProgress from '@/components/ScrollProgress'
 import ScrollToTop from '@/components/ScrollToTop'
 import AnimatedBackground from '@/components/AnimatedBackground'
 import skillsData from '@/data/skills.json'
-import experienceData from '@/data/experience.json'
 
 const iconMap = {
-  Terminal: <Terminal size={20} className="text-[#e63946]" />,
-  Database: <Database size={20} className="text-[#e63946]" />,
-  ShieldCheck: <ShieldCheck size={20} className="text-[#e63946]" />,
-  Brain: <Brain size={20} className="text-[#e63946]" />,
-  Code2: <Code2 size={20} className="text-[#e63946]" />,
-  Cpu: <Cpu size={20} className="text-[#e63946]" />,
+  Terminal: <Terminal size={16} />,
+  Database: <Database size={16} />,
+  ShieldCheck: <ShieldCheck size={16} />,
+  Brain: <Brain size={16} />,
+  Code2: <Code2 size={16} />,
+  Cpu: <Cpu size={16} />,
 }
 
 export default function SkillsPage() {
   return (
-    <main className="min-h-screen bg-[#050508] text-[#f0ece8] relative overflow-hidden">
+    <main className="min-h-screen bg-[#f1f0eb] text-[#242620] relative overflow-hidden">
       <CustomCursor />
       <ScrollProgress />
       <AnimatedBackground />
@@ -44,207 +39,122 @@ export default function SkillsPage() {
         <Navbar />
 
         {/* HERO BANNER */}
-        <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 pt-36 md:pt-44 pb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-xs font-mono text-[#e63946] tracking-[0.25em] uppercase font-semibold">
-              TECHNICAL COMPETENCIES
+        <section className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 pt-12 pb-16">
+          {/* TOP SECTION BAR */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="section-numeral">04 / TECHNICAL MATRIX</span>
+            <span className="font-mono text-xs text-[#6f7168]">
+              DAILY DRIVER &amp; STACK
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-[#f0ece8] mt-3 mb-6 tracking-tight">
-              Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63946] to-[#ff4d5a]">Domain Expertise</span>
+          </div>
+
+          <div className="max-w-4xl mb-12">
+            <h1 className="text-4xl sm:text-6xl font-sans font-bold text-[#242620] tracking-tight">
+              skills &amp; engineering{' '}
+              <span className="font-serif italic font-normal text-[#242620]">
+                toolkit
+              </span>
             </h1>
-            <p className="text-base sm:text-lg text-[#f0ece8]/75 leading-relaxed font-light">
-              Languages, frameworks, databases, and development tools I work with daily.
+            <p className="font-sans text-base sm:text-lg text-[#6f7168] mt-3 leading-relaxed max-w-2xl">
+              Languages, frameworks, databases, and tools I use to build real-world web applications and products.
             </p>
-          </motion.div>
+          </div>
 
-          {/* CORE PROFICIENCY METERS */}
-          <div className="mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-xs font-mono text-[#e63946] uppercase tracking-widest font-bold">
-                  CORE MASTERY
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-white mt-1">
-                  Proficiency Indicators
-                </h2>
+          {/* SKILL CATEGORIES GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {skillsData.skillCategories.map((cat, idx) => (
+              <div
+                key={idx}
+                className="samay-card p-6 flex flex-col justify-between bg-[#ffffff]"
+              >
+                <div>
+                  <div className="flex items-center justify-between pb-3 border-b border-[#f1f0eb] mb-4">
+                    <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#242620]">
+                      {cat.title}
+                    </span>
+                    <span className="text-[#0066ff]">
+                      {iconMap[cat.icon] || <Cpu size={16} />}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 rounded-full text-xs font-sans bg-[#f1f0eb] text-[#242620] border border-[#d3d3c8]/60 hover:border-[#242620] transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-[#f1f0eb] mt-6 flex justify-between text-[11px] font-mono text-[#9ea199]">
+                  <span>SPEC 0{idx + 1}</span>
+                  <span className="text-[#22c55e]">HANDS-ON EXPERIENCE</span>
+                </div>
               </div>
-              <span className="text-xs font-mono text-[#f0ece8]/50 hidden sm:inline-block">
-                Evaluated on production systems
+            ))}
+          </div>
+
+          {/* CORE PROFICIENCIES METRIC MATRIX */}
+          <div className="samay-card bg-[#ffffff] p-6 sm:p-8 mb-16">
+            <div className="pb-4 border-b border-[#f1f0eb] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span className="font-sans font-bold text-sm uppercase tracking-wider text-[#242620]">
+                Core Tools &amp; Familiarity
+              </span>
+              <span className="font-mono text-xs text-[#6f7168]">
+                CONFIDENCE LEVELS
               </span>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {skillsData.coreSkills.map((skill, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08 }}
-                  className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-bold font-mono text-white tracking-wider">
-                      {skill.name}
-                    </span>
-                    <span className="text-xs font-mono font-bold text-[#e63946]">
-                      {skill.percentage}%
-                    </span>
-                  </div>
-
-                  <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden mb-3">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.percentage}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, ease: 'easeOut', delay: idx * 0.08 }}
-                      className="h-full bg-gradient-to-r from-[#e63946] to-[#ff4d5a] rounded-full"
-                    />
-                  </div>
-
-                  <div className="flex items-center justify-between text-[10px] font-mono text-[#f0ece8]/50 uppercase tracking-widest">
-                    <span>Level</span>
-                    <span className="text-emerald-400 font-semibold">{skill.level}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* CATEGORIZED SKILLS GRID */}
-          <div className="mb-20">
-            <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-xs font-mono text-[#e63946] tracking-[0.25em] uppercase font-semibold">
-                FULL TOOLKIT
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white mt-2">
-                Categorized Technologies
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {skillsData.skillCategories.map((cat, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between hover:border-[#e63946]/40 transition-all"
-                >
+                <div key={idx} className="p-4 rounded-xl bg-[#f1f0eb] border border-[#d3d3c8] flex flex-col justify-between min-h-[110px]">
                   <div>
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="w-10 h-10 rounded-xl bg-[#e63946]/10 flex items-center justify-center">
-                        {iconMap[cat.icon] || <Terminal size={20} className="text-[#e63946]" />}
-                      </div>
-                      <h3 className="text-lg font-bold font-heading text-white">
-                        {cat.title}
-                      </h3>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {cat.skills.map((s, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="px-3 py-1.5 rounded-xl text-xs font-mono text-[#f0ece8] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* HACKATHON HONORS & CERTIFICATIONS */}
-          <div className="mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-xs font-mono text-[#e63946] uppercase tracking-widest font-bold">
-                  VERIFIED EVIDENCE
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-white mt-1">
-                  Certifications & Hackathon Honors
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {experienceData.achievementsList.map((ach, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                        <Award size={18} />
-                      </div>
-                      <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest font-semibold px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20">
-                        {ach.issuer}
+                    <div className="flex items-center justify-between text-xs mb-2">
+                      <span className="font-sans font-semibold text-[#242620] uppercase tracking-wider">
+                        {skill.name}
+                      </span>
+                      <span className="font-mono font-bold text-[#0066ff]">
+                        {skill.percentage}%
                       </span>
                     </div>
 
-                    <h3 className="text-base font-bold font-heading text-white mb-2">
-                      {ach.title}
-                    </h3>
-                    <p className="text-xs text-[#f0ece8]/70 leading-relaxed mb-6">
-                      {ach.detail}
-                    </p>
+                    <div className="w-full h-2 rounded-full bg-[#ffffff] border border-[#d3d3c8] overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-[#242620] to-[#0066ff]"
+                        style={{ width: `${skill.percentage}%` }}
+                      />
+                    </div>
                   </div>
 
-                  {ach.url && (
-                    <a
-                      href={ach.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-between pt-4 border-t border-white/5 text-xs font-mono text-[#e63946] hover:text-white transition-colors"
-                    >
-                      <span>View Credential</span>
-                      <ExternalLink size={13} />
-                    </a>
-                  )}
-                </motion.div>
+                  <div className="text-[10px] font-mono text-[#6f7168] uppercase pt-2 border-t border-[#d3d3c8]/60 mt-2">
+                    DAILY USAGE
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* BOTTOM CTA BANNER */}
-          <div className="p-8 sm:p-12 rounded-3xl glass-card border border-white/10 text-center relative overflow-hidden">
-            <div className="relative z-10 max-w-2xl mx-auto">
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white mb-4">
-                Want to see these skills in action?
+          {/* EXPLORE WORK CTA */}
+          <div className="samay-card bg-[#ffffff] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-sans font-bold text-2xl text-[#242620]">
+                See These Tools in Action
               </h3>
-              <p className="text-xs sm:text-sm text-[#f0ece8]/75 mb-8">
-                Explore the project case studies with system architecture diagrams, live demos, and GitHub codebases.
+              <p className="font-sans text-xs sm:text-sm text-[#6f7168] mt-1">
+                Explore how these tools come together across my live projects and web apps.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/projects"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#e63946] to-[#c1121f] text-white font-semibold text-xs shadow-lg shadow-red-500/20 hover:scale-105 transition-transform"
-                >
-                  Explore Projects Archive
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-6 py-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-white font-semibold text-xs hover:border-white/20 transition-colors"
-                >
-                  Get In Touch
-                </Link>
-              </div>
             </div>
+
+            <Link
+              href="/projects"
+              className="btn-pill-primary shrink-0 shadow-sm"
+            >
+              <span>explore projects</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </section>
 

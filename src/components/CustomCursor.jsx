@@ -40,7 +40,7 @@ export default function CustomCursor() {
 
     let rafId
     const animate = () => {
-      // Outer ring — smooth follow
+      // Outer ring: smooth follow
       outerPos.current.x += (mousePos.current.x - outerPos.current.x) * 0.12
       outerPos.current.y += (mousePos.current.y - outerPos.current.y) * 0.12
       if (outerRef.current) {
@@ -90,16 +90,15 @@ export default function CustomCursor() {
         ref={outerRef}
         style={{
           position: 'fixed',
-          width: isHovering ? 56 : 34,
-          height: isHovering ? 56 : 34,
-          border: `1.5px solid ${isHovering ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.25)'}`,
+          width: isHovering ? 52 : 32,
+          height: isHovering ? 52 : 32,
+          border: `1.5px solid ${isHovering ? '#0066ff' : 'rgba(36, 38, 32, 0.35)'}`,
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 9999,
           transform: 'translate(-50%, -50%)',
-          transition: 'width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, background 0.3s',
-          background: isHovering ? 'rgba(255,255,255,0.06)' : 'transparent',
-          mixBlendMode: 'difference',
+          transition: 'width 0.26s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.26s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s, background 0.2s',
+          background: isHovering ? 'rgba(0, 102, 255, 0.08)' : 'transparent',
         }}
       />
       {/* Dot */}
@@ -107,9 +106,9 @@ export default function CustomCursor() {
         ref={dotRef}
         style={{
           position: 'fixed',
-          width: 5,
-          height: 5,
-          background: 'white',
+          width: 6,
+          height: 6,
+          background: '#0066ff',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 10000,
@@ -126,17 +125,18 @@ export default function CustomCursor() {
             width: Math.max(2, 4 - i * 0.4),
             height: Math.max(2, 4 - i * 0.4),
             borderRadius: '50%',
-            background: 'rgba(255,255,255,0.4)',
+            background: 'rgba(0, 102, 255, 0.45)',
             pointerEvents: 'none',
             zIndex: 9998,
             transform: 'translate(-50%, -50%)',
-            opacity: (1 - i / TRAIL_COUNT) * 0.5,
+            opacity: (1 - i / TRAIL_COUNT) * 0.4,
           }}
         />
       ))}
-      {/* Hide default cursor */}
+      {/* Hide default cursor on desktop except inputs */}
       <style jsx global>{`
         * { cursor: none !important; }
+        input, textarea { cursor: text !important; }
       `}</style>
     </>
   )

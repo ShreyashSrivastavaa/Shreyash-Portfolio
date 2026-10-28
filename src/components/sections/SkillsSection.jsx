@@ -1,252 +1,131 @@
-'use client';
+'use client'
 
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Terminal, Database, ShieldCheck, Cpu, Code2, Layers } from 'lucide-react';
-import skillsData from '@/data/skills.json';
+import { motion } from 'framer-motion'
+import { Terminal, Database, ShieldCheck, Cpu, Code2, Layers } from 'lucide-react'
+import skillsData from '@/data/skills.json'
 
 export default function SkillsSection() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   const iconMap = {
-    Terminal: <Terminal size={22} color="var(--accent-red)" />,
-    Database: <Database size={22} color="var(--text-sand)" />,
-    ShieldCheck: <ShieldCheck size={22} color="var(--accent-red)" />,
-    Brain: <Layers size={22} color="var(--text-sand)" />,
-    Code2: <Code2 size={22} color="var(--accent-red)" />,
-    Cpu: <Cpu size={22} color="var(--text-sand)" />,
-  };
+    Terminal: <Terminal size={16} />,
+    Database: <Database size={16} />,
+    ShieldCheck: <ShieldCheck size={16} />,
+    Brain: <Layers size={16} />,
+    Code2: <Code2 size={16} />,
+    Cpu: <Cpu size={16} />,
+  }
 
-  const categories = skillsData.skillCategories || [];
-  const coreSkills = skillsData.coreSkills || [];
+  const categories = skillsData.skillCategories || []
+  const coreSkills = skillsData.coreSkills || []
 
   return (
     <section
-      ref={sectionRef}
       id="skills"
-      style={{
-        paddingTop: isMobile ? '80px' : '120px',
-        paddingBottom: isMobile ? '80px' : '120px',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
+      className="relative w-full pt-16 pb-20 sm:pb-28 px-4 sm:px-6"
     >
-      {/* SECTION WATERMARK */}
-      <span className="section-watermark" aria-hidden="true">SKILLS</span>
-
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          paddingLeft: isMobile ? '24px' : '60px',
-          paddingRight: isMobile ? '24px' : '60px',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{ marginBottom: '48px' }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              color: 'var(--accent-red)',
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-            }}
-          >
-            TECHNICAL STACK
-          </span>
-          <h2
-            style={{
-              fontSize: isMobile ? '32px' : '48px',
-              fontWeight: 800,
-              lineHeight: 1.05,
-              marginTop: '10px',
-              fontFamily: 'var(--font-heading)',
-            }}
-          >
-            <span style={{ color: 'var(--text-sand)' }}>Tools & Technologies</span>
-            <br />
-            <span
-              style={{
-                color: 'transparent',
-                WebkitTextStroke: '2px rgba(255,255,255,0.55)',
-              }}
-            >
-              Core Engineering Skills
+      <div className="max-w-[1240px] mx-auto">
+        {/* SECTION EYEBROW */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="section-numeral">04 / TECHNICAL STACK</span>
+            <span className="font-hand text-xl text-[#0066ff] -rotate-1 hidden sm:inline">
+              · tools I use to build
             </span>
+          </div>
+
+          <span className="font-mono text-xs text-[#6f7168]">
+            ACTIVE STACK: 2024 - PRESENT
+          </span>
+        </div>
+
+        {/* SECTION HEADLINE */}
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-5xl font-sans font-bold text-[#242620] tracking-tight">
+            the stack I reach for:{' '}
+            <span className="font-serif italic font-normal text-[#242620]">
+              frontend, backend
+            </span>{' '}
+            &amp; databases.
           </h2>
-        </motion.div>
+          <p className="font-sans text-sm sm:text-base text-[#6f7168] mt-2">
+            Technologies I use across my projects, web utilities, and day-to-day development.
+          </p>
+        </div>
 
         {/* SKILL CATEGORIES GRID */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-            gap: '20px',
-            marginBottom: '64px',
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ y: -5 }}
-              className="glass-card"
-              style={{
-                padding: '24px',
-                borderRadius: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-              }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.45, delay: i * 0.08 }}
+              className="samay-card p-6 flex flex-col justify-between bg-[#ffffff] hover:shadow-xl transition-shadow"
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div
-                  style={{
-                    padding: '10px',
-                    borderRadius: '12px',
-                    background: 'rgba(230, 57, 70, 0.1)',
-                  }}
-                >
-                  {iconMap[cat.icon] || <Cpu size={22} color="var(--accent-red)" />}
+              <div>
+                <div className="flex items-center justify-between pb-3 border-b border-[#f1f0eb] mb-4">
+                  <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#242620]">
+                    {cat.title}
+                  </span>
+                  <span className="text-[#0066ff]">
+                    {iconMap[cat.icon] || <Cpu size={16} />}
+                  </span>
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-sand)', margin: 0, fontFamily: 'var(--font-heading)' }}>
-                  {cat.title}
-                </h3>
+
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 rounded-full text-xs font-sans bg-[#f1f0eb] text-[#242620] border border-[#d3d3c8]/60 hover:border-[#242620] transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {cat.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '12px',
-                      padding: '4px 12px',
-                      borderRadius: '8px',
-                      background: 'rgba(230, 57, 70, 0.08)',
-                      border: '1px solid rgba(230, 57, 70, 0.2)',
-                      color: 'var(--text-secondary)',
-                      transition: 'var(--transition-fast)',
-                    }}
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div className="pt-4 border-t border-[#f1f0eb] mt-6 flex justify-between text-[11px] font-mono text-[#9ea199]">
+                <span>CATEGORY 0{i + 1}</span>
+                <span className="text-[#22c55e]">HANDS-ON</span>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* PROFICIENCY BARS SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          style={{ marginBottom: '24px' }}
-        >
-          <h3
-            style={{
-              fontSize: '24px',
-              fontWeight: 700,
-              color: 'var(--text-sand)',
-              fontFamily: 'var(--font-heading)',
-            }}
-          >
-            Core Competencies & Proficiency
-          </h3>
-        </motion.div>
+        {/* CORE PROFICIENCIES TABLE */}
+        <div className="samay-card bg-[#ffffff] p-6 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#f1f0eb] mb-6">
+            <span className="font-sans font-bold text-sm uppercase tracking-wider text-[#242620]">
+              Core Tools &amp; Familiarity
+            </span>
+            <span className="font-mono text-xs text-[#6f7168]">
+              CONFIDENCE LEVELS
+            </span>
+          </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: isMobile ? '20px' : '36px',
-          }}
-        >
-          {coreSkills.map((skill, i) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  marginBottom: '8px',
-                  fontSize: '13px',
-                }}
-              >
-                <span style={{ color: 'var(--text-sand)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+            {coreSkills.map((skill) => (
+              <div key={skill.name} className="flex items-center justify-between py-2 border-b border-[#f1f0eb]">
+                <span className="font-sans text-xs font-semibold text-[#242620]">
                   {skill.name}
                 </span>
-                <span style={{ color: 'var(--accent-red)', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
-                  {skill.percentage}%
-                </span>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-28 sm:w-36 h-2 rounded-full bg-[#f1f0eb] overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-[#242620] to-[#0066ff]"
+                      style={{ width: `${skill.percentage}%` }}
+                    />
+                  </div>
+                  <span className="font-mono text-xs text-[#242620] font-bold w-9 text-right">
+                    {skill.percentage}%
+                  </span>
+                </div>
               </div>
-              <div
-                style={{
-                  height: '8px',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  borderRadius: '999px',
-                  overflow: 'hidden',
-                }}
-              >
-                <div
-                  style={{
-                    height: '100%',
-                    width: visible ? `${skill.percentage}%` : '0%',
-                    background: 'linear-gradient(90deg, var(--accent-red), var(--accent-crimson))',
-                    borderRadius: '999px',
-                    transition: 'width 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                    transitionDelay: `${i * 0.1}s`,
-                    boxShadow: '0 0 12px var(--accent-red-glow)',
-                  }}
-                />
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
