@@ -13,7 +13,7 @@ const INITIAL_TABS = [
   { id: 'chatgpt', label: 'ChatGPT', icon: '🤖', url: 'chatgpt.com' },
   { id: 'about', label: 'about me', icon: '🤠', url: 'shreyash.me/about' },
   { id: 'worklog', label: 'work log', icon: '📁', url: 'shreyash.me/work-log' },
-  { id: 'journeys', label: 'travel journeys', icon: '🏔️', url: 'shreyash.me/journeys' },
+  { id: 'journeys', label: 'tactics & play', icon: '♟️', url: 'shreyash.me/tactics' },
   { id: 'playlist', label: 'not UR type', icon: '📻', url: 'shreyash.me/playlist' },
   { id: 'gallery', label: 'gallery', icon: '📷', url: 'shreyash.me/gallery' },
   { id: 'scale', label: 'a million rps', icon: '⚡', url: 'shreyash.me/scale' },
@@ -458,16 +458,6 @@ export default function About() {
 
             {/* TAB SELECTORS STRIP */}
             <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-1 flex-1 px-2">
-              {/* Dummy reference tabs matching browser feel */}
-              <div className="hidden lg:flex items-center gap-1 opacity-50 shrink-0 mr-1 text-[11px] text-[#9aa0a6] select-none">
-                <span className="px-2 py-1 rounded bg-[#2a2b2e] flex items-center gap-1 text-[10px] font-sans">
-                  <span className="text-pink-400">❖</span> Portf..
-                </span>
-                <span className="px-2 py-1 rounded bg-[#2a2b2e] flex items-center gap-1 text-[10px] font-sans">
-                  <span className="text-blue-400">💳</span> Pay..
-                </span>
-              </div>
-
               {/* Claude & ChatGPT interactive tabs */}
               {tabs.filter(t => ['claude', 'chatgpt'].includes(t.id)).map((tab) => {
                 const isActive = activeTab === tab.id
@@ -486,13 +476,6 @@ export default function About() {
                   </div>
                 )
               })}
-
-              {/* Dummy reference tab: AR gl.. */}
-              <div className="hidden xl:flex items-center gap-1 opacity-50 shrink-0 mx-1 text-[11px] text-[#9aa0a6] select-none">
-                <span className="px-2 py-1 rounded bg-[#2a2b2e] flex items-center gap-1 text-[10px] font-sans">
-                  <span className="text-purple-400">🥽</span> AR gl..
-                </span>
-              </div>
 
               {/* Group Pill: shreyash */}
               <span className="inline-block bg-[#0066ff] text-white text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded font-semibold shrink-0 mx-1 shadow-sm select-none">
@@ -861,7 +844,7 @@ export default function About() {
                       className="self-end inline-flex items-center gap-2 bg-[#1e1f22] text-[#f1f0eb] hover:bg-black px-4 py-2.5 rounded-full text-xs transition-colors shadow-md"
                     >
                       <span className="font-hand text-sm text-[#9aa0a6]">keep scrolling</span>
-                      <span className="font-sans font-semibold">next: travel journeys ↓</span>
+                      <span className="font-sans font-semibold">next: tactics &amp; play ↓</span>
                     </button>
                   </div>
                 </motion.div>
@@ -879,74 +862,82 @@ export default function About() {
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     
-                    {/* LEFT COLUMN: JOURNEYS LIST */}
-                    <div className="lg:col-span-5 space-y-6">
+                    {/* LEFT COLUMN: TACTICS & THEORY (FOOTBALL & CHESS) */}
+                    <div className="lg:col-span-5 space-y-5">
                       <div>
                         <span className="font-mono text-xs uppercase tracking-widest text-[#6f7168] block mb-1">
-                          TRAVEL LOG · HIMALAYAS
+                          PLAYBOOK &amp; THEORY · OFF-SCREEN OBSESSIONS
                         </span>
                         <h3 className="text-3xl sm:text-5xl font-sans font-bold text-[#242620] tracking-tight">
-                          the hills are{' '}
+                          tactics are{' '}
                           <span className="font-serif italic font-normal text-[#0066ff]">
-                            where I reset.
+                            how I think.
                           </span>
                         </h3>
                       </div>
 
-                      {/* JOURNEYS TIMELINE */}
-                      <div className="space-y-4 pt-2">
-                        {/* 2022: Spiti Valley */}
-                        <div className="pl-4 border-l-2 border-[#0066ff] py-1">
+                      {/* TACTICAL SYSTEMS TIMELINE */}
+                      <div className="space-y-3.5 pt-1">
+                        {/* 1. FOOTBALL: 4-2-3-1 SYSTEM */}
+                        <div className="pl-4 border-l-2 border-[#0066ff] py-2 bg-white/60 backdrop-blur-sm rounded-r-xl pr-3 border border-l-0 border-[#d3d3c8]/60 shadow-xs">
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <span className="font-mono text-xs text-[#8e9087]">2022</span>
-                              <h4 className="font-sans font-bold text-lg text-[#242620]">
-                                Spiti Valley
+                            <div className="flex items-center gap-2">
+                              <span className="text-base">⚽</span>
+                              <h4 className="font-sans font-bold text-base text-[#242620]">
+                                4-2-3-1 Formation
                               </h4>
                             </div>
-                            <span className="font-hand text-base text-[#0066ff]">solo</span>
+                            <span className="font-hand text-sm text-[#0066ff]">high press</span>
                           </div>
-                          <p className="font-sans text-xs text-[#6f7168] mt-0.5">
-                            Kaza, Chicham Bridge, Key Monastery, thin air &amp; prayer flags
+                          <p className="font-sans text-xs text-[#555852] mt-1 leading-relaxed">
+                            Double pivot (CDM) controlling tempo &amp; transitions. Inverted wingers cutting inside half-spaces, with a clinical #10 orchestrating attacks behind a mobile striker.
                           </p>
+                          <div className="flex items-center gap-1.5 mt-2 font-mono text-[10px] text-[#242620] bg-white border border-[#d3d3c8] px-2 py-0.5 rounded-md w-fit">
+                            <span className="text-[#0066ff] font-semibold">SHAPE:</span>
+                            <span>ST · LAM CAM RAM · CDM CDM · LB CB CB RB</span>
+                          </div>
                         </div>
 
-                        {/* 2023: Kasol & Parvati Valley */}
-                        <div className="pl-4 border-l-2 border-transparent hover:border-[#d3d3c8] py-1 transition-colors">
+                        {/* 2. CHESS: SCANDINAVIAN DEFENSE */}
+                        <div className="pl-4 border-l-2 border-[#242620] py-2 bg-white/60 backdrop-blur-sm rounded-r-xl pr-3 border border-l-0 border-[#d3d3c8]/60 shadow-xs">
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <span className="font-mono text-xs text-[#8e9087]">2023</span>
-                              <h4 className="font-sans font-bold text-lg text-[#242620]">
-                                Kasol &amp; Parvati Valley
+                            <div className="flex items-center gap-2">
+                              <span className="text-base">♟️</span>
+                              <h4 className="font-sans font-bold text-base text-[#242620]">
+                                Scandinavian Defense
                               </h4>
                             </div>
-                            <span className="font-hand text-base text-[#0066ff]">with friends</span>
+                            <span className="font-hand text-sm text-[#0066ff]">1. e4 d5</span>
                           </div>
-                          <p className="font-sans text-xs text-[#6f7168] mt-0.5">
-                            Pine forests, riverside trails, and cold mountain water
+                          <p className="font-sans text-xs text-[#555852] mt-1 leading-relaxed">
+                            Immediate central strike on move one, evading 20 moves of White's prep. Rapid Queen deployment, active piece mobility, open d-file pressure, and sharp queenside castling.
                           </p>
+                          <div className="flex items-center gap-1.5 mt-2 font-mono text-[10px] text-[#242620] bg-white border border-[#d3d3c8] px-2 py-0.5 rounded-md w-fit">
+                            <span className="text-[#0066ff] font-semibold">MOVES:</span>
+                            <span>1. e4 d5 · 2. exd5 Qxd5 · 3. Nc3 Qa5 / Qd6</span>
+                          </div>
                         </div>
 
-                        {/* 2025: Himachal */}
+                        {/* 3. LATE NIGHT TIMEOUT */}
                         <div className="pl-4 border-l-2 border-transparent hover:border-[#d3d3c8] py-1 transition-colors">
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <span className="font-mono text-xs text-[#8e9087]">2025</span>
-                              <h4 className="font-sans font-bold text-lg text-[#242620]">
-                                Himachal
+                            <div className="flex items-center gap-2">
+                              <span className="text-base">☕</span>
+                              <h4 className="font-sans font-bold text-sm text-[#242620]">
+                                Mind Reset &amp; Competition
                               </h4>
                             </div>
-                            <span className="font-hand text-base text-[#0066ff]">snow trip</span>
+                            <span className="font-hand text-xs text-[#6f7168]">flow state</span>
                           </div>
                           <p className="font-sans text-xs text-[#6f7168] mt-0.5">
-                            Winding passes, dusk tea stalls, and fresh snowfall
+                            Midnight iced americano, competitive EA FC divisions, and rapid 3+2 blitz chess.
                           </p>
                         </div>
                       </div>
 
-                      {/* Handwritten green caption */}
-                      <p className="font-hand text-xl text-[#38761d] pt-4 italic">
-                        a bike, thin air and the world's highest post office.
+                      {/* Handwritten blue caption */}
+                      <p className="font-hand text-xl text-[#0066ff] pt-1 italic">
+                        pivots on the pitch, gambits on the board, deterministic in code.
                       </p>
                     </div>
 
@@ -996,12 +987,12 @@ export default function About() {
 
                         {/* Overlaid Postmark Stamp */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
-                          <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#0066ff] flex flex-col items-center justify-center -rotate-12 bg-[#f1f0eb]/70 backdrop-blur-[2px] shadow-sm">
-                            <span className="font-mono text-[10px] font-bold text-[#0066ff] tracking-wider">
-                              2022
+                          <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#0066ff] flex flex-col items-center justify-center -rotate-12 bg-[#f1f0eb]/80 backdrop-blur-[2px] shadow-sm">
+                            <span className="font-mono text-[9px] font-bold text-[#0066ff] tracking-wider">
+                              MATCHDAY
                             </span>
-                            <span className="font-mono text-[8px] text-[#0066ff] uppercase tracking-widest">
-                              Spiti Valley
+                            <span className="font-mono text-[7px] text-[#242620] uppercase tracking-widest font-semibold">
+                              TACTICS &amp; PLAY
                             </span>
                           </div>
                         </div>
