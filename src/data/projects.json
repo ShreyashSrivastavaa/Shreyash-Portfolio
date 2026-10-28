@@ -576,49 +576,6 @@
     "logo_url": "/projects/racebid-logo.jpg"
   },
   {
-    "id": "opencircle",
-    "title": "OpenCircle: Collaborative Community Networking Platform",
-    "tagline": "A community platform for developers and indie creators to share projects.",
-    "role": "Full-Stack Developer",
-    "description": "A collaborative web directory where developers, indie hackers, and open-source creators can publish their side projects, gather feedback, and discover other builders' work.",
-    "problem": "Early-stage developers and indie makers often build in isolation and struggle to get candid, constructive feedback from fellow builders.",
-    "solution": "Built a community platform organized into circles by tech stack and interest, where builders can post projects, ask for feedback, and chat with peers.",
-    "key_features": [
-      "Community circles grouped by technology and topic (React, Node, AI, Open Source)",
-      "Project feedback posts with structured comment threads",
-      "Developer profiles highlighting skills, GitHub links, and live projects",
-      "Clean, responsive forum interface with markdown support"
-    ],
-    "metrics": [
-      {
-        "value": "Circles",
-        "label": "GROUP TAXONOMY"
-      },
-      {
-        "value": "Peer Review",
-        "label": "FEEDBACK SYSTEM"
-      },
-      {
-        "value": "Next.js",
-        "label": "COMMUNITY UI"
-      }
-    ],
-    "tech": [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
-    "category": "Full-Stack",
-    "live_url": "https://opencircle-eight.vercel.app",
-    "github_url": "https://github.com/ShreyashSrivastavaa",
-    "image_url": "/projects/opencircle.png",
-    "image_urls": [
-      "/projects/opencircle.png"
-    ],
-    "logo_url": "/projects/opencircle-logo.jpg"
-  },
-  {
     "id": "savethesystem",
     "title": "SaveTheSystem: System Design Failure Lab & Incident Simulator",
     "tagline": "An interactive outage simulator for practicing production debugging.",

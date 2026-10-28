@@ -108,20 +108,6 @@
     "desktopImage": "/projects/personalmoney-logo.jpg"
   },
   {
-    "id": "exp-13",
-    "projectId": "opencircle",
-    "title": "A Place for Builders to Share Projects.",
-    "subtitle": "Community directory for developer feedback",
-    "category": "Web",
-    "project": "OpenCircle",
-    "tech": "Next.js · TypeScript · Tailwind",
-    "image": "/projects/opencircle.png",
-    "live_url": "https://opencircle-eight.vercel.app",
-    "badge": "Web App",
-    "logo": "/projects/opencircle-logo.jpg",
-    "desktopImage": "/projects/opencircle-logo.jpg"
-  },
-  {
     "id": "exp-14",
     "projectId": "zymeal",
     "title": "Live Orders from Kitchen to Table.",
