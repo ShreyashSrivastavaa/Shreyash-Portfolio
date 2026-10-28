@@ -3,157 +3,114 @@
 import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, FileText, ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react'
+import { SoundFX, unlockAudio } from '@/lib/SoundEngine'
 
 export default function Navbar() {
   const pathname = usePathname()
   const router = useRouter()
-  const [scrolled, setScrolled] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const [open, setOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
-  const [mounted, setMounted] = useState(false)
-
+  const [scrolled, setScrolled] = useState(false)
   const isHomePage = pathname === '/'
+  const isDarkPage = pathname.startsWith('/projects')
 
   useEffect(() => {
-    setMounted(true)
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024)
-    }
-
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-
-      if (pathname === '/') {
-        const sections = ['home', 'about', 'portfolio', 'skills', 'experience', 'testimonials', 'contact']
-
-        for (const sectionId of sections) {
-          const section = document.getElementById(sectionId)
-          if (!section) continue
-
-          const rect = section.getBoundingClientRect()
-
-          if (rect.top <= 180 && rect.bottom >= 180) {
-            setActiveSection(sectionId)
-            break
-          }
-        }
-      }
+      setScrolled(window.scrollY > 30)
     }
-
-    handleResize()
-    handleScroll()
-
-    window.addEventListener('resize', handleResize)
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [pathname])
-
-  const handleNavClick = (e, item) => {
-    setOpen(false)
-
-    if (isHomePage) {
-      if (item.id === 'home') {
-        e.preventDefault()
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        setActiveSection('home')
-        return
-      }
-
-      const target = document.getElementById(item.id)
-      if (target) {
-        e.preventDefault()
-        const navbarOffset = 70
-        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarOffset
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' })
-        setActiveSection(item.id)
-        return
-      }
-    }
-
-    router.push(item.href)
-  }
-
-  const navItems = [
-    { label: 'Home', id: 'home', href: '/' },
-    { label: 'About', id: 'about', href: '/about' },
-    { label: 'Projects', id: 'portfolio', href: '/projects' },
-    { label: 'Skills', id: 'skills', href: '/skills' },
-    { label: 'Experience', id: 'experience', href: '/experience' },
-    { label: 'Contact', id: 'contact', href: '/contact' },
-  ]
-
-  const isItemActive = (item) => {
-    if (isHomePage) {
-      return activeSection === item.id
-    }
-    if (item.href === '/') return pathname === '/'
-    return pathname.startsWith(item.href)
-  }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const resumeUrl = 'https://drive.google.com/file/d/1DdV6JomHJOz0zidCsnwO5KFINzlq4QJO/view?usp=sharing'
 
+  const handleNavClick = (e, targetId, href) => {
+    unlockAudio()
+    SoundFX.click()
+    setOpen(false)
+    if (isHomePage) {
+      e.preventDefault()
+      const target = document.getElementById(targetId)
+      if (target) {
+        const offset = 80
+        const pos = target.getBoundingClientRect().top + window.scrollY - offset
+        window.scrollTo({ top: pos, behavior: 'smooth' })
+        return
+      }
+    }
+    router.push(href)
+  }
+
+  const textColor = isDarkPage ? 'text-[#f1f0eb]' : 'text-[#242620]'
+  const subtextColor = isDarkPage ? 'text-[#a0a0a0]' : 'text-[#6f7168]'
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#050508]/85 backdrop-blur-md border-b border-white/[0.06] transition-all">
-      <div
-        style={{ margin: '0 auto' }}
-        className="w-full max-w-[1200px] px-6 sm:px-8 h-16 md:h-18 flex items-center justify-between"
-      >
-        
-        {/* LEFT: LOGO / NAME */}
-        <Link
-          href="/"
-          onClick={(e) => {
-            if (isHomePage) {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }
-          }}
-          className="font-heading font-bold text-lg sm:text-xl text-[#f5f5f7] hover:text-white tracking-tight"
-        >
-          Shreyash
-        </Link>
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 pointer-events-auto ${
+        scrolled
+          ? isDarkPage
+            ? 'py-3.5 px-6 sm:px-12 bg-[#09090b]/85 backdrop-blur-md border-b border-white/10 shadow-lg'
+            : 'py-3.5 px-6 sm:px-12 bg-[#f1f0eb]/90 backdrop-blur-md border-b border-black/5 shadow-sm'
+          : 'pt-4 pb-2 px-6 sm:px-12 bg-transparent'
+      }`}
+    >
+      <div className="max-w-[1340px] mx-auto flex items-center justify-between">
+        {/* BRAND LOGO */}
+        <div className="flex items-center">
+          <Link
+            href="/"
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
+            }}
+            className="flex items-center gap-2.5 group cursor-pointer"
+          >
+            <div className="w-7 h-7 rounded-full overflow-hidden border border-[#d3d3c8] bg-black shadow-sm group-hover:border-[#0066ff] group-hover:scale-105 transition-all shrink-0">
+              <img src="/app-logo.png" alt="Shreyash Srivastava Logo" className="w-full h-full object-cover" />
+            </div>
+            <span className={`text-xs font-sans font-bold tracking-tight ${textColor} group-hover:text-[#0066ff] transition-colors`}>
+              shreyash.
+            </span>
+          </Link>
+        </div>
 
-        {/* CENTER: DESKTOP NAV LINKS */}
-        <nav className="hidden lg:flex items-center gap-7 sm:gap-8">
-          {navItems.map((item) => {
-            const active = isItemActive(item)
+        {/* CENTER NAVIGATION (EXACT SAMAY MAURYA SCREENSHOT 2) */}
+        <nav className={`hidden md:flex items-center gap-8 text-[13px] font-sans font-medium ${textColor}`}>
+          <button
+            onClick={(e) => handleNavClick(e, 'portfolio', '/#portfolio')}
+            className="hover:text-[#0066ff] transition-colors cursor-pointer"
+          >
+            work
+          </button>
 
-            return (
-              <a
-                key={item.id}
-                href={isHomePage ? `#${item.id}` : item.href}
-                onClick={(e) => handleNavClick(e, item)}
-                className={`text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
-                  active
-                    ? 'text-[#ff4d4f]'
-                    : 'text-[#a1a1aa] hover:text-[#f5f5f7]'
-                }`}
-              >
-                {item.label}
-              </a>
-            )
-          })}
-        </nav>
+          <button
+            onClick={(e) => handleNavClick(e, 'about', '/about')}
+            className="hover:text-[#0066ff] transition-colors cursor-pointer"
+          >
+            about me
+          </button>
 
-        {/* RIGHT: RESUME & HIRE ME BUTTON */}
-        <div className="hidden lg:flex items-center gap-5">
           <a
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#a1a1aa] hover:text-white transition-colors"
+            className="flex items-center gap-1 hover:text-[#0066ff] transition-colors"
           >
-            <FileText size={14} className="text-[#a1a1aa]" />
-            <span>Resume</span>
+            <span>resume</span>
+            <span className="text-xs">⤓</span>
           </a>
+        </nav>
+
+        {/* RIGHT: COFFEE + SAY HEY + MOBILE TOGGLE */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/buymeacoffee"
+            className={`hidden sm:flex items-center gap-1 text-[13px] font-sans font-medium ${subtextColor} hover:text-[#0066ff] transition-colors`}
+          >
+            <span>☕ coffee</span>
+          </Link>
 
           <a
             href={isHomePage ? '#contact' : '/contact'}
@@ -161,88 +118,75 @@ export default function Navbar() {
               if (isHomePage) {
                 e.preventDefault()
                 const contactEl = document.getElementById('contact')
-                if (contactEl) {
-                  contactEl.scrollIntoView({ behavior: 'smooth' })
-                }
+                if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
               }
             }}
-            className="px-4 py-2 rounded-lg bg-[#ff4d4f] hover:bg-[#e03a3c] text-white font-medium text-xs transition-colors shadow-sm cursor-pointer"
+            className={`hidden sm:flex items-center gap-1 text-[13px] font-sans font-medium ${textColor} hover:text-[#0066ff] transition-colors`}
           >
-            Hire Me
+            <span>say hey</span>
+            <span className="text-xs">↗</span>
           </a>
-        </div>
 
-        {/* MOBILE MENU TRIGGER BUTTON */}
-        <div className="lg:hidden">
+          {/* MOBILE MENU TOGGLE */}
           <button
             onClick={() => setOpen(!open)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={open}
-            className="p-2 text-[#a1a1aa] hover:text-white transition cursor-pointer"
+            aria-label="Toggle menu"
+            className={`md:hidden w-8 h-8 flex items-center justify-center ${textColor} cursor-pointer`}
           >
-            {open ? <X size={22} className="text-[#ff4d4f]" /> : <Menu size={22} />}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU DROPDOWN */}
-      <AnimatePresence>
-        {isMobile && open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="border-b border-white/[0.08] bg-[#050508] px-6 py-5 flex flex-col gap-3"
+      {/* MOBILE DRAWER */}
+      {open && (
+        <div className="md:hidden mt-3 p-4 rounded-xl bg-white border border-[#d3d3c8] shadow-lg max-w-sm mx-auto flex flex-col space-y-3 text-sm">
+          <button
+            onClick={(e) => handleNavClick(e, 'portfolio', '/#portfolio')}
+            className="text-left font-medium text-[#242620] hover:text-[#0066ff]"
           >
-            {navItems.map((item) => {
-              const active = isItemActive(item)
-
-              return (
-                <a
-                  key={item.id}
-                  href={isHomePage ? `#${item.id}` : item.href}
-                  onClick={(e) => handleNavClick(e, item)}
-                  className={`text-sm py-2 transition-colors flex items-center justify-between ${
-                    active ? 'text-[#ff4d4f] font-semibold' : 'text-[#a1a1aa]'
-                  }`}
-                >
-                  <span>{item.label}</span>
-                  {active && <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d4f]" />}
-                </a>
-              )
-            })}
-
-            <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between gap-4 mt-2">
-              <a
-                href={resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#a1a1aa] hover:text-white"
-              >
-                <FileText size={14} />
-                <span>Resume</span>
-                <ArrowUpRight size={12} />
-              </a>
-
-              <a
-                href={isHomePage ? '#contact' : '/contact'}
-                onClick={(e) => {
-                  setOpen(false)
-                  if (isHomePage) {
-                    e.preventDefault()
-                    const contactEl = document.getElementById('contact')
-                    if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
-                  }
-                }}
-                className="px-4 py-1.5 rounded-lg bg-[#ff4d4f] text-white text-xs font-medium"
-              >
-                Hire Me
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            work
+          </button>
+          <button
+            onClick={(e) => handleNavClick(e, 'about', '/about')}
+            className="text-left font-medium text-[#242620] hover:text-[#0066ff]"
+          >
+            about me
+          </button>
+          <Link
+            href="/buymeacoffee"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-between font-medium text-[#6f7168] hover:text-[#0066ff]"
+          >
+            <span>☕ buy me a coffee</span>
+            <span>↗</span>
+          </Link>
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between font-medium text-[#242620] hover:text-[#0066ff]"
+          >
+            <span>resume</span>
+            <span>⤓</span>
+          </a>
+          <a
+            href={isHomePage ? '#contact' : '/contact'}
+            onClick={(e) => {
+              setOpen(false)
+              if (isHomePage) {
+                e.preventDefault()
+                const contactEl = document.getElementById('contact')
+                if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+            className="flex items-center justify-between font-medium text-[#0066ff]"
+          >
+            <span>say hey</span>
+            <span>↗</span>
+          </a>
+        </div>
+      )}
     </header>
   )
 }

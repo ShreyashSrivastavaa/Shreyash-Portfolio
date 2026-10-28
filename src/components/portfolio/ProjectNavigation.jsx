@@ -13,36 +13,69 @@ export default function ProjectNavigation({ currentId }) {
   const nextProject = projectsData[(currentIndex + 1) % total];
 
   return (
-    <div className="pt-12 pb-6 border-t border-white/[0.08] mt-20 flex items-center justify-between gap-6 text-sm">
+    <nav
+      aria-label="Previous and next project navigation"
+      className="pt-10 pb-6 border-t border-white/10 mt-14 flex items-center justify-between gap-6"
+    >
       {prevProject ? (
         <Link
           href={`/projects/${prevProject.id}`}
-          className="group inline-flex items-center gap-2 text-[#9ca3af] hover:text-[#f5f5f7] transition-colors"
+          className="group inline-flex items-center gap-3.5 p-3 sm:p-4 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/10 hover:border-[#0066ff]/40 transition-all text-left"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          <div className="flex flex-col text-left">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#6b7280]">Previous</span>
-            <span className="font-medium text-xs sm:text-sm text-[#d1d5db] group-hover:text-white transition-colors">
+          <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#0066ff] group-hover:border-[#0066ff] transition-colors shrink-0">
+            <ArrowLeft size={14} className="text-white group-hover:-translate-x-0.5 transition-transform" />
+          </div>
+          {prevProject.logo_url && (
+            <img
+              src={prevProject.logo_url}
+              alt=""
+              className="w-8 h-8 rounded-lg object-contain border border-white/10 bg-white/5 p-1 shrink-0 hidden sm:block"
+            />
+          )}
+          <div className="flex flex-col">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#707070] group-hover:text-[#0066ff] transition-colors">
+              PREVIOUS CASE STUDY
+            </span>
+            <span className="font-sans font-semibold text-sm sm:text-base text-[#f1f0eb] group-hover:text-white transition-colors truncate max-w-[200px] sm:max-w-[280px]">
               {prevProject.title.split(/[:—]/)[0].trim()}
             </span>
           </div>
         </Link>
       ) : <div />}
 
+      <Link
+        href="/#portfolio"
+        className="hidden md:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-[#0066ff]/40 text-xs font-mono text-[#f1f0eb] hover:text-[#0066ff] transition-all"
+      >
+        <ArrowLeft size={13} className="text-[#0066ff]" />
+        <span>BACK TO WORK</span>
+      </Link>
+
       {nextProject && (
         <Link
           href={`/projects/${nextProject.id}`}
-          className="group inline-flex items-center gap-2 text-[#9ca3af] hover:text-[#f5f5f7] transition-colors text-right ml-auto"
+          className="group inline-flex items-center gap-3.5 p-3 sm:p-4 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/10 hover:border-[#0066ff]/40 transition-all text-right ml-auto"
         >
           <div className="flex flex-col text-right">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#6b7280]">Next</span>
-            <span className="font-medium text-xs sm:text-sm text-[#d1d5db] group-hover:text-white transition-colors">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#707070] group-hover:text-[#0066ff] transition-colors">
+              NEXT CASE STUDY
+            </span>
+            <span className="font-sans font-semibold text-sm sm:text-base text-[#f1f0eb] group-hover:text-white transition-colors truncate max-w-[200px] sm:max-w-[280px]">
               {nextProject.title.split(/[:—]/)[0].trim()}
             </span>
           </div>
-          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          {nextProject.logo_url && (
+            <img
+              src={nextProject.logo_url}
+              alt=""
+              className="w-8 h-8 rounded-lg object-contain border border-white/10 bg-white/5 p-1 shrink-0 hidden sm:block"
+            />
+          )}
+          <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#0066ff] group-hover:border-[#0066ff] transition-colors shrink-0">
+            <ArrowRight size={14} className="text-white group-hover:translate-x-0.5 transition-transform" />
+          </div>
         </Link>
       )}
-    </div>
+    </nav>
   );
 }

@@ -7,7 +7,8 @@ import AnimatedBackground from '@/components/AnimatedBackground'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollToTop from '@/components/ScrollToTop'
-import AIChatbot from '@/components/AIChatbot'
+import SoundDock from '@/components/SoundDock'
+
 import Footer from '@/components/Footer'
 import Navbar from '@/components/ui/Navbar'
 import Hero from '@/components/sections/Hero'
@@ -15,6 +16,10 @@ import About from '@/components/sections/About'
 import ProjectsSection from '@/components/sections/ProjectsSection'
 import ProcessSection from '@/components/sections/ProcessSection'
 import SkillsSection from '@/components/sections/SkillsSection'
+import WorkIntroStage from '@/components/sections/WorkIntroStage'
+import TheWorkBetween from '@/components/sections/TheWorkBetween'
+import ExperimentsSection from '@/components/sections/ExperimentsSection'
+import WorkOutroStage from '@/components/sections/WorkOutroStage'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ContactSection from '@/components/sections/contact/ContactSection'
 import WelcomeScreen from '@/components/WelcomeScreen'
@@ -32,6 +37,12 @@ export default function Home() {
     if (currentHash === '#portfolio') {
       setShowWelcome(false)
       setShowApp(true)
+      setTimeout(() => {
+        const el = document.getElementById('portfolio')
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 150)
       return
     }
 
@@ -57,7 +68,12 @@ export default function Home() {
       })
     }
 
-    if (!hasPlayedIntro()) {
+    const forceIntro = window.location.search.includes('intro')
+    if (forceIntro) {
+      sessionStorage.removeItem('introPlayed')
+    }
+
+    if (!hasPlayedIntro() || forceIntro) {
       setShowWelcome(true)
       setShowApp(false)
 
@@ -65,7 +81,7 @@ export default function Home() {
         setShowWelcome(false)
         setShowApp(true)
         setIntroPlayed()
-      }, 2800)
+      }, 3000)
 
       return () => clearTimeout(timer)
     } else {
@@ -75,7 +91,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main style={{ position: 'relative', overflow: 'hidden' }}>
+    <main suppressHydrationWarning className="bg-[#f1f0eb] min-h-screen text-[#242620]" style={{ position: 'relative', overflowX: 'clip' }}>
       {/* Global enhancements */}
       <CustomCursor />
       <ScrollProgress />
@@ -84,18 +100,20 @@ export default function Home() {
       <div style={{ position: 'relative', zIndex: 2 }}>
         <Navbar />
         <Hero showApp={showApp} />
-        <About />
+        <WorkIntroStage />
         <ProjectsSection />
-        <ProcessSection />
-        <SkillsSection />
+        <TheWorkBetween />
+        <ExperimentsSection />
+        <About />
         <TestimonialsSection />
         <ContactSection />
+        <WorkOutroStage />
         <Footer />
       </div>
 
       {/* Floating widgets */}
+      <SoundDock />
       <ScrollToTop />
-      <AIChatbot />
 
       {/* Welcome screen overlay */}
       <AnimatePresence>
