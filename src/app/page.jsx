@@ -7,8 +7,6 @@ import AnimatedBackground from '@/components/AnimatedBackground'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollToTop from '@/components/ScrollToTop'
-import SoundDock from '@/components/SoundDock'
-
 import Footer from '@/components/Footer'
 import Navbar from '@/components/ui/Navbar'
 import Hero from '@/components/sections/Hero'
@@ -24,69 +22,33 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ContactSection from '@/components/sections/contact/ContactSection'
 import WelcomeScreen from '@/components/WelcomeScreen'
 
-import { hasPlayedIntro, setIntroPlayed } from '@/lib/introState'
-
 export default function Home() {
-  const [showWelcome, setShowWelcome] = useState(false)
-  const [showApp, setShowApp] = useState(true)
+  const [showWelcome, setShowWelcome] = useState(true)
 
   useEffect(() => {
-    const currentHash = window.location.hash
-    const pathname = window.location.pathname
+    // Lock scrolling while preloader is active
+    document.body.style.overflow = 'hidden'
+    window.scrollTo({ top: 0, behavior: 'instant' })
 
-    if (currentHash === '#portfolio') {
+    const timer = setTimeout(() => {
       setShowWelcome(false)
-      setShowApp(true)
-      setTimeout(() => {
-        const el = document.getElementById('portfolio')
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' })
-        }
-      }, 150)
-      return
-    }
+      document.body.style.overflow = ''
 
-    const navEntries = performance.getEntriesByType('navigation')
-    const navigationType =
-      navEntries.length > 0
-        ? navEntries[0].type
-        : null
-
-    const isReload = navigationType === 'reload'
-
-    if (isReload && pathname === '/') {
-      sessionStorage.removeItem('introPlayed')
-      sessionStorage.removeItem('heroPlayed')
-
+      // If URL has a hash, smooth-scroll after preloader finishes
       if (window.location.hash) {
-        history.replaceState(null, '', '/')
+        const targetId = window.location.hash.replace('#', '')
+        const el = document.getElementById(targetId)
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth' })
+          }, 350)
+        }
       }
+    }, 2800)
 
-      window.scrollTo({
-        top: 0,
-        behavior: 'instant',
-      })
-    }
-
-    const forceIntro = window.location.search.includes('intro')
-    if (forceIntro) {
-      sessionStorage.removeItem('introPlayed')
-    }
-
-    if (!hasPlayedIntro() || forceIntro) {
-      setShowWelcome(true)
-      setShowApp(false)
-
-      const timer = setTimeout(() => {
-        setShowWelcome(false)
-        setShowApp(true)
-        setIntroPlayed()
-      }, 3000)
-
-      return () => clearTimeout(timer)
-    } else {
-      setShowWelcome(false)
-      setShowApp(true)
+    return () => {
+      clearTimeout(timer)
+      document.body.style.overflow = ''
     }
   }, [])
 
@@ -99,7 +61,7 @@ export default function Home() {
 
       <div style={{ position: 'relative', zIndex: 2 }}>
         <Navbar />
-        <Hero showApp={showApp} />
+        <Hero />
         <WorkIntroStage />
         <ProjectsSection />
         <TheWorkBetween />
@@ -112,23 +74,22 @@ export default function Home() {
       </div>
 
       {/* Floating widgets */}
-      <SoundDock />
       <ScrollToTop />
 
       {/* Welcome screen overlay */}
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => {
+          document.body.style.overflow = ''
+        }}
+      >
         {showWelcome && (
           <motion.div
+            key="preloader-overlay"
             initial={{ y: 0 }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
-            onAnimationStart={(definition) => {
-              if (definition === 'exit') {
-                setShowApp(true)
-              }
-            }}
             transition={{
-              duration: 1.2,
+              duration: 1.0,
               ease: [0.76, 0, 0.24, 1],
             }}
             style={{
