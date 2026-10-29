@@ -989,10 +989,10 @@ export default function About() {
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
                           <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#0066ff] flex flex-col items-center justify-center -rotate-12 bg-[#f1f0eb]/80 backdrop-blur-[2px] shadow-sm">
                             <span className="font-mono text-[9px] font-bold text-[#0066ff] tracking-wider">
-                              MATCHDAY
+                              HIMALAYAS
                             </span>
                             <span className="font-mono text-[7px] text-[#242620] uppercase tracking-widest font-semibold">
-                              TACTICS &amp; PLAY
+                              PEAKS &amp; TRAILS
                             </span>
                           </div>
                         </div>
